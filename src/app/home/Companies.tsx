@@ -26,22 +26,23 @@ export default function Companies() {
 
         const length = path.getTotalLength()
 
-        gsap.set(path, {
-            strokeDasharray: length,
-            strokeDashoffset: length
-        })
+        gsap.set(path, { strokeDasharray: length })
 
-        gsap.to(path, {
-            strokeDashoffset: 0,
-            ease: 'none',
-            scrollTrigger: {
-                scroller: document.getElementById('viewport') as HTMLElement,
-                trigger: section,
-                start: '10% 80%',
-                end: '50% 20%',
-                scrub: 1.5
+        gsap.fromTo(path,
+            { strokeDashoffset: length },
+            {
+                strokeDashoffset: 0,
+                ease: 'none',
+                scrollTrigger: {
+                    scroller: document.getElementById('viewport') as HTMLElement,
+                    trigger: section,
+                    start: '10% 80%',
+                    end: '50% 20%',
+                    scrub: 1.5,
+                    refreshPriority: -1
+                }
             }
-        })
+        )
     }, { scope: sectionRef })
 
 	return (

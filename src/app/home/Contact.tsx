@@ -25,22 +25,23 @@ export default function Contact() {
 
         const length = path.getTotalLength()
 
-        gsap.set(path, {
-            strokeDasharray: length,
-            strokeDashoffset: length
-        })
+        gsap.set(path, { strokeDasharray: length })
 
-        gsap.to(path, {
-            strokeDashoffset: 0,
-            ease: 'none',
-            scrollTrigger: {
-                scroller: document.getElementById('viewport') as HTMLElement,
-                trigger: section,
-                start: 'top 80%',
-                end: 'bottom 20%',
-                scrub: 1.5
+        gsap.fromTo(path,
+            { strokeDashoffset: length },
+            {
+                strokeDashoffset: 0,
+                ease: 'none',
+                scrollTrigger: {
+                    scroller: document.getElementById('viewport') as HTMLElement,
+                    trigger: section,
+                    start: 'top 80%',
+                    end: 'bottom 20%',
+                    scrub: 1.5,
+                    refreshPriority: -1
+                }
             }
-        })
+        )
     }, { scope: sectionRef })
 
 	return (

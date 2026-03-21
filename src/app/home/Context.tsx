@@ -18,12 +18,13 @@ gsap.registerPlugin(ScrollTrigger)
 // components
 import AnimatedTitle from '@/components/Utils/Animations/AnimatedTitle'
 import AnimatedText from '@/components/Utils/Animations/AnimatedText'
+import TextReveal from '@/components/Utils/Animations/TextReveal'
 
 export default function Context() {
 
 	const sectionRef = useRef<HTMLDivElement>(null)
     const pathRef = useRef<SVGPathElement>(null)
-	const pinRef = useRef<HTMLDivElement>(null)
+	const pinRef = useRef<HTMLElement | null>(null)
 
     useGSAP(() => {
         const path = pathRef.current
@@ -32,22 +33,22 @@ export default function Context() {
 
         const length = path.getTotalLength()
 
-        gsap.set(path, {
-            strokeDasharray: length,
-            strokeDashoffset: length
-        })
+        gsap.set(path, { strokeDasharray: length })
 
-        gsap.to(path, {
-            strokeDashoffset: 0,
-            ease: 'none',
-            scrollTrigger: {
-                scroller: document.getElementById('viewport') as HTMLElement,
-                trigger: section,
-                start: '10% 80%',
-                end: '50% 20%',
-                scrub: 1.5
+        gsap.fromTo(path,
+            { strokeDashoffset: length },
+            {
+                strokeDashoffset: 0,
+                ease: 'none',
+                scrollTrigger: {
+                    scroller: document.getElementById('viewport') as HTMLElement,
+                    trigger: section,
+                    start: '10% 80%',
+                    end: '50% 20%',
+                    scrub: 1.5
+                }
             }
-        })
+        )
     }, { scope: sectionRef })
 
 	const scrollbarRef = useRef<HTMLDivElement>(null)
@@ -226,16 +227,20 @@ export default function Context() {
 			<section
 				id='criacao'
 				ref={pinRef}
+				className='min-h-lvh flex items-center'
 			>
-				<div className='base-container min-h-lvh flex items-center'>
+				<div className='base-container'>
 					<div className='row'>
 						<div className='col-lg-8 col-lg-push-2'>
-							<AnimatedTitle
-								style='dark'
+							<TextReveal
 								className='text-60 font-heading font-semibold text-center'
+								scrub={1.5}
+								pinSection={pinRef}
 							>
-								A Aether foi criada para atuar exatamente nessa lacuna do ecossistema científico.
-							</AnimatedTitle>
+								<h2>
+									A Aether foi criada para atuar exatamente nessa lacuna do ecossistema científico.
+								</h2>
+							</TextReveal>
 						</div>
 					</div>
 				</div>

@@ -18,16 +18,23 @@ interface Props {
     stagger?: number
     duration?: number
     className?: string
+    // when set, the animation is tied to a pinned ScrollTrigger scrub
+    // instead of playing freely on scroll
+    scrub?: boolean | number
+    // the section element to pin — required when scrub is enabled
+    pinSection?: React.RefObject<HTMLElement | null>
 }
 
 export default function TextReveal({
     children,
     animateOnScroll = true,
     delay = 0,
-    blockColor = 'var(--color-green-dark)',
+    blockColor = 'var(--color-green-light)',
     stagger = 0.15,
     duration = 0.75,
-    className
+    className,
+    scrub,
+    pinSection
 }: Props) {
 
     const containerRef = useRef<HTMLDivElement>(null)
@@ -119,19 +126,56 @@ export default function TextReveal({
                 return tl
             }
 
+            const isScrub = scrub !== undefined && scrub !== false
+
             if (animateOnScroll) {
-                blocks.current.forEach((block, i) => {
-                    const tl = createBlockRevealAnimation(block, lines.current[i], i)
-                    tl.pause()
+                if (isScrub) {
+                    // build a master timeline with all line animations
+                    // each sub-tl keeps its own delay so stagger is preserved
+                    const masterTl = gsap.timeline()
+
+                    blocks.current.forEach((block, i) => {
+                        const tl = createBlockRevealAnimation(block, lines.current[i], i)
+                        masterTl.add(tl, 0)
+                    })
+
+                    const triggerEl = pinSection?.current ?? containerRef.current
 
                     ScrollTrigger.create({
                         scroller: document.getElementById('viewport') as HTMLElement,
-                        trigger: containerRef.current,
-                        start: 'top 90%',
-                        once: true,
-                        onEnter: () => tl.play()
+                        trigger: triggerEl,
+                        animation: masterTl,
+                        pin: true,
+                        pinSpacing: true,
+                        anticipatePin: 1,
+                        pinType: 'fixed',
+                        scrub: typeof scrub === 'number' ? scrub : 1.5,
+                        start: 'top top',
+                        end: () => `+=${window.innerHeight * 1.5}`,
+                        // ensure this pin is processed FIRST during any refresh
+                        // so its spacer is accounted for by all other ScrollTriggers
+                        refreshPriority: 1
                     })
-                })
+
+                    // wait for the DOM to settle with the pin spacer,
+                    // then force all other ScrollTriggers to recalculate
+                    requestAnimationFrame(() => {
+                        ScrollTrigger.refresh(true)
+                    })
+                } else {
+                    blocks.current.forEach((block, i) => {
+                        const tl = createBlockRevealAnimation(block, lines.current[i], i)
+                        tl.pause()
+
+                        ScrollTrigger.create({
+                            scroller: document.getElementById('viewport') as HTMLElement,
+                            trigger: containerRef.current,
+                            start: 'top 90%',
+                            once: true,
+                            onEnter: () => tl.play()
+                        })
+                    })
+                }
             } else {
                 blocks.current.forEach((block, i) => {
                     createBlockRevealAnimation(block, lines.current[i], i)
@@ -156,7 +200,7 @@ export default function TextReveal({
 
     }, {
         scope: containerRef,
-        dependencies: [animateOnScroll, delay, blockColor, stagger, duration]
+        dependencies: [animateOnScroll, delay, blockColor, stagger, duration, scrub]
     })
 
     return (
