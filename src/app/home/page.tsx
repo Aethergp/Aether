@@ -10,7 +10,7 @@ import StaggerUp from '@/components/Utils/Animations/StaggerUp'
 
 export default function Home() {
 	return (
-		<div className='bg-white'>
+		<div className='bg-white pointer-events-auto'>
 
 			<section id='banner'>
 				<div className='base-container min-h-[50vh]'>

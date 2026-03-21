@@ -204,7 +204,7 @@ export default function RootLayout({
 						<Menu />
 
 						<main
-							className='relative z-1 pb-[100lvh]'
+							className='relative z-1 pb-[100lvh] pointer-events-none'
 							data-main-content
 						>
 							{children}
