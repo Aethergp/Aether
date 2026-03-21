@@ -204,9 +204,10 @@ export default function RootLayout({
 						<Menu />
 
 						<main
-							className='relative z-1 pb-[100lvh] pointer-events-none'
+							className='relative z-1 '
 							data-main-content
 						>
+
 							{children}
 
 							<aside data-footer-spacer />
