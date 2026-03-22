@@ -10,7 +10,7 @@ export default function Partners() {
 	return (
 		<section
             id='parceiros'
-            className='my-20 lg:my-[10vw]'
+            className='py-20 lg:py-[10vw]'
         >
             <div className='base-container'>
                 

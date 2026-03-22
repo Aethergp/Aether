@@ -93,7 +93,7 @@ export default function Context() {
 			/>
 		</svg>
 
-            <section id='contexto'>
+            <section id='contexto' className='pt-px'>
 				<div className='base-container my-20 md:my-30 lg:my-[10vw]'>
 
 					<div className='row max-lg:flex max-lg:flex-col max-lg:gap-10'>

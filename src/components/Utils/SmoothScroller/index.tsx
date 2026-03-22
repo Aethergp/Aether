@@ -101,7 +101,10 @@ export default function SmoothScroller({
 
         const handleWheel = (e: WheelEvent) => {
             e.preventDefault()
-            
+
+            // pause smooth scroll when data-scroll-paused is set (e.g. menu open)
+            if (viewport.hasAttribute('data-scroll-paused')) return
+
             // update target scroll position
             state.targetScroll += e.deltaY
             state.targetScroll = Math.max(0, Math.min(state.targetScroll, viewport.scrollHeight - viewport.clientHeight))
