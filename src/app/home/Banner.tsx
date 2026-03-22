@@ -27,8 +27,8 @@ export default function Banner() {
     useGSAP(() => {
         if (sectionRef.current) {
             gsap.to('[data-bg]', {
-                opacity: 0.25,
-                scale: 1.1,
+                opacity: 0.1,
+                scale: 1.5,
                 scrollTrigger: {
                     pin: '[data-bg]',
                     anticipatePin: 1,
@@ -48,24 +48,29 @@ export default function Banner() {
 	return (
 		<section
 			id='banner'
-			className='overflow-hidden bg-black'
+			className='overflow-hidden bg-green-dark'
 			style={{ clipPath: 'inset(0% 0% 0% 0%)' }}
             ref={sectionRef}
 		>
 
+            <div className='absolute z-2 top-0 left-0 w-full h-full bg-linear-to-r from-green-dark to-green-dark/0' />
+
 			<div
-                className='absolute z-0 top-0 left-0 w-full min-h-vh min-h-svh opacity-60'
+                className='absolute z-0 top-0 left-0 w-full min-h-vh min-h-svh'
                 data-bg
             >
-                <Image
-                    src={banner}
-                    alt='Aether Global Pharma'
-                    fill
-                    className='object-cover'
-                    loading='eager'
-                    sizes='100vw'
-                    priority
-                />
+                <video
+                    loop
+                    muted
+                    playsInline
+                    autoPlay
+                    className='relative z-2 w-full h-full object-cover'
+                >
+                    <source
+                        src='/videos/3.mp4'
+                        type='video/mp4'
+                    />
+                </video>
             </div>
 
 			<div className='base-container relative z-2'>
