@@ -130,7 +130,10 @@ export default function Contact() {
                                 required
                             />
 
-                            <Submit text='Enviar' />
+                            <Submit
+                                text='Enviar'
+                                style='dark'
+                            />
 
                         </Form>
                     </div>

@@ -2,18 +2,15 @@
 
 // libraries
 import Image from 'next/image'
-import { Link } from 'next-transition-router'
 
 // components
 import AnimatedTitle from '@/components/Utils/Animations/AnimatedTitle'
 import AnimatedText from '@/components/Utils/Animations/AnimatedText'
 import ScrollingImage from '@/components/Utils/Animations/ScrollingImage'
+import Button from '@/components/Button'
 
 // images
 import microscope from '@/assets/img/microscope.jpg'
-
-// svg
-import UxArrowDiagonal from '@/assets/svg/ux/arrow-diagonal.svg'
 
 // utils
 import { useAnchorScroll } from '@/hooks/useAnchorScroll'
@@ -42,22 +39,14 @@ export default function About() {
                             <AnimatedText text='A <strong>Aether Global Pharma</strong> e o <strong>ICT AetherBio+</strong> operam de forma sinérgica, combinando uma holding privada de propriedade intelectual com um instituto de ciência e tecnologia.<br /><br />A plataforma conecta pesquisa acadêmica, capital especializado e indústria farmacêutica global para transformar descobertas científicas em ativos farmacêuticos estratégicos.' />
                         </p>
 
-                        <Link
+                        <Button
+                            style='dark'
                             href='#contato'
                             onClick={(e) => scrollTo(e, '#contato')}
-                            className='button button--green-dark'
-                        >
-                            
-                            <span>Entre em contato</span>
+                            text='Entre em contato'
+                            icon='diagonal-arrow'
+                        />
 
-                            <span>
-                                <UxArrowDiagonal
-                                    className='w-2 h-2 text-current'
-                                    data-submit-icon
-                                />
-                            </span>
-
-                        </Link>
                     </div>
 
                     <div className='col-lg-6 pt-14 lg:pt-0'>

@@ -8,6 +8,7 @@ import { FormProvider, type RegisterOptions, type SubmitHandler, useForm, useFor
 // components
 import Portal from '@/components/Utils/Portal'
 import Dialog from '@/components/Dialog'
+import Button from '@/components/Button'
 
 // svg
 import UxCheck from '@/assets/svg/ux/check.svg'
@@ -32,25 +33,25 @@ export const Modal = ({
 	return (
 		<Portal>
 			<Dialog id={id}>
-				<div className='text-center'>
+				<div className='text-center flex flex-col items-center justify-center'>
 
-					<h2 className='font-heading text-60 uppercase font-semibold tracking-tight'>
+					<h2 className='font-heading text-36 text-green-dark font-semibold'>
 						{title}
 					</h2>
 
 					<div
-						className='text-18 my-6 sm:my-8 block'
+						className='text-20 my-6 block'
 						dangerouslySetInnerHTML={{ __html: text }}
 					/>
 
-					<button
-						className='button button--yellow mx-auto'
+					<Button
 						data-dialog-close
 						onClick={onClose}
 						type='button'
-					>
-						Fechar
-					</button>
+						text='Fechar'
+						style='dark'
+						icon='close'
+					/>
 
 				</div>
 			</Dialog>
@@ -212,7 +213,7 @@ export const Form = ({
 				onSubmit={methods.handleSubmit(onSubmit)}
 				className={clsx(
 					className,
-					'[&[data-is-sending="true"]_[data-submit-icon]]:opacity-0 [&[data-is-sending="true"]_[data-submit-spinner]]:opacity-100 [&[data-is-sending="true"]_[data-submit-button]]:pointer-events-none'
+					'[&[data-is-sending="true"]_[data-regular-icon]]:opacity-0 [&[data-is-sending="true"]_[data-spinner]]:opacity-100 [&[data-is-sending="true"]_[data-submit-button]]:pointer-events-none'
 				)}
 				ref={form}
 				data-is-sending='false'
@@ -699,49 +700,26 @@ interface SubmitProps {
 	className?: string
 	disabled?: boolean
 	onClick?: () => void
+	style: 'light' | 'dark'
 }
 
 export const Submit = ({
 	text,
 	className,
 	disabled,
-	onClick
+	onClick,
+	style
 }: SubmitProps) => {
 	return (
-		<button
-			className={clsx(
-				className,
-				'button button--green-dark'
-			)}
-			type='submit'
+		<Button
+			text={text}
+			className={className}
 			disabled={disabled}
 			onClick={onClick}
+			type='submit'
+			style={style}
+			icon='diagonal-arrow'
 			data-submit-button
-		>
-			<span data-submit-text>
-				{text}
-			</span>
-
-			<span className='relative'>
-
-				<UxArrowDiagonal
-					className='w-2 h-2 text-current'
-					data-submit-icon
-				/>
-
-				<span
-					className='absolute inset-0 z-2 opacity-0 text-yellow p-3'
-					data-submit-spinner
-				>
-					<UxSpinner
-						className='w-full h-full animate-spin'
-						style={{
-							animationDuration: '.4s'
-						}}
-					/>
-				</span>
-			</span>
-
-		</button>
+		/>
 	)
 }

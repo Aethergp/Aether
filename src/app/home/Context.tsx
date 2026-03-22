@@ -82,7 +82,7 @@ export default function Context() {
 			viewBox='0 0 657 1636'
 			fill='none'
 			xmlns='http://www.w3.org/2000/svg'
-			className='absolute -z-1 top-0 -left-2 w-[60vw] sm:w-[45vw] h-auto object-contain'
+			className='absolute -z-1 top-[5%] -left-2 w-[60vw] sm:w-[45vw] h-auto object-contain'
             preserveAspectRatio='xMinYMax meet'
 		>
 			<path
