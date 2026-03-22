@@ -7,9 +7,7 @@ import { useGSAP } from '@gsap/react'
 
 export default function Preloader() {
 
-	const tl = gsap.timeline({
-
-	})
+	const tl = gsap.timeline()
 
 	useGSAP(() => {
 		tl.to('[data-preloader] svg', {
@@ -38,7 +36,12 @@ export default function Preloader() {
 		tl.to('[data-preloader]', {
 			clipPath: 'inset(0 0 100% 0)',
 			duration: 1,
-			ease: 'power2.inOut'
+			ease: 'power2.inOut',
+			onComplete: () => {
+				gsap.to('[data-preloader]', {
+					autoAlpha: 0
+				})
+			}
 		}, '=-1.5')
 	})
 
