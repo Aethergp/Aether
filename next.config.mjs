@@ -44,7 +44,7 @@ const nextConfig = {
 		remotePatterns: [
 			{
 				protocol: 'https',
-				hostname: 'wp.agenciaesfera.com.br'
+				hostname: 'wp.aethergp.com.br'
 			}
 		],
 		formats: ['image/avif', 'image/webp'],

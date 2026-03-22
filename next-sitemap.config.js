@@ -1,7 +1,7 @@
 /** @type {import('next-sitemap').IConfig} */
 
 export default {
-	siteUrl: process.env.SITE_URL || 'https://agenciaesfera.com.br',
+	siteUrl: process.env.SITE_URL || 'https://aethergp.com.br/',
 	generateRobotsTxt: true,
 	exclude: ['/404', '/500'],
 	robotsTxtOptions: {

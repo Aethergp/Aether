@@ -49,7 +49,9 @@ export default function Button({
 	const classes = clsx(
 		className,
 		'relative flex items-stretch justify-center gap-px w-fit cursor-pointer',
-		'hover:**:data-icon:scale-0 hover:**:data-icon-hover:scale-100 hover:**:data-text:bg-black hover:**:data-text:text-green-light'
+		'hover:**:data-icon:scale-0 hover:**:data-icon-hover:scale-100 ',
+		style === 'dark' && 'hover:**:data-text:text-green-light hover:**:data-text:bg-black',
+		style === 'light' && 'hover:**:data-text:text-green-light hover:**:data-text:bg-black'
 	)
 
 	const content = (

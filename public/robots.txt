@@ -5,7 +5,7 @@ Disallow: /404
 Disallow: /500
 
 # Host
-Host: https://agenciaesfera.com.br
+Host: https://aethergp.com.br/
 
 # Sitemaps
-Sitemap: https://agenciaesfera.com.br/sitemap.xml
+Sitemap: https://aethergp.com.br/sitemap.xml

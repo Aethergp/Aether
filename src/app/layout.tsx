@@ -44,7 +44,7 @@ export const metadata: Metadata = {
 		siteName: 'Aether Global Pharma | Inovação, Espiritualidade e Ciência Farmacêutica',
 		images: [
 			{
-				url: 'https://aethergp.com.br/img/og-image.png',
+				url: 'https://aethergp.com.br/img/og-image.jpg',
 				width: 1280,
 				height: 628,
 				alt: 'Aether Global Pharma | Inovação, Espiritualidade e Ciência Farmacêutica'
