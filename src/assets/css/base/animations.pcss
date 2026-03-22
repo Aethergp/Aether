@@ -64,19 +64,6 @@
     @apply absolute top-0 left-0 w-[101%] h-[101%] pointer-events-none will-change-transform z-1;
 }
 
-.animated-scroll {
-    @apply flex flex-col items-end gap-4 text-white text-sm tracking-normal hover:text-green-dark transition-colors duration-300;
-
-    .animated-scroll-bar-wrapper {
-        @apply relative overflow-hidden w-px h-15 block;
-
-        .animated-scroll-bar {
-            @apply absolute top-0 left-0 w-full h-full bg-white group-hover:bg-green-dark origin-top transition-colors duration-300;
-            animation: scroll-bar-animation 3s infinite;
-        }
-    }
-}
-
 .br-line {
     @apply block min-h-8;
 }

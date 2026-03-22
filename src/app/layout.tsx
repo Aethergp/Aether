@@ -196,7 +196,7 @@ export default function RootLayout({
 
 				<ViewportHeight />
 
-				{/* <Preloader /> */}
+				<Preloader />
 
 				<PageTransition>
 					<SmoothScroller>

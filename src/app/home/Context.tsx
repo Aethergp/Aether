@@ -82,7 +82,7 @@ export default function Context() {
 			viewBox='0 0 657 1636'
 			fill='none'
 			xmlns='http://www.w3.org/2000/svg'
-			className='absolute -z-1 top-[5%] -left-2 w-[60vw] sm:w-[45vw] h-auto object-contain'
+			className='absolute -z-1 top-[5%] -left-2 w-vw sm:w-[45vw] h-auto object-contain'
             preserveAspectRatio='xMinYMax meet'
 		>
 			<path
@@ -237,7 +237,7 @@ export default function Context() {
 								scrub={1.5}
 								pinSection={pinRef}
 							>
-								<h2>
+								<h2 className='flex flex-wrap justify-center items-center gap-x-4'>
 									A Aether foi criada para atuar exatamente nessa lacuna do ecossistema científico.
 								</h2>
 							</TextReveal>
