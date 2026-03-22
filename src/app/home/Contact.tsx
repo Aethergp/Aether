@@ -9,7 +9,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 // components
-import { Form, Input, Submit, Textarea } from '@/components/Form'
+import { Form, Input, InputHidden, Submit, Textarea } from '@/components/Form'
 import AnimatedTitle from '@/components/Utils/Animations/AnimatedTitle'
 import AnimatedText from '@/components/Utils/Animations/AnimatedText'
 
@@ -93,7 +93,7 @@ export default function Contact() {
 
                     <div className='col-lg-6 col-xl-5'>
                         <Form
-                            endpoint='#'
+                            endpoint='/api/resend'
                             onSuccess={{
                                 title: 'Mensagem enviada com sucesso',
                                 text: 'Obrigado por entrar em contato. Entraremos em contato o mais breve possível.'
@@ -102,7 +102,14 @@ export default function Contact() {
                                 title: 'Erro ao enviar mensagem',
                                 text: 'Ocorreu um erro ao enviar a mensagem. Por favor, tente novamente.'
                             }}
+                            clearOnSubmit
                         >
+
+                            <InputHidden
+                                name='form'
+                                value='contact'
+                                id='form'
+                            />
 
                             <Input
                                 id='nome'

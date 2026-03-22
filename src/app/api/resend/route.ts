@@ -7,7 +7,7 @@ if (!process.env.RESEND_API_KEY) {
 const resend = new Resend(process.env.RESEND_API_KEY)
 
 const getDestinationEmail = (): string => {
-	return 'flavioczuk@gmail.com'
+	return 'poliveira@aethergp.com'
 }
 
 const IGNORED_FIELDS = ['form', 'company'] // company = honeypot
@@ -87,7 +87,7 @@ export async function POST(req: Request) {
 			.join('\n')
 
 		const { error } = await resend.emails.send({
-			from: 'Aether Global Pharma <poliveira@aethergp.com>',
+			from: 'Aether Global Pharma <aether@aethergp.com.br>',
 			//from: 'onboarding@resend.dev',
 			to: [destinationEmail],
 			replyTo: body.Email,
