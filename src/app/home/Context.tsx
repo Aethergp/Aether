@@ -114,7 +114,7 @@ export default function Context() {
 								style='dark'
 								className='text-60 font-heading font-semibold'
 							>
-								Ciência de alto valor é produzida continuamente. Grande parte nunca chega ao mercado.
+								Ciência de alto valor é desenvolvida continuamente. Grande parte nunca chega ao mercado.
 							</AnimatedTitle>
 						</div>
 
@@ -132,7 +132,7 @@ export default function Context() {
 
 						<div className='col-lg-6'>
 							<p className='text-20 leading-relaxed'>
-								<AnimatedText text='Universidades e centros de pesquisa geram descobertas com elevado potencial terapêutico todos os anos. O desafio raramente está na ciência mas na capacidade de transformar conhecimento em ativos farmacêuticos protegidos, validados e prontos para desenvolvimento global.<br /><br />Sem maturação tecnológica adequada, governança científica e estratégia de propriedade intelectual, tecnologias promissoras permanecem restritas ao ambiente acadêmico e não alcançam seu potencial de impacto.' />
+								<AnimatedText text='Universidades e centros de pesquisa geram descobertas com elevado potencial terapêutico todos os anos. O desafio raramente está na ciência mas na capacidade de transformar conhecimento em ativos farmacêuticos protegidos, validados e prontos para produção global.<br /><br />Sem maturação tecnológica adequada, governança científica e estratégia de propriedade intelectual, tecnologias promissoras permanecem restritas ao ambiente acadêmico e não alcançam seu potencial de impacto.' />
 							</p>
 						</div>
 						
