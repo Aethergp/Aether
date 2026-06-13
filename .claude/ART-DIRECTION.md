@@ -16,6 +16,12 @@ of air); type fills in and rises into place rather than flashing; a single overs
 stroke drifts behind the content as the one recurring "brand gesture". When in doubt: more space,
 fewer elements, a bigger but quieter headline, and let the motion do the talking.
 
+**Motion is what gives this site life — it is not optional polish.** The reveals, the parallax, the
+hover states, and above all **the green line drawing itself along its path as you scroll** are the
+identity of the brand. A page that renders everything static, however well-composed, has lost the
+thing that makes it Aether. Every new page must carry this animation layer from the first build, not
+bolt it on later — that is the entire reason this playbook maps each effect and when to use it.
+
 The floor we're climbing away from: a flat white block with a centered black title and a bulleted
 list. Everything here is off-center, green-on-warm-white, and animated in.
 
@@ -47,6 +53,12 @@ common trip-up): `font-heading` is **Inter**, `font-body` is **Syne**.
   here; it carries the headlines.
 - **`font-body` (Syne)** — body copy. It's the default on `<body>` (`text-green-dark`, `leading-relaxed`,
   `tracking-tight`) so you rarely set it explicitly.
+
+**The pairing is deliberate — don't swap the roles.** Inter (neutral, structural) does the headlines so
+they read clean and institutional at large sizes; Syne (a touch more characterful) carries the running
+text. Headlines stay tight-leading (`text-72`/`text-60` ship with `leading-[1.1]`); body stays
+`leading-relaxed`. Weights: `font-bold` is hero-only, `font-semibold` for section titles and eyebrows,
+`font-normal` for body. Don't reach past `700`.
 
 **Use the custom `.text-*` scale, not raw `text-xl`/`text-4xl`** — they're responsive clamps defined in
 `typography.pcss` and keep type consistent across breakpoints:
@@ -87,15 +99,25 @@ Tight olive-green palette on a warm off-white canvas. **Always use the project t
 Alternate the canvas so adjacent sections don't blur: most sections sit on the warm white, the hero is
 deep green, cards/pill groups are `green-pale`. Reserve `green-light` as a spotlight, not a fill.
 
+**Canonical pairings** (stay on these — they're what the home page uses):
+
+- `white` canvas → `green-dark` text, `green-pale` cards/pills, `green-light` for the decorative stroke.
+- `green-dark` surface (hero, footer) → `green-light` text/marks, `green-light`/`black` button states.
+- `green-pale` card → `green-dark` text, an oversized `green-light` number as the accent.
+- `pure-white` cell (logo grid) → monochrome logo (`brightness-0`), `gray-lighter/25` border → `green-dark` on hover.
+
 ## Depth & layering
 
 Sections read rich because something lives behind the content — never a flat fill.
 
-- **The signature: a giant curved green stroke** drawn on scroll. An absolutely-positioned `<svg>`
-  (`stroke='#E0E6A1'`, `strokeWidth='100'`) sits behind the section at low/negative z, and its
-  `strokeDashoffset` animates from full length to 0 tied to scroll (`scrub`). This single gesture
-  recurs across Context, Companies, and Contact — it's the brand's visual thread. Vary the path shape
-  and placement per section; keep the weight and color.
+- **The signature: a giant curved green stroke** that draws itself along its path as you scroll — the
+  single most important motion in the system and the brand's through-line. An absolutely-positioned
+  `<svg>` (`stroke='#E0E6A1'`, `strokeWidth='100'`) sits behind the content at low/negative z, and its
+  `strokeDashoffset` animates from full length to 0 tied to scroll (`scrub`). It recurs across Context,
+  Companies, and Contact today, and **essentially every page should carry at least one** — it's what
+  threads the site together and makes it feel alive. Vary the path shape, scale, and placement per
+  page/section so it never feels copy-pasted; **keep the weight, the `green-light` color, and the
+  draw-on-scroll behaviour constant.** Never ship a page without it unless there's a deliberate reason.
 - **Tinted video** for the hero only: muted/looping/`playsInline`, with a `from-green-dark/75` gradient
   over it so it reads as brand surface, and a slow scale-in/fade tied to a pinned ScrollTrigger.
 - **Parallax media** via `ScrollingImage` — the image is taller than its frame and drifts as you scroll
@@ -154,6 +176,22 @@ existing reusable components** (`src/components/Utils/Animations/`):
 | `ImageReveal` | Clip-wipe + scale-in reveal (`overlay` tint) | Featured images |
 | `ScrollingImage` | Vertical **parallax** (image taller than frame) | Two-column media |
 | `MagneticButton` | Magnetic cursor-follow (desktop only) | Logos, key buttons |
+| `FollowMouse` | Drag-circle cursor follower inside a region (desktop only) | Draggable galleries / showcases |
+| `Video` | Plays/pauses as it scrolls in/out of view | Inline supporting video |
+| `Marquee` | Seamless infinite logo strip (`reverse` to flip) | Trusted-by / partner logo bands |
+
+**When to reach for which:** titles always get `AnimatedTitle` (the fill is the section's "arrival"); a
+title's lead/eyebrow and body paragraphs get `AnimatedText` (or `TextReveal` for a heavier statement
+line); grouped items (pills, cards, logos) get a `Stagger*` so they cascade rather than pop; a single
+big editorial image gets `ScrollingImage` parallax or an `ImageReveal` wipe — not both. Use one hero
+moment per section, not five competing ones. Decoration (the green stroke) draws; content reveals;
+nothing blocks reading.
+
+**The footer is a designed moment, not a sign-off.** It's a `green-dark` panel that sits *behind* the
+page (`position: sticky`) and is uncovered as you reach the bottom: the giant Aether wordmark's letters
+rise and scale into place (staggered, scrubbed) while a black overlay fades off so the mark lifts out of
+darkness. Treat the bottom of every page as part of the experience — full-height, branded, with the
+wordmark reveal intact. (Mechanics in [../CLAUDE.md](../CLAUDE.md) → Animations → Footer reveal.)
 
 **Hard rules for any custom GSAP you do write** (the reusable components already obey these):
 
@@ -170,6 +208,48 @@ existing reusable components** (`src/components/Utils/Animations/`):
 Easing leans on `power2`/`power4.inOut` and `circ.out`; durations are unhurried. Motion leads the eye
 in reading order and never blocks the content.
 
+## Hover & interaction states
+
+Interactive things must *feel* interactive, in the same quiet register. The established vocabulary —
+reuse it rather than inventing new hovers:
+
+- **Buttons** invert: the text segment goes `bg-black text-green-light` and the icon does a scale-flip
+  swap (`transition-colors`/`transition-all duration-200`). This black-invert is *the* button motion —
+  use the `Button` component and you get it for free.
+- **Text links** use one of two underline treatments (both in `buttons.pcss`): `hover-underline`
+  (a current-color underline that **grows** left→right via `bg-size`) and `hover-underline-alt` (a line
+  that **sweeps** across); on dark surfaces add `hover-underline-alt--light`. Footer nav uses these.
+- **Cards / cells** respond on hover: the partner grid cell shifts its border to `green-dark` and lifts
+  its logo from `opacity-75` to `100`; surfaces transition over `duration-200`. Never leave a card inert.
+- **The menu** hamburger lines spread apart on hover (`group-hover:translate-y`), the button darkens to
+  black, and full-screen menu links nudge right (`hover:translate-x-2`).
+- **Magnetic affordance:** wrap the logo and primary buttons in `MagneticButton` so they lean toward the
+  cursor on desktop. Reserve it for a few key elements — it's a spotlight, not a default.
+- Keep durations consistent within a section (200ms for color/UI swaps, longer for magnetic/elastic
+  motion). Always pair hover with `cursor-pointer`, and rely on the global `focus-visible` outline
+  (`globals.pcss`) for keyboard users — don't strip it.
+
+## Responsiveness & cross-device
+
+Design desktop-first to the largest breakpoint, then deliberately calm everything down on smaller
+screens — mobile gets the *legible* version of each effect, never a shrunken desktop one. The site is
+verified across **desktop, tablet, and mobile**; a section isn't done until all three hold.
+
+- **Breakpoints** (Bootstrap-matched, in `@theme`): `xs 420 / sm 576 / md 768 / lg 992 / xl 1200 /
+  2xl 1400`. Grid rows stack on mobile (`max-lg:flex-col`); columns rejoin at `lg`. Type uses the
+  responsive `.text-*` clamps; fluid `vw` spacing only kicks in at `lg+`.
+- **Motion degrades on mobile by design:** smooth scroll, magnetic buttons, and the follow-mouse circle
+  are **desktop-only**; parallax offsets shrink. Don't build a mobile layout that *depends* on a
+  desktop-only effect to make sense.
+- **Full-height blocks use `--vh`, not `100vh`.** A `ViewportHeight` helper writes the real visible
+  height into `--vh` (handling the iOS URL bar); use `h-[calc(var(--vh)*100)]` / `h-svh` / `min-h-lvh`
+  for anything full-screen, so nothing gets clipped behind mobile browser chrome.
+- **Watch the seams when several scroll effects share a page** — pinned/scrubbed reveals and the
+  draw-on-scroll strokes must release cleanly and not overlap. This is the most common cross-device
+  break; the mechanics (`refreshPriority`, refresh-after-pin) are in [../CLAUDE.md](../CLAUDE.md) →
+  Animations. There is currently **no `prefers-reduced-motion` path** — worth adding if accessibility
+  is in scope, but don't assume it's there.
+
 ## Sliders (Swiper)
 
 Swiper is the house slider. The established pattern is a **peek/free scroller**: many cards, the next
@@ -181,17 +261,49 @@ items slider for the reference setup.
 
 ## Forms
 
-Use the **`Form` family** from `@/components/Form` (`Form`, `Input`, `Textarea`, `Checkbox`,
-`InputHidden`, `Submit`) — built on `react-hook-form`. The `Form` POSTs to its `endpoint` (e.g.
-`/api/resend`) and renders a success/error **`Dialog` modal** (via `Portal`) from the `onSuccess` /
-`onError` `{title, text}` props; `clearOnSubmit` resets on success.
+**Always compose forms from the `Form` family** in `@/components/Form` — never hand-roll `<form>`,
+`<input>`, or a fetch handler. The family (built on `react-hook-form`) gives you validation, the
+sending/spinner state, and the success/error modal for free. Full mechanics + the field-name→email
+mapping are in [../CLAUDE.md](../CLAUDE.md) → Forms; the rules here are how a form should look and behave.
 
-- All copy is **Portuguese (pt-BR)** — labels, validation messages, modal text.
-- Inputs: `border border-gray-lighter bg-transparent rounded-md p-4`; errors show a red border + a tiny
-  red message badge.
-- **Spam:** the `/api/resend` route treats a `company` field as a honeypot and requires an `Email`
-  field. Include `<InputHidden name='form' value='...' />` to tag the source; add an off-screen
-  `company` field if you want the honeypot.
+**Pick the control for the job:**
+
+- **`Input`** — single-line answers (`text`, `email`, `tel`, `password`). One field = one question.
+- **`Textarea`** — open/long answers (the message, a project description).
+- **`Checkbox` (`type='checkbox'`)** — a single opt-in (e.g. the confidentiality acknowledgement). It
+  accepts rich `children`, so the label can carry a link.
+- **`Checkbox` (`type='radio'`)** — a small, mutually-exclusive set you want fully visible.
+- **`Select`** — *doesn't exist yet*; build it for a longer option list (the `/contato` subject
+  selector). See the construction note below — match `Input` exactly so the form reads as one system.
+- **`Submit`** — the only submit control; pass `style='dark'`, it carries the spinner state.
+
+**Layout & rhythm:** one field per row, stacked with the field's own bottom margin (`mb-2 sm:mb-4`);
+forms sit in a grid column (`col-lg-6`) opposite a parenthetical eyebrow (`(contato)`), matching every
+other section. Keep the contact form short — name, email, message — and let a dedicated page
+(`/inscreva-seu-projeto`) carry the long multi-step form.
+
+**Labels, required & errors:** every field gets a `Label`; required fields show a red `*`; validation
+errors render as a **small red badge** pinned to the field plus a red border on the control — never an
+alert box or a wall of text. All copy is **Portuguese (pt-BR)** — labels, placeholders, validation
+messages, and the success/error modal `{title, text}`.
+
+**Field styling** (match it when building new controls): `border border-gray-lighter bg-transparent
+rounded-md p-4`, `placeholder:opacity-75`, focus uses the global `focus-visible` outline. A **`Select`**
+should reuse this exact treatment with `appearance-none` + a positioned chevron icon so it doesn't look
+like a native dropdown.
+
+**Confidentiality / helper notes** (required by the project-submission spec): place the note *next to*
+the form as visible copy — and/or as a `Checkbox` the user must tick — not buried in fine print.
+
+**Submission feel:** on submit the button swaps its icon for a spinner; on success a centered `Dialog`
+modal (white card, rotating close ✕, dimmed backdrop) confirms in plain pt-BR and the form clears.
+Don't redirect or inline a status message — the modal *is* the confirmation pattern. Reuse the same
+`Dialog` for any other modal need.
+
+**Spam:** the route requires a field literally named `Email` and treats `company` as a honeypot. Tag
+the source with `<InputHidden name='form' value='...' />`; add an off-screen `company` field to arm the
+honeypot. Name every other field with the human-readable label you want in the internal email
+(`Nome`, `Assunto`, `Mensagem`).
 
 ## Vertical rhythm & section anatomy
 
@@ -211,8 +323,28 @@ Use the **`Form` family** from `@/components/Form` (`Form`, `Input`, `Textarea`,
 - Import SVGs as components from `@/assets/svg/...`; use the `@/` path alias throughout.
 - Compose `clsx` for conditional classes (the `style`/variant pattern the components use).
 
+## Carrying the system to new pages
+
+This playbook exists so every new page feels as alive as the home page — same identity, fresh layout.
+When building one, treat this as the floor (not the ceiling):
+
+1. **At least one green draw-on-scroll line**, shaped and placed for that page's composition.
+2. **Titles fill in** (`AnimatedTitle`), **eyebrows/leads/body rise** (`AnimatedText`/`TextReveal`) —
+   no headline or paragraph lands statically.
+3. **Grouped content cascades** (`Stagger*`); at least one **media moment** (parallax `ScrollingImage`
+   or `ImageReveal` wipe), used once, not stacked.
+4. **Hover states on everything interactive** (buttons invert, links underline, cards respond).
+5. **The footer reveal stays intact** — the wordmark rise is part of every page's ending.
+6. **Editorial grid, not centered blocks** — asymmetry via offsets/spacer columns.
+7. **Verified on desktop / tablet / mobile**, with the device gates respected and scroll seams clean.
+
+Reuse the existing components and recipes first; only write new GSAP when the page genuinely needs a
+move the library doesn't cover — and when you do, obey the same rules (`#viewport` scroller,
+`fonts.ready`, reveal-once, `refreshPriority`). New shared moves get added to the library, not copied.
+
 ## Anti-patterns
 
+- A page with no green line and no scroll reveals — static is a regression, however clean the layout.
 - Flat white sections with a centered black title — no depth layer, no asymmetry.
 - Pure black text or default Tailwind `gray-*` instead of `green-dark` and the project tokens.
 - Centered, symmetric layouts that ignore the 12-column grid and its offsets/spacers.
