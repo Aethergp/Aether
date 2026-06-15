@@ -838,7 +838,7 @@ export const Select = ({
 	)
 }
 
-// off-screen anti-spam honeypot — the route drops submissions where `company` is filled
+// off-screen anti-spam honeypot - the route drops submissions where `company` is filled
 export const Honeypot = () => {
 	const { register } = useFormContext() ?? {}
 

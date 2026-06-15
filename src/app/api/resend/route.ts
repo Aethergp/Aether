@@ -93,7 +93,7 @@ export async function POST(req: Request) {
 			replyTo: body.Email,
 			// route the chosen subject into the email title for triage (spec-contato)
 			subject: body.Assunto
-				? `Contato — ${normalizeValue(body.Assunto)}`
+				? `Contato - ${normalizeValue(body.Assunto)}`
 				: 'Mensagem enviada de Formulário de Contato',
 			html: htmlMessage,
 			text: textMessage,

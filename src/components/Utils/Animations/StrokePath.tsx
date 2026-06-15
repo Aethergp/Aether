@@ -16,6 +16,7 @@ interface Props {
 	className?: string
 	start?: string
 	end?: string
+	markers?: boolean
 }
 
 export default function StrokePath({
@@ -23,7 +24,8 @@ export default function StrokePath({
 	viewBox,
 	className,
 	start = '10% 80%',
-	end = '50% 20%'
+	end = '50% 20%',
+	markers = false
 }: Props) {
 
 	const svgRef = useRef<SVGSVGElement>(null)
@@ -49,7 +51,8 @@ export default function StrokePath({
 					start,
 					end,
 					scrub: 1.5,
-					refreshPriority: -1
+					refreshPriority: -1,
+					markers: markers
 				}
 			}
 		)

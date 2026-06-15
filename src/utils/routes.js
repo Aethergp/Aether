@@ -7,6 +7,9 @@ import Instagram from '@/assets/svg/social/instagram.svg'
 export const pages = {
 	home: '/',
 
+	// media
+	midia: '/midia',
+
 	// contact
 	contato: '/contato',
 
@@ -17,7 +20,7 @@ export const pages = {
 	error: '/404'
 }
 
-// primary site navigation — SINGLE SOURCE OF TRUTH for the three nav surfaces:
+// primary site navigation - SINGLE SOURCE OF TRUTH for the three nav surfaces:
 // the desktop header, the mobile (fullscreen) menu, and the footer.
 // update a destination here once and all three follow. anchors (#...) scroll the
 // home; routes (/...) navigate. the desktop header omits the `home` entry (the logo covers it).
@@ -25,6 +28,7 @@ export const navLinks = [
 	{ href: pages.home, label: 'Início', home: true },
 	{ href: '#contexto', label: 'Contexto' },
 	{ href: '#sobre', label: 'Sobre' },
+	{ href: pages.midia, label: 'Mídia' },
 	{ href: '#parceiros', label: 'Parceiros' },
 	{ href: pages.contato, label: 'Contato' }
 ]

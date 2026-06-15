@@ -112,7 +112,7 @@ export default function ContatoPage() {
 							<div className='flex flex-col gap-6 md:flex-row md:items-center md:justify-between bg-green-pale rounded-md p-8 lg:p-10'>
 
 								<p className='text-18 md:pr-10'>
-									É pesquisador e quer apresentar uma tecnologia? Use nosso formulário dedicado — sua proposta chega direto à equipe científica.
+									É pesquisador e quer apresentar uma tecnologia? Use nosso formulário dedicado - sua proposta chega direto à equipe científica.
 								</p>
 
 								<Button
@@ -130,12 +130,14 @@ export default function ContatoPage() {
 				</div>
 			</section>
 
-			<section className='relative overflow-hidden py-16 lg:py-[8vw]'>
+			<section className='relative py-16 lg:py-[8vw]'>
 
 				<StrokePath
 					viewBox='0 0 657 1636'
 					d='M-138.5 175.674C-20 -59.8263 472.32 17.711 584.5 556.174C707 1144.17 297.5 1493.17 -97.5 1587.17'
-					className='z-0 top-0 -left-4 w-[85vw] sm:w-[55vw] lg:w-[45vw]'
+					className='z-0 top-0 -left-10 w-[85vw] sm:w-[55vw] lg:w-[45vw]'
+					//markers
+					end='100% 0%'
 				/>
 
 				<div className='base-container relative z-2'>
@@ -269,7 +271,7 @@ export default function ContatoPage() {
 
 			</section>
 
-			<section className='py-16 lg:py-[8vw] bg-green-pale'>
+			<section className='pb-16 lg:pb-[8vw]'>
 				<div className='base-container'>
 
 					<AnimatedTitle
@@ -325,11 +327,11 @@ export default function ContatoPage() {
 										<ScrollingImage>
 											<iframe
 												src={office.mapSrc}
-												title={`Localização — ${office.city}`}
+												title={`Localização - ${office.city}`}
 												loading='lazy'
 												allowFullScreen
 												referrerPolicy='no-referrer-when-downgrade'
-												className='cover border-0'
+												className='cover border-0 saturate-0'
 											/>
 										</ScrollingImage>
 									</div>

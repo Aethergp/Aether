@@ -274,6 +274,43 @@ one peeking past the container edge to invite dragging. Let the slider overflow 
 `scrollbar` (styled green-dark in `globals.pcss`). Don't hardcode slide widths. See the Context section's
 items slider for the reference setup.
 
+## Editorial / media (blog) pages
+
+The `/midia` feed and `/midia/[slug]` post are the reference build for any list-of-content + article
+layout. Two shared, reusable components carry it (live in `@/components`, not in the route folder, so
+other pages can use them): **`MediaCard`** (`@/components/MediaCard`) and **`Pagination`**
+(`@/components/Pagination`). Both consume the `MediaPost` shape from `src/app/midia/data.ts`.
+
+- **The media card (`MediaCard`).** A `4/3` image well on **`green-dark`** (so the warm-white page reads
+  as a framed photo; the brand-icon placeholder is inverted to light when there's no image). Tag pills
+  sit **top-left, grouped in one `flex flex-wrap gap-1` container** as **`green-pale` on `green-dark`-text**
+  pills: the content category first, and for external/press entries a second **"Link externo"** pill with
+  the lucide **link** icon. Below the well: a `text-30` title with a small diagonal-arrow that nudges on
+  hover, a 2-line-clamped excerpt, then a quiet meta line (`date · source`). **Hover lifts the whole card
+  `-translate-y-2`** (the card's single hover motion — no title color/opacity shift). Internal posts render
+  as a `next-transition-router` `Link`; external ones as a real `<a target="_blank">`.
+- **In a stagger grid, wrap each card in a plain `<div>`.** The feed grid is `grid-cols-1 md:2 lg:3`
+  inside `StaggerUp`; because the card owns a hover `-translate-y-2`, the stagger must animate a wrapper
+  div instead of the card itself (see the gotcha in [../CLAUDE.md](../CLAUDE.md) → Animations). In the
+  related-posts Swiper the slide is already the wrapper, so no extra div.
+- **The feed page.** Calm header (eyebrow `(mídia)` in a narrow column beside the `text-60` title, lead
+  offset below), then category filter pills, an 18-per-page grid, and **URL-synced pagination**
+  (`Pagination` + `?categoria=`/`?pagina=`). One `StrokePath` draws behind the grid (hidden on mobile).
+- **The post page (`/midia/[slug]`) signature moves** — reuse these for any article-style page:
+  - **A tinted top band.** The hero section sits on **`bg-green-light`**, and the featured-image section
+    paints `bg-green-light` over only its **top half** (an absolute half-height div), so the image
+    straddles the green band above and the white page below.
+  - **The featured image bleeds past the right gutter.** Put it in `col-lg-10 col-lg-push-1` and widen it
+    with `w-[calc(100%+Xrem)]` (responsive `3rem → 15rem` at `2xl`) so it overflows toward the page edge -
+    an intentional "image escaping the container" look. `16/9`, on `green-dark`, with the `ImageReveal`
+    wipe when a real image exists.
+  - **Meta + share row:** reading time `·` date on the left, `ShareButtons` (LinkedIn/Facebook/X/WhatsApp)
+    pinned right, on a thin top border. **No author byline** (institutional, omitted) and **no "ouça
+    agora"/bookmark.** Body copy lives in a narrow readable column (`col-lg-8`) via `PostContent` (styled
+    HTML). The post page deliberately runs **without a `StrokePath`** - the only page that skips the line.
+  - Related posts close the page in the Swiper with a plain **"Veja todas"** `Button` opposite the title
+    (no `MagneticButton` here - reserve magnetic for hero/nav, not list footers).
+
 ## Forms
 
 **Always compose forms from the `Form` family** in `@/components/Form` — never hand-roll `<form>`,

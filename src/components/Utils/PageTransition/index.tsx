@@ -69,9 +69,9 @@ export default function PageTransition({
             opacity: 1,
             marginLeft: '0rem',
             rotate: 180,
-            duration: 2,
+            duration: 1.5,
             ease: 'power2.inOut'
-        }, 0)
+        }, '-.2')
     })
 
     const enterAnimation = () => new Promise<void>((resolve) => {
@@ -86,7 +86,7 @@ export default function PageTransition({
             opacity: 0,
             marginLeft: '40rem',
             rotate: 360,
-            duration: 2,
+            duration: 1.5,
             ease: 'power2.inOut'
         }, 0)
 
@@ -94,7 +94,7 @@ export default function PageTransition({
             yPercent: -100,
             duration: 1,
             ease: 'power2.inOut'
-        }, 0.5)
+        }, 0.25)
     })
 
     return (

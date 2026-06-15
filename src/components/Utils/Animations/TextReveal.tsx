@@ -21,7 +21,7 @@ interface Props {
     // when set, the animation is tied to a pinned ScrollTrigger scrub
     // instead of playing freely on scroll
     scrub?: boolean | number
-    // the section element to pin — required when scrub is enabled
+    // the section element to pin - required when scrub is enabled
     pinSection?: React.RefObject<HTMLElement | null>
 }
 
