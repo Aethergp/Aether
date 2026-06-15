@@ -12,6 +12,7 @@ import Guidelines from '@/components/Utils/Guidelines'
 import Footer from '@/components/Footer'
 import Preloader from '@/components/Preloader'
 import PageTransition from '@/components/Utils/PageTransition'
+import { NotFoundProvider } from '@/components/Utils/NotFoundContext'
 import ViewportHeight from '@/components/Utils/ViewportHeight'
 
 // css
@@ -199,24 +200,26 @@ export default function RootLayout({
 				<Preloader />
 
 				<PageTransition>
-					<SmoothScroller>
+					<NotFoundProvider>
+						<SmoothScroller>
 
-						<Menu />
+							<Menu />
 
-						<main
-							className='relative z-1 '
-							data-main-content
-						>
+							<main
+								className='relative z-1 '
+								data-main-content
+							>
 
-							{children}
+								{children}
 
-							<aside data-footer-spacer />
-							
-						</main>
+								<aside data-footer-spacer />
+								
+							</main>
 
-						<Footer />
+							<Footer />
 
-					</SmoothScroller>
+						</SmoothScroller>
+					</NotFoundProvider>
 				</PageTransition>
 
 				{ process.env.NODE_ENV === 'development' && <Guidelines /> }

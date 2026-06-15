@@ -12,6 +12,7 @@ import MagneticButton from '@/components/Utils/Animations/MagneticButton'
 
 // utils
 import { useAnchorScroll } from '@/hooks/useAnchorScroll'
+import { useIsNotFound } from '@/components/Utils/NotFoundContext'
 import { navLinks, pages } from '@/utils/routes'
 
 // svg
@@ -24,7 +25,8 @@ export default function Menu() {
 
 	// light logo over the dark home hero, dark logo over light pages
 	const pathname = usePathname()
-	const darkHeader = pathname === '/' || pathname === '/home'
+	const isNotFound = useIsNotFound()
+	const darkHeader = pathname === '/' || pathname === '/home' || pathname === '/404' || isNotFound
 
 	// fs menu
 	const [isOpen, setIsOpen] = useState(false)
