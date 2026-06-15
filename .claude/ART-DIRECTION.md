@@ -106,6 +106,15 @@ deep green, cards/pill groups are `green-pale`. Reserve `green-light` as a spotl
 - `green-pale` card → `green-dark` text, an oversized `green-light` number as the accent.
 - `pure-white` cell (logo grid) → monochrome logo (`brightness-0`), `gray-lighter/25` border → `green-dark` on hover.
 
+**Brand manual & the Bio+ palette.** The olive-green tokens above are what's *implemented and live* —
+treat them as canonical for the main brand. But the brand manual and identity PDFs in `_docs/original/`
+are the ultimate source for color/type/photography, and some content specs reference manual color
+*names* that aren't in the theme yet (Bordeaux / Verde Citron / Crème for the main brand; **Safira
+`#01083A` / Azul Sereno `#323F70`** for the ICT). The **`/sobre/ict-aether-bio` page (and Bio+ accents
+on `/pd`) deliberately introduce the Safira/Azul Sereno palette** to signal you've entered the
+institute's territory without leaving the site — add those as theme tokens when you build that page, and
+confirm the brand-name → token mapping against the manual before using a name you don't see in `theme.pcss`.
+
 ## Depth & layering
 
 Sections read rich because something lives behind the content — never a flat fill.
@@ -118,6 +127,11 @@ Sections read rich because something lives behind the content — never a flat f
   threads the site together and makes it feel alive. Vary the path shape, scale, and placement per
   page/section so it never feels copy-pasted; **keep the weight, the `green-light` color, and the
   draw-on-scroll behaviour constant.** Never ship a page without it unless there's a deliberate reason.
+  Reusable as the **`StrokePath`** component (`src/components/Utils/Animations/StrokePath.tsx`) — pass
+  it a `d` + `viewBox` and position it with `className`; `/contato` is the reference usage.
+  **Non-negotiable: the line must enter from off-screen and exit off-screen.** Pick a path whose
+  endpoints lie outside the frame (negative-x, like the Context path) and position so only the middle
+  arc bows into view — a visible endpoint sitting inside the page reads as a bug, not a gesture.
 - **Tinted video** for the hero only: muted/looping/`playsInline`, with a `from-green-dark/75` gradient
   over it so it reads as brand surface, and a slow scale-in/fade tied to a pinned ScrollTrigger.
 - **Parallax media** via `ScrollingImage` — the image is taller than its frame and drifts as you scroll
@@ -179,6 +193,7 @@ existing reusable components** (`src/components/Utils/Animations/`):
 | `FollowMouse` | Drag-circle cursor follower inside a region (desktop only) | Draggable galleries / showcases |
 | `Video` | Plays/pauses as it scrolls in/out of view | Inline supporting video |
 | `Marquee` | Seamless infinite logo strip (`reverse` to flip) | Trusted-by / partner logo bands |
+| `StrokePath` | The signature green line that **draws along its path on scroll** | At least one per page (see Depth) |
 
 **When to reach for which:** titles always get `AnimatedTitle` (the fill is the section's "arrival"); a
 title's lead/eyebrow and body paragraphs get `AnimatedText` (or `TextReveal` for a heavier statement
@@ -273,8 +288,8 @@ mapping are in [../CLAUDE.md](../CLAUDE.md) → Forms; the rules here are how a 
 - **`Checkbox` (`type='checkbox'`)** — a single opt-in (e.g. the confidentiality acknowledgement). It
   accepts rich `children`, so the label can carry a link.
 - **`Checkbox` (`type='radio'`)** — a small, mutually-exclusive set you want fully visible.
-- **`Select`** — *doesn't exist yet*; build it for a longer option list (the `/contato` subject
-  selector). See the construction note below — match `Input` exactly so the form reads as one system.
+- **`Select`** — now exists (built for the `/contato` subject selector); use it for a longer option
+  list. Takes `options: {value,label}[]` + `placeholder`, and matches `Input` styling.
 - **`Submit`** — the only submit control; pass `style='dark'`, it carries the spinner state.
 
 **Layout & rhythm:** one field per row, stacked with the field's own bottom margin (`mb-2 sm:mb-4`);
@@ -326,7 +341,9 @@ honeypot. Name every other field with the human-readable label you want in the i
 ## Carrying the system to new pages
 
 This playbook exists so every new page feels as alive as the home page — same identity, fresh layout.
-When building one, treat this as the floor (not the ceiling):
+**Content comes from the `_docs/` specs, and the build workflow — read the spec first, SEO, and the
+missing-info protocol — is in [../CLAUDE.md](../CLAUDE.md) → "Building the full site"; current per-page
+status and gaps are in [NOTES.md](NOTES.md).** When building a page, treat this as the floor (not the ceiling):
 
 1. **At least one green draw-on-scroll line**, shaped and placed for that page's composition.
 2. **Titles fill in** (`AnimatedTitle`), **eyebrows/leads/body rise** (`AnimatedText`/`TextReveal`) —

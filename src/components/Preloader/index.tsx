@@ -21,6 +21,7 @@ export default function Preloader() {
 
 		tl.call(() => {
 			setTimeout(() => {
+				;(window as any).__aetherInit = true
 				dispatchEvent(new Event('init'))
 			}, 500)
 		})

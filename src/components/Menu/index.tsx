@@ -3,6 +3,7 @@
 // libraries
 import clsx from 'clsx'
 import { Link } from 'next-transition-router'
+import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 // components
@@ -11,6 +12,7 @@ import MagneticButton from '@/components/Utils/Animations/MagneticButton'
 
 // utils
 import { useAnchorScroll } from '@/hooks/useAnchorScroll'
+import { navLinks, pages } from '@/utils/routes'
 
 // svg
 import Logo from '@/assets/svg/logo/aether-gp.svg'
@@ -19,6 +21,10 @@ import UxClose from '@/assets/svg/ux/close.svg'
 export default function Menu() {
 
 	const scrollTo = useAnchorScroll()
+
+	// light logo over the dark home hero, dark logo over light pages
+	const pathname = usePathname()
+	const darkHeader = pathname === '/' || pathname === '/home'
 
 	// fs menu
 	const [isOpen, setIsOpen] = useState(false)
@@ -66,37 +72,23 @@ export default function Menu() {
 								href='/'
 								className='w-60 sm:w-70 lg:w-80 xl:w-90 flex'
 							>
-								<Logo className='w-full h-auto [&_path]:fill-green-light!' />
+								<Logo className={clsx(
+									'w-full h-auto',
+									darkHeader ? '[&_path]:fill-green-light!' : '[&_path]:fill-green-dark!'
+								)} />
 							</Link>
 						</MagneticButton>
 
 						<div className='flex items-stretch justify-end gap-1'>
 
 							<ul className='flex items-center justify-end gap-1 max-lg:hidden'>
-								{[
-									{
-										href: '#contexto',
-										label: 'Contexto'
-									},
-									{
-										href: '#sobre',
-										label: 'Sobre'
-									},
-									{
-										href: '#parceiros',
-										label: 'Parceiros'
-									},
-									{
-										href: '#contato',
-										label: 'Contato'
-									}
-								].map((item ,i) => (
+								{navLinks.filter((item) => !item.home).map((item, i) => (
 									<li key={i}>
 										<Button
 											href={item.href}
 											text={item.label}
 											style='dark'
-											onClick={(e) => scrollTo(e, item.href)}
+											onClick={item.href.startsWith('/') ? undefined : (e) => scrollTo(e, item.href)}
 										/>
 									</li>
 								))}
@@ -128,10 +120,7 @@ export default function Menu() {
 					<Link
 						href='/'
 						className='w-60 md:w-70 flex'
-						onClick={(e) => (
-							setIsOpen(false),
-							scrollTo(e, '#banner')
-						)}
+						onClick={() => setIsOpen(false)}
 					>
 						<Logo className='w-full h-auto' />
 					</Link>
@@ -146,35 +135,18 @@ export default function Menu() {
 				</div>
 
 				<ul className='flex flex-col gap-4 p-6 sm:p-10'>
-					{[
-						{
-							href: '#banner',
-							label: 'Início'
-						},
-						{
-							href: '#contexto',
-							label: 'Contexto'
-						},
-						{
-							href: '#sobre',
-							label: 'Sobre'
-						},
-						{
-							href: '#parceiros',
-							label: 'Parceiros'
-						},
-						{
-							href: '#contato',
-							label: 'Contato'
-						}
-					].map((item ,i) => (
+					{navLinks.map((item, i) => (
 						<li key={i}>
 							<Link
 								href={item.href}
-								onClick={(e) => (
-									scrollTo(e, item.href),
+								onClick={(e) => {
+									if (item.href.startsWith('#')) {
+										scrollTo(e, item.href)
+									} else if (item.home && pathname === pages.home) {
+										scrollTo(e, '#banner')
+									}
 									setIsOpen(false)
-								)}
+								}}
 								className='text-60 font-heading font-semibold transition-all duration-200 hover:translate-x-2 block w-fit'
 							>
 								{item.label}

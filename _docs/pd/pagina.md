@@ -248,9 +248,9 @@ Imagem quadrada ou em proporção 1200×630 pixels, evocando laboratório, molé
 Alguns pontos precisam ser confirmados com o cliente antes que esta página seja finalizada.
 
 1. **Imagem ou vídeo do banner.** O banner do home usa um vídeo. Este banner pode reaproveitá-lo ou ganhar material próprio (microscopia, laboratório). Recomendação: buscar material visual específico para reforçar que esta é uma página distinta.
-2. **Membros do comitê científico.** Definir se os nomes e fotos serão expostos nesta primeira versão ou apenas na segunda.
+2. **Membros do comitê científico.** A Patricia vai **alinhar juridicamente com os pesquisadores** antes de divulgar nomes/fotos (cliente, 06/2026). Por ora, manter apenas a afirmação textual da governança (sem grade de perfis).
 3. **Página de áreas terapêuticas (fase 2).** `/pd/areas` foi removida da primeira versão — por ora, o recorte de atuação é apresentado por critérios dentro de `/pd` (seção 4). Quando houver portfólio consolidado e segmentos bem delimitados (oncologia, neurociência, doenças raras, infecciosas, outros), a página dedicada pode voltar ao mapa do site.
-4. **Pipeline real.** Confirmar se o cliente tem a lista consolidada dos projetos em andamento para alimentar `/pd/pipeline` ou se essa página entra em uma segunda fase.
+4. **Pipeline real.** O **projeto do Ministério da Saúde / EMBRAPII é público** (cliente, 06/2026) e pode alimentar `/pd/pipeline` como primeiro item; há também publicações novas no LinkedIn da Aether. Demais projetos: aguardar liberação — onde não houver, focar em TRL/P&D.
 
 ---
 

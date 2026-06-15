@@ -2,45 +2,53 @@
 
 // libraries
 import { Link } from 'next-transition-router'
+import { usePathname } from 'next/navigation'
 import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
 
 // utils
-import { social } from '@/utils/routes'
+import { social, navLinks, pages } from '@/utils/routes'
 import { getYear } from '@/utils/functions'
 import { useAnchorScroll } from '@/hooks/useAnchorScroll'
 
 export default function Footer() {
 
 	const scrollTo = useAnchorScroll()
+	const pathname = usePathname()
 
 	useGSAP(() => {
-		gsap.from('[data-logo-footer] path', {
-			y: '50vh',
-			scale: 0,
-			stagger: 0.05,
-			ease: 'power2.inOut',
-			scrollTrigger: {
-				scroller: document.getElementById('viewport') as HTMLElement,
-				trigger: '[data-footer-spacer]',
-				start: 'top bottom',
-				end: 'bottom 10%',
-				scrub: 3
+		gsap.fromTo('[data-logo-footer] path',
+			{ y: '50vh', scale: 0 },
+			{
+				y: 0,
+				scale: 1,
+				stagger: 0.05,
+				ease: 'power2.inOut',
+				scrollTrigger: {
+					scroller: document.getElementById('viewport') as HTMLElement,
+					trigger: '[data-footer-spacer]',
+					start: 'top bottom',
+					end: 'bottom 10%',
+					scrub: 3
+				}
 			}
-		})
+		)
 
-		gsap.to('[data-footer-shadow]', {
-			opacity: 0,
-			ease: 'power2.inOut',
-			scrollTrigger: {
-				scroller: document.getElementById('viewport') as HTMLElement,
-				trigger: '[data-footer-spacer]',
-				start: 'top bottom',
-				end: 'bottom 10%',
-				scrub: 2
+		gsap.fromTo('[data-footer-shadow]',
+			{ opacity: 1 },
+			{
+				opacity: 0,
+				ease: 'power2.inOut',
+				scrollTrigger: {
+					scroller: document.getElementById('viewport') as HTMLElement,
+					trigger: '[data-footer-spacer]',
+					start: 'top bottom',
+					end: 'bottom 10%',
+					scrub: 2
+				}
 			}
-		})
-	})
+		)
+	}, { dependencies: [pathname] })
 
 	const year = getYear(new Date().getFullYear().toString())
 
@@ -80,33 +88,18 @@ export default function Footer() {
 								</p>
 							</li>
 
-							{[
-								{
-									href: '#banner',
-									label: 'Início'
-								},
-								{
-									href: '#contexto',
-									label: 'Contexto'
-								},
-								{
-									href: '#sobre',
-									label: 'Sobre'
-								},
-								{
-									href: '#parceiros',
-									label: 'Parceiros'
-								},
-								{
-									href: '#contato',
-									label: 'Contato'
-								}
-							].map((item, i) => (
+							{navLinks.map((item, i) => (
 								<li key={i}>
 									<Link
 										href={item.href}
 										className='hover-underline'
-										onClick={(e) => scrollTo(e, item.href)}
+										onClick={(e) => {
+											if (item.href.startsWith('#')) {
+												scrollTo(e, item.href)
+											} else if (item.home && pathname === pages.home) {
+												scrollTo(e, '#banner')
+											}
+										}}
 									>
 										{item.label}
 									</Link>

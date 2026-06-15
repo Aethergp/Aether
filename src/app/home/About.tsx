@@ -12,12 +12,7 @@ import Button from '@/components/Button'
 // images
 import microscope from '@/assets/img/microscope.jpg'
 
-// utils
-import { useAnchorScroll } from '@/hooks/useAnchorScroll'
-
 export default function About() {
-
-    const scrollTo = useAnchorScroll()
 
 	return (
 		<section id='sobre'>
@@ -41,8 +36,7 @@ export default function About() {
 
                         <Button
                             style='dark'
-                            href='#contato'
-                            onClick={(e) => scrollTo(e, '#contato')}
+                            href='/contato'
                             text='Entre em contato'
                             icon='diagonal-arrow'
                         />

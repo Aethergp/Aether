@@ -1,9 +1,10 @@
 'use client'
 
-// linraries
+// libraries
 import { TransitionRouter, useTransitionState } from 'next-transition-router'
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
+import { useGSAP } from '@gsap/react'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -12,27 +13,16 @@ interface Props {
     children: React.ReactNode
 }
 
-// refresh scrolltrigger when page is ready
 function ScrollTriggerRefresher() {
     const { isReady, stage } = useTransitionState()
     const hasRefreshedRef = useRef(false)
 
     useEffect(() => {
-        // only refresh once when page transition is complete and page is ready
         if (isReady && stage === 'none' && !hasRefreshedRef.current) {
             hasRefreshedRef.current = true
-            
-            // wait one frame to ensure all components have mounted
-            requestAnimationFrame(() => {
-                const triggers = ScrollTrigger.getAll()
-                //console.log('ScrollTrigger instances:', triggers.length, triggers)
-                
-                // force refresh all instances once
-                ScrollTrigger.refresh(true)
-            })
+            requestAnimationFrame(() => ScrollTrigger.refresh(true))
         }
-        
-        // reset flag when entering a new page
+
         if (stage === 'entering') {
             hasRefreshedRef.current = false
         }
@@ -41,57 +31,71 @@ function ScrollTriggerRefresher() {
     return null
 }
 
+// the block + icon are positioned entirely by GSAP (never via a React inline
+// style) so route re-renders can't clobber the transform mid-animation
+const resetOverlay = () => {
+    gsap.set('[data-pt-block]', { yPercent: 100 })
+    gsap.set('[data-pt-icon]', { opacity: 0, marginLeft: '-25rem', rotate: 0 })
+}
+
 export default function PageTransition({
     children
 }: Props) {
 
-    const leaveAnimation = async () => {
-        return new Promise((resolve) => {
-            
-            const allScrollTriggers = ScrollTrigger.getAll()
+    useGSAP(() => {
+        resetOverlay()
+    })
 
-            const tl = gsap.timeline({
-                onComplete: resolve
-            })
+    const leaveAnimation = () => new Promise<void>((resolve) => {
+        const allScrollTriggers = ScrollTrigger.getAll()
 
-            tl.to('[data-page-transition] > div', {
-                yPercent: -100,
-                duration: 1,
-                stagger: 0.2,
-                ease: 'power2.inOut',
-                onComplete: () => {
-                    // kill all ScrollTrigger instances from the current page before leaving
-                    //console.log('Killing ScrollTrigger instances on leave:', allScrollTriggers.length)
-                    allScrollTriggers.forEach((st) => {
-                        st.kill()
-                    })
-                }
-            })
+        const tl = gsap.timeline({
+            onComplete: () => {
+                allScrollTriggers.forEach((st) => st.kill())
+                resolve()
+            }
         })
-    }
 
-    const enterAnimation = async () => {
-        return new Promise((resolve) => {
-            const tl = gsap.timeline({
-                onComplete: resolve
-            })
+        tl.set('[data-pt-block]', { yPercent: 100 })
+        tl.set('[data-pt-icon]', { opacity: 0, marginLeft: '-25rem', rotate: 0 })
 
-            tl.to('[data-page-transition] > div', {
-                yPercent: -200,
-                duration: 1,
-                stagger: {
-                    amount: 0.5,
-                    from: 'end'
-                },
-                ease: 'power2.inOut',
-                onComplete: () => {
-                    gsap.set('[data-page-transition]', { clearProps: 'all' })
-                    gsap.set('[data-page-transition] > div', { clearProps: 'all' })
-                }
-            })
+        tl.to('[data-pt-block]', {
+            yPercent: 0,
+            duration: 1,
+            ease: 'power2.inOut'
+        }, 0)
 
+        tl.to('[data-pt-icon]', {
+            opacity: 1,
+            marginLeft: '0rem',
+            rotate: 180,
+            duration: 2,
+            ease: 'power2.inOut'
+        }, 0)
+    })
+
+    const enterAnimation = () => new Promise<void>((resolve) => {
+        const tl = gsap.timeline({
+            onComplete: () => {
+                resetOverlay()
+                resolve()
+            }
         })
-    }
+
+        tl.to('[data-pt-icon]', {
+            opacity: 0,
+            marginLeft: '40rem',
+            rotate: 360,
+            duration: 2,
+            ease: 'power2.inOut'
+        }, 0)
+
+        tl.to('[data-pt-block]', {
+            yPercent: -100,
+            duration: 1,
+            ease: 'power2.inOut'
+        }, 0.5)
+    })
 
     return (
         <TransitionRouter
@@ -110,12 +114,27 @@ export default function PageTransition({
             <ScrollTriggerRefresher />
 
             <aside
-                className='fixed z-999999 inset-0 pointer-events-none'
+                className='fixed z-999999 inset-0 pointer-events-none overflow-hidden flex items-center justify-center'
                 data-page-transition
             >
-                <div className='absolute z-1 top-0 left-0 w-full h-lvh translate-y-full bg-black' />
-                <div className='absolute z-2 top-0 left-0 w-full h-lvh translate-y-full bg-white' />
-                <div className='absolute z-3 top-0 left-0 w-full h-lvh translate-y-full bg-green-dark' />
+
+                <div
+                    className='absolute inset-0 bg-green-light'
+                    data-pt-block
+                />
+
+                <svg
+                    width='50'
+                    height='50'
+                    viewBox='0 0 50 50'
+                    fill='none'
+                    xmlns='http://www.w3.org/2000/svg'
+                    className='relative z-2 w-20 h-20 opacity-0 text-green-dark'
+                    data-pt-icon
+                >
+                    <path d='M0.286797 37.3525C4.02363 35.3433 11.633 30.5699 11.633 24.9988C11.633 19.4278 4.02363 14.6544 0.286797 12.6451C-0.208279 12.3796 -0.0192947 11.6306 0.54303 11.6306H11.633V0.541869C11.633 -0.019294 12.3819 -0.20944 12.6475 0.285635C14.6556 4.02247 19.4301 11.6318 25.0012 11.6318C30.5722 11.6318 35.3456 4.02247 37.3549 0.285635C37.6204 -0.20944 38.3694 -0.0204534 38.3694 0.541869V11.6318H49.4581C50.0205 11.6318 50.2094 12.3808 49.7144 12.6463C45.9775 14.6544 38.3682 19.4289 38.3682 25C38.3682 30.5711 45.9775 35.3444 49.7144 37.3537C50.2094 37.6192 50.0205 38.3682 49.4581 38.3682H38.3682V49.4581C38.3682 50.0193 37.6192 50.2094 37.3537 49.7144C35.3444 45.9775 30.5711 38.3682 25 38.3682C19.4289 38.3682 14.6556 45.9775 12.6463 49.7144C12.3796 50.2094 11.6318 50.0205 11.6318 49.4581V38.3682H0.54187C-0.0204506 38.3682 -0.209438 37.6192 0.285637 37.3537L0.286797 37.3525ZM25.0012 36.8238C31.5322 36.8238 36.8262 31.5299 36.8262 24.9988C36.8262 18.4678 31.5322 13.1738 25.0012 13.1738C18.4701 13.1738 13.1762 18.4678 13.1762 24.9988C13.1762 31.5299 18.4701 36.8238 25.0012 36.8238Z' fill='currentColor' />
+                </svg>
+
             </aside>
 
         </TransitionRouter>

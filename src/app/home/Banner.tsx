@@ -74,7 +74,13 @@ export default function Banner() {
 				})
 			}
 
-			window.addEventListener('init', onInit, { once: true })
+			// on the first load the preloader fires 'init'; on client-side nav back to
+			// home it won't re-run, so reveal immediately if it already fired
+			if ((window as any).__aetherInit) {
+				onInit()
+			} else {
+				window.addEventListener('init', onInit, { once: true })
+			}
 
 			return () => {
 				window.removeEventListener('init', onInit)
@@ -163,8 +169,7 @@ export default function Banner() {
 
 					<Button
 						style='light'
-						href='#contato'
-						onClick={(e) => scrollTo(e, '#contato')}
+						href='/contato'
 						text='Entre em contato'
 						icon='diagonal-arrow'
 					/>

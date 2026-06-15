@@ -83,9 +83,11 @@ Página de conversão para o público **institucional**: indústria, investidore
 > **E-mail:** contato@aethergp.com.br ✅ decidido
 > *Nota de implementação (Flávio): o endereço precisa ser criado — sugestão: Cloudflare Email Routing encaminhando contato@ para a caixa real da Patricia. Fazer junto com a configuração do Resend.*
 >
-> **Telefone:** [aguardando resposta da Patricia — se não houver, sai]
+> **Telefone:** ⟨ TEMPORÁRIO ⟩ +55 (41) 99698-0730 — placeholder até a Patricia confirmar o definitivo.
 >
-> **Endereço:** [aguardando resposta da Patricia — se não houver, sai]
+> **Endereço:** ⟨ TEMPORÁRIO ⟩ Rua José Casemiro Stenzowski, 21D — Novo Mundo — CEP 81010-370 — Curitiba/PR. Usado também, por ora, para a filial. A Patricia está negociando a mudança das duas Aethers para parques tecnológicos (sede em Curitiba, filial em Campinas/SP) — endereços reais ~2 meses.
+>
+> **Mapa:** Google Maps embutido na página (aponta para o endereço temporário acima).
 >
 > **Redes sociais:** Instagram → @aetherglobalpharma
 
@@ -97,6 +99,9 @@ Página de conversão para o público **institucional**: indústria, investidore
 - E-mail público: **contato@aethergp.com.br** (criar via Cloudflare Email Routing — tarefa de implementação).
 - Seletor de assuntos: **confirmado** com as cinco opções propostas.
 
+**Atualização do cliente (resposta por e-mail, 06/2026):**
+- Endereço/telefone/e-mail: Patricia concorda em exibir, **mas** depende da negociação em curso (mudança para parques tecnológicos — sede em Curitiba, filial em Campinas). Estima ~2 meses. Por ora o site usa **valores temporários** (placeholder) e troca quando ela confirmar.
+
 **Em aberto:**
-1. **Endereço e telefone** — perguntados no e-mail consolidado à Patricia; se não existirem, a seção publica só e-mail + Instagram.
+1. **Endereço e telefone reais** — aguardando o fim da negociação dos parques tecnológicos (~2 meses). Hoje o site mostra placeholder (mesmo endereço para sede e filial) + Google Maps; trocar quando vierem os definitivos.
 2. **Destino dos e-mails por assunto** — tudo numa caixa só ou triagem por destinatário (decidir na implementação do Resend).

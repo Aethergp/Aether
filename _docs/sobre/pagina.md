@@ -113,17 +113,15 @@ A escolha depende de quantos marcos concretos a Aether quiser exibir — ver pla
 *(título)*
 > Uma plataforma que nasceu dentro da pesquisa.
 
-**⟨ PLACEHOLDER — CONTEÚDO PROVISÓRIO, A VALIDAR OU SUBSTITUIR PELA AETHER ⟩**
+**Dados factuais confirmados pela Patricia (e-mail 06/2026):**
 
-> O texto abaixo é apenas um exemplo para indicar **tom, extensão e que tipo de informação** deve entrar aqui. Todos os dados factuais (ano, cidade, nomes, marcos) estão entre colchetes e precisam ser substituídos antes da publicação.
+> A Aether tem origem em **2000**, como **Bap Consult** (consultoria). Em **2025**, durante o período da fundadora **Patricia P. Oliveira** no Canadá, a razão social foi alterada para **Aether Global Pharma**, marcando a virada da empresa para a inovação farmacêutica. No mesmo ano nasceu o **ICT AetherBio+**, criado para complementar as atividades de gestão de pesquisas.
 >
-> A Aether foi fundada em **[ANO]**, em **[CIDADE, PAÍS]**, por **[NOMES DOS FUNDADORES E BREVE DESCRIÇÃO DE ATUAÇÃO DE CADA UM]**. O ponto de partida foi a observação de uma lacuna concreta: descobertas científicas de alto potencial sendo produzidas em universidades brasileiras sem um caminho claro para virarem ativos farmacêuticos globais — e, com frequência, sem que os próprios pesquisadores tivessem a estrutura para navegar esse percurso sem diluir propriedade intelectual ou perder protagonismo.
+> O ponto de partida foi a observação de uma lacuna concreta: descobertas científicas de alto potencial sendo produzidas em universidades sem um caminho claro para virarem ativos farmacêuticos globais — e, com frequência, sem que os próprios pesquisadores tivessem a estrutura para navegar esse percurso sem diluir propriedade intelectual ou perder protagonismo.
 >
-> Ao longo dos **[X ANOS]** de trajetória da plataforma, a Aether consolidou sua atuação através de marcos como **[LISTAR MARCOS PRINCIPAIS: PRIMEIRO PROJETO, LANÇAMENTO DO ICT AETHERBIO+, PARCERIAS INDUSTRIAIS RELEVANTES, EXPANSÃO PARA O CANADÁ, RECONHECIMENTO REGULATÓRIO, ETC.]**.
->
-> Hoje, a plataforma opera em **[BRASIL E CANADÁ — CONFIRMAR SE ESSES SÃO OS ÚNICOS DOIS PAÍSES]** e avalia projetos científicos oriundos de **[MENCIONAR OS PERFIS DE PARCEIROS: UNIVERSIDADES, INSTITUTOS DE PESQUISA, STARTUPS DE BASE CIENTÍFICA, ETC.]**.
+> Hoje, a plataforma opera no **Brasil e no Canadá** e avalia projetos científicos oriundos de universidades, centros de pesquisa, institutos de ciência e tecnologia e startups de base científica.
 
-**⟨ FIM DO PLACEHOLDER — substituir o conteúdo acima por histórico verídico antes da publicação ⟩**
+*Datas (2000 / 2025), nome da fundadora e países (Brasil e Canadá) confirmados pela Patricia. A prosa pode ser revisada por ela. Ainda em aberto: eventuais cofundadores e descrição de marcos intermediários.*
 
 ---
 
@@ -211,14 +209,16 @@ Bloco simples: mapa estilizado (minimalista, sem detalhes geopolíticos) com doi
 *(parágrafo)*
 > A Aether opera em duas geografias complementares: no Brasil, origem e núcleo científico da plataforma; no Canadá, braço internacional responsável pela interface com parceiros industriais e mercados globais. Essa presença dupla reflete o propósito da plataforma — traduzir descobertas científicas brasileiras em ativos farmacêuticos com alcance mundial.
 
-**⟨ PLACEHOLDER — ENDEREÇOS INSTITUCIONAIS A CONFIRMAR COM A AETHER ⟩**
+**⟨ ENDEREÇOS — TEMPORÁRIOS / EM NEGOCIAÇÃO (atualização do cliente 06/2026) ⟩**
 
-> Confirmar se os endereços abaixo devem aparecer nesta seção, apenas em `/contato`, ou em ambos. Se aparecem aqui, precisam ser os endereços oficiais atualizados.
+> A Patricia está negociando a transferência das duas Aethers para **parques tecnológicos**: **sede em Curitiba/PR** e **filial em Campinas/SP**. O processo é mais lento que o previsto (~2 meses) — os endereços oficiais entram depois.
 >
-> - **Brasil:** **[CIDADE, ESTADO, ENDEREÇO COMPLETO]**
-> - **Canadá:** **[CIDADE, PROVÍNCIA, ENDEREÇO COMPLETO]**
+> Por ora o site (`/contato`) usa um **endereço temporário** (placeholder): Rua José Casemiro Stenzowski, 21D — Novo Mundo — CEP 81010-370 — Curitiba/PR.
+>
+> - **Brasil:** Curitiba/PR (sede) e Campinas/SP (filial) — endereços reais ~2 meses.
+> - **Canadá:** ⟨ A CONFIRMAR — endereço/cidade da operação canadense ⟩
 
-**⟨ FIM DO PLACEHOLDER ⟩**
+**⟨ FIM ⟩**
 
 ---
 

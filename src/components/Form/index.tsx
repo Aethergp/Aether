@@ -723,3 +723,138 @@ export const Submit = ({
 		/>
 	)
 }
+
+interface SelectOption {
+	value: string
+	label: string
+}
+
+interface SelectProps {
+	id: string
+	label?: string
+	name: string
+	options: SelectOption[]
+	placeholder?: string
+	hideLabel?: boolean
+	className?: string
+	required?: boolean
+	disabled?: boolean
+	onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void
+}
+
+export const Select = ({
+	id,
+	label,
+	name,
+	options,
+	placeholder = 'Selecione',
+	hideLabel,
+	className,
+	required,
+	disabled,
+	onChange = () => {}
+}: SelectProps) => {
+	const {
+		register,
+		watch,
+		formState: { errors }
+	} = useFormContext()
+
+	const validations: RegisterOptions = {
+		onChange: (e) => onChange(e),
+		required: required && 'Este campo é obrigatório'
+	}
+
+	const value = watch(name)
+
+	return (
+		<div
+			className={clsx(
+				'relative block w-full mb-2 sm:mb-4',
+				className,
+				errors[name] && 'text-red-600 [&_select]:border-red-600'
+			)}
+			data-form-line
+		>
+
+			{!hideLabel && (
+				<Label
+					id={id}
+					label={label}
+					required={required}
+				/>
+			)}
+
+			<div className='relative'>
+
+				<select
+					id={id}
+					disabled={disabled || false}
+					defaultValue=''
+					className={clsx(
+						'appearance-none block w-full border border-gray-lighter bg-transparent rounded-md p-4 pr-12 cursor-pointer focus-visible:outline-1 focus-visible:outline-gray-light',
+						value ? 'text-black' : 'text-black/50'
+					)}
+					{...register(name, validations)}
+				>
+
+					<option value='' disabled>
+						{placeholder}
+					</option>
+
+					{options.map((option) => (
+						<option key={option.value} value={option.value}>
+							{option.label}
+						</option>
+					))}
+
+				</select>
+
+				<span className='absolute z-1 top-1/2 right-4 -translate-y-1/2 flex items-center justify-center w-3 h-3 pointer-events-none text-current'>
+					<svg
+						viewBox='0 0 12 8'
+						fill='none'
+						xmlns='http://www.w3.org/2000/svg'
+						className='w-full h-full'
+					>
+						<path
+							d='M1 1.5L6 6.5L11 1.5'
+							stroke='currentColor'
+							strokeWidth='1.5'
+							strokeLinecap='round'
+							strokeLinejoin='round'
+						/>
+					</svg>
+				</span>
+
+			</div>
+
+			{errors[name] && (
+				<p className='text-[.5rem] text-white px-1 py-px absolute z-2 bg-red-600 -bottom-2 right-4 rounded-xs'>
+					{String(errors[name].message)}
+				</p>
+			)}
+		</div>
+	)
+}
+
+// off-screen anti-spam honeypot — the route drops submissions where `company` is filled
+export const Honeypot = () => {
+	const { register } = useFormContext() ?? {}
+
+	return (
+		<div
+			className='absolute left-[-9999px] w-px h-px overflow-hidden'
+			aria-hidden='true'
+		>
+			<label htmlFor='company'>Não preencher</label>
+			<input
+				type='text'
+				id='company'
+				tabIndex={-1}
+				autoComplete='off'
+				{...(register ? register('company') : {})}
+			/>
+		</div>
+	)
+}

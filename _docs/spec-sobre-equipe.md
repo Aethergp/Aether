@@ -105,7 +105,8 @@ Quando novos integrantes entrarem, a página evolui para perfil em destaque (lid
 **Decidido:**
 - Cargo: **CEO & Fundadora**.
 - Bio e realizações: publicar conforme redigido; Patricia revisa direto no design.
-- Comitê científico: nomes **serão publicados** — aguardando lista (nome, titulação, área, instituição) e confirmação de que cada membro autorizou.
+- **Página de equipe: confirmada** (cliente, 06/2026 — "traz seriedade"). Lança com o perfil da Patricia.
+- Comitê científico: a Patricia **vai alinhar juridicamente com os pesquisadores antes de incluí-los**. Nomes serão publicados após esse alinhamento — aguardando lista (nome, titulação, área, instituição) e autorização individual.
 
 **Em aberto:**
 1. **Foto** — decisão atual: foto do LinkedIn tratada com IA, como solução de lançamento. ⚠️ Condições mínimas: a imagem final precisa de aprovação explícita da Patricia, e o resultado deve passar em teste de naturalidade (sem artefatos de IA visíveis em zoom). Recomendação registrada: sessão fotográfica profissional como melhoria pós-lançamento — a foto define o padrão dos perfis futuros.

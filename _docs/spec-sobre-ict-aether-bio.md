@@ -15,6 +15,8 @@ Esta página tem dupla função: institucional (o que é o ICT) e de captação 
 
 ---
 
+> **Fonte de conteúdo:** os parágrafos institucionais do cliente sobre o ICT AetherBio+ e o Comitê Científico estão em `textos-institucionais.md` — podem ser usados/adaptados diretamente aqui.
+
 ## SEO e metadados
 
 | Campo | Conteúdo |
@@ -120,9 +122,14 @@ Esta página tem dupla função: institucional (o que é o ICT) e de captação 
 
 ## Pendências e decisões
 
+**Atualização do cliente (06/2026):**
+- **ICT AetherBio+ fundado em 2025** — é novo e veio para complementar as atividades de gestão de pesquisas (a Aether Global Pharma tem origem em 2000, como Bap Consult, rebatizada em 2025).
+- **Projetos do ICT podem ser divulgados:** o projeto selecionado pelo **Ministério da Saúde / EMBRAPII** é público (link de notícias enviado pela Patricia) e há novas publicações no LinkedIn da Aether. Onde os projetos ainda não puderem ser detalhados, focar em TRL e P&D.
+- Comitê científico: a Patricia **alinhará juridicamente com os pesquisadores antes de incluí-los**; nomes saem após esse alinhamento.
+
 **Decidido:**
 - Grafia oficial: **"Aether Bio+"** (separado, como no manual de marca). ⚠️ Atualizar em todo o site — o site atual usa "AetherBio+" junto. Confirmar detalhe final com o cliente: com ou sem espaço antes do "+" ("Aether Bio+" vs "Aether Bio +").
-- Comitê científico: nomes **serão publicados** (Seção 4 usa o formato com grade de perfis resumidos). Aguardando lista e autorizações individuais dos membros.
+- Comitê científico: formato com grade de perfis resumidos (Seção 4) — usar quando a lista e as autorizações chegarem.
 
 **Em aberto:**
 1. **Aplicação da paleta complementar** — alinhar com o designer até onde o Safira/Azul Sereno se estende (página inteira × apenas acentos), garantindo que o visitante não pense que saiu do site da Aether.

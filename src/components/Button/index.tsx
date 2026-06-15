@@ -12,7 +12,7 @@ type BaseLinkProps = ComponentProps<typeof Link>
 
 interface BaseProps {
 	className?: string
-	style: 'light' | 'dark'
+	style: 'light' | 'dark' | 'dark-2'
 	text: string
 	icon?: 'diagonal-arrow' | 'close'
 }
@@ -51,6 +51,7 @@ export default function Button({
 		'relative flex items-stretch justify-center gap-px w-fit cursor-pointer',
 		'hover:**:data-icon:scale-0 hover:**:data-icon-hover:scale-100 ',
 		style === 'dark' && 'hover:**:data-text:text-green-light hover:**:data-text:bg-black',
+		style === 'dark-2' && 'hover:**:data-text:text-green-light hover:**:data-text:bg-black hover:**:data-icon-hover:bg-black',
 		style === 'light' && 'hover:**:data-text:text-green-light hover:**:data-text:bg-black'
 	)
 
@@ -60,6 +61,7 @@ export default function Button({
 				className={clsx(
 					'py-4 px-6 transition-colors duration-200 rounded-md flex items-center justify-center leading-none',
 					style === 'dark' && 'bg-green-dark text-green-light',
+					style === 'dark-2' && 'bg-green-dark text-green-light',
 					style === 'light' && 'bg-green-light text-green-dark'
 				)}
 				data-text
@@ -74,6 +76,7 @@ export default function Button({
 						className={clsx(
 							'h-full px-6 transition-all duration-200 rounded-md flex items-center justify-center leading-none relative z-1 origin-top-right',
 							style === 'dark' && 'bg-green-dark text-green-light',
+							style === 'dark-2' && 'bg-green-dark text-green-light',
 							style === 'light' && 'bg-green-light text-green-dark'
 						)}
 						data-icon
@@ -108,6 +111,7 @@ export default function Button({
 						className={clsx(
 							'h-full px-6 transition-all duration-200 rounded-md flex items-center justify-center leading-none absolute bottom-0 left-0 z-0 origin-bottom-left scale-0',
 							style === 'dark' && 'bg-green-light text-green-dark',
+							style === 'dark-2' && 'bg-green-dark text-green-light',
 							style === 'light' && 'bg-green-dark text-green-light'
 						)}
 						data-icon-hover

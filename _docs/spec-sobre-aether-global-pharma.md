@@ -15,6 +15,8 @@ A página expande o bloco "Aether Global Pharma" da single page atual, aprofunda
 
 ---
 
+> **Fonte de conteúdo:** o parágrafo institucional do cliente sobre a AGP (holding de PI) está em `textos-institucionais.md` — pode ser usado/adaptado diretamente aqui.
+
 ## SEO e metadados
 
 | Campo | Conteúdo |

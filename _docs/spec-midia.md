@@ -92,6 +92,8 @@ Estrutura padrão de cada artigo, para garantir consistência editorial:
 
 Com essas quatro entradas, o feed nasce vivo.
 
+**Atualização do cliente (06/2026):** o projeto do **Ministério da Saúde / EMBRAPII é público** e pode ser divulgado (a Patricia enviou o link de notícias). Há também **novas publicações no LinkedIn da Aether** — boa fonte de curadoria para os links externos / "Na imprensa" e para alimentar o feed enquanto os posts internos não são produzidos.
+
 ---
 
 ## Pendências com o cliente

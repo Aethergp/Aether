@@ -13,6 +13,8 @@
 
 ---
 
+> **Fonte de conteúdo:** copy institucional do cliente (visão geral da plataforma, AGP e ICT) disponível em `textos-institucionais.md` — pode ser usada/adaptada diretamente nesta página.
+
 ## SEO e metadados
 
 | Campo | Conteúdo |
@@ -96,12 +98,11 @@
 
 > **Marcador de seção:** (nossa história)
 >
-> - **[ano]** — Fundação da Aether Global Pharma
-> - **[ano]** — Criação do ICT AetherBio+
-> - **[ano]** — Primeiras parcerias com [instituições]
-> - **2026** — Seleção na chamada Projetos de Alto Impacto em Saúde (Ministério da Saúde + EMBRAPII)
+> - **2000** — Origem da empresa como **Bap Consult** (consultoria).
+> - **2025** — Alteração da razão social para **Aether Global Pharma** (durante o período da fundadora no Canadá) e criação do **ICT AetherBio+**, que passa a complementar as atividades de gestão de pesquisas.
+> - **2026** — Seleção na chamada Projetos de Alto Impacto em Saúde (Ministério da Saúde + EMBRAPII).
 
-*O marco de 2026 é o único confirmado publicamente. Os demais precisam de datas e descrições do cliente. Se o cliente não fornecer, a seção sai do lançamento — linha do tempo com dois marcos parece improviso.*
+*Marcos confirmados pela Patricia (e-mail 06/2026): a empresa nasce em 2000 como Bap Consult e é rebatizada Aether Global Pharma em 2025, mesmo ano da criação do ICT. A linha do tempo já tem 3 marcos sólidos — pode ir ao ar. Texto de transição/descrição de cada marco pode ser enriquecido depois.*
 
 ---
 
@@ -124,6 +125,8 @@
 **Decidido:**
 - Textos dos três valores (Seção 2): **usar como redigidos**, sem rodada extra de validação.
 
+**Atualização do cliente (06/2026):** marcos da linha do tempo **confirmados** — 2000 (Bap Consult), 2025 (rebrand p/ Aether Global Pharma + criação do ICT), 2026 (chamada MS/EMBRAPII). Seção 5 liberada.
+
 **Em aberto:**
-1. **Marcos da linha do tempo** — perguntados no e-mail consolidado à Patricia. Sem isso, a Seção 5 não vai ao ar.
+1. **Descrições dos marcos** — datas confirmadas; texto descritivo de cada marco pode ser refinado com a Patricia depois (não bloqueia).
 2. **Direção fotográfica** — confirmar se as imagens do manual de marca (banco de imagens) podem ser usadas no site ou se são apenas referência conceitual.
