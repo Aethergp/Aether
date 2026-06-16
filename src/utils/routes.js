@@ -10,26 +10,42 @@ export const pages = {
 	// media
 	midia: '/midia',
 
+	// project submission
+	inscreva: '/inscreva-seu-projeto',
+
+	// p&d (not built yet - constant kept for forward links)
+	trl: '/pd/trl',
+
 	// contact
 	contato: '/contato',
 
-	// privacy
+	// legal
 	privacy: '/politica-de-privacidade',
+	termos: '/termos-e-condicoes',
 
 	// others
 	error: '/404'
 }
 
-// primary site navigation - SINGLE SOURCE OF TRUTH for the three nav surfaces:
-// the desktop header, the mobile (fullscreen) menu, and the footer.
-// update a destination here once and all three follow. anchors (#...) scroll the
-// home; routes (/...) navigate. the desktop header omits the `home` entry (the logo covers it).
+// full navigation - feeds the mobile (fullscreen) menu and the footer.
+// anchors (#...) scroll the home; routes (/...) navigate. the `home` entry scrolls
+// to top on home and navigates home from other pages.
 export const navLinks = [
 	{ href: pages.home, label: 'Início', home: true },
 	{ href: '#contexto', label: 'Contexto' },
 	{ href: '#sobre', label: 'Sobre' },
 	{ href: pages.midia, label: 'Mídia' },
 	{ href: '#parceiros', label: 'Parceiros' },
+	{ href: pages.inscreva, label: 'Inscreva seu Projeto' },
+	{ href: pages.contato, label: 'Contato' }
+]
+
+// desktop header only - a deliberately trimmed subset (the header isn't the full
+// sitemap). edit this independently of navLinks.
+export const headerLinks = [
+	{ href: '#sobre', label: 'Sobre' },
+	{ href: pages.midia, label: 'Mídia' },
+	{ href: pages.inscreva, label: 'Inscreva seu Projeto' },
 	{ href: pages.contato, label: 'Contato' }
 ]
 

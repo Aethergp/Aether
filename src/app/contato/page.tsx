@@ -78,11 +78,11 @@ export default function ContatoPage() {
 	return (
 		<div className='bg-white'>
 
-			<section className='pt-36 sm:pt-44 lg:pt-[12vw] pb-12 lg:pb-[5vw]'>
+			<section className='pt-36 lg:pt-56 xl:pt-[12vw] pb-12 lg:pb-[5vw]'>
 
 				<div className='base-container'>
 					<div className='row'>
-						<div className='col-lg-9 col-lg-push-2'>
+						<div className='col-lg-9 offset-lg-2'>
 
 							<h3 className='font-semibold font-heading mb-6'>
 								<AnimatedText text='(contato)' />
@@ -107,7 +107,7 @@ export default function ContatoPage() {
 			<section className='pb-12 lg:pb-[4vw]'>
 				<div className='base-container'>
 					<div className='row'>
-						<div className='col-lg-10 col-xl-7 col-lg-push-2'>
+						<div className='col-lg-10 col-xl-7 offset-lg-2'>
 
 							<div className='flex flex-col gap-6 md:flex-row md:items-center md:justify-between bg-green-pale rounded-md p-8 lg:p-10'>
 

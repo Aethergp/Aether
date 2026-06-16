@@ -135,7 +135,17 @@ export const Form = ({
 			const formData = new FormData()
 
 			Object.keys(data).forEach((key) => {
-				formData.append(key, data[key])
+				const value = data[key]
+
+				if (value === undefined || value === null || value === '') return
+
+				// a registered <input type="file"> yields a FileList - send the file itself
+				if (typeof FileList !== 'undefined' && value instanceof FileList) {
+					if (value[0]) formData.append(key, value[0])
+					return
+				}
+
+				formData.append(key, value)
 			})
 
 			body = formData
@@ -490,6 +500,7 @@ interface TextareaProps {
 	name: string
 	hideLabel?: boolean
 	placeholder?: string
+	microcopy?: string
 	className?: string
 	required?: boolean
 	maxLength?: number
@@ -502,6 +513,7 @@ export const Textarea = ({
 	name,
 	hideLabel,
 	placeholder,
+	microcopy,
 	required,
 	minLength,
 	maxLength,
@@ -544,6 +556,12 @@ export const Textarea = ({
 					label={label}
 					required={required}
 				/>
+			)}
+
+			{microcopy && (
+				<p className='text-sm opacity-60 -mt-0.5 mb-2'>
+					{microcopy}
+				</p>
 			)}
 
 			<div className='relative'>
@@ -828,6 +846,152 @@ export const Select = ({
 				</span>
 
 			</div>
+
+			{errors[name] && (
+				<p className='text-[.5rem] text-white px-1 py-px absolute z-2 bg-red-600 -bottom-2 right-4 rounded-xs'>
+					{String(errors[name].message)}
+				</p>
+			)}
+		</div>
+	)
+}
+
+interface FileUploadProps {
+	id: string
+	label?: string
+	name: string
+	microcopy?: string
+	accept?: string
+	maxSizeMB?: number
+	hideLabel?: boolean
+	className?: string
+	required?: boolean
+}
+
+export const FileUpload = ({
+	id,
+	label,
+	name,
+	microcopy,
+	accept = 'application/pdf',
+	maxSizeMB = 15,
+	hideLabel,
+	className,
+	required
+}: FileUploadProps) => {
+	const {
+		register,
+		watch,
+		setValue,
+		formState: { errors }
+	} = useFormContext()
+
+	const inputRef = useRef<HTMLInputElement | null>(null)
+	const maxBytes = maxSizeMB * 1024 * 1024
+
+	const files = watch(name) as FileList | undefined
+	const file = files?.[0]
+
+	const { ref, ...field } = register(name, {
+		required: required && 'Este campo é obrigatório',
+		validate: {
+			size: (value: FileList) =>
+				!value?.[0] || value[0].size <= maxBytes || `O arquivo excede ${maxSizeMB} MB. Reduza o tamanho ou envie um resumo.`,
+			type: (value: FileList) =>
+				!value?.[0] || value[0].type === 'application/pdf' || 'Formato não suportado. Envie um arquivo PDF.'
+		}
+	})
+
+	const clear = () => {
+		setValue(name, undefined, { shouldValidate: true })
+		if (inputRef.current) inputRef.current.value = ''
+	}
+
+	const formatSize = (bytes: number) => {
+		const mb = bytes / 1024 / 1024
+		return mb < 0.1 ? `${Math.round(bytes / 1024)} KB` : `${mb.toFixed(1)} MB`
+	}
+
+	return (
+		<div
+			className={clsx(
+				'relative block w-full mb-2 sm:mb-4',
+				className,
+				errors[name] && 'text-red-600'
+			)}
+			data-form-line
+		>
+
+			{!hideLabel && (
+				<Label
+					id={id}
+					label={label}
+					required={required}
+				/>
+			)}
+
+			<input
+				type='file'
+				id={id}
+				accept={accept}
+				className='sr-only'
+				ref={(element) => {
+					ref(element)
+					inputRef.current = element
+				}}
+				{...field}
+			/>
+
+			{!file ? (
+				<label
+					htmlFor={id}
+					className={clsx(
+						'flex items-center gap-3 border border-dashed border-gray-lighter rounded-md p-4 cursor-pointer transition-colors duration-200 hover:border-green-dark',
+						errors[name] && 'border-red-600'
+					)}
+				>
+					<span className='flex items-center justify-center w-5 h-5 shrink-0 text-current'>
+						<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round' className='w-full h-full'>
+							<path d='M21.44 11.05 12.25 20.24a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48' />
+						</svg>
+					</span>
+					<span className='text-sm opacity-75'>
+						Clique para anexar um arquivo
+					</span>
+				</label>
+			) : (
+				<div className='flex items-center justify-between gap-3 border border-gray-lighter rounded-md p-4'>
+					<span className='flex items-center gap-3 min-w-0 text-green-dark'>
+						<span className='flex items-center justify-center w-5 h-5 shrink-0 text-current'>
+							<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round' className='w-full h-full'>
+								<path d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z' />
+								<path d='M14 2v6h6' />
+							</svg>
+						</span>
+						<span className='truncate text-sm'>
+							{file.name}
+							<span className='opacity-60'>{` · ${formatSize(file.size)}`}</span>
+						</span>
+					</span>
+
+					<button
+						type='button'
+						onClick={clear}
+						aria-label='Remover arquivo'
+						className='flex items-center justify-center w-5 h-5 shrink-0 text-green-dark transition-opacity duration-200 hover:opacity-60 cursor-pointer'
+					>
+						<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round' className='w-3.5 h-3.5'>
+							<path d='M18 6 6 18M6 6l12 12' />
+						</svg>
+					</button>
+				</div>
+			)}
+
+			{microcopy && (
+				<p className='text-sm opacity-60 mt-2'>
+					{microcopy}
+				</p>
+			)}
 
 			{errors[name] && (
 				<p className='text-[.5rem] text-white px-1 py-px absolute z-2 bg-red-600 -bottom-2 right-4 rounded-xs'>

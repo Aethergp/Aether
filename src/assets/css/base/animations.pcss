@@ -68,6 +68,23 @@
     @apply block min-h-8;
 }
 
+/* soft fade-in for swapped content (e.g. multi-step form), CSS-driven so it
+   survives rAF throttling and always ends visible */
+@keyframes fade-step-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-step-in {
+    animation: fade-step-in 0.4s ease both;
+}
+
 @keyframes scroll-bar-animation {
     0% {
         transform: scaleY(0) translateY(0);

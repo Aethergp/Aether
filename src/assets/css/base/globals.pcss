@@ -30,6 +30,17 @@
         @apply outline-offset-2 focus-visible:outline-1 focus-visible:outline-black;
     }
 
+    /* kill the browser autofill light-blue/yellow background, keep fields transparent */
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    textarea:-webkit-autofill,
+    select:-webkit-autofill {
+        -webkit-text-fill-color: var(--color-black);
+        caret-color: var(--color-black);
+        transition: background-color 9999s ease-in-out 0s;
+    }
+
     .cover {
         @apply absolute z-0 inset-0 object-cover w-full h-full;
     }

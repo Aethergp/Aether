@@ -13,7 +13,7 @@ import MagneticButton from '@/components/Utils/Animations/MagneticButton'
 // utils
 import { useAnchorScroll } from '@/hooks/useAnchorScroll'
 import { useIsNotFound } from '@/components/Utils/NotFoundContext'
-import { navLinks, pages } from '@/utils/routes'
+import { navLinks, headerLinks, pages } from '@/utils/routes'
 
 // svg
 import Logo from '@/assets/svg/logo/aether-gp.svg'
@@ -84,7 +84,7 @@ export default function Menu() {
 						<div className='flex items-stretch justify-end gap-1'>
 
 							<ul className='flex items-center justify-end gap-1 max-lg:hidden'>
-								{navLinks.filter((item) => !item.home).map((item, i) => (
+								{headerLinks.map((item, i) => (
 									<li key={i}>
 										<Button
 											href={item.href}

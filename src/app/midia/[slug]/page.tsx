@@ -7,7 +7,6 @@ import Image from 'next/image'
 import AnimatedText from '@/components/Utils/Animations/AnimatedText'
 import ImageReveal from '@/components/Utils/Animations/ImageReveal'
 import ShareButtons from '../ShareButtons'
-import PostContent from '../PostContent'
 import RelatedPosts from '../RelatedPosts'
 
 // utils
@@ -83,7 +82,7 @@ export default async function PostPage({ params }: Props) {
 				<section className='pt-36 sm:pt-44 lg:pt-[10vw] pb-10 lg:pb-[3vw] bg-green-light'>
 					<div className='base-container'>
 						<div className='row'>
-							<div className='col-lg-10 col-lg-push-1'>
+							<div className='col-lg-10 offset-lg-1'>
 
 								<h1 className='text-60 font-heading font-semibold text-green-dark'>
 									<AnimatedText text={post.title} />
@@ -130,7 +129,7 @@ export default async function PostPage({ params }: Props) {
 
 					<div className='base-container relative z-2'>
 						<div className='row'>
-							<div className='col-lg-10 col-lg-push-1'>
+							<div className='col-lg-10 offset-lg-1'>
 
 								<div className='relative w-[calc(100%+3rem)] md:w-[calc(100%+4rem)] lg:w-[calc(100%+10rem)] xl:w-[calc(100%+11rem)] 2xl:w-[calc(100%+15rem)] aspect-video rounded-md overflow-hidden bg-green-dark'>
 									{post.image ? (
@@ -162,8 +161,11 @@ export default async function PostPage({ params }: Props) {
 				<section className='relative overflow-hidden pb-16 lg:pb-[8vw]'>
 					<div className='base-container relative z-2'>
 						<div className='row'>
-							<div className='col-lg-8 col-lg-push-1'>
-								<PostContent html={getContent(post)} />
+							<div className='col-lg-8 offset-lg-1'>
+								<div
+									className="rich-text"
+									dangerouslySetInnerHTML={{ __html: getContent(post) }}
+								/>
 							</div>
 						</div>
 					</div>

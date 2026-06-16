@@ -67,7 +67,7 @@ export default function MidiaPage() {
 					</div>
 
 					<div className="row mt-4 lg:mt-[9vw]">
-						<div className="col-lg-9 col-lg-push-3">
+						<div className="col-lg-9 offset-lg-3">
 							<p className='text-20 leading-relaxed text-green-dark'>
 								<AnimatedText text='Artigos da equipe Aether e a cobertura da imprensa sobre a plataforma, os projetos e o ecossistema de inovação farmacêutica.' />
 							</p>

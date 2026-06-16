@@ -36,9 +36,12 @@ editorial asymmetry that defines the look.
   breakpoints — `sm / md / lg / xl`, matching the `@theme` tokens). Stack on mobile with
   `max-lg:flex max-lg:flex-col max-lg:gap-10`.
 - **Asymmetry is the point.** Indent content with empty spacer columns (`<div className='col-lg-3' />`)
-  and `offset-*` / `col-*-push-*` / `col-*-pull-*`. Signature moves from the home page:
-  `col-lg-8 col-lg-push-2` (centered-but-indented title), an empty `col-lg-3` left margin with the
-  eyebrow in the next `col-lg-3` and the body in `col-lg-6`. Titles rarely start at the hard left edge.
+  or, **preferred, `offset-{bp}-N`** (e.g. `col-lg-9 offset-lg-3`, `col-md-10 offset-md-2`). **Use
+  `offset-*`, not `col-*-push-*` / `col-*-pull-*`** — push/pull is legacy here (the older home sections
+  still use it; new/edited pages were moved to `offset-*`, e.g. `/midia/[slug]`, `/inscreva-seu-projeto`,
+  the legal pages). The recurring move: an eyebrow marker in a narrow left column and the body in the
+  wider one offset to align under the title (`col-lg-3` marker + `col-lg-9 col-xl-6` content). Titles
+  rarely start at the hard left edge.
 - **Fluid rhythm at scale.** Large-breakpoint spacing uses viewport units, not fixed steps —
   `lg:my-[10vw]`, `lg:pt-[7vw]`, `min-h-[120vh]`. Body type itself goes fluid at `2xl` (`text-[.9vw]`).
   Match this: scale spacing and oversized media in `vw` on `lg+`, fixed `spacing` steps below.
@@ -251,8 +254,17 @@ screens — mobile gets the *legible* version of each effect, never a shrunken d
 verified across **desktop, tablet, and mobile**; a section isn't done until all three hold.
 
 - **Breakpoints** (Bootstrap-matched, in `@theme`): `xs 420 / sm 576 / md 768 / lg 992 / xl 1200 /
-  2xl 1400`. Grid rows stack on mobile (`max-lg:flex-col`); columns rejoin at `lg`. Type uses the
-  responsive `.text-*` clamps; fluid `vw` spacing only kicks in at `lg+`.
+  2xl 1400`. Type uses the responsive `.text-*` clamps; fluid `vw` spacing only kicks in at `lg+`.
+- **Don't default every layout to a single `lg` break — choose the breakpoint per layout.** `lg` is *a*
+  option, not *the* option. Often the better move is to **enter the multi-column grid earlier, at `md`,
+  and then just *resize* the columns at `lg`/`xl`** (e.g. a side rail that's `col-md-2` growing to
+  `col-lg-3`, paired content `col-md-10 → col-lg-9`; or a marker column that's `col-md-3` and a form
+  that's `col-md-6`). The 12-col grid composes across breakpoints — `col-md-* col-lg-*` on the same
+  element is the normal idiom. Reserve a hard single-step stack (`max-lg:flex-col`) for when the columns
+  genuinely don't work at tablet width; otherwise let the layout breathe through `md → lg → xl`. The
+  `/inscreva-seu-projeto` page is the reference: hero icon rail + steps + form all break at `md` and
+  shrink at `lg`, not a flat `lg` cliff. (The home `Companies` section's `col-md-2 col-xl-3` icon rail is
+  the older example of the same idea.)
 - **Motion degrades on mobile by design:** smooth scroll, magnetic buttons, and the follow-mouse circle
   are **desktop-only**; parallax offsets shrink. Don't build a mobile layout that *depends* on a
   desktop-only effect to make sense.
@@ -300,7 +312,7 @@ other pages can use them): **`MediaCard`** (`@/components/MediaCard`) and **`Pag
   - **A tinted top band.** The hero section sits on **`bg-green-light`**, and the featured-image section
     paints `bg-green-light` over only its **top half** (an absolute half-height div), so the image
     straddles the green band above and the white page below.
-  - **The featured image bleeds past the right gutter.** Put it in `col-lg-10 col-lg-push-1` and widen it
+  - **The featured image bleeds past the right gutter.** Put it in `col-lg-10 offset-lg-1` and widen it
     with `w-[calc(100%+Xrem)]` (responsive `3rem → 15rem` at `2xl`) so it overflows toward the page edge -
     an intentional "image escaping the container" look. `16/9`, on `green-dark`, with the `ImageReveal`
     wipe when a real image exists.
@@ -310,6 +322,27 @@ other pages can use them): **`MediaCard`** (`@/components/MediaCard`) and **`Pag
     HTML). The post page deliberately runs **without a `StrokePath`** - the only page that skips the line.
   - Related posts close the page in the Swiper with a plain **"Veja todas"** `Button` opposite the title
     (no `MagneticButton` here - reserve magnetic for hero/nav, not list footers).
+
+## Long-form & legal / documentation pages
+
+`/politica-de-privacidade` and `/termos-e-condicoes` are the reference for any text-heavy page (legal,
+policy, long explainer). Keep them on the system, not a flat wall of text:
+
+- **`.rich-text` is the canonical wrapper for rich body copy** (`rich-text.pcss`) - it styles `p`, `ul`
+  (custom square bullet), `ol` (custom `font-heading` counter), `b/strong`, and bare `a` (sweep
+  underline), with `flex flex-col gap-6 md:gap-8 leading-loose`. **Reach for `.rich-text` for prose**
+  (the legal pages wrap each block in `<div className='rich-text text-18'>`). The blog body's `PostContent`
+  is the heading-rich variant (arbitrary `[&_h2]` etc.) for CMS HTML; `.rich-text` is the simpler default.
+- **Layout = repeating marker + content rows.** Each section is a `.row`: a `col-lg-3` parenthetical
+  **eyebrow marker** (`(seus direitos)`, `(uso de licença)`, `(limitações)` …) on the left + the prose
+  in `col-lg-9 col-xl-6` (content **shrinks to 6 cols at `xl`** for a readable measure), `max-lg:mt-4` to
+  space the stack on mobile. The opening block (no marker) sits at `offset-lg-3` to line up under the
+  rest. Section rhythm is `mt-10 lg:mt-[5vw]`.
+- **Hero:** `(marker)` in `col-lg-3` + title (`text-60`, `TextReveal`) and an "efective a partir de …"
+  date line in `col-lg-9`. Carry **one `StrokePath`** (the legal pages place it far off-screen,
+  `-right-80`, `max-lg:hidden!`) - even legal copy keeps the brand gesture.
+- **Internal-page hero top padding** settled on `pt-36 lg:pt-56 xl:pt-[12vw]` (fixed steps, fluid `vw`
+  only at `xl`) - use this for new internal pages rather than the older `sm:pt-44 lg:pt-[12vw]`.
 
 ## Forms
 
