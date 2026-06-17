@@ -26,7 +26,7 @@ export default function Menu() {
 	// light logo over the dark home hero, dark logo over light pages
 	const pathname = usePathname()
 	const isNotFound = useIsNotFound()
-	const darkHeader = pathname === '/' || pathname === '/home' || pathname === '/404' || isNotFound
+	const darkHeader = pathname === '/' || pathname === '/home' || pathname === pages.parceiros || pathname === '/404' || isNotFound
 
 	// fs menu
 	const [isOpen, setIsOpen] = useState(false)

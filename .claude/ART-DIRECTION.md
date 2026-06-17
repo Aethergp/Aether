@@ -137,8 +137,26 @@ Sections read rich because something lives behind the content — never a flat f
   arc bows into view — a visible endpoint sitting inside the page reads as a bug, not a gesture.
 - **Tinted video** for the hero only: muted/looping/`playsInline`, with a `from-green-dark/75` gradient
   over it so it reads as brand surface, and a slow scale-in/fade tied to a pinned ScrollTrigger.
+- **Gradient-scrim background image on dark sections** — a `bg-green-dark` band should rarely be a *flat*
+  fill. Float a faint photo behind the copy and fade it into the solid green so only a texture remains.
+  The recipe (`/parceiros` hero is the reference): an `absolute z-0 top-0 left-0 w-full h-3/4 opacity-50`
+  wrapper holding the image (`fill`, `cover`) with a gradient scrim layered **on top of the image**
+  (`absolute z-1 ... bg-linear-to-t from-green-dark to-green-dark/0`) so it dissolves into the band's
+  bottom edge; content sits `relative z-2`. Same family as the hero video's `from-green-dark/75` scrim
+  (`Banner` uses `bg-linear-to-r`). This is the default way to give a dark hero depth when there's no video.
+- **Bridge two adjacent color bands with a straddling image** instead of hard-cutting dark→light. Let a
+  feature image sit half on the dark section and half on the white one below it: inside the dark section's
+  lower container, drop an `absolute z-0 bottom-0 bg-white` panel pulled **wider than the container**
+  (`-left-30 w-[120%] h-1/2`) behind the image, then place the image (`relative z-2`, e.g. `col-lg-9
+  offset-lg-3`, `aspect-video rounded-md`, wrapped in `ScrollingImage`) over the seam. The white shelf
+  becomes the next section's surface and the image ties the two together. (`/parceiros` hero → grid seam.)
 - **Parallax media** via `ScrollingImage` — the image is taller than its frame and drifts as you scroll
   (the About microscope). Let media bleed past its container (`min-h-[120vh]`, `rounded-sm`).
+- **Break long text→grid or text→text runs with a real photo.** A big feature image between the hero copy
+  and a logo/card grid (or between two copy blocks) stops a page reading as stacked text. The project has a
+  small photo library in `src/assets/img/` — `abstract.jpg` (texture, for scrim backgrounds),
+  `scientists.jpg` + `microscope.jpg` (people/science features), `banner.jpg` — import them directly
+  (`import x from '@/assets/img/x.jpg'`) and reach for one rather than shipping another all-type section.
 
 Standard scaffold: positioned section (`relative overflow-hidden`), decoration pinned behind
 (`absolute`, low/negative z), content floated above (`relative z-2`). Decoration serves the content —
@@ -163,12 +181,18 @@ don't add it just to decorate.
 
 Use the **`Button` component** (`@/components/Button`) for every CTA — don't hand-roll buttons.
 
-- Props: `style: 'light' | 'dark'`, `text`, optional `icon: 'diagonal-arrow' | 'close'`. With `href` it
-  renders as a `next-transition-router` `Link` (so page transitions fire); without, a `<button>`.
+- Props: `style: 'light' | 'light-2' | 'dark' | 'dark-2'`, `text`, optional `icon: 'diagonal-arrow' |
+  'close'`. With `href` it renders as a `next-transition-router` `Link` (so page transitions fire);
+  without, a `<button>`.
 - **Two-segment design:** a text pill + a separate icon pill (`gap-px`), both `rounded-md`. On hover the
   text segment inverts to `bg-black text-green-light` and the icon does a scale-flip swap — a small,
   deliberate micro-interaction. `dark` = green-dark on green-light; `light` = green-light on green-dark;
   both go black on hover.
+- **The `-2` variants (`light-2` / `dark-2`) are for buttons sitting on a colored/dark surface** (e.g. a
+  `bg-green-dark` CTA box). They add `hover:**:data-icon-hover:bg-black` so the icon swatch turns black on
+  hover *together with* the text pill — without it the icon segment keeps its base color and the hover
+  reads half-finished against the surface. Use `light-2` for a light button on a dark box (the `/parceiros`
+  "Seja um parceiro" CTA); plain `light`/`dark` are fine on the white page surface.
 - For in-page anchors, pair it with the `useAnchorScroll` hook (`onClick={(e) => scrollTo(e, '#id')}`)
   so it animates `#viewport` rather than jumping. For forms use `Submit` (shows a spinner while sending).
 - Wrap prominent buttons/logos in `MagneticButton` for the desktop magnetic-hover follow (the menu and
@@ -415,7 +439,13 @@ This playbook exists so every new page feels as alive as the home page — same 
 missing-info protocol — is in [../CLAUDE.md](../CLAUDE.md) → "Building the full site"; current per-page
 status and gaps are in [NOTES.md](NOTES.md).** When building a page, treat this as the floor (not the ceiling):
 
-1. **At least one green draw-on-scroll line**, shaped and placed for that page's composition.
+1. **At least one depth device, varied per page.** The green draw-on-scroll line is the default and the
+   brand through-line — but it is *not* the only one, and reusing the identical hero+stroke+grid skeleton
+   on every page is the failure mode to avoid. A gradient-scrim image hero, a section-straddling photo, or
+   tinted parallax media can carry the depth instead (`/parceiros` deliberately drops the stroke and leans
+   on a gradient-image hero + a straddling feature image). What's non-negotiable is that *something* lives
+   behind/across the content and that the page doesn't clone the last one's layout — not that the stroke
+   specifically appears.
 2. **Titles fill in** (`AnimatedTitle`), **eyebrows/leads/body rise** (`AnimatedText`/`TextReveal`) —
    no headline or paragraph lands statically.
 3. **Grouped content cascades** (`Stagger*`); at least one **media moment** (parallax `ScrollingImage`
@@ -431,8 +461,13 @@ move the library doesn't cover — and when you do, obey the same rules (`#viewp
 
 ## Anti-patterns
 
-- A page with no green line and no scroll reveals — static is a regression, however clean the layout.
+- A page with no depth device and no scroll reveals — static is a regression, however clean the layout.
+- **Cloning the previous page's skeleton** — same dark/stroke hero, same single full-width grid, same CTA,
+  page after page. Each page should recompose the system (different hero treatment, where media lands, the
+  grid rhythm), not reskin the last one. Repetition across pages is the thing to actively design against.
 - Flat white sections with a centered black title — no depth layer, no asymmetry.
+- A flat `bg-green-dark` band with no texture behind it — give dark sections a gradient-scrim image (see
+  Depth) unless they're a deliberately minimal divider.
 - Pure black text or default Tailwind `gray-*` instead of `green-dark` and the project tokens.
 - Centered, symmetric layouts that ignore the 12-column grid and its offsets/spacers.
 - Plain bulleted `<ul>` lists where `green-pale` pill rows belong.

@@ -6,6 +6,9 @@ import AnimatedTitle from '@/components/Utils/Animations/AnimatedTitle'
 import AnimatedText from '@/components/Utils/Animations/AnimatedText'
 import StaggerScale from '@/components/Utils/Animations/StaggerScale'
 
+// utils
+import { partners } from '@/utils/partners'
+
 export default function Partners() {
 	return (
 		<section
@@ -41,44 +44,7 @@ export default function Partners() {
                     className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-px'
                     infinite
                 >
-                    {[
-                        {
-                            src: '/img/partners/unicamp.png',
-                            alt: 'Unicamp',
-                            width: 106,
-                            height: 106
-                        },
-                        {
-                            src: '/img/partners/cqmed.png',
-                            alt: 'CQMED - Centro de Química Medicinal',
-                            width: 171,
-                            height: 61
-                        },
-                        {
-                            src: '/img/partners/ufmg.png',
-                            alt: 'UFMG',
-                            width: 155,
-                            height: 60
-                        },
-                        {
-                            src: '/img/partners/farmavax.png',
-                            alt: 'FarmaVax',
-                            width: 174,
-                            height: 61
-                        },
-                        {
-                            src: '/img/partners/embrapii.png',
-                            alt: 'EMBRAPII',
-                            width: 106,
-                            height: 84
-                        },
-                        {
-                            src: '/img/partners/inova.png',
-                            alt: 'INOVA - Agência de Inovação Unicamp',
-                            width: 163,
-                            height: 56
-                        }
-                    ].map((item, i) => (
+                    {partners.map((item, i) => (
                         <div
                             key={i}
                             className='flex items-center justify-center w-full h-auto aspect-square bg-white border border-gray-lighter/25 p-8 xs:p-10 sm:p-12 transition-colors duration-200 hover:border-green-dark group'

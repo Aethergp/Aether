@@ -13,6 +13,9 @@ export const pages = {
 	// project submission
 	inscreva: '/inscreva-seu-projeto',
 
+	// partners
+	parceiros: '/parceiros',
+
 	// p&d (not built yet - constant kept for forward links)
 	trl: '/pd/trl',
 
@@ -35,7 +38,7 @@ export const navLinks = [
 	{ href: '#contexto', label: 'Contexto' },
 	{ href: '#sobre', label: 'Sobre' },
 	{ href: pages.midia, label: 'Mídia' },
-	{ href: '#parceiros', label: 'Parceiros' },
+	{ href: pages.parceiros, label: 'Parceiros' },
 	{ href: pages.inscreva, label: 'Inscreva seu Projeto' },
 	{ href: pages.contato, label: 'Contato' }
 ]
