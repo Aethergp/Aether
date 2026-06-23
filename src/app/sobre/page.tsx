@@ -6,12 +6,12 @@ import Image from 'next/image'
 
 // components
 import Context from '@/app/home/Context'
+import Timeline from './Timeline'
+import Grainient from '@/components/Grainient'
 import AnimatedText from '@/components/Utils/Animations/AnimatedText'
 import AnimatedTitle from '@/components/Utils/Animations/AnimatedTitle'
-import TextReveal from '@/components/Utils/Animations/TextReveal'
 import StaggerUp from '@/components/Utils/Animations/StaggerUp'
 import ScrollingImage from '@/components/Utils/Animations/ScrollingImage'
-import ImageReveal from '@/components/Utils/Animations/ImageReveal'
 import Button from '@/components/Button'
 
 // utils
@@ -19,7 +19,6 @@ import { pages } from '@/utils/routes'
 
 // img - placeholders, to be swapped for the brand's photographic direction
 import scientists from '@/assets/img/scientists.jpg'
-import microscope from '@/assets/img/microscope.jpg'
 import abstract from '@/assets/img/abstract.jpg'
 
 // metadata
@@ -62,11 +61,38 @@ const valores = [
 	}
 ]
 
+// marcos 2000 / 2025 / 2026 confirmados pela Patricia; os 5 intermediários são
+// PLACEHOLDER (lorem ipsum) - anos e textos a alinhar com o cliente
 const timeline = [
 	{
 		year: '2000',
 		title: 'Origem como Bap Consult',
 		text: 'A empresa nasce como consultoria, ponto de partida da trajetória que daria origem à plataforma.'
+	},
+	{
+		year: '2005',
+		title: 'Lorem ipsum dolor sit amet',
+		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Marco a confirmar com o cliente.'
+	},
+	{
+		year: '2009',
+		title: 'Consectetur adipiscing elit',
+		text: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Marco a confirmar com o cliente.'
+	},
+	{
+		year: '2013',
+		title: 'Ut enim ad minim veniam',
+		text: 'Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Marco a confirmar com o cliente.'
+	},
+	{
+		year: '2017',
+		title: 'Duis aute irure dolor',
+		text: 'In reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Marco a confirmar com o cliente.'
+	},
+	{
+		year: '2021',
+		title: 'Excepteur sint occaecat',
+		text: 'Cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Marco a confirmar com o cliente.'
 	},
 	{
 		year: '2025',
@@ -84,20 +110,22 @@ const pilares = [
 	{
 		eyebrow: 'empresa-mãe',
 		icon: '/img/svg/logo/icon-gp.svg',
+		iconColor: 'bg-green-light',
 		name: 'Aether Global Pharma',
 		text: 'A holding privada que dá nome à plataforma - responsável pela estratégia comercial, parcerias industriais, licenciamento de tecnologias e inserção dos ativos no mercado farmacêutico global.',
 		href: pages.sobreAgp,
 		cta: 'Conhecer a AGP',
-		dark: true
+		cardClass: 'bg-green-dark text-green-light'
 	},
 	{
 		eyebrow: 'instituto científico',
 		icon: '/img/svg/logo/icon-bio-green-dark.svg',
+		iconColor: 'bg-white',
 		name: 'ICT AetherBio+',
 		text: 'O instituto de ciência, tecnologia e inovação da plataforma - uma organização sem fins lucrativos que conduz cada projeto da validação técnica à maturação de TRL, com governança independente e comitê científico especializado.',
 		href: pages.sobreIct,
 		cta: 'Conhecer o Bio+',
-		dark: false
+		cardClass: 'bg-linear-to-br from-ict-safira to-ict-azul text-white'
 	}
 ]
 
@@ -124,98 +152,119 @@ export default function SobrePage() {
 	return (
 		<div className='bg-white'>
 
-			<section className='pt-36 lg:pt-56 xl:pt-[12vw] pb-12 lg:pb-[5vw]'>
+			<section className='relative overflow-hidden text-green-light mask-clip-fill' style={{ clipPath: 'inset(0% 0% 0% 0%)' }}>
 
-				<div className='base-container'>
-
-					<div className='row'>
-
-						<div className='col-lg-3'>
-							<h3 className='font-semibold font-heading mb-6 lg:pt-1'>
-								<AnimatedText text='(sobre a aether)' />
-							</h3>
-						</div>
-
-						<div className='col-lg-9'>
-							<h1 className='text-72 font-heading font-bold text-green-dark'>
-								<AnimatedText text='Inovação, Espiritualidade, Ousadia.' />
-							</h1>
-
-							<p className='text-24 font-heading text-green-dark mt-8 lg:mt-10 lg:pr-[6vw]'>
-								<AnimatedText text='Com leveza nos negócios e profundidade nas pesquisas, a Aether propõe um novo jeito de atuar no setor farmacêutico: mais humano, mais conectado e mais consciente.' />
-							</p>
-
-							<p className='text-20 leading-relaxed mt-8 lg:mt-10 lg:pr-[12vw]'>
-								<AnimatedText text='Nosso propósito é ser o elo entre a pesquisa científica, a indústria e a vida das pessoas. Mais do que desenvolver, acreditamos em traduzir inovação em bem-estar.' />
-							</p>
-						</div>
-
-					</div>
-
+				<div className='fixed inset-0 z-0 w-lvw h-lvh'>
+					<Grainient
+						className='w-full h-full'
+						color1='#555328'
+						color2='#90916c'
+						color3='#555328'
+						timeSpeed={0.9}
+						colorBalance={0}
+						warpStrength={1}
+						warpFrequency={11.3}
+						warpSpeed={3.2}
+						warpAmplitude={41}
+						blendAngle={36}
+						blendSoftness={0.54}
+						rotationAmount={430}
+						noiseScale={2.2}
+						grainAmount={0.06}
+						grainScale={0.7}
+						grainAnimated={false}
+						contrast={1.5}
+						gamma={1}
+						saturation={1}
+						centerX={-0.12}
+						centerY={0.48}
+						zoom={0.65}
+					/>
 				</div>
 
-			</section>
+				<div className='absolute inset-0 z-1 bg-green-dark/35' />
 
-			<section className='pb-16 lg:pb-[7vw]'>
-				<div className='base-container'>
-					<div className='row'>
-						<div className='col-lg-10 offset-lg-1'>
-							<div className='relative w-full aspect-4/3 md:aspect-video lg:aspect-21/9 rounded-md lg:rounded-lg overflow-hidden bg-green-dark'>
-								<ImageReveal
-									src={microscope.src}
-									alt='Pesquisa científica conduzida na plataforma Aether'
-									overlay='black'
-									className='w-full h-full relative'
-								/>
+				<div className='relative z-2'>
+
+					<div className='relative flex flex-col justify-end h-svh min-h-lvh'>
+
+						<div className='base-container relative z-2 pb-12 lg:pb-[3vw]'>
+							<div className='row'>
+								<div className='col-lg-10'>
+									<h1 className='text-72 font-heading font-bold text-green-light'>
+										Inovação <br />
+										Espiritualidade <br />
+										Ousadia
+									</h1>
+								</div>
 							</div>
 						</div>
-					</div>
-				</div>
-			</section>
-
-			<section className='bg-green-dark text-green-light py-20 lg:py-[8vw]'>
-				<div className='base-container'>
-
-					<div className='row pb-10 lg:pb-[5vw]'>
-
-						<div className='col-lg-3 pb-4 lg:pb-0'>
-							<h3 className='font-semibold font-heading'>
-								<AnimatedText text='(nossos valores)' />
-							</h3>
-						</div>
-
-						<div className='col-lg-9'>
-							<h2 className='text-60 font-heading font-semibold'>
-								<AnimatedText text='Três princípios que orientam cada decisão.' />
-							</h2>
-						</div>
 
 					</div>
 
-					<StaggerUp className='grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6'>
-						{valores.map((item, i) => (
-							<div
-								key={i}
-								className='flex flex-col gap-4 p-8 lg:p-10 rounded-sm lg:rounded-md border border-green-light/15 bg-green-light/[0.04] h-full'
-							>
+					<div className='base-container py-12 lg:py-[6vw]'>
+						<div className='row'>
 
-								<p className='text-7xl sm:text-8xl lg:text-9xl font-heading font-bold text-green-light/30 self-end leading-none'>
-									{i + 1}
+							<div className='col-lg-3' />
+
+							<div className='col-lg-9'>
+								<p className='text-24 font-heading lg:pr-[6vw]'>
+									<AnimatedText text='Com leveza nos negócios e profundidade nas pesquisas, a Aether propõe um novo jeito de atuar no setor farmacêutico: mais humano, mais conectado e mais consciente.' />
 								</p>
 
-								<h3 className='text-30 font-heading font-semibold md:mt-8'>
-									{item.title}
+								<p className='text-20 leading-relaxed mt-8 lg:mt-10 lg:pr-[12vw] opacity-90'>
+									<AnimatedText text='Nosso propósito é ser o elo entre a pesquisa científica, a indústria e a vida das pessoas. Mais do que desenvolver, acreditamos em traduzir inovação em bem-estar.' />
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+					<div className='base-container pb-20 lg:pb-[8vw] pt-8 lg:pt-[2vw]'>
+
+						<div className='row pb-10 lg:pb-[5vw]'>
+
+							<div className='col-lg-3 pb-4 lg:pb-0'>
+								<h3 className='font-semibold font-heading'>
+									<AnimatedText text='(nossos valores)' />
 								</h3>
-
-								<p className='text-18 leading-relaxed opacity-80'>
-									{item.text}
-								</p>
-
 							</div>
-						))}
-					</StaggerUp>
+
+							<div className='col-lg-9'>
+								<h2 className='text-60 font-heading font-semibold'>
+									<AnimatedText text='Três princípios que orientam cada decisão.' />
+								</h2>
+							</div>
+
+						</div>
+
+						<StaggerUp className='grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6'>
+							{valores.map((item, i) => (
+								<div
+									key={i}
+									className='flex flex-col gap-4 p-8 lg:p-10 rounded-sm lg:rounded-md border border-green-light/20 bg-green-dark/30 backdrop-blur-sm h-full'
+								>
+
+									<p className='text-7xl sm:text-8xl lg:text-9xl font-heading font-bold text-green-light/40 self-end leading-none'>
+										{i + 1}
+									</p>
+
+									<h3 className='text-30 font-heading font-semibold md:mt-8'>
+										{item.title}
+									</h3>
+
+									<p className='text-18 leading-relaxed opacity-90'>
+										{item.text}
+									</p>
+
+								</div>
+							))}
+						</StaggerUp>
+
+					</div>
 
 				</div>
+
 			</section>
 
 			<Context showCreation={false} />
@@ -246,28 +295,31 @@ export default function SobrePage() {
 
 					</div>
 
-					<div className='grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6'>
+					<StaggerUp className='grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6'>
 						{pilares.map((item, i) => (
 							<div
 								key={i}
 								className={clsx(
 									'flex flex-col rounded-md lg:rounded-lg p-10 lg:p-[3.5vw] h-full',
-									item.dark ? 'bg-green-dark text-green-light' : 'bg-green-pale text-green-dark'
+									item.cardClass
 								)}
 							>
 
 								<div className='flex flex-col gap-6 grow'>
 
-									<Image
-										src={item.icon}
-										alt={item.name}
-										width={50}
-										height={50}
-										className={clsx(
-											'w-10 lg:w-12 h-auto',
-											item.dark && 'brightness-0 invert'
-										)}
-										loading='lazy'
+									<span
+										aria-hidden='true'
+										className={clsx('block w-10 lg:w-12 aspect-square', item.iconColor)}
+										style={{
+											maskImage: `url(${item.icon})`,
+											WebkitMaskImage: `url(${item.icon})`,
+											maskRepeat: 'no-repeat',
+											WebkitMaskRepeat: 'no-repeat',
+											maskPosition: 'center',
+											WebkitMaskPosition: 'center',
+											maskSize: 'contain',
+											WebkitMaskSize: 'contain'
+										}}
 									/>
 
 									<span className='block text-sm font-semibold uppercase tracking-wide opacity-60'>
@@ -286,7 +338,7 @@ export default function SobrePage() {
 
 								<div className='mt-10 lg:mt-12'>
 									<Button
-										style={item.dark ? 'light-2' : 'dark'}
+										style='light-2'
 										href={item.href}
 										text={item.cta}
 										icon='diagonal-arrow'
@@ -295,7 +347,7 @@ export default function SobrePage() {
 
 							</div>
 						))}
-					</div>
+					</StaggerUp>
 
 				</div>
 			</section>
@@ -327,30 +379,7 @@ export default function SobrePage() {
 						<div className='col-lg-3' />
 
 						<div className='col-lg-9'>
-							<StaggerUp className='flex flex-col'>
-								{timeline.map((item, i) => (
-									<div
-										key={i}
-										className='relative border-l border-green-dark/20 pl-8 lg:pl-12 pb-12 lg:pb-16 last:pb-0'
-									>
-
-										<span className='absolute left-0 top-2 -translate-x-1/2 w-3 h-3 rounded-full bg-green-dark' />
-
-										<p className='text-36 lg:text-60 font-heading font-bold text-green-dark leading-none'>
-											{item.year}
-										</p>
-
-										<h3 className='text-24 font-heading font-semibold mt-4 lg:mt-6'>
-											{item.title}
-										</h3>
-
-										<p className='text-18 leading-relaxed mt-3 lg:pr-[10vw]'>
-											{item.text}
-										</p>
-
-									</div>
-								))}
-							</StaggerUp>
+							<Timeline items={timeline} />
 						</div>
 
 					</div>
