@@ -20,7 +20,7 @@ import AnimatedTitle from '@/components/Utils/Animations/AnimatedTitle'
 import AnimatedText from '@/components/Utils/Animations/AnimatedText'
 import TextReveal from '@/components/Utils/Animations/TextReveal'
 
-export default function Context() {
+export default function Context({ showCreation = true }: { showCreation?: boolean }) {
 
 	const sectionRef = useRef<HTMLDivElement>(null)
     const pathRef = useRef<SVGPathElement>(null)
@@ -224,27 +224,29 @@ export default function Context() {
 				</div>
 			</section>
 
-			<section
-				id='criacao'
-				ref={pinRef}
-				className='min-h-lvh flex items-center'
-			>
-				<div className='base-container'>
-					<div className='row'>
-						<div className='col-lg-8 col-lg-push-2'>
-							<TextReveal
-								className='text-60 font-heading font-semibold text-center'
-								scrub={1.5}
-								pinSection={pinRef}
-							>
-								<h2 className='flex flex-wrap justify-center items-center gap-x-4'>
-									A Aether foi criada para atuar exatamente nessa lacuna do ecossistema científico.
-								</h2>
-							</TextReveal>
+			{showCreation && (
+				<section
+					id='criacao'
+					ref={pinRef}
+					className='min-h-lvh flex items-center'
+				>
+					<div className='base-container'>
+						<div className='row'>
+							<div className='col-lg-8 col-lg-push-2'>
+								<TextReveal
+									className='text-60 font-heading font-semibold text-center'
+									scrub={1.5}
+									pinSection={pinRef}
+								>
+									<h2 className='flex flex-wrap justify-center items-center gap-x-4'>
+										A Aether foi criada para atuar exatamente nessa lacuna do ecossistema científico.
+									</h2>
+								</TextReveal>
+							</div>
 						</div>
 					</div>
-				</div>
-			</section>
+				</section>
+			)}
 
         </div>
 	)

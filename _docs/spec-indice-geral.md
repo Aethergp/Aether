@@ -5,13 +5,13 @@
 | # | Página | Arquivo | Status |
 |---|---|---|---|
 | 1 | Home | `spec-home.md` | 🟢 fechada (CTA do hero muda; vídeo do banner mantido) |
-| 2 | `/sobre` (hub) | `spec-sobre.md` | 🟢 linha do tempo confirmada (2000 Bap Consult / 2025 rebrand + ICT / 2026 MS-EMBRAPII); falta só direção fotográfica |
+| 2 | `/sobre` (hub) | `spec-sobre.md` | ✅ **construída** (`src/app/sobre/page.tsx`) - manifesto + valores + Context + 2 pilares + linha do tempo + equipe + presença (endereços TEMPORÁRIOS, = /contato) + CTA. Fotos = placeholder; falta direção fotográfica e endereços definitivos |
 | 3 | `/sobre/aether-global-pharma` | `spec-sobre-aether-global-pharma.md` | 🟢 fechada (modelo 4 etapas: Patricia revisa no design) |
 | 4 | `/sobre/ict-aether-bio` | `spec-sobre-ict-aether-bio.md` | 🟡 ICT fundado 2025; projetos divulgáveis (MS/EMBRAPII público); comitê aguarda alinhamento jurídico c/ pesquisadores |
 | 5 | `/sobre/equipe` | `spec-sobre-equipe.md` | 🟡 página confirmada pela Patricia; aguardando foto aprovada + comitê (alinhamento jurídico) |
 | 6 | `/pd` (hub) | *(entregue anteriormente)* | ✅ pronta |
 | 7 | `/pd/trl` | *(entregue anteriormente)* | ✅ pronta |
-| 8 | `/pd/pipeline` | `spec-pd-pipeline.md` | 🟡 projeto MS/EMBRAPII é público (pode começar); detalhes técnicos/TRL e demais projetos ainda pendentes |
+| 8 | `/pd/pipeline` | `spec-pd-pipeline.md` | 🟡 projeto MS/EMBRAPII é público e **sem restrição de divulgação** (cliente, 06/2026); descrição "plataforma produtiva para IFA anti-inflamatória" **confirmada**; **não publicar estágio TRL ainda** (a partir de 2027, com +5 PIs em estágios diferentes); demais projetos ainda pendentes |
 | 9 | ~~`/pd/areas`~~ | — | ❌ **CORTADA** (decisão 11/06) — remover do menu e do sitemap |
 | 10 | `/midia` | `spec-midia.md` | 🟢 fechada (sem newsletter no lançamento; autoria institucional; posts depois) |
 | 11 | `/inscreva-seu-projeto` | `spec-inscreva-seu-projeto.md` | 🟢 fechada (nota de confidencialidade entra; "retornaremos o mais breve possível") |
@@ -43,13 +43,19 @@
 - **Endereço/telefone/e-mail:** concorda em exibir, mas depende da **negociação dos parques tecnológicos** (sede Curitiba + filial Campinas, ~2 meses). Site usa **placeholder temporário** por ora.
 - **Projetos do ICT:** o do **Ministério da Saúde / EMBRAPII é público** (link de notícias enviado); há **novas publicações no LinkedIn**. Onde não puder detalhar, focar em TRL/P&D.
 
+## Respostas da Patricia (segunda rodada, 06/2026) — projeto EMBRAPII / pipeline
+
+- **Restrição contratual de comunicação:** **não há** - pode divulgar conforme os informes que ela enviou.
+- **Estágio TRL atual no site:** **ainda não publicar.** A partir de 2027 haverá **mais 5 PIs**, em estágios diferentes - só então faz sentido expor TRLs.
+- **Descrição técnica para divulgação:** "**plataforma produtiva para IFA anti-inflamatória**" está **tecnicamente correta** e aprovada para uso.
+- *Demais perguntas do e-mail consolidado seguem sem resposta (ver "Ainda aguardando Patricia").*
+
 ## Ainda aguardando Patricia
 
-1. Restrições contratuais de comunicação / estágio TRL publicável / descrição técnica do projeto EMBRAPII (A1–A3) — necessários para detalhar `/pd/pipeline`.
-2. Ativos anonimizados adicionais para o pipeline (B1).
-3. Lista do comitê científico (nome, titulação, área, instituição + autorizações) — **após o alinhamento jurídico** que ela fará com os pesquisadores (D1).
-4. Endereço e telefone **definitivos** (E1) — após a mudança para os parques tecnológicos (~2 meses). Endereço do Canadá também a confirmar.
-5. Direção fotográfica — imagens do manual podem ser usadas no site?
+1. Ativos anonimizados adicionais para o pipeline (B1).
+2. Lista do comitê científico (nome, titulação, área, instituição + autorizações) — **após o alinhamento jurídico** que ela fará com os pesquisadores (D1).
+3. Endereço e telefone **definitivos** (E1) — após a mudança para os parques tecnológicos (~2 meses). Endereço do Canadá também a confirmar.
+4. Direção fotográfica — imagens do manual podem ser usadas no site?
 
 ## Tarefas de implementação derivadas (Flávio)
 

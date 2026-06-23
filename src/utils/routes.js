@@ -7,6 +7,12 @@ import Instagram from '@/assets/svg/social/instagram.svg'
 export const pages = {
 	home: '/',
 
+	// about (hub + entity/team subpages - subpages not built yet, constants kept for forward links)
+	sobre: '/sobre',
+	sobreAgp: '/sobre/aether-global-pharma',
+	sobreIct: '/sobre/ict-aether-bio',
+	sobreEquipe: '/sobre/equipe',
+
 	// media
 	midia: '/midia',
 
@@ -36,7 +42,7 @@ export const pages = {
 export const navLinks = [
 	{ href: pages.home, label: 'Início', home: true },
 	{ href: '#contexto', label: 'Contexto' },
-	{ href: '#sobre', label: 'Sobre' },
+	{ href: pages.sobre, label: 'Sobre' },
 	{ href: pages.midia, label: 'Mídia' },
 	{ href: pages.parceiros, label: 'Parceiros' },
 	{ href: pages.inscreva, label: 'Inscreva seu Projeto' },
@@ -46,7 +52,7 @@ export const navLinks = [
 // desktop header only - a deliberately trimmed subset (the header isn't the full
 // sitemap). edit this independently of navLinks.
 export const headerLinks = [
-	{ href: '#sobre', label: 'Sobre' },
+	{ href: pages.sobre, label: 'Sobre' },
 	{ href: pages.midia, label: 'Mídia' },
 	{ href: pages.inscreva, label: 'Inscreva seu Projeto' },
 	{ href: pages.contato, label: 'Contato' }
