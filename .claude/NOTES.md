@@ -75,15 +75,22 @@ Suggested build order: the `/sobre` **hub is built**; next are its 3 subpages (`
   + light page body just needs the route added to `darkHeader`. **Add new dark-hero routes (`/pd`, `/sobre`
   banners) to that check when built.** The page transition was reworked to the preloader-style green-block
   + spinning icon.
-- **Nav surfaces are decoupled** (`src/utils/routes.js`): **`navLinks`** = full list → mobile menu +
-  footer; **`headerLinks`** = trimmed subset → desktop header only (Sobre / Mídia / Inscreva seu Projeto /
-  Contato). Edit each independently. Footer still maps `navLinks` but is **slated to become its own
-  grouped/column array** (client wants columns; content TBD - don't restructure it yet). "Contato" →
-  `/contato`, "Mídia" → `/midia`, and "Inscreva seu Projeto" → `/inscreva-seu-projeto` are real routes;
-  the Banner/About "Entre em contato" CTAs also route to `/contato`. **"Parceiros" is now a real route**
-  (`/parceiros`) - its `navLinks` entry was flipped from `#parceiros`. The remaining home anchors
-  (Contexto/Sobre) are still `#...` (no route yet) → no-ops from a non-home page; flip each to a `/...`
-  route in `navLinks` once its page lands. The home still has its `#parceiros` section (id kept).
+- **Nav surfaces are decoupled** (`src/utils/routes.js`): **`navLinks`** → fs/mobile menu, **`headerLinks`**
+  → desktop header, **`footerColumns`** (`NavItem[][]`) → footer. Edit each independently. Sobre/P&D carry
+  `children` (`sobreChildren`/`pdChildren` consts, shared by nav+header). **Header is now Sobre / P&D / Mídia /
+  Contato — `Inscreva seu Projeto` was commented out of `headerLinks`** (lives only in the fs menu + footer
+  now). `routes.js` is **JSDoc-typed** (`@typedef NavItem`, optional `children`) so components read
+  `item.children` without TS union errors - keep the `/** @type {NavItem[]} */` annotations. **`#contexto`
+  was removed.** Subpages 404 until built (intentional). **The Menu's full mechanics (header dropdown +
+  chevron, the fs layered-reveal, item cascade, accordion, +/- toggle, right-arrow pills) are documented in
+  CLAUDE.md → Signature recipes → "The Menu" - read that before touching the menu.** Quick map of the
+  current fs-menu treatment: **3 stacked `<aside>` panels** (`green-dark`/`green-pale`/`green-light`, z-97/98/99,
+  `duration-300/400/500`) slide in at different speeds = layered curtain; each item is a **green block**
+  (`bg-green-dark/[0.07] rounded-sm`) that **cascades in** via inline `transitionDelay: i*50+150ms`; accordion
+  children are **pill-buttons** with a **right arrow** (`arrow-right.svg`, not the diagonal). **Footer dropped
+  the "Navegação" heading** (user edit) - it's just the 4 columns now + the right-aligned Conecte-se/Copyright/
+  "Voltar ao topo" block; omits Início, uses short "TRL" label. The Banner/About "Entre em contato" CTAs route
+  to `/contato`; the home still has its `#parceiros` section (id kept).
 - **Home `Contact` section is now redundant** — nothing links to the home `#contato` section anymore
   (all contact CTAs go to `/contato`). It still renders at the bottom of the home; remove/replace it in
   the home re-scope (spec-home turns it into the dual final CTA).

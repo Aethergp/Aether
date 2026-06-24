@@ -190,8 +190,9 @@ don't add it just to decorate.
 Use the **`Button` component** (`@/components/Button`) for every CTA — don't hand-roll buttons.
 
 - Props: `style: 'light' | 'light-2' | 'dark' | 'dark-2' | 'blue'`, `text`, optional `icon: 'diagonal-arrow' |
-  'close'`. With `href` it renders as a `next-transition-router` `Link` (so page transitions fire);
-  without, a `<button>`.
+  'close'`, optional `chevron` (a down-chevron appended inside the text pill that **rotates 180° on
+  `group-hover`** — used on header items that open a dropdown; needs a `group` ancestor). With `href` it
+  renders as a `next-transition-router` `Link` (so page transitions fire); without, a `<button>`.
 - **Two-segment design:** a text pill + a separate icon pill (`gap-px`), both `rounded-md`. On hover the
   text segment inverts to `bg-black text-green-light` and the icon does a scale-flip swap — a small,
   deliberate micro-interaction. `dark` = green-dark on green-light; `light` = green-light on green-dark;
@@ -247,6 +248,14 @@ page (`position: sticky`) and is uncovered as you reach the bottom: the giant Ae
 rise and scale into place (staggered, scrubbed) while a black overlay fades off so the mark lifts out of
 darkness. Treat the bottom of every page as part of the experience — full-height, branded, with the
 wordmark reveal intact. (Mechanics in [../CLAUDE.md](../CLAUDE.md) → Animations → Footer reveal.)
+
+**The fullscreen menu is a designed moment too.** Opening it isn't a single panel sliding in — **three
+stacked panels** (`green-dark` / `green-pale` / `green-light`) slide from the right at **different speeds**
+so they fan out and re-stack like layered curtains, and the menu items **cascade in** (staggered
+`transitionDelay`) inside soft green blocks rather than appearing all at once. Submenus are an accordion of
+**pill-buttons** with a `+/-` box and a plain right arrow (never the diagonal — that reads as "external
+link"). Keep this layered, choreographed feel if you rework the menu; a flat single-panel slide is a
+regression. (Mechanics in [../CLAUDE.md](../CLAUDE.md) → Animations → "The Menu".)
 
 **Hard rules for any custom GSAP you do write** (the reusable components already obey these):
 

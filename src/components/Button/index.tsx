@@ -6,6 +6,7 @@ import { Link } from 'next-transition-router'
 // svg
 import UxArrowDiagonal from '@/assets/svg/ux/arrow-diagonal.svg'
 import UxClose from '@/assets/svg/ux/close.svg'
+import UxChevronDown from '@/assets/svg/ux/chevron-down.svg'
 import UxSpinner from '@/assets/svg/ux/spinner.svg'
 
 type BaseLinkProps = ComponentProps<typeof Link>
@@ -15,6 +16,7 @@ interface BaseProps {
 	style: 'light' | 'light-2' | 'dark' | 'dark-2' | 'blue'
 	text: string
 	icon?: 'diagonal-arrow' | 'close'
+	chevron?: boolean
 }
 
 interface LinkProps
@@ -42,6 +44,7 @@ export default function Button({
 	href,
 	text,
 	icon,
+	chevron,
 	type,
 	...rest
 }: ButtonProps) {
@@ -69,6 +72,13 @@ export default function Button({
 				data-text
 			>
 				{text}
+
+				{chevron && (
+					<UxChevronDown
+						className='inline-block w-2 h-2 ml-2 transition-transform duration-200 group-hover:rotate-180'
+						data-chevron
+					/>
+				)}
 			</span>
 
 			{icon && (

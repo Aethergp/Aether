@@ -18,6 +18,7 @@ import { navLinks, headerLinks, pages } from '@/utils/routes'
 // svg
 import Logo from '@/assets/svg/logo/aether-gp.svg'
 import UxClose from '@/assets/svg/ux/close.svg'
+import UxArrowRight from '@/assets/svg/ux/arrow-right.svg'
 
 export default function Menu() {
 
@@ -30,6 +31,11 @@ export default function Menu() {
 
 	// fs menu
 	const [isOpen, setIsOpen] = useState(false)
+
+	// fs menu accordions (which parent items are expanded)
+	const [openAccordions, setOpenAccordions] = useState<number[]>([])
+	const toggleAccordion = (i: number) =>
+		setOpenAccordions(prev => prev.includes(i) ? prev.filter(n => n !== i) : [...prev, i])
 
 	useEffect(() => {
 		const viewport = document.getElementById('viewport')
@@ -85,13 +91,31 @@ export default function Menu() {
 
 							<ul className='flex items-center justify-end gap-1 max-lg:hidden'>
 								{headerLinks.map((item, i) => (
-									<li key={i}>
+									<li key={i} className='relative group'>
 										<Button
 											href={item.href}
 											text={item.label}
 											style='dark'
+											chevron={!!item.children}
 											onClick={item.href.startsWith('/') ? undefined : (e) => scrollTo(e, item.href)}
 										/>
+
+										{item.children && (
+											<div className='absolute top-full right-0 pt-2 opacity-0 invisible translate-y-1 transition-all duration-200 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 z-10'>
+												<ul className='flex flex-col gap-1 bg-green-pale rounded-md p-2 min-w-60'>
+													{item.children.map((child, j) => (
+														<li key={j}>
+															<Link
+																href={child.href}
+																className='block px-4 py-2.5 rounded-sm text-green-dark whitespace-nowrap transition-colors duration-200 hover:bg-green-dark hover:text-green-light'
+															>
+																{child.label}
+															</Link>
+														</li>
+													))}
+												</ul>
+											</div>
+										)}
 									</li>
 								))}
 							</ul>
@@ -113,11 +137,21 @@ export default function Menu() {
 			</header>
 
 			<aside className={clsx(
-				'fixed z-99 top-0 right-0 w-180 max-w-full h-full bg-green-light translate-x-[120%] transition-transform duration-500 ease-in-out',
+				'fixed z-97 top-0 right-0 w-180 max-w-full h-full bg-green-dark translate-x-[120%] transition-transform duration-300 ease-in-out flex flex-col',
+				isOpen && 'translate-x-0!'
+			)} />
+
+			<aside className={clsx(
+				'fixed z-98 top-0 right-0 w-180 max-w-full h-full bg-green-pale translate-x-[120%] transition-transform duration-400 ease-in-out flex flex-col',
+				isOpen && 'translate-x-0!'
+			)} />
+
+			<aside className={clsx(
+				'fixed z-99 top-0 right-0 w-180 max-w-full h-full bg-green-light translate-x-[120%] transition-transform duration-500 ease-in-out flex flex-col',
 				isOpen && 'translate-x-0!'
 			)}>
 
-				<div className='flex items-center justify-between gap-4 p-6 sm:p-10'>
+				<div className='flex items-center justify-between gap-4 p-6 sm:p-10 shrink-0'>
 
 					<Link
 						href='/'
@@ -136,25 +170,80 @@ export default function Menu() {
 
 				</div>
 
-				<ul className='flex flex-col gap-4 p-6 sm:p-10'>
-					{navLinks.map((item, i) => (
-						<li key={i}>
-							<Link
-								href={item.href}
-								onClick={(e) => {
-									if (item.href.startsWith('#')) {
-										scrollTo(e, item.href)
-									} else if (item.home && pathname === pages.home) {
-										scrollTo(e, '#banner')
-									}
-									setIsOpen(false)
+				<ul className='flex flex-col gap-1 p-6 sm:p-10 pt-0 sm:pt-0 flex-1 overflow-y-auto'>
+					{navLinks.map((item, i) => {
+						const open = openAccordions.includes(i)
+
+						return (
+							<li
+								key={i}
+								className={clsx(
+									'bg-green-dark/[0.07] px-4 rounded-sm transition-all duration-300 ease-in-out translate-x-30 opacity-0',
+									isOpen && 'translate-x-0! opacity-100!'
+								)}
+								style={{
+									transitionDelay: `${i * 50 + 150}ms`
+				
 								}}
-								className='text-60 font-heading font-semibold transition-all duration-200 hover:translate-x-2 block w-fit'
 							>
-								{item.label}
-							</Link>
-						</li>
-					))}
+								<div className='flex items-center justify-between gap-4'>
+									<Link
+										href={item.href}
+										onClick={(e) => {
+											if (item.href.startsWith('#')) {
+												scrollTo(e, item.href)
+											} else if (item.home && pathname === pages.home) {
+												scrollTo(e, '#banner')
+											}
+											setIsOpen(false)
+										}}
+										className='text-30 font-heading font-semibold transition-all duration-200 hover:translate-x-2 block w-full py-4'
+									>
+										{item.label}
+									</Link>
+
+									{item.children && (
+										<button
+											type='button'
+											onClick={() => toggleAccordion(i)}
+											aria-expanded={open}
+											aria-label={`${open ? 'Recolher' : 'Expandir'} ${item.label}`}
+											className='shrink-0 relative w-10 h-10 rounded-xs bg-green-dark text-green-light flex items-center justify-center cursor-pointer transition-colors duration-200 hover:bg-black'
+										>
+											<span className='absolute w-3 h-px rounded-full bg-current' />
+											<span className={clsx(
+												'absolute h-3 w-px rounded-full bg-current transition-transform duration-300',
+												open && 'scale-y-0'
+											)} />
+										</button>
+									)}
+								</div>
+
+								{item.children && (
+									<div className={clsx(
+										'grid transition-all duration-300 ease-in-out',
+										open ? 'grid-rows-[1fr] opacity-100 mt-3' : 'grid-rows-[0fr] opacity-0'
+									)}>
+										<ul className='flex flex-col gap-2 overflow-hidden [&>li:last-child]:pb-4'>
+					
+											{item.children.map((child, j) => (
+												<li key={j}>
+													<Link
+														href={child.href}
+														onClick={() => setIsOpen(false)}
+														className='group/sub flex items-center justify-between gap-4 bg-green-dark/[0.07] rounded-md px-5 py-3.5 text-18 font-heading font-medium text-green-dark transition-colors duration-200 hover:bg-green-dark hover:text-green-light'
+													>
+														{child.label}
+														<UxArrowRight className='w-3 h-3 shrink-0 opacity-70 transition-transform duration-200 group-hover/sub:translate-x-1' />
+													</Link>
+												</li>
+											))}
+										</ul>
+									</div>
+								)}
+							</li>
+						)
+					})}
 				</ul>
 
 			</aside>

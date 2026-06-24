@@ -7,13 +7,11 @@ import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
 
 // utils
-import { social, navLinks, pages } from '@/utils/routes'
+import { social, footerColumns } from '@/utils/routes'
 import { getYear } from '@/utils/functions'
-import { useAnchorScroll } from '@/hooks/useAnchorScroll'
 
 export default function Footer() {
 
-	const scrollTo = useAnchorScroll()
 	const pathname = usePathname()
 
 	useGSAP(() => {
@@ -66,7 +64,7 @@ export default function Footer() {
 
 	return (
 		<footer
-			className='sticky overflow-hidden z-0 bg-green-dark min-h-lvh bottom-0 left-0 w-full pt-8 sm:pt-12'
+			className='sticky overflow-hidden z-0 bg-green-dark min-h-lvh bottom-0 left-0 w-full pt-8 sm:pt-12 lg:pt-[5vw]'
 			data-main-footer
 		>
 			<aside
@@ -77,93 +75,90 @@ export default function Footer() {
 			<div className='base-container relative z-1 text-green-light text-lg'>
 				<div className='row'>
 
-					<div className='col-sm-6 col-md-4 col-lg-3'>
-						<ul className='flex flex-col gap-1'>
+					<div className='col-lg-8 col-xl-9'>
+						<div className='row'>
+							{footerColumns.map((col, i) => (
+								<div
+									key={i}
+									className='col-6 col-md-3 mb-8 md:mb-0'
+								>
+									<ul className='flex flex-col gap-3'>
+										{col.map((item, j) => (
+											<li key={j}>
+												<Link
+													href={item.href}
+													className='hover-underline'
+												>
+													{item.label}
+												</Link>
 
-							<li>
-								<p className='block mb-2'>
-									<b>
-										Navegação
-									</b>
-								</p>
-							</li>
-
-							{navLinks.map((item, i) => (
-								<li key={i}>
-									<Link
-										href={item.href}
-										className='hover-underline'
-										onClick={(e) => {
-											if (item.href.startsWith('#')) {
-												scrollTo(e, item.href)
-											} else if (item.home && pathname === pages.home) {
-												scrollTo(e, '#banner')
-											}
-										}}
-									>
-										{item.label}
-									</Link>
-								</li>
+												{item.children && (
+													<ul className='flex flex-col gap-1 mt-2 text-base opacity-70'>
+														{item.children.map((child, k) => (
+															<li key={k}>
+																<Link
+																	href={child.href}
+																	className='hover-underline'
+																>
+																	{child.label}
+																</Link>
+															</li>
+														))}
+													</ul>
+												)}
+											</li>
+										))}
+									</ul>
+								</div>
 							))}
-						</ul>
+						</div>
+
 					</div>
 
-					<div className='col-sm-6 col-md-4 col-lg-3 mt-8 sm:mt-0'>
-						<ul className='flex flex-col gap-1'>
+					<div className='col-lg-4 col-xl-3 flex flex-col md:items-end md:text-right mt-12 lg:mt-0'>
 
-							<li>
-								<p className='block mb-2'>
-									<b>
-										Conecte-se
-									</b>
-								</p>
-							</li>
+						<div className='flex flex-col gap-1 md:items-end'>
+							<p className='block mb-2'>
+								<b>
+									Conecte-se
+								</b>
+							</p>
 
-							{[
-								{
-									href: social.instagram,
-									label: 'Instagram'
-								}
-							].map((item, i) => (
-								<li key={i}>
-									<Link
-										href={item.href}
-										target='_blank'
-										rel='noopener noreferrer'
-										className='hover-underline'
-									>
-										{item.label}
-										<svg
-											width='20'
-											height='20'
-											viewBox='0 0 20 20'
-											xmlns='http://www.w3.org/2000/svg'
-											className='inline-block w-2 h-2 ml-2 -translate-y-1'
-										>
-											<path
-												d='M0 17V6C0 5.20435 0.316297 4.44152 0.878906 3.87891C1.44152 3.3163 2.20435 3 3 3H9C9.55229 3 10 3.44772 10 4C10 4.55228 9.55229 5 9 5H3C2.73478 5 2.4805 5.10543 2.29297 5.29297C2.10543 5.4805 2 5.73478 2 6V17C2 17.2652 2.10543 17.5195 2.29297 17.707C2.48051 17.8946 2.73478 18 3 18H14C14.2652 18 14.5195 17.8946 14.707 17.707C14.8946 17.5195 15 17.2652 15 17V11C15 10.4477 15.4477 10 16 10C16.5523 10 17 10.4477 17 11V17C17 17.7957 16.6837 18.5585 16.1211 19.1211C15.5585 19.6837 14.7957 20 14 20H3C2.20435 20 1.44152 19.6837 0.878906 19.1211C0.316297 18.5585 0 17.7957 0 17ZM20 7C20 7.55228 19.5523 8 19 8C18.4477 8 18 7.55228 18 7V3.41406L8.70703 12.707C8.31651 13.0976 7.68349 13.0976 7.29297 12.707C6.90244 12.3165 6.90244 11.6835 7.29297 11.293L16.5859 2H13C12.4477 2 12 1.55228 12 1C12 0.447715 12.4477 0 13 0H19C19.5523 0 20 0.447715 20 1V7Z'
-												fill='currentColor'
-												className='origin-bottom'
-											/>
-										</svg>
-									</Link>
-								</li>
-							))}
-							</ul>
-					</div>
+							<Link
+								href={social.instagram}
+								target='_blank'
+								rel='noopener noreferrer'
+								className='hover-underline w-fit'
+							>
+								Instagram
+								<svg
+									width='20'
+									height='20'
+									viewBox='0 0 20 20'
+									xmlns='http://www.w3.org/2000/svg'
+									className='inline-block w-2 h-2 ml-2 -translate-y-1'
+								>
+									<path
+										d='M0 17V6C0 5.20435 0.316297 4.44152 0.878906 3.87891C1.44152 3.3163 2.20435 3 3 3H9C9.55229 3 10 3.44772 10 4C10 4.55228 9.55229 5 9 5H3C2.73478 5 2.4805 5.10543 2.29297 5.29297C2.10543 5.4805 2 5.73478 2 6V17C2 17.2652 2.10543 17.5195 2.29297 17.707C2.48051 17.8946 2.73478 18 3 18H14C14.2652 18 14.5195 17.8946 14.707 17.707C14.8946 17.5195 15 17.2652 15 17V11C15 10.4477 15.4477 10 16 10C16.5523 10 17 10.4477 17 11V17C17 17.7957 16.6837 18.5585 16.1211 19.1211C15.5585 19.6837 14.7957 20 14 20H3C2.20435 20 1.44152 19.6837 0.878906 19.1211C0.316297 18.5585 0 17.7957 0 17ZM20 7C20 7.55228 19.5523 8 19 8C18.4477 8 18 7.55228 18 7V3.41406L8.70703 12.707C8.31651 13.0976 7.68349 13.0976 7.29297 12.707C6.90244 12.3165 6.90244 11.6835 7.29297 11.293L16.5859 2H13C12.4477 2 12 1.55228 12 1C12 0.447715 12.4477 0 13 0H19C19.5523 0 20 0.447715 20 1V7Z'
+										fill='currentColor'
+										className='origin-bottom'
+									/>
+								</svg>
+							</Link>
+						</div>
 
-					<div className='col-md-4 col-lg-6 flex flex-col gap-2 md:items-end md:text-right mt-8 md:mt-0'>
+						<div className='flex flex-col gap-2 mt-10 md:items-end'>
+							<p>
+								Copyright Aether © {year}
+							</p>
 
-						<p>
-							Copyright Aether © {year}
-						</p>
-
-						<button
-							onClick={(e) => scrollToTop(e as unknown as React.MouseEvent<HTMLAnchorElement>)}
-							className='hover-underline-alt hover-underline-alt--light cursor-pointer'
-						>
-							Voltar ao topo
-						</button>
+							<button
+								onClick={(e) => scrollToTop(e as unknown as React.MouseEvent<HTMLAnchorElement>)}
+								className='hover-underline-alt hover-underline-alt--light cursor-pointer w-fit'
+							>
+								Voltar ao topo
+							</button>
+						</div>
 
 					</div>
 				</div>
