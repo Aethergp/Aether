@@ -12,7 +12,7 @@ type BaseLinkProps = ComponentProps<typeof Link>
 
 interface BaseProps {
 	className?: string
-	style: 'light' | 'light-2' | 'dark' | 'dark-2'
+	style: 'light' | 'light-2' | 'dark' | 'dark-2' | 'blue'
 	text: string
 	icon?: 'diagonal-arrow' | 'close'
 }
@@ -53,7 +53,8 @@ export default function Button({
 		style === 'dark' && 'hover:**:data-text:text-green-light hover:**:data-text:bg-black',
 		style === 'dark-2' && 'hover:**:data-text:text-green-light hover:**:data-text:bg-black hover:**:data-icon-hover:bg-black',
 		style === 'light' && 'hover:**:data-text:text-green-light hover:**:data-text:bg-black',
-		style === 'light-2' && 'hover:**:data-text:text-green-light hover:**:data-text:bg-black hover:**:data-icon-hover:bg-black'
+		style === 'light-2' && 'hover:**:data-text:text-green-light hover:**:data-text:bg-black hover:**:data-icon-hover:bg-black',
+		style === 'blue' && 'hover:**:data-text:text-ciano hover:**:data-text:bg-safira hover:**:data-icon-hover:bg-safira'
 	)
 
 	const content = (
@@ -62,7 +63,8 @@ export default function Button({
 				className={clsx(
 					'py-4 px-6 transition-colors duration-200 rounded-md flex items-center justify-center leading-none',
 					(style === 'dark' || style === 'dark-2') && 'bg-green-dark text-green-light',
-					(style === 'light' || style === 'light-2') && 'bg-green-light text-green-dark'
+					(style === 'light' || style === 'light-2') && 'bg-green-light text-green-dark',
+					style === 'blue' && 'bg-ciano text-safira'
 				)}
 				data-text
 			>
@@ -76,7 +78,8 @@ export default function Button({
 						className={clsx(
 							'h-full px-6 transition-all duration-200 rounded-md flex items-center justify-center leading-none relative z-1 origin-top-right',
 							(style === 'dark' || style === 'dark-2') && 'bg-green-dark text-green-light',
-							(style === 'light' || style === 'light-2') && 'bg-green-light text-green-dark'
+							(style === 'light' || style === 'light-2') && 'bg-green-light text-green-dark',
+							style === 'blue' && 'bg-ciano text-safira'
 						)}
 						data-icon
 					>
@@ -111,7 +114,8 @@ export default function Button({
 							'h-full px-6 transition-all duration-200 rounded-md flex items-center justify-center leading-none absolute bottom-0 left-0 z-0 origin-bottom-left scale-0',
 							style === 'dark' && 'bg-green-light text-green-dark',
 							style === 'dark-2' && 'bg-green-dark text-green-light',
-							(style === 'light' || style === 'light-2') && 'bg-green-dark text-green-light'
+							(style === 'light' || style === 'light-2') && 'bg-green-dark text-green-light',
+							style === 'blue' && 'bg-safira text-ciano'
 						)}
 						data-icon-hover
 					>

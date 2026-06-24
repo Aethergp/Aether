@@ -115,7 +115,8 @@ const pilares = [
 		text: 'A holding privada que dá nome à plataforma - responsável pela estratégia comercial, parcerias industriais, licenciamento de tecnologias e inserção dos ativos no mercado farmacêutico global.',
 		href: pages.sobreAgp,
 		cta: 'Conhecer a AGP',
-		cardClass: 'bg-green-dark text-green-light'
+		cardClass: 'bg-green-dark text-green-light',
+		buttonStyle: 'light-2' as const
 	},
 	{
 		eyebrow: 'instituto científico',
@@ -125,7 +126,8 @@ const pilares = [
 		text: 'O instituto de ciência, tecnologia e inovação da plataforma - uma organização sem fins lucrativos que conduz cada projeto da validação técnica à maturação de TRL, com governança independente e comitê científico especializado.',
 		href: pages.sobreIct,
 		cta: 'Conhecer o Bio+',
-		cardClass: 'bg-linear-to-br from-ict-safira to-ict-azul text-white'
+		cardClass: 'bg-linear-to-br from-safira to-sereno text-white',
+		buttonStyle: 'blue' as const
 	}
 ]
 
@@ -338,7 +340,7 @@ export default function SobrePage() {
 
 								<div className='mt-10 lg:mt-12'>
 									<Button
-										style='light-2'
+										style={item.buttonStyle}
 										href={item.href}
 										text={item.cta}
 										icon='diagonal-arrow'

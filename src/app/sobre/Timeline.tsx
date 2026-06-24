@@ -28,42 +28,40 @@ export default function Timeline({ items }: { items: Item[] }) {
 		const fill = fillRef.current
 		if (!root || !fill) return
 
-		// the line paints green from top to bottom as you scroll through the section
-		gsap.fromTo(fill,
-			{ scaleY: 0 },
-			{
-				scaleY: 1,
-				ease: 'none',
-				scrollTrigger: {
-					scroller,
-					trigger: root,
-					start: 'top 65%',
-					end: 'bottom 65%',
-					scrub: true
-				}
-			}
-		)
-
-		// each node "lights up" to a lighter green as the line reaches it
 		const nodes = gsap.utils.toArray<HTMLElement>('[data-node]', root)
-		nodes.forEach(node => {
-			ScrollTrigger.create({
-				scroller,
-				trigger: node,
-				start: 'top 60%',
-				onEnter: () => gsap.to(node, {
-					backgroundColor: 'var(--color-green-light)',
-					boxShadow: '0 0 0 6px color-mix(in srgb, var(--color-green-light) 30%, transparent)',
-					duration: 0.45,
-					ease: 'power2.out'
-				}),
-				onLeaveBack: () => gsap.to(node, {
-					backgroundColor: 'color-mix(in srgb, var(--color-green-dark) 25%, transparent)',
-					boxShadow: '0 0 0 0px color-mix(in srgb, var(--color-green-light) 0%, transparent)',
-					duration: 0.3,
-					ease: 'power2.out'
-				})
+
+		const setLit = (node: HTMLElement, lit: boolean) => {
+			if ((node.dataset.lit === '1') === lit) return
+			node.dataset.lit = lit ? '1' : '0'
+			gsap.to(node, {
+				backgroundColor: lit ? 'var(--color-green-light)' : 'color-mix(in srgb, var(--color-green-dark) 25%, transparent)',
+				boxShadow: lit ? '0 0 0 6px color-mix(in srgb, var(--color-green-light) 30%, transparent)' : '0 0 0 0px color-mix(in srgb, var(--color-green-light) 0%, transparent)',
+				duration: lit ? 0.35 : 0.25,
+				ease: 'power2.out'
 			})
+		}
+
+		// one scrubbed trigger drives BOTH the line fill and the node lighting from the
+		// same scroll progress, so each node lights at the exact moment the painted line
+		// reaches its center (no independent per-node trigger lagging behind)
+		ScrollTrigger.create({
+			scroller,
+			trigger: root,
+			start: 'top 65%',
+			end: 'bottom 65%',
+			scrub: true,
+			onUpdate: self => {
+				const p = self.progress
+				gsap.set(fill, { scaleY: p })
+
+				const filledPx = root.offsetHeight * p
+				const rootTop = root.getBoundingClientRect().top
+				nodes.forEach(node => {
+					const r = node.getBoundingClientRect()
+					const center = r.top - rootTop + r.height / 2
+					setLit(node, filledPx >= center)
+				})
+			}
 		})
 	}, { scope: rootRef })
 

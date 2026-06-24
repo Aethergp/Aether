@@ -109,14 +109,17 @@ deep green, cards/pill groups are `green-pale`. Reserve `green-light` as a spotl
 - `green-pale` card → `green-dark` text, an oversized `green-light` number as the accent.
 - `pure-white` cell (logo grid) → monochrome logo (`brightness-0`), `gray-lighter/25` border → `green-dark` on hover.
 
-**Brand manual & the Bio+ palette.** The olive-green tokens above are what's *implemented and live* —
-treat them as canonical for the main brand. But the brand manual and identity PDFs in `_docs/original/`
-are the ultimate source for color/type/photography, and some content specs reference manual color
-*names* that aren't in the theme yet (Bordeaux / Verde Citron / Crème for the main brand; **Safira
-`#01083A` / Azul Sereno `#323F70`** for the ICT). The **`/sobre/ict-aether-bio` page (and Bio+ accents
-on `/pd`) deliberately introduce the Safira/Azul Sereno palette** to signal you've entered the
-institute's territory without leaving the site — add those as theme tokens when you build that page, and
-confirm the brand-name → token mapping against the manual before using a name you don't see in `theme.pcss`.
+**Brand manual & the full palette.** The olive-green tokens above are what's *implemented and live* —
+treat them as canonical for the main brand. The client confirmed the **full brand palette** (swatch image):
+AGP = Crème / Citron / Olive · Beige / Bordeaux / Brulé · Ciano / Sereno / Safira; **AetherBio+** is shown
+as a multi-colour *degradê* (gradient of the base tones). The live greens map to it: **`green-dark` = Olive,
+`green-light` = Citron**. These are now **theme tokens** (`theme.pcss` "Brand palette"): `creme`/`citron`/
+`olive`/`beige`/`bordeaux`/`brule`/`ciano`/`sereno`/`safira` → use them as utilities (`bg-bordeaux`,
+`from-safira to-sereno`). **`safira`/`sereno` are exact; `creme`/`beige`/`bordeaux`/`brule`/`ciano` are
+ESTIMATED from the swatch and flagged `/* confirm */`** - verify exact hexes before relying on them. The
+**`/sobre/ict-aether-bio` page (and Bio+ accents on `/pd`) use the Safira/Sereno (Bio+) tones** to signal
+you've entered the institute's territory; the Bio+ degradê is a natural background there (e.g. a `<Grainient>`
+with the Bio+ palette, mirroring the AGP green grainient on `/sobre`).
 
 ## Depth & layering
 
@@ -137,6 +140,11 @@ Sections read rich because something lives behind the content — never a flat f
   arc bows into view — a visible endpoint sitting inside the page reads as a bug, not a gesture.
 - **Tinted video** for the hero only: muted/looping/`playsInline`, with a `from-green-dark/75` gradient
   over it so it reads as brand surface, and a slow scale-in/fade tied to a pinned ScrollTrigger.
+- **Animated `Grainient` gradient field** as a living brand background (the `/sobre` hero+valores). A warping,
+  grainy WebGL color-field in the brand palette — calmer and more "alive" than a flat dark band, a sibling to
+  the green stroke as a depth device. Lay it `absolute/fixed inset-0 z-0` behind content, add a **uniform**
+  dark tint over the whole shared section for text legibility (never a per-block scrim — it seams; see Gotchas),
+  and keep one continuous field across the sections it backs. Greens for AGP surfaces, Safira/Sereno for Bio+.
 - **Gradient-scrim background image on dark sections** — a `bg-green-dark` band should rarely be a *flat*
   fill. Float a faint photo behind the copy and fade it into the solid green so only a texture remains.
   The recipe (`/parceiros` hero is the reference): an `absolute z-0 top-0 left-0 w-full h-3/4 opacity-50`
@@ -181,7 +189,7 @@ don't add it just to decorate.
 
 Use the **`Button` component** (`@/components/Button`) for every CTA — don't hand-roll buttons.
 
-- Props: `style: 'light' | 'light-2' | 'dark' | 'dark-2'`, `text`, optional `icon: 'diagonal-arrow' |
+- Props: `style: 'light' | 'light-2' | 'dark' | 'dark-2' | 'blue'`, `text`, optional `icon: 'diagonal-arrow' |
   'close'`. With `href` it renders as a `next-transition-router` `Link` (so page transitions fire);
   without, a `<button>`.
 - **Two-segment design:** a text pill + a separate icon pill (`gap-px`), both `rounded-md`. On hover the
@@ -193,6 +201,10 @@ Use the **`Button` component** (`@/components/Button`) for every CTA — don't h
   hover *together with* the text pill — without it the icon segment keeps its base color and the hover
   reads half-finished against the surface. Use `light-2` for a light button on a dark box (the `/parceiros`
   "Seja um parceiro" CTA); plain `light`/`dark` are fine on the white page surface.
+- **`blue` is the Bio+/ICT variant** (same two-segment mechanic as `light-2`, but in the brand blues
+  instead of going black): `bg-ciano text-safira` → on hover `bg-safira text-ciano` (light blue → dark
+  blue). Use it for CTAs sitting on the Bio+ `safira`/`sereno` surface (the `/sobre` ICT pillar card),
+  the blue counterpart to the green `light-2`.
 - For in-page anchors, pair it with the `useAnchorScroll` hook (`onClick={(e) => scrollTo(e, '#id')}`)
   so it animates `#viewport` rather than jumping. For forms use `Submit` (shows a spinner while sending).
 - Wrap prominent buttons/logos in `MagneticButton` for the desktop magnetic-hover follow (the menu and
@@ -221,6 +233,7 @@ existing reusable components** (`src/components/Utils/Animations/`):
 | `Video` | Plays/pauses as it scrolls in/out of view | Inline supporting video |
 | `Marquee` | Seamless infinite logo strip (`reverse` to flip) | Trusted-by / partner logo bands |
 | `StrokePath` | The signature green line that **draws along its path on scroll** | At least one per page (see Depth) |
+| `Grainient` | Animated **WebGL grainy gradient** field (`ogl`); all look prop-driven, green or Bio+ palettes | A living brand background behind a hero/section (see Depth) |
 
 **When to reach for which:** titles always get `AnimatedTitle` (the fill is the section's "arrival"); a
 title's lead/eyebrow and body paragraphs get `AnimatedText` (or `TextReveal` for a heavier statement
