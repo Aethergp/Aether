@@ -1,6 +1,5 @@
 // libraries
 import type { Metadata } from 'next'
-import { Link } from 'next-transition-router'
 import Image from 'next/image'
 
 // components
@@ -10,22 +9,16 @@ import StaggerUp from '@/components/Utils/Animations/StaggerUp'
 import ScrollingImage from '@/components/Utils/Animations/ScrollingImage'
 import Button from '@/components/Button'
 import Committee from './Committee'
-
-// utils
-import { pages } from '@/utils/routes'
+import ContactBanner from '@/components/ContactBanner'
 
 // img - placeholders (swap for approved photos later)
 import portrait from '@/assets/img/patricia.png'
-import abstract from '@/assets/img/abstract.jpg'
 import member1 from '@/assets/img/team/member-1.jpg'
 import member2 from '@/assets/img/team/member-2.jpg'
 import member3 from '@/assets/img/team/member-3.jpg'
 import member4 from '@/assets/img/team/member-4.jpg'
 import member5 from '@/assets/img/team/member-5.jpg'
 import member6 from '@/assets/img/team/member-6.jpg'
-
-// svg
-import Linkedin from '@/assets/svg/social/linkedin.svg'
 
 export const metadata: Metadata = {
 	title: 'Equipe - Lideranças e comitê científico | Aether Global Pharma',
@@ -142,15 +135,17 @@ export default function EquipePage() {
 									/>
 								</ScrollingImage>
 
-								<a
-									href='https://www.linkedin.com/in/patricia-p-oliveira/'
-									target='_blank'
-									rel='noopener noreferrer'
-									aria-label='Perfil de Patricia P. Oliveira no LinkedIn'
-									className='absolute z-2 bottom-4 left-4 lg:bottom-6 lg:left-6 flex items-center justify-center w-14 h-14 lg:w-16 lg:h-16 rounded-md bg-green-dark text-green-light transition-colors duration-300 hover:bg-black'
-								>
-									<Linkedin className='w-6 h-6 lg:w-7 lg:h-7' />
-								</a>
+								<div className='absolute z-2 bottom-4 left-4 lg:bottom-6 lg:left-6'>
+									<Button
+										style='light'
+										href='https://www.linkedin.com/in/patricia-p-oliveira/'
+										text='LinkedIn'
+										icon='linkedin'
+										target='_blank'
+										rel='noopener noreferrer'
+										aria-label='Perfil de Patricia P. Oliveira no LinkedIn'
+									/>
+								</div>
 
 							</div>
 						</div>
@@ -229,59 +224,7 @@ export default function EquipePage() {
 				</div>
 			</section>
 
-			<section className='bg-green-pale pb-20 lg:pb-[10vw]'>
-				<div className='base-container'>
-
-					<div className='relative overflow-hidden bg-green-dark text-green-light rounded-md lg:rounded-lg px-10 py-16 md:p-16 lg:p-[6vw] text-center'>
-
-						<div className='absolute inset-0 z-0 opacity-25'>
-							<Image
-								src={abstract}
-								alt=''
-								aria-hidden='true'
-								fill
-								className='cover'
-								sizes='100vw'
-							/>
-							<div className='absolute inset-0 bg-linear-to-t from-green-dark via-green-dark/70 to-green-dark/40' />
-						</div>
-
-						<div className='row relative z-2'>
-							<div className='col-lg-8 offset-lg-2'>
-
-								<h2 className='text-60 font-heading font-semibold leading-[1.05]!'>
-									<AnimatedText text='Quer trabalhar com a gente ou propor uma colaboração?' />
-								</h2>
-
-								<p className='text-20 mt-6 lg:mt-8 opacity-90'>
-									Buscamos pesquisadores, especialistas e parceiros que compartilhem o compromisso de transformar ciência em soluções com impacto global. Fale com a nossa equipe e vamos explorar caminhos juntos.
-								</p>
-
-								<div className='flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8 mt-10 lg:mt-12'>
-
-									<Button
-										style='light-2'
-										href={pages.contato}
-										text='Entre em contato'
-										icon='diagonal-arrow'
-									/>
-
-									<Link
-										href={pages.inscreva}
-										className='hover-underline-alt hover-underline-alt--light font-heading font-semibold cursor-pointer'
-									>
-										Inscreva seu projeto
-									</Link>
-
-								</div>
-
-							</div>
-						</div>
-
-					</div>
-
-				</div>
-			</section>
+			<ContactBanner className='bg-green-pale pb-20 lg:pb-[10vw]' />
 
 		</div>
 	)

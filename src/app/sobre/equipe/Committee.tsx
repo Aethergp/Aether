@@ -93,43 +93,43 @@ export default function Committee({ members }: Props) {
 				{member && (
 					<div
 						onClick={e => e.stopPropagation()}
-						className='relative z-2 bg-white rounded-md w-180 max-w-full max-h-[88vh] overflow-y-auto'
+						className='relative z-2 bg-white rounded-md lg:rounded-lg w-[80vw] max-w-[1500px] max-h-[88vh] overflow-y-auto'
 					>
 						<button
 							type='button'
 							onClick={() => setSelected(null)}
 							aria-label='Fechar'
-							className='absolute z-2 top-4 right-4 md:top-6 md:right-6 flex items-center justify-center w-5 h-5 cursor-pointer hover:rotate-180 transition-transform duration-300'
+							className='absolute z-2 top-5 right-5 md:top-8 md:right-8 flex items-center justify-center w-6 h-6 cursor-pointer hover:rotate-180 transition-transform duration-300'
 						>
 							<UxClose className='w-full h-full' />
 						</button>
 
 						<div className='grid md:grid-cols-2'>
 
-							<div className='relative aspect-square md:aspect-auto md:min-h-90'>
+							<div className='relative aspect-square md:aspect-auto md:min-h-[65vh]'>
 								<Image
 									src={member.photo}
 									alt={member.name}
 									fill
 									style={{ objectPosition: 'center 18%' }}
 									className='cover'
-									sizes='(max-width: 768px) 100vw, 50vw'
+									sizes='(max-width: 768px) 80vw, 40vw'
 								/>
 							</div>
 
-							<div className='p-8 md:p-10'>
+							<div className='flex flex-col justify-center p-10 md:p-14 lg:p-[4vw]'>
 
-								<h3 className='text-30 font-heading font-semibold text-green-dark/70'>
+								<h3 className='text-40 lg:text-60 font-heading font-semibold text-green-dark/70 leading-[1.05]!'>
 									{member.name}
 								</h3>
 
-								<div className='flex flex-col gap-1 mt-4 text-16'>
+								<div className='flex flex-col gap-2 mt-6 lg:mt-8 text-18'>
 									<span><span className='opacity-50'>Titulação:</span> {member.titulacao}</span>
 									<span><span className='opacity-50'>Área:</span> {member.area}</span>
 									<span><span className='opacity-50'>Instituição:</span> {member.instituicao}</span>
 								</div>
 
-								<p className='text-16 leading-relaxed mt-6 opacity-80'>
+								<p className='text-18 leading-relaxed mt-8 lg:mt-10 opacity-80 lg:pr-[2vw]'>
 									{member.bio}
 								</p>
 

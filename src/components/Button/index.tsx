@@ -8,6 +8,7 @@ import UxArrowDiagonal from '@/assets/svg/ux/arrow-diagonal.svg'
 import UxClose from '@/assets/svg/ux/close.svg'
 import UxChevronDown from '@/assets/svg/ux/chevron-down.svg'
 import UxSpinner from '@/assets/svg/ux/spinner.svg'
+import Linkedin from '@/assets/svg/social/linkedin.svg'
 
 type BaseLinkProps = ComponentProps<typeof Link>
 
@@ -15,7 +16,7 @@ interface BaseProps {
 	className?: string
 	style: 'light' | 'light-2' | 'dark' | 'dark-2' | 'blue'
 	text: string
-	icon?: 'diagonal-arrow' | 'close'
+	icon?: 'diagonal-arrow' | 'close' | 'linkedin'
 	chevron?: boolean
 }
 
@@ -108,6 +109,13 @@ export default function Button({
                             />
 						)}
 
+						{icon === 'linkedin' && (
+							<Linkedin
+                                className='w-3 h-3 text-current'
+                                data-regular-icon
+                            />
+						)}
+
                         {type === 'submit' && (
                             <span
                                 className='absolute inset-0 z-2 opacity-0 flex items-center justify-center'
@@ -144,6 +152,13 @@ export default function Button({
                             />
 						)}
 
+						{icon === 'linkedin' && (
+							<Linkedin
+                                className='w-3 h-3 text-current'
+                                data-regular-icon
+                            />
+						)}
+
                         {type === 'submit' && (
                             <span
                                 className='absolute inset-0 z-2 opacity-0 flex items-center justify-center'
@@ -162,6 +177,21 @@ export default function Button({
 
 	if (href) {
 		const { type: _, ...linkRest } = rest as any
+
+		const isExternal = /^(https?:|mailto:|tel:)/.test(href)
+
+		if (isExternal) {
+			return (
+				<a
+					href={href}
+					className={classes}
+					{...linkRest}
+				>
+					{content}
+				</a>
+			)
+		}
+
 		return (
 			<Link
 				href={href}

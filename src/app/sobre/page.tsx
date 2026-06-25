@@ -1,6 +1,5 @@
 // libraries
 import type { Metadata } from 'next'
-import { Link } from 'next-transition-router'
 import clsx from 'clsx'
 import Image from 'next/image'
 
@@ -13,13 +12,13 @@ import AnimatedTitle from '@/components/Utils/Animations/AnimatedTitle'
 import StaggerUp from '@/components/Utils/Animations/StaggerUp'
 import ScrollingImage from '@/components/Utils/Animations/ScrollingImage'
 import Button from '@/components/Button'
+import ContactBanner from '@/components/ContactBanner'
 
 // utils
 import { pages } from '@/utils/routes'
 
-// img - placeholders, to be swapped for the brand's photographic direction
+// img
 import scientists from '@/assets/img/scientists.jpg'
-import abstract from '@/assets/img/abstract.jpg'
 
 // metadata
 export const metadata: Metadata = {
@@ -509,59 +508,7 @@ export default function SobrePage() {
 				</div>
 			</section>
 
-			<section className='pb-20 lg:pb-[10vw] pt-8 lg:pt-[4vw]'>
-				<div className='base-container'>
-
-					<div className='relative overflow-hidden bg-green-dark text-green-light rounded-md lg:rounded-lg px-10 py-16 md:p-16 lg:p-[6vw] text-center'>
-
-						<div className='absolute inset-0 z-0 opacity-25'>
-							<Image
-								src={abstract}
-								alt=''
-								aria-hidden='true'
-								fill
-								className='cover'
-								sizes='100vw'
-							/>
-							<div className='absolute inset-0 bg-linear-to-t from-green-dark via-green-dark/70 to-green-dark/40' />
-						</div>
-
-						<div className='row relative z-2'>
-							<div className='col-lg-8 offset-lg-2'>
-
-								<h2 className='text-60 font-heading font-semibold leading-[1.05]!'>
-									<AnimatedText text='Quer levar sua tecnologia para o próximo nível?' />
-								</h2>
-
-								<p className='text-20 mt-6 lg:mt-8 opacity-90'>
-									A plataforma Aether avalia projetos científicos com potencial translacional em biotecnologia e saúde humana, conduzidos por pesquisadores, startups e instituições no Brasil e no exterior.
-								</p>
-
-								<div className='flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8 mt-10 lg:mt-12'>
-
-									<Button
-										style='light-2'
-										href={pages.inscreva}
-										text='Inscreva seu projeto'
-										icon='diagonal-arrow'
-									/>
-
-									<Link
-										href={pages.contato}
-										className='hover-underline-alt hover-underline-alt--light font-heading font-semibold cursor-pointer'
-									>
-										Fale com nosso time
-									</Link>
-
-								</div>
-
-							</div>
-						</div>
-
-					</div>
-
-				</div>
-			</section>
+			<ContactBanner className='pb-20 lg:pb-[10vw] pt-8 lg:pt-[4vw]' />
 
 		</div>
 	)
