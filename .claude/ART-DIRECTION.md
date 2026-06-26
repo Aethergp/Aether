@@ -145,6 +145,10 @@ Sections read rich because something lives behind the content — never a flat f
   the green stroke as a depth device. Lay it `absolute/fixed inset-0 z-0` behind content, add a **uniform**
   dark tint over the whole shared section for text legibility (never a per-block scrim — it seams; see Gotchas),
   and keep one continuous field across the sections it backs. Greens for AGP surfaces, Safira/Sereno for Bio+.
+  **Scroll-evolving variant (`/sobre/ict-aether-bio`):** the field can *shift colour as you scroll* - green-led
+  at the top easing into the blue+terracotta Bio+ degradê lower down, so the institute's identity literally
+  emerges as you descend. It also spans a **pinned** section (the 3 concept circles) held still over the moving
+  colour. Mechanics + the clip-path/pin gotcha live in [../CLAUDE.md](../CLAUDE.md) → Signature recipes / Gotchas.
 - **Gradient-scrim background image on dark sections** — a `bg-green-dark` band should rarely be a *flat*
   fill. Float a faint photo behind the copy and fade it into the solid green so only a texture remains.
   The recipe (`/parceiros` hero is the reference): an `absolute z-0 top-0 left-0 w-full h-3/4 opacity-50`
@@ -205,7 +209,18 @@ Use the **`Button` component** (`@/components/Button`) for every CTA — don't h
 - **`blue` is the Bio+/ICT variant** (same two-segment mechanic as `light-2`, but in the brand blues
   instead of going black): `bg-ciano text-safira` → on hover `bg-safira text-ciano` (light blue → dark
   blue). Use it for CTAs sitting on the Bio+ `safira`/`sereno` surface (the `/sobre` ICT pillar card),
-  the blue counterpart to the green `light-2`.
+  the blue counterpart to the green `light-2`. Use `blue` on a LIGHT/white surface only (its `ciano` fill
+  is pale and washes out / blends on navy).
+- **`blue-dark` is the navy-on-light variant** (mirrors `dark-2` but in blue): `bg-safira text-azul-claro`
+  → on hover the whole button goes **`bg-vinho` (#3D0108, the page's dark red-brown)** (text stays `azul-claro`),
+  tying the CTA hover to the page's vinho text accent. Use it for a dark-blue
+  CTA on a white section (the `/sobre/ict-aether-bio` "Inscreva seu projeto" captação button) - it's the
+  Bio+ sibling of the green `dark`/`dark-2`. (We swapped the captação button from `blue`→`blue-dark` because
+  pale `blue` looked washed on white.)
+- **`blue-light` is the light-blue-on-navy variant**: `bg-azul-claro text-safira` → on hover goes **white**
+  (`bg-white`, text stays `safira`). Use it for a CTA sitting ON a Bio+ navy card/surface (the
+  `/sobre/aether-global-pharma` "Conheça o ICT AetherBio+" button on its navy ICT cross-link card) - a light
+  pill that pops on navy and brightens to white on hover. (Replaced the muddy `blue`/`ciano` look there.)
 - For in-page anchors, pair it with the `useAnchorScroll` hook (`onClick={(e) => scrollTo(e, '#id')}`)
   so it animates `#viewport` rather than jumping. For forms use `Submit` (shows a spinner while sending).
 - Wrap prominent buttons/logos in `MagneticButton` for the desktop magnetic-hover follow (the menu and

@@ -12,7 +12,7 @@ gsap.registerPlugin(ScrollTrigger, SplitText)
 
 interface Props {
     children: React.ReactNode
-	style?: 'light' | 'dark'
+	style?: 'light' | 'dark' | 'vinho'
     className?: string
 }
 
@@ -77,6 +77,7 @@ export default function AnimatedTitle({
 				'fill-title',
 				style === 'light' && 'light',
 				style === 'dark' && 'dark',
+				style === 'vinho' && 'vinho',
 				className
 			)}
 			ref={item}

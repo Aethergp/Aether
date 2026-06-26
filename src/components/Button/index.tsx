@@ -14,7 +14,7 @@ type BaseLinkProps = ComponentProps<typeof Link>
 
 interface BaseProps {
 	className?: string
-	style: 'light' | 'light-2' | 'dark' | 'dark-2' | 'blue'
+	style: 'light' | 'light-2' | 'dark' | 'dark-2' | 'blue' | 'blue-dark' | 'blue-light'
 	text: string
 	icon?: 'diagonal-arrow' | 'close' | 'linkedin'
 	chevron?: boolean
@@ -58,7 +58,9 @@ export default function Button({
 		style === 'dark-2' && 'hover:**:data-text:text-green-light hover:**:data-text:bg-black hover:**:data-icon-hover:bg-black',
 		style === 'light' && 'hover:**:data-text:text-green-light hover:**:data-text:bg-black',
 		style === 'light-2' && 'hover:**:data-text:text-green-light hover:**:data-text:bg-black hover:**:data-icon-hover:bg-black',
-		style === 'blue' && 'hover:**:data-text:text-ciano hover:**:data-text:bg-safira hover:**:data-icon-hover:bg-safira'
+		style === 'blue' && 'hover:**:data-text:text-ciano hover:**:data-text:bg-safira hover:**:data-icon-hover:bg-safira',
+		style === 'blue-dark' && 'hover:**:data-text:text-azul-claro hover:**:data-text:bg-vinho hover:**:data-icon-hover:bg-vinho',
+		style === 'blue-light' && 'hover:**:data-text:text-safira hover:**:data-text:bg-white hover:**:data-icon-hover:bg-white'
 	)
 
 	const content = (
@@ -68,7 +70,9 @@ export default function Button({
 					'py-4 px-6 transition-colors duration-200 rounded-md flex items-center justify-center leading-none',
 					(style === 'dark' || style === 'dark-2') && 'bg-green-dark text-green-light',
 					(style === 'light' || style === 'light-2') && 'bg-green-light text-green-dark',
-					style === 'blue' && 'bg-ciano text-safira'
+					style === 'blue' && 'bg-ciano text-safira',
+					style === 'blue-dark' && 'bg-safira text-azul-claro',
+					style === 'blue-light' && 'bg-azul-claro text-safira'
 				)}
 				data-text
 			>
@@ -90,7 +94,9 @@ export default function Button({
 							'h-full px-6 transition-all duration-200 rounded-md flex items-center justify-center leading-none relative z-1 origin-top-right',
 							(style === 'dark' || style === 'dark-2') && 'bg-green-dark text-green-light',
 							(style === 'light' || style === 'light-2') && 'bg-green-light text-green-dark',
-							style === 'blue' && 'bg-ciano text-safira'
+							style === 'blue' && 'bg-ciano text-safira',
+							style === 'blue-dark' && 'bg-safira text-azul-claro',
+							style === 'blue-light' && 'bg-azul-claro text-safira'
 						)}
 						data-icon
 					>
@@ -133,7 +139,9 @@ export default function Button({
 							style === 'dark' && 'bg-green-light text-green-dark',
 							style === 'dark-2' && 'bg-green-dark text-green-light',
 							(style === 'light' || style === 'light-2') && 'bg-green-dark text-green-light',
-							style === 'blue' && 'bg-safira text-ciano'
+							style === 'blue' && 'bg-safira text-ciano',
+							style === 'blue-dark' && 'bg-safira text-azul-claro',
+							style === 'blue-light' && 'bg-azul-claro text-safira'
 						)}
 						data-icon-hover
 					>
