@@ -10,12 +10,13 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 // components
+import MaskedIcon from '@/components/MaskedIcon'
 import AnimatedText from '@/components/Utils/Animations/AnimatedText'
 import MagneticButton from '@/components/Utils/Animations/MagneticButton'
 import BioGrainient from './BioGrainient'
 
-const words = ['Moléculas', 'Patentes', 'Oportunidades']
 
+const words = ['+ Moléculas', '+ Patentes', '+ Oportunidades']
 export default function Hero() {
 
 	const rootRef = useRef<HTMLElement>(null)
@@ -75,7 +76,7 @@ export default function Hero() {
 		<section
 			ref={rootRef}
 			id='bio-field'
-			className='relative text-creme'
+			className='relative text-cream'
 		>
 			<BioGrainient />
 
@@ -89,19 +90,10 @@ export default function Hero() {
 								(ict aetherbio+)
 							</span>
 
-							<span
-								aria-hidden='true'
-								className='block w-full max-w-[32rem] aspect-[1179/148] bg-creme'
-								style={{
-									maskImage: 'url(/img/svg/logo/aether-bio.svg)',
-									WebkitMaskImage: 'url(/img/svg/logo/aether-bio.svg)',
-									maskRepeat: 'no-repeat',
-									WebkitMaskRepeat: 'no-repeat',
-									maskPosition: 'left center',
-									WebkitMaskPosition: 'left center',
-									maskSize: 'contain',
-									WebkitMaskSize: 'contain'
-								}}
+							<MaskedIcon
+								url='/img/svg/logo/aether-bio.svg'
+								className='block w-full max-w-[32rem] aspect-[1179/148] bg-cream'
+								position='left center'
 							/>
 						</div>
 					</div>

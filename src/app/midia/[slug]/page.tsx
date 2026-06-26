@@ -137,6 +137,7 @@ export default async function PostPage({ params }: Props) {
 											src={post.image.url}
 											alt={post.image.alt}
 											overlay='black'
+											zoom={false}
 											className='w-full h-full'
 										/>
 									) : (

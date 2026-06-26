@@ -7,6 +7,16 @@
 
 import raw from './temp.json'
 
+// img
+import bioLab from '@/assets/img/bio-lab.jpg'
+import microscope from '@/assets/img/microscope.jpg'
+import scientists from '@/assets/img/scientists.jpg'
+import group from '@/assets/img/group.png'
+import lab from '@/assets/img/lab.png'
+import pillars from '@/assets/img/pillars.png'
+import spheres from '@/assets/img/spheres.png'
+import stairs from '@/assets/img/stairs.png'
+
 export type MediaType = 'blog' | 'imprensa'
 
 export interface MediaImage {
@@ -60,9 +70,29 @@ const PLACEHOLDER_CONTENT = `
 <p>Acompanhe este canal para entender, em linguagem acessível, como funciona o desenvolvimento farmacêutico moderno e qual o papel da Aether em conectar pesquisa de ponta ao mercado global.</p>
 `
 
+// temporary image pool, assigned in a fixed pseudo-random order until each post
+// carries its own cover (WP featured image later). deterministic per id so SSR
+// and client hydration agree.
+const MEDIA_IMAGES: MediaImage[] = [
+	{ url: bioLab.src, alt: 'Laboratório de pesquisa biológica' },
+	{ url: microscope.src, alt: 'Microscópio em laboratório científico' },
+	{ url: scientists.src, alt: 'Equipe de cientistas em ambiente de pesquisa' },
+	{ url: group.src, alt: 'Equipe da Aether reunida' },
+	{ url: lab.src, alt: 'Ambiente de laboratório farmacêutico' },
+	{ url: pillars.src, alt: 'Detalhe arquitetônico em colunas' },
+	{ url: spheres.src, alt: 'Composição visual de esferas' },
+	{ url: stairs.src, alt: 'Escadaria em ambiente corporativo' }
+]
+
+function pickImage(id: string): MediaImage {
+	const seed = Number(id) || 0
+	return MEDIA_IMAGES[(seed * 7 + 3) % MEDIA_IMAGES.length]
+}
+
 export function getMediaPosts(): MediaPost[] {
 	return (raw as MediaPost[])
 		.slice()
+		.map((post) => ({ ...post, image: post.image ?? pickImage(post.id) }))
 		.sort((a, b) => b.date.localeCompare(a.date))
 }
 

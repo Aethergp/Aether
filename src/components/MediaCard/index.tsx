@@ -30,7 +30,7 @@ export default function MediaCard({ post }: Props) {
 						src={post.image.url}
 						alt={post.image.alt}
 						fill
-						className='object-cover transition-transform duration-500 group-hover:scale-105'
+						className='object-cover'
 						sizes='(max-width: 768px) 100vw, (max-width: 992px) 50vw, 33vw'
 						loading='lazy'
 					/>

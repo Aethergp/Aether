@@ -4,6 +4,7 @@ import clsx from 'clsx'
 import Image from 'next/image'
 
 // components
+import MaskedIcon from '@/components/MaskedIcon'
 import Context from '@/app/home/Context'
 import Timeline from './Timeline'
 import Grainient from '@/components/Grainient'
@@ -125,7 +126,7 @@ const pilares = [
 		text: 'O instituto de ciência, tecnologia e inovação da plataforma - uma organização sem fins lucrativos que conduz cada projeto da validação técnica à maturação de TRL, com governança independente e comitê científico especializado.',
 		href: pages.sobreIct,
 		cta: 'Conhecer o Bio+',
-		cardClass: 'bg-linear-to-br from-safira to-sereno text-white',
+		cardClass: 'bg-linear-to-br from-sapphire to-navy-mid text-white',
 		buttonStyle: 'blue' as const
 	}
 ]
@@ -308,19 +309,9 @@ export default function SobrePage() {
 
 								<div className='flex flex-col gap-6 grow'>
 
-									<span
-										aria-hidden='true'
+									<MaskedIcon
+										url={item.icon}
 										className={clsx('block w-10 lg:w-12 aspect-square', item.iconColor)}
-										style={{
-											maskImage: `url(${item.icon})`,
-											WebkitMaskImage: `url(${item.icon})`,
-											maskRepeat: 'no-repeat',
-											WebkitMaskRepeat: 'no-repeat',
-											maskPosition: 'center',
-											WebkitMaskPosition: 'center',
-											maskSize: 'contain',
-											WebkitMaskSize: 'contain'
-										}}
 									/>
 
 									<span className='block text-sm font-semibold uppercase tracking-wide opacity-60'>

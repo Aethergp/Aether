@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 
 // components
+import MaskedIcon from '@/components/MaskedIcon'
 import Grainient from '@/components/Grainient'
 import AnimatedText from '@/components/Utils/Animations/AnimatedText'
 import AnimatedTitle from '@/components/Utils/Animations/AnimatedTitle'
@@ -280,25 +281,15 @@ export default function AetherGlobalPharmaPage() {
 						<div className='col-lg-3' />
 
 						<div className='col-lg-9'>
-							<div className='relative overflow-hidden rounded-md lg:rounded-lg p-10 lg:p-[3.5vw] bg-linear-to-br from-safira to-sereno text-blue-100'>
+							<div className='relative overflow-hidden rounded-md lg:rounded-lg p-10 lg:p-[3.5vw] bg-linear-to-br from-sapphire to-navy-mid text-blue-100'>
 
 								<div className='row'>
 
 									<div className='col-lg-8'>
 
-										<span
-											aria-hidden='true'
+										<MaskedIcon
+											url='/img/svg/logo/icon-bio.svg'
 											className='block w-10 lg:w-12 aspect-square bg-blue-100 mb-8'
-											style={{
-												maskImage: 'url(/img/svg/logo/icon-bio.svg)',
-												WebkitMaskImage: 'url(/img/svg/logo/icon-bio.svg)',
-												maskRepeat: 'no-repeat',
-												WebkitMaskRepeat: 'no-repeat',
-												maskPosition: 'center',
-												WebkitMaskPosition: 'center',
-												maskSize: 'contain',
-												WebkitMaskSize: 'contain'
-											}}
 										/>
 
 										<p className='text-24 font-heading leading-snug'>

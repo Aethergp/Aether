@@ -12,13 +12,13 @@ import Committee from './Committee'
 import ContactBanner from '@/components/ContactBanner'
 
 // img - placeholders (swap for approved photos later)
-import portrait from '@/assets/img/patricia.png'
-import member1 from '@/assets/img/team/member-1.jpg'
-import member2 from '@/assets/img/team/member-2.jpg'
-import member3 from '@/assets/img/team/member-3.jpg'
-import member4 from '@/assets/img/team/member-4.jpg'
-import member5 from '@/assets/img/team/member-5.jpg'
-import member6 from '@/assets/img/team/member-6.jpg'
+import portrait from '@/assets/img/patricia.jpg'
+import member1 from '@/assets/img/team/member-1.png'
+import member2 from '@/assets/img/team/member-2.png'
+import member3 from '@/assets/img/team/member-3.png'
+import member4 from '@/assets/img/team/member-4.png'
+import member5 from '@/assets/img/team/member-5.png'
+import member6 from '@/assets/img/team/member-6.png'
 
 export const metadata: Metadata = {
 	title: 'Equipe - Lideranças e comitê científico | Aether Global Pharma',

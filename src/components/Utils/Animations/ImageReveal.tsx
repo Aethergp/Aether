@@ -15,13 +15,15 @@ interface Props {
     alt: string
     className?: string
     overlay: 'purple' | 'pink' | 'white' | 'gray' | 'wine' | 'black'
+    zoom?: boolean
 }
 
 export default function ImageReveal({
     src,
     alt,
     className,
-    overlay
+    overlay,
+    zoom = true
 }: Props) {
 
     const containerRef = useRef<HTMLDivElement>(null)
@@ -37,7 +39,7 @@ export default function ImageReveal({
         const timeline = gsap.timeline({ paused: true })
 
         timeline.set(image, {
-            scale: 1.5
+            scale: zoom ? 1.5 : 1
         })
 
         timeline.to(reveal, {

@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { Link } from 'next-transition-router'
 
 // components
+import MaskedIcon from '@/components/MaskedIcon'
 import AnimatedText from '@/components/Utils/Animations/AnimatedText'
 import AnimatedTitle from '@/components/Utils/Animations/AnimatedTitle'
 import StaggerUp from '@/components/Utils/Animations/StaggerUp'
@@ -63,20 +64,20 @@ export default function IctAetherBioPage() {
 					<div className='row pb-10 lg:pb-[5vw]'>
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
-							<h3 className='font-semibold font-heading text-vinho'>
+							<h3 className='font-semibold font-heading text-wine'>
 								<AnimatedText text='(o instituto)' />
 							</h3>
 						</div>
 
 						<div className='col-lg-9'>
 							<AnimatedTitle
-								style='vinho'
+								style="wine"
 								className='text-60 font-heading font-semibold'
 							>
 								Um instituto sem fins lucrativos no centro da inovação.
 							</AnimatedTitle>
 
-							<p className='text-20 leading-relaxed mt-6 lg:mt-8 lg:pr-[6vw] text-vinho'>
+							<p className='text-20 leading-relaxed mt-6 lg:mt-8 lg:pr-[6vw] text-wine'>
 								<AnimatedText text='Como instituição sem fins lucrativos, o AetherBio+ promove o avanço da maturidade tecnológica das descobertas científicas, assegura a governança científica independente de cada projeto e viabiliza a captação de fomento público nacional e internacional, apoiado por um comitê científico composto por pesquisadores especialistas em diferentes áreas terapêuticas.' />
 							</p>
 						</div>
@@ -86,7 +87,7 @@ export default function IctAetherBioPage() {
 					<div className='row'>
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
-							<h3 className='font-semibold font-heading text-vinho'>
+							<h3 className='font-semibold font-heading text-wine'>
 								<AnimatedText text='(principais funções)' />
 							</h3>
 						</div>
@@ -96,21 +97,11 @@ export default function IctAetherBioPage() {
 								{funcoes.map((item, i) => {
 									const inner = (
 										<>
-											<span
-												aria-hidden='true'
-												className='block w-4 aspect-square bg-azul-claro mt-1 shrink-0'
-												style={{
-													maskImage: 'url(/img/svg/logo/icon-bio.svg)',
-													WebkitMaskImage: 'url(/img/svg/logo/icon-bio.svg)',
-													maskRepeat: 'no-repeat',
-													WebkitMaskRepeat: 'no-repeat',
-													maskPosition: 'center',
-													WebkitMaskPosition: 'center',
-													maskSize: 'contain',
-													WebkitMaskSize: 'contain'
-												}}
+											<MaskedIcon
+												url='/img/svg/logo/icon-bio.svg'
+												className='block w-4 aspect-square bg-light-blue mt-1 shrink-0'
 											/>
-											<span className='text-18 leading-relaxed text-azul-claro'>
+											<span className='text-18 leading-relaxed text-light-blue'>
 												{item.text}
 												{item.href && (
 													<>
@@ -130,7 +121,7 @@ export default function IctAetherBioPage() {
 									return (
 										<div
 											key={i}
-											className='flex items-start gap-4 bg-sereno px-6 py-5 rounded-sm h-full'
+											className='flex items-start gap-4 bg-navy-mid px-6 py-5 rounded-sm h-full'
 										>
 											{inner}
 										</div>
@@ -149,13 +140,13 @@ export default function IctAetherBioPage() {
 
 					<div className='row pb-10 lg:pb-[4vw]'>
 						<div className='col-lg-3 pb-4 lg:pb-0'>
-							<h3 className='font-semibold font-heading text-vinho'>
+							<h3 className='font-semibold font-heading text-wine'>
 								<AnimatedText text='(governança)' />
 							</h3>
 						</div>
 						<div className='col-lg-9'>
 							<AnimatedTitle
-								style='vinho'
+								style="wine"
 								className='text-60 font-heading font-semibold'
 							>
 								Governança científica independente.
@@ -168,7 +159,7 @@ export default function IctAetherBioPage() {
 						<div className='col-lg-3' />
 
 						<div className='col-lg-9'>
-							<div className='relative overflow-hidden rounded-md lg:rounded-lg bg-linear-to-br from-safira to-sereno text-azul-claro p-10 lg:p-[3.5vw]'>
+							<div className='relative overflow-hidden rounded-md lg:rounded-lg bg-navy-mid text-light-blue p-10 lg:p-[3.5vw]'>
 
 								<div className='row'>
 									<div className='col-lg-9'>
@@ -196,18 +187,18 @@ export default function IctAetherBioPage() {
 
 						<div className='col-lg-6 flex flex-col justify-center lg:pr-[3vw]'>
 
-							<span className='block text-sm font-semibold uppercase tracking-wide opacity-60 mb-4 text-vinho'>
+							<span className='block text-sm font-semibold uppercase tracking-wide opacity-60 mb-4 text-wine'>
 								(para pesquisadores)
 							</span>
 
 							<AnimatedTitle
-								style='vinho'
+								style="wine"
 								className='text-60 font-heading font-semibold'
 							>
 								Sua pesquisa pode ir além do laboratório.
 							</AnimatedTitle>
 
-							<p className='text-20 leading-relaxed my-8 lg:my-10 text-vinho'>
+							<p className='text-20 leading-relaxed my-8 lg:my-10 text-wine'>
 								<AnimatedText text='Se você desenvolve uma tecnologia com potencial terapêutico - em universidade, centro de pesquisa ou startup -, o AetherBio+ pode ser o caminho entre a descoberta e o desenvolvimento farmacêutico global. A inscrição é simples, em duas etapas, e toda submissão é tratada com confidencialidade.' />
 							</p>
 
@@ -246,13 +237,13 @@ export default function IctAetherBioPage() {
 
 					<div className='row pb-10 lg:pb-[4vw]'>
 						<div className='col-lg-3 pb-4 lg:pb-0'>
-							<h3 className='font-semibold font-heading text-vinho'>
+							<h3 className='font-semibold font-heading text-green-dark'>
 								<AnimatedText text='(plataforma integrada)' />
 							</h3>
 						</div>
 						<div className='col-lg-9'>
 							<AnimatedTitle
-								style='vinho'
+								style='dark'
 								className='text-60 font-heading font-semibold'
 							>
 								O pilar científico de uma plataforma maior.
@@ -270,19 +261,9 @@ export default function IctAetherBioPage() {
 								<div className='row'>
 									<div className='col-lg-8'>
 
-										<span
-											aria-hidden='true'
+										<MaskedIcon
+											url='/img/svg/logo/icon-gp.svg'
 											className='block w-10 lg:w-12 aspect-square bg-green-light mb-8'
-											style={{
-												maskImage: 'url(/img/svg/logo/icon-gp.svg)',
-												WebkitMaskImage: 'url(/img/svg/logo/icon-gp.svg)',
-												maskRepeat: 'no-repeat',
-												WebkitMaskRepeat: 'no-repeat',
-												maskPosition: 'center',
-												WebkitMaskPosition: 'center',
-												maskSize: 'contain',
-												WebkitMaskSize: 'contain'
-											}}
 										/>
 
 										<p className='text-24 font-heading leading-snug'>
