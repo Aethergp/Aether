@@ -11,7 +11,7 @@
 | 5 | `/sobre/equipe` | `spec-sobre-equipe.md` | 🟡 página confirmada pela Patricia; aguardando foto aprovada + comitê (alinhamento jurídico) |
 | 6 | `/pd` (hub) | *(entregue anteriormente)* | ✅ pronta |
 | 7 | `/pd/trl` | *(entregue anteriormente)* | ✅ pronta |
-| 8 | `/pd/pipeline` | `spec-pd-pipeline.md` | 🟡 projeto MS/EMBRAPII é público e **sem restrição de divulgação** (cliente, 06/2026); descrição "plataforma produtiva para IFA anti-inflamatória" **confirmada**; **não publicar estágio TRL ainda** (a partir de 2027, com +5 PIs em estágios diferentes); demais projetos ainda pendentes |
+| 8 | `/pd/pipeline` | *(sem spec própria; conteúdo do índice + `spec-home.md` Seção 4)* | ✅ **construída** (`src/app/pd/pipeline/page.tsx`) - destaque MS/EMBRAPII (chamada R$ 90 mi / R$ 12,5 mi / parceiros / "plataforma produtiva para IFA anti-inflamatória") + taxonomia de leitura + bloco "em expansão" (placeholder honesto p/ os +5 PIs de 2027). **Sem estágio TRL** deste projeto (cliente: só a partir de 2027). Foto `microscope.jpg` = placeholder; demais ativos pendentes |
 | 9 | ~~`/pd/areas`~~ | — | ❌ **CORTADA** (decisão 11/06) — remover do menu e do sitemap |
 | 10 | `/midia` | `spec-midia.md` | 🟢 fechada (sem newsletter no lançamento; autoria institucional; posts depois) |
 | 11 | `/inscreva-seu-projeto` | `spec-inscreva-seu-projeto.md` | 🟢 fechada (nota de confidencialidade entra; "retornaremos o mais breve possível") |
