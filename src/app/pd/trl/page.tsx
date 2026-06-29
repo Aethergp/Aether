@@ -88,7 +88,7 @@ export default function TRLPage() {
 					<div className='row'>
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
-							<h3 className='font-semibold font-heading'>
+							<h3 className='font-semibold font-heading lg:pt-2'>
 								<AnimatedText text='(maturidade tecnológica)' />
 							</h3>
 						</div>
@@ -181,7 +181,7 @@ export default function TRLPage() {
 					<div className='row pb-10 lg:pb-[5vw]'>
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
-							<h3 className='font-semibold font-heading'>
+							<h3 className='font-semibold font-heading lg:pt-2'>
 								<AnimatedText text='(a jornada)' />
 							</h3>
 						</div>
@@ -273,7 +273,7 @@ export default function TRLPage() {
 					<div className='row pb-10 lg:pb-[5vw]'>
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
-							<h3 className='font-semibold font-heading'>
+							<h3 className='font-semibold font-heading lg:pt-2'>
 								<AnimatedText text='(os nove níveis)' />
 							</h3>
 						</div>
@@ -321,7 +321,7 @@ export default function TRLPage() {
 					<div className='row pb-10 lg:pb-[5vw]'>
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
-							<h3 className='font-semibold font-heading'>
+							<h3 className='font-semibold font-heading lg:pt-2'>
 								<AnimatedText text='(a abordagem aether)' />
 							</h3>
 						</div>

@@ -276,7 +276,7 @@ export default function SobrePage() {
 					<div className='row pb-10 lg:pb-[5vw]'>
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
-							<h3 className='font-semibold font-heading'>
+							<h3 className='font-semibold font-heading lg:pt-2'>
 								<AnimatedText text='(a plataforma)' />
 							</h3>
 						</div>
@@ -349,7 +349,7 @@ export default function SobrePage() {
 					<div className='row pb-10 lg:pb-[5vw]'>
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
-							<h3 className='font-semibold font-heading'>
+							<h3 className='font-semibold font-heading lg:pt-2'>
 								<AnimatedText text='(nossa história)' />
 							</h3>
 						</div>
@@ -410,6 +410,9 @@ export default function SobrePage() {
 
 						<div className='col-lg-push-1 col-lg-6'>
 							<div className='block relative overflow-hidden w-full max-lg:aspect-4/3 lg:h-full lg:min-h-[120vh] rounded-md'>
+
+								<div className='absolute inset-0 z-2 bg-green-dark mix-blend-soft-light' />
+
 								<ScrollingImage>
 									<Image
 										src={scientists}
@@ -420,6 +423,7 @@ export default function SobrePage() {
 										sizes='100vw'
 									/>
 								</ScrollingImage>
+
 							</div>
 						</div>
 
@@ -427,6 +431,7 @@ export default function SobrePage() {
 				</div>
 			</section>
 
+			{/*
 			<section className='py-16 lg:py-[8vw]'>
 				<div className='base-container'>
 
@@ -497,6 +502,7 @@ export default function SobrePage() {
 
 				</div>
 			</section>
+			*/}
 
 			<ContactBanner className='pb-20 lg:pb-[10vw] pt-8 lg:pt-[4vw]' />
 

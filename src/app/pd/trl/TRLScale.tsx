@@ -201,7 +201,7 @@ export default function TRLScale() {
 							>
 								<div className='overflow-hidden'>
 									<div className='pl-6 lg:pl-10 pr-6 lg:pr-8 pb-7 lg:pb-9 pt-0'>
-										<div className='lg:pl-24'>
+										<div className='lg:pl-32'>
 
 											<p className='text-18 lg:text-20 leading-relaxed max-w-3xl'>
 												{level.desc}

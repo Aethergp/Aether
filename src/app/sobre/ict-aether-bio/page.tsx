@@ -64,7 +64,7 @@ export default function IctAetherBioPage() {
 					<div className='row pb-10 lg:pb-[5vw]'>
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
-							<h3 className='font-semibold font-heading text-wine'>
+							<h3 className='font-semibold font-heading text-wine lg:pt-2'>
 								<AnimatedText text='(o instituto)' />
 							</h3>
 						</div>
@@ -140,7 +140,7 @@ export default function IctAetherBioPage() {
 
 					<div className='row pb-10 lg:pb-[4vw]'>
 						<div className='col-lg-3 pb-4 lg:pb-0'>
-							<h3 className='font-semibold font-heading text-wine'>
+							<h3 className='font-semibold font-heading text-wine lg:pt-2'>
 								<AnimatedText text='(governança)' />
 							</h3>
 						</div>
@@ -237,7 +237,7 @@ export default function IctAetherBioPage() {
 
 					<div className='row pb-10 lg:pb-[4vw]'>
 						<div className='col-lg-3 pb-4 lg:pb-0'>
-							<h3 className='font-semibold font-heading text-green-dark'>
+							<h3 className='font-semibold font-heading text-green-dark lg:pt-2'>
 								<AnimatedText text='(plataforma integrada)' />
 							</h3>
 						</div>

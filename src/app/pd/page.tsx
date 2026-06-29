@@ -73,7 +73,7 @@ export default function PDPage() {
 					<div className='row'>
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
-							<h3 className='font-semibold font-heading'>
+							<h3 className='font-semibold font-heading lg:pt-2'>
 								<AnimatedText text='(pesquisa & desenvolvimento)' />
 							</h3>
 						</div>
@@ -155,7 +155,7 @@ export default function PDPage() {
 					<div className='row pb-10 lg:pb-[5vw]'>
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
-							<h3 className='font-semibold font-heading'>
+							<h3 className='font-semibold font-heading lg:pt-2'>
 								<AnimatedText text='(perfil dos projetos)' />
 							</h3>
 						</div>
@@ -211,7 +211,7 @@ export default function PDPage() {
 					<div className='row pb-10 lg:pb-[5vw]'>
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
-							<h3 className='font-semibold font-heading'>
+							<h3 className='font-semibold font-heading lg:pt-2'>
 								<AnimatedText text='(nossas frentes)' />
 							</h3>
 						</div>
@@ -315,13 +315,7 @@ export default function PDPage() {
 				<div className='base-container relative z-1'>
 					<div className='row'>
 
-						<div className='col-lg-3 pb-8 lg:pb-0'>
-							<h3 className='font-semibold font-heading'>
-								<AnimatedText text='(governança)' />
-							</h3>
-						</div>
-
-						<div className='col-lg-8'>
+						<div className='col-lg-8 offset-lg-3'>
 
 							<h2 className='text-48 font-heading font-semibold mb-8 lg:mb-10'>
 								<AnimatedText text='Governança científica que valida cada passo.' />
@@ -343,7 +337,7 @@ export default function PDPage() {
 							</StaggerUp>
 
 							<Button
-								style='dark'
+								style='blue-dark'
 								href={pages.sobreIct}
 								text='Conheça o ICT AetherBio+'
 								icon='diagonal-arrow'

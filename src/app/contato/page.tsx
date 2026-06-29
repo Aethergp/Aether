@@ -153,6 +153,7 @@ export default function ContatoPage() {
 
 							<StaggerUp className='flex flex-col gap-6 text-18'>
 
+								{/*
 								<div>
 									<span className='block text-sm opacity-60 mb-1'>E-mail</span>
 									<a
@@ -163,7 +164,6 @@ export default function ContatoPage() {
 									</a>
 								</div>
 
-								{/*
 								<div>
 									<span className='block text-sm opacity-60 mb-1'>Telefone</span>
 									<a
