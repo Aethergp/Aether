@@ -70,10 +70,10 @@ export default function AnimatedText({
                     toggleActions: infinite ? 'restart pause resume reverse' : 'play none none none',
                     start: 'top 85%'
                 },
-                duration: 0.5,
+                duration: 0.25,
                 ease: 'circ.out',
                 y: '110%',
-                stagger: 0.0075,
+                stagger: 0.0025,
                 onComplete: () => {
                     if (item.current) {
                         item.current.classList.add('completed')

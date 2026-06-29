@@ -19,6 +19,7 @@ gsap.registerPlugin(ScrollTrigger)
 import AnimatedTitle from '@/components/Utils/Animations/AnimatedTitle'
 import AnimatedText from '@/components/Utils/Animations/AnimatedText'
 import TextReveal from '@/components/Utils/Animations/TextReveal'
+import Button from '@/components/Button'
 
 export default function Context({ showCreation = true }: { showCreation?: boolean }) {
 
@@ -134,6 +135,14 @@ export default function Context({ showCreation = true }: { showCreation?: boolea
 							<p className='text-20 leading-relaxed'>
 								<AnimatedText text='Universidades e centros de pesquisa geram descobertas com elevado potencial terapêutico todos os anos. O desafio raramente está na ciência mas na capacidade de transformar conhecimento em ativos farmacêuticos protegidos, validados e prontos para produção global.<br /><br />Sem maturação tecnológica adequada, governança científica e estratégia de propriedade intelectual, tecnologias promissoras permanecem restritas ao ambiente acadêmico e não alcançam seu potencial de impacto.' />
 							</p>
+							<div className='mt-10'>
+								<Button
+									style='dark'
+									href='/sobre'
+									text='Conheça a plataforma'
+									icon='diagonal-arrow'
+								/>
+							</div>
 						</div>
 						
 					</div>

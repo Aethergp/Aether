@@ -13,6 +13,7 @@ gsap.registerPlugin(ScrollTrigger)
 import AnimatedTitle from '@/components/Utils/Animations/AnimatedTitle'
 import AnimatedText from '@/components/Utils/Animations/AnimatedText'
 import StaggerUp from '@/components/Utils/Animations/StaggerUp'
+import Button from '@/components/Button'
 
 export default function Companies() {
 
@@ -142,6 +143,14 @@ export default function Companies() {
                                 <p className='text-20 leading-relaxed'>
                                     <AnimatedText text='A Aether Global Pharma é a holding privada responsável pela gestão estratégica e jurídica dos ativos de propriedade intelectual da plataforma.<br /><br />Atuando no Brasil e internacionalmente, a empresa detém a titularidade dos ativos gerados ou desenvolvidos no ecossistema da Aether e conduz as interações com a indústria farmacêutica global e investidores especializados.' />
                                 </p>
+                                <div className='mt-10'>
+                                    <Button
+                                        style='dark'
+                                        href='/sobre/aether-global-pharma'
+                                        text='Aether Global Pharma'
+                                        icon='diagonal-arrow'
+                                    />
+                                </div>
                             </div>
 
                         </div>
@@ -225,6 +234,14 @@ export default function Companies() {
                                 <p className='text-20 leading-relaxed'>
                                     <AnimatedText text='O ICT AetherBio+ é o instituto de ciência, tecnologia e inovação da plataforma, responsável pela condução científica e tecnológica dos projetos.<br /><br />Como instituição sem fins lucrativos, o AetherBio+ promove o avanço da maturidade tecnológica das descobertas científicas, assegura a governança científica independente de cada projeto e viabiliza a captação de fomento público nacional e internacional, apoiado por um comitê científico composto por pesquisadores especialistas em diferentes áreas terapêuticas.' />
                                 </p>
+                                <div className='mt-10'>
+                                    <Button
+                                        style='dark'
+                                        href='/sobre/ict-aether-bio'
+                                        text='ICT AetherBio+'
+                                        icon='diagonal-arrow'
+                                    />
+                                </div>
                             </div>
 
                         </div>

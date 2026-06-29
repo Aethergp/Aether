@@ -36,8 +36,8 @@ export default function About() {
 
                         <Button
                             style='dark'
-                            href='/contato'
-                            text='Entre em contato'
+                            href='/pd'
+                            text='Pesquisa & Desenvolvimento'
                             icon='diagonal-arrow'
                         />
 
