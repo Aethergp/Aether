@@ -1,0 +1,80 @@
+[
+	{
+		"id": "5",
+		"type": "blog",
+		"slug": "brasil-nao-tem-escassez-de-ciencia-tem-escassez-de-ativos-cientificos",
+		"title": "O Brasil não tem escassez de ciência. Tem escassez de ativos científicos.",
+		"excerpt": "Uma reflexão sobre propriedade intelectual, ativos científicos e o desafio brasileiro de transformar conhecimento em valor econômico e soberania tecnológica.",
+		"date": "2026-06-18",
+		"category": "Blog",
+		"image": {
+			"url": "/img/midia/ativos-cientificos-brasil.jpg",
+			"alt": "Representação da América do Sul em ambiente de pesquisa farmacêutica"
+		},
+		"externalUrl": null,
+		"source": null,
+		"author": "Equipe Aether",
+		"readingTime": 3,
+		"content": "<p>Existe uma narrativa que escuto há anos e que considero equivocada. Quando falamos sobre desenvolvimento farmacêutico, inovação e soberania tecnológica, muitas análises partem da premissa de que o Brasil produz pouca ciência. Não é verdade.</p><p>O Brasil forma pesquisadores de excelência, desenvolve pesquisas de alto impacto e abriga alguns dos grupos científicos mais respeitados da América Latina. O problema é outro: ainda capturamos pouco valor econômico do conhecimento que produzimos.</p><p>Foi observando essa realidade que estruturamos a Interglobal Pharma e o ICT Interbiomais, a partir de uma tese simples:</p><p><strong>A ciência gera conhecimento. A propriedade intelectual transforma conhecimento em ativos. E ativos geram valor econômico, desenvolvimento industrial e soberania tecnológica.</strong></p><p>Hoje, mais de 90% dos insumos farmacêuticos ativos (IFAs) utilizados na fabricação de medicamentos no Brasil são importados. Em 2025, o déficit da balança comercial do setor farmacêutico brasileiro alcançou aproximadamente US$ 15 bilhões - mais que o dobro dos US$ 7 bilhões registrados em 2019.</p><p>Esses números representam muito mais do que dependência econômica. Eles revelam uma dependência tecnológica, uma vulnerabilidade sanitária e, principalmente, a nossa dificuldade em transformar parte da ciência que produzimos em patrimônio tecnológico nacional.</p><p>A pandemia apenas tornou essa fragilidade visível. Dependíamos de respiradores, de máscaras e de IFAs produzidos fora do país para atender à nossa própria população.</p><p>O Brasil não sofre de escassez de ciência. Sofre de escassez de ativos científicos.</p><p>Enquanto não compreendermos essa diferença, continuaremos exportando conhecimento e importando tecnologia.</p><p>Esta é a primeira reflexão de uma série sobre propriedade intelectual, ativos científicos e o futuro da inovação farmacêutica brasileira.</p><p><strong>A ciência gera conhecimento.<br />A propriedade intelectual gera ativos.<br />Os ativos geram soberania.</strong></p><p><a href=\"https://www.instagram.com/reel/DZvm91hNMg5/?igsh=MTUxZzIybTdnY29nZw==\" target=\"_blank\" rel=\"noopener noreferrer\">Confira o vídeo completo sobre este tema no Instagram.</a></p>"
+	},
+	{
+		"id": "1",
+		"type": "imprensa",
+		"slug": null,
+		"title": "UE FarmaVax recebe visita da Aether Global Pharma",
+		"excerpt": "Publicação destaca a visita da Aether à UE FarmaVax, com troca sobre competências, infraestrutura, projetos, tecnologias e ativos de propriedade intelectual.",
+		"date": "2026-06-25",
+		"category": "Imprensa",
+		"image": {
+			"url": "/img/midia/visita-aether-farmavax.png",
+			"alt": "Equipe da Aether Global Pharma em visita à UE FarmaVax"
+		},
+		"externalUrl": "https://www.linkedin.com/posts/unidade-embrapii-inova%C3%A7%C3%A3o-de-f%C3%A1rmacos-e-vacinas-ufmg-farmavax_a-ue-farmavax-recebeu-a-visita-da-aether-activity-7475628382844600320-2kgp/",
+		"source": "LinkedIn - UE Farmavax"
+	},
+	{
+		"id": "2",
+		"type": "imprensa",
+		"slug": null,
+		"title": "Com o apoio da Embrapii, Ministério da Saúde anuncia iniciativas para combate ao câncer, esclerose múltipla e diabetes",
+		"excerpt": "Cobertura oficial da Embrapii sobre o investimento de R$ 90 milhões em terapias avançadas, diagnósticos e medicamentos estratégicos para o SUS.",
+		"date": "2026-02-26",
+		"category": "Imprensa",
+		"image": {
+			"url": "/img/midia/embrapii-ministerio-saude-iniciativas.png",
+			"alt": "Representantes em evento do Ministério da Saúde sobre diagnóstico e tratamento de doenças raras no SUS"
+		},
+		"externalUrl": "https://embrapii.org.br/com-o-apoio-da-embrapii-ministerio-da-saude-anuncia-iniciativas-para-combate-ao-cancer-esclerose-multipla-e-diabetes/",
+		"source": "EMBRAPII"
+	},
+	{
+		"id": "3",
+		"type": "imprensa",
+		"slug": null,
+		"title": "Ministério da Saúde anuncia R$ 90 milhões para projetos no SUS de combate ao câncer e diabetes",
+		"excerpt": "Reportagem da coluna Painel sobre a parceria entre Ministério da Saúde e Embrapii para ampliar o acesso a terapias avançadas e medicamentos estratégicos.",
+		"date": "2026-02-26",
+		"category": "Imprensa",
+		"image": {
+			"url": "/img/midia/folha-ministerio-saude-sus.png",
+			"alt": "Mulher abraça criança em ambiente com plantas"
+		},
+		"externalUrl": "https://www1.folha.uol.com.br/colunas/painel/2026/02/ministerio-da-saude-anuncia-r-90-milhoes-para-projetos-no-sus-de-combate-ao-cancer-e-diabetes.shtml",
+		"source": "Folha de S.Paulo"
+	},
+	{
+		"id": "4",
+		"type": "imprensa",
+		"slug": null,
+		"title": "Ministério da Saúde lança pacote de R$ 90 milhões para combater câncer, diabetes e esclerose múltipla no SUS",
+		"excerpt": "Matéria destaca o pacote de recursos públicos e privados para desenvolver terapias avançadas, biofármacos e tecnologias de diagnóstico no país.",
+		"date": "2026-02-26",
+		"category": "Imprensa",
+		"image": {
+			"url": "/img/midia/ministerio-saude-r90-milhoes-sus.png",
+			"alt": "Alexandre Padilha em evento do Ministério da Saúde"
+		},
+		"externalUrl": "https://agendadopoder.com.br/ministerio-da-saude-lanca-pacote-de-r-90-milhoes-para-combater-cancer-diabetes-e-esclerose-multipla-no-sus/",
+		"source": "Agenda do Poder"
+	}
+]

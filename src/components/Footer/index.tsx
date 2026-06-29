@@ -7,7 +7,7 @@ import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
 
 // utils
-import { social, footerColumns } from '@/utils/routes'
+import { social, footerColumns, pages } from '@/utils/routes'
 import { getYear } from '@/utils/functions'
 
 export default function Footer() {
@@ -147,18 +147,28 @@ export default function Footer() {
 							</Link>
 						</div>
 
-						<div className='flex flex-col gap-2 mt-10 md:items-end'>
-							<p>
-								Copyright Aether © {year}
-							</p>
+					</div>
+				</div>
 
-							<button
-								onClick={(e) => scrollToTop(e as unknown as React.MouseEvent<HTMLAnchorElement>)}
-								className='hover-underline-alt hover-underline-alt--light cursor-pointer w-fit'
+				<div className='row mt-16 lg:mt-[5vw] pt-6 border-t border-green-light/20 pb-8 lg:pb-[8vw]'>
+					<div className='col flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-sm opacity-70'>
+
+						<div className='flex flex-wrap items-center gap-x-6 gap-y-2'>
+							<p>Copyright Aether © {year}</p>
+							<Link
+								href={pages.privacy}
+								className='hover-underline'
 							>
-								Voltar ao topo
-							</button>
+								Política de Privacidade
+							</Link>
 						</div>
+
+						<button
+							onClick={(e) => scrollToTop(e as unknown as React.MouseEvent<HTMLAnchorElement>)}
+							className='hover-underline-alt hover-underline-alt--light cursor-pointer w-fit'
+						>
+							Voltar ao topo
+						</button>
 
 					</div>
 				</div>

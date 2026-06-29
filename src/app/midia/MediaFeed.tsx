@@ -12,7 +12,7 @@ import MediaCard from '@/components/MediaCard'
 import Pagination from '@/components/Pagination'
 
 // utils
-import { type MediaPost, type MediaType, POSTS_PER_PAGE } from './data'
+import { type MediaPost, type MediaType, POSTS_PER_PAGE } from './db/data'
 
 interface Props {
 	posts: MediaPost[]

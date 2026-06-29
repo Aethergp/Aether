@@ -6,6 +6,7 @@ import Image from 'next/image'
 // components
 import AnimatedText from '@/components/Utils/Animations/AnimatedText'
 import ImageReveal from '@/components/Utils/Animations/ImageReveal'
+import Button from '@/components/Button'
 import ShareButtons from '../ShareButtons'
 import RelatedPosts from '../RelatedPosts'
 
@@ -19,7 +20,7 @@ import {
 	formatDate,
 	mediaHref,
 	SITE_URL
-} from '../data'
+} from '../db/data'
 
 interface Props {
 	params: Promise<{ slug: string }>
@@ -167,6 +168,16 @@ export default async function PostPage({ params }: Props) {
 									className="rich-text"
 									dangerouslySetInnerHTML={{ __html: getContent(post) }}
 								/>
+
+								<div className='mt-14 pt-10 border-t border-green-dark/10'>
+									<Button
+										href='/midia'
+										style='dark'
+										text='Ver todas as publicações'
+										icon='diagonal-arrow'
+									/>
+								</div>
+
 							</div>
 						</div>
 					</div>

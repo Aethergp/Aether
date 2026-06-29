@@ -14,7 +14,7 @@ import Button from '@/components/Button'
 import MediaCard from '@/components/MediaCard'
 
 // utils
-import { type MediaPost } from './data'
+import { type MediaPost } from './db/data'
 import { pages } from '@/utils/routes'
 
 interface Props {

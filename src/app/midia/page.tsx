@@ -9,7 +9,7 @@ import StrokePath from '@/components/Utils/Animations/StrokePath'
 import MediaFeed from './MediaFeed'
 
 // utils
-import { getMediaPosts } from './data'
+import { getMediaPosts } from './db/data'
 
 // metadata
 export const metadata: Metadata = {

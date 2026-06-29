@@ -10,7 +10,7 @@ import UxArrowDiagonal from '@/assets/svg/ux/arrow-diagonal.svg'
 import UxLink from '@/assets/svg/ux/link.svg'
 
 // utils
-import { type MediaPost, mediaHref, formatDate } from '@/app/midia/data'
+import { type MediaPost, mediaHref, formatDate } from '@/app/midia/db/data'
 
 interface Props {
 	post: MediaPost
@@ -49,12 +49,12 @@ export default function MediaCard({ post }: Props) {
 
 				<span className='absolute top-4 left-4 flex flex-wrap gap-1'>
 
-					<span className='flex items-center gap-2 bg-green-pale text-green-dark text-xs font-semibold uppercase tracking-wide px-3 py-1.5 rounded-sm'>
+					<span className='flex items-center gap-2 bg-black text-green-light text-xs font-semibold uppercase tracking-wide px-3 py-1.5 rounded-sm'>
 						{post.category}
 					</span>
 
 					{isExternal && (
-						<span className='flex items-center gap-1.5 bg-green-pale text-green-dark text-xs font-semibold uppercase tracking-wide px-3 py-1.5 rounded-sm'>
+						<span className='flex items-center gap-1.5 bg-black text-green-light text-xs font-semibold uppercase tracking-wide px-3 py-1.5 rounded-sm'>
 							<UxLink className='w-3 h-3 text-current' />
 							Link externo
 						</span>
