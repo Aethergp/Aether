@@ -19,7 +19,7 @@ import ContactBanner from '@/components/ContactBanner'
 import { pages } from '@/utils/routes'
 
 // img
-import scientists from '@/assets/img/scientists.jpg'
+import scientists from '@/assets/img/team-2.jpg'
 
 // metadata
 export const metadata: Metadata = {
@@ -244,12 +244,8 @@ export default function SobrePage() {
 							{valores.map((item, i) => (
 								<div
 									key={i}
-									className='flex flex-col gap-4 p-8 lg:p-10 rounded-sm lg:rounded-md border border-green-light/20 bg-green-dark/30 backdrop-blur-sm h-full'
+									className='flex flex-col justify-end gap-4 p-8 lg:p-10 rounded-sm lg:rounded-md border border-green-light/20 bg-green-dark/30 backdrop-blur-sm h-full min-h-100'
 								>
-
-									<p className='text-7xl sm:text-8xl lg:text-9xl font-heading font-bold text-green-light/40 self-end leading-none'>
-										{i + 1}
-									</p>
 
 									<h3 className='text-30 font-heading font-semibold md:mt-8'>
 										{item.title}
@@ -269,9 +265,12 @@ export default function SobrePage() {
 
 			</section>
 
-			<Context showCreation={false} />
+			<Context
+				showCreation={false}
+				showCta={false}
+			/>
 
-			<section className='py-16 lg:py-[8vw]'>
+			<section className='relative z-3 py-16 lg:py-[8vw]'>
 				<div className='base-container'>
 
 					<div className='row pb-10 lg:pb-[5vw]'>
@@ -409,8 +408,8 @@ export default function SobrePage() {
 
 						</div>
 
-						<div className='col-lg-7'>
-							<div className='block relative overflow-hidden w-full max-lg:aspect-4/3 lg:h-full lg:min-h-[80vh] rounded-md'>
+						<div className='col-lg-push-1 col-lg-6'>
+							<div className='block relative overflow-hidden w-full max-lg:aspect-4/3 lg:h-full lg:min-h-[120vh] rounded-md'>
 								<ScrollingImage>
 									<Image
 										src={scientists}

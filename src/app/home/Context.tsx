@@ -21,7 +21,13 @@ import AnimatedText from '@/components/Utils/Animations/AnimatedText'
 import TextReveal from '@/components/Utils/Animations/TextReveal'
 import Button from '@/components/Button'
 
-export default function Context({ showCreation = true }: { showCreation?: boolean }) {
+export default function Context({
+	showCreation = true,
+	showCta = true
+} : {
+	showCreation?: boolean
+	showCta?: boolean
+}) {
 
 	const sectionRef = useRef<HTMLDivElement>(null)
     const pathRef = useRef<SVGPathElement>(null)
@@ -74,25 +80,25 @@ export default function Context({ showCreation = true }: { showCreation?: boolea
 	return (
 		<div
 			ref={sectionRef}
-			className='relative overflow-hidden z-2'
+			className='relative z-2'
 		>
 
-		<svg
-			width='657'
-			height='1636'
-			viewBox='0 0 657 1636'
-			fill='none'
-			xmlns='http://www.w3.org/2000/svg'
-			className='absolute -z-1 top-[5%] -left-2 w-vw sm:w-[45vw] h-auto object-contain'
-            preserveAspectRatio='xMinYMax meet'
-		>
-			<path
-				ref={pathRef}
-				d='M-138.5 175.674C-20 -59.8263 472.32 17.711 584.5 556.174C707 1144.17 297.5 1493.17 -97.5 1587.17'
-				stroke='#E0E6A1'
-				strokeWidth='100'
-			/>
-		</svg>
+			<svg
+				width='657'
+				height='1636'
+				viewBox='0 0 657 1636'
+				fill='none'
+				xmlns='http://www.w3.org/2000/svg'
+				className='absolute -z-1 top-[5%] -left-2 w-vw sm:w-[45vw] h-auto object-contain'
+				preserveAspectRatio='xMinYMax meet'
+			>
+				<path
+					ref={pathRef}
+					d='M-138.5 175.674C-20 -59.8263 472.32 17.711 584.5 556.174C707 1144.17 297.5 1493.17 -97.5 1587.17'
+					stroke='#E0E6A1'
+					strokeWidth='100'
+				/>
+			</svg>
 
             <section id='contexto' className='pt-px'>
 				<div className='base-container my-20 md:my-30 lg:my-[10vw]'>
@@ -135,14 +141,18 @@ export default function Context({ showCreation = true }: { showCreation?: boolea
 							<p className='text-20 leading-relaxed'>
 								<AnimatedText text='Universidades e centros de pesquisa geram descobertas com elevado potencial terapêutico todos os anos. O desafio raramente está na ciência mas na capacidade de transformar conhecimento em ativos farmacêuticos protegidos, validados e prontos para produção global.<br /><br />Sem maturação tecnológica adequada, governança científica e estratégia de propriedade intelectual, tecnologias promissoras permanecem restritas ao ambiente acadêmico e não alcançam seu potencial de impacto.' />
 							</p>
-							<div className='mt-10'>
-								<Button
-									style='dark'
-									href='/sobre'
-									text='Conheça a plataforma'
-									icon='diagonal-arrow'
-								/>
-							</div>
+
+							{showCta && (
+								<div className='mt-10'>
+									<Button
+										style='dark'
+										href='/sobre'
+										text='Conheça a plataforma'
+										icon='diagonal-arrow'
+									/>
+								</div>
+							)}
+							
 						</div>
 						
 					</div>

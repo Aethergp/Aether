@@ -139,12 +139,11 @@ export default function TRLScale() {
 					<div key={level.n}>
 
 						{isPhaseStart && (
-							<div className='flex items-baseline gap-3 mt-8 lg:mt-12 mb-3 lg:mb-4 first:mt-0'>
-								<span className={clsx('w-8 h-1 rounded-full shrink-0 translate-y-[-3px]', phase.bar)} />
-								<span className='text-sm font-semibold font-heading uppercase tracking-wide'>
+							<div className='flex items-center gap-4 mt-14 mb-6'>
+								<span className='text-36 font-semibold font-heading! grow'>
 									{phase.label}
 								</span>
-								<span className={clsx('text-sm font-semibold font-heading', phase.tag)}>
+								<span className={clsx('text-sm font-semibold font-heading shrink-0', phase.tag)}>
 									{phase.range}
 								</span>
 							</div>

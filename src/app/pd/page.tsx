@@ -233,7 +233,7 @@ export default function PDPage() {
 							<div>
 								<div className='flex flex-col gap-6 p-10 lg:p-[3vw] rounded-md lg:rounded-lg bg-green-dark text-green-light h-full overflow-hidden relative'>
 
-									<div className='absolute bottom-0 right-0 text-[12rem] leading-none font-heading font-bold text-green-pale/10 select-none pointer-events-none'>
+									<div className='absolute bottom-0 right-0 text-[12rem] leading-none font-heading font-bold text-green-pale/5 select-none pointer-events-none'>
 										PI
 									</div>
 
@@ -264,7 +264,7 @@ export default function PDPage() {
 							<div>
 								<div className='flex flex-col gap-6 p-10 lg:p-[3vw] rounded-md lg:rounded-lg border border-green-dark/20 bg-white h-full overflow-hidden relative'>
 
-									<div className='absolute bottom-0 right-0 text-[10rem] leading-none font-heading font-bold text-green-light/60 select-none pointer-events-none'>
+									<div className='absolute bottom-0 right-0 text-[10rem] leading-none font-heading font-bold text-green-pale/10 select-none pointer-events-none'>
 										TRL
 									</div>
 

@@ -9,6 +9,7 @@ import AnimatedTitle from '@/components/Utils/Animations/AnimatedTitle'
 import StaggerUp from '@/components/Utils/Animations/StaggerUp'
 import StrokePath from '@/components/Utils/Animations/StrokePath'
 import ContactBanner from '@/components/ContactBanner'
+import ScrollingImage from '@/components/Utils/Animations/ScrollingImage'
 import TRLScale from './TRLScale'
 
 export const metadata: Metadata = {
@@ -207,9 +208,13 @@ export default function TRLPage() {
 									<span className='text-sm font-semibold font-heading uppercase tracking-wide'>
 										{bloco.range}
 									</span>
+
+									{/*
 									<span className={`text-5xl lg:text-6xl font-heading font-bold leading-none ${bloco.muted}`}>
 										{String(i + 1).padStart(2, '0')}
 									</span>
+									*/}
+
 								</div>
 
 								<h3 className='text-30 font-heading font-semibold leading-tight mt-2'>
@@ -238,6 +243,27 @@ export default function TRLPage() {
 					</StaggerUp>
 
 				</div>
+			</section>
+
+			<section className='relative overflow-hidden h-screen'>
+
+				<div className='absolute z-3 inset-0 bg-green-dark mix-blend-soft-light' />
+
+				<ScrollingImage>
+					<video
+						loop
+						muted
+						playsInline
+						autoPlay
+						className='relative z-2 w-full h-full object-cover'
+					>
+						<source
+							src='/videos/lab.mp4'
+							type='video/mp4'
+						/>
+					</video>
+				</ScrollingImage>
+
 			</section>
 
 			{/* Escala completa - os nove níveis */}
@@ -277,7 +303,7 @@ export default function TRLPage() {
 			</section>
 
 			{/* Como a Aether conduz a maturação */}
-			<section className='relative overflow-hidden py-16 lg:py-[8vw] bg-green-dark text-green-light'>
+			<section className='relative overflow-hidden py-16 lg:py-[8vw] bg-green-pale/30'>
 
 				<div className='absolute bottom-0 right-0 w-1/2 max-w-xl opacity-[0.04] pointer-events-none select-none flex items-end justify-end pr-10 pb-10'>
 					<Image
@@ -321,7 +347,7 @@ export default function TRLPage() {
 								{principios.map((item, i) => (
 									<div
 										key={i}
-										className='flex items-start gap-4 bg-green-light/[0.07] px-6 py-5 rounded-sm h-full'
+										className='flex items-start gap-4 bg-green-dark text-green-light px-6 py-5 rounded-sm h-full'
 									>
 										<MaskedIcon
 											url='/img/svg/logo/icon-gp.svg'
@@ -334,7 +360,7 @@ export default function TRLPage() {
 								))}
 							</StaggerUp>
 
-							<blockquote className='mt-12 lg:mt-16 border-l-2 border-green-light/40 pl-8 lg:pl-10'>
+							<blockquote className='mt-12 lg:mt-16 border-l-2 border-green-dark pl-8 lg:pl-10'>
 								<p className='text-30 lg:text-36 font-heading font-semibold leading-tight'>
 									&ldquo;Gestão do avanço de TRLs sem diluição da propriedade intelectual.&rdquo;
 								</p>

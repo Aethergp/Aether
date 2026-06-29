@@ -130,7 +130,7 @@ export default function ContatoPage() {
 				</div>
 			</section>
 
-			<section className='relative py-16 lg:py-[8vw]'>
+			<section className='relative overflow-hidden py-16 lg:py-[8vw]'>
 
 				<StrokePath
 					viewBox='0 0 657 1636'
@@ -163,6 +163,7 @@ export default function ContatoPage() {
 									</a>
 								</div>
 
+								{/*
 								<div>
 									<span className='block text-sm opacity-60 mb-1'>Telefone</span>
 									<a
@@ -172,6 +173,7 @@ export default function ContatoPage() {
 										{PHONE}
 									</a>
 								</div>
+								*/}
 
 								<div>
 									<span className='block text-sm opacity-60 mb-1'>Instagram</span>
@@ -271,6 +273,7 @@ export default function ContatoPage() {
 
 			</section>
 
+			{/*
 			<section className='pb-16 lg:pb-[8vw]'>
 				<div className='base-container'>
 
@@ -343,6 +346,7 @@ export default function ContatoPage() {
 
 				</div>
 			</section>
+			*/}
 
 		</div>
 	)
