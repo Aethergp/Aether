@@ -16,7 +16,7 @@ import Hero from './Hero'
 import { pages } from '@/utils/routes'
 
 // img
-import bioLab from '@/assets/img/bio-lab.jpg'
+import bioLab from '@/assets/img/team.jpg'
 
 // metadata
 export const metadata: Metadata = {
@@ -256,7 +256,7 @@ export default function IctAetherBioPage() {
 						<div className='col-lg-3' />
 
 						<div className='col-lg-9'>
-							<div className='relative overflow-hidden rounded-md lg:rounded-lg bg-green-dark text-green-light p-10 lg:p-[3.5vw]'>
+							<div className='relative overflow-hidden rounded-md lg:rounded-lg text-green-light p-10 lg:p-[3.5vw]' style={{ background: 'linear-gradient(106deg, rgba(85,83,40,1) 0%, rgba(60,64,44,1) 26%, rgba(56,45,50,1) 62%, rgba(39,39,59,1) 100%)' }}>
 
 								<div className='row'>
 									<div className='col-lg-8'>
@@ -272,7 +272,7 @@ export default function IctAetherBioPage() {
 
 										<div className='mt-10 lg:mt-12'>
 											<Button
-												style='light-2'
+												style='light'
 												href={pages.sobreAgp}
 												text='Conheça a Aether Global Pharma'
 												icon='diagonal-arrow'

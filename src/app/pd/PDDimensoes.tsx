@@ -9,7 +9,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { SplitText } from 'gsap/SplitText'
 
 // img
-import img1 from '@/assets/img/spheres.png'
+import img1 from '@/assets/img/xray.jpg'
 import img2 from '@/assets/img/bio-lab.jpg'
 import img3 from '@/assets/img/group.png'
 import img4 from '@/assets/img/pillars.png'

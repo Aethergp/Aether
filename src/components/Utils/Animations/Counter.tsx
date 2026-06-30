@@ -9,26 +9,35 @@ gsap.registerPlugin(ScrollTrigger)
 
 interface Props {
 	number: number
+	decimals?: number
 	className?: string
+}
+
+function inferDecimals(n: number) {
+	const [, fraction = ''] = n.toString().split('.')
+	return fraction.length
+}
+
+function formatBrazilianNumber(value: number | string, decimals: number) {
+	return (+value).toLocaleString('pt-BR', {
+		minimumFractionDigits: decimals,
+		maximumFractionDigits: decimals
+	})
 }
 
 export default function Counter({
 	number,
+	decimals,
 	className
 }: Props) {
-	
+
+	const fractionDigits = decimals ?? inferDecimals(number)
 	const item = useRef<HTMLSpanElement>(null)
 
 	useGSAP(() => {
 		if (item.current) {
-
-			// format the number in Brazilian standard (e.g., 1.000, 10.000)
-			function formatBrazilianNumber(value: number | string) {
-				return Math.floor(+value).toLocaleString('pt-BR')
-			}
-
 			gsap.set(item.current, {
-				textContent: 0
+				textContent: formatBrazilianNumber(0, fractionDigits)
 			})
 
 			gsap.to(item.current, {
@@ -36,7 +45,7 @@ export default function Counter({
 				duration: 3,
 				ease: 'power2.inOut',
 				modifiers: {
-					textContent: (value) => formatBrazilianNumber(value)
+					textContent: (value) => formatBrazilianNumber(value, fractionDigits)
 				},
 				scrollTrigger: {
 					scroller: document.getElementById('viewport') as HTMLElement,
@@ -46,14 +55,14 @@ export default function Counter({
 				}
 			})
 		}
-	}, { dependencies: [number] })
+	}, { dependencies: [number, fractionDigits] })
 
 	return (
 		<span
 			ref={item}
 			className={className}
 		>
-			{number.toLocaleString('pt-BR')}
+			{formatBrazilianNumber(number, fractionDigits)}
 		</span>
 	)
 }

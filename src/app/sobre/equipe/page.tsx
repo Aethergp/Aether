@@ -105,12 +105,8 @@ export default function EquipePage() {
 				<div className='base-container'>
 
 					<div className='row pb-10 lg:pb-[5vw]'>
-						<div className='col-lg-3 pb-4 lg:pb-0'>
-							<h3 className='font-semibold font-heading'>
-								<AnimatedText text='(liderança)' />
-							</h3>
-						</div>
-						<div className='col-lg-9'>
+
+						<div className='col-12'>
 							<AnimatedTitle
 								style='dark'
 								className='text-60 font-heading font-semibold'

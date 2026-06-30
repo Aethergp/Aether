@@ -7,12 +7,12 @@ import MaskedIcon from '@/components/MaskedIcon'
 import AnimatedText from '@/components/Utils/Animations/AnimatedText'
 import AnimatedTitle from '@/components/Utils/Animations/AnimatedTitle'
 import StaggerUp from '@/components/Utils/Animations/StaggerUp'
-import StrokePath from '@/components/Utils/Animations/StrokePath'
 import Counter from '@/components/Utils/Animations/Counter'
 import Button from '@/components/Button'
+import ScrollingImage from '@/components/Utils/Animations/ScrollingImage'
 
 // img
-import imgFlagship from '@/assets/img/microscope.jpg'
+import imgFlagship from '@/assets/img/water.jpg'
 
 // utils
 import { pages } from '@/utils/routes'
@@ -100,16 +100,7 @@ export default function PipelinePage() {
 
 			{/* Projeto em destaque */}
 			<section className='relative overflow-hidden py-16 lg:py-[8vw] bg-green-dark text-green-light'>
-
-				<StrokePath
-					d='M795.5 175.674C677 -59.8263 184.68 17.711 72.5 556.174C-50 1144.17 359.5 1493.17 754.5 1587.17'
-					viewBox='0 0 657 1636'
-					className='z-0 top-[8%] -right-2 w-vw sm:w-[42vw] opacity-30'
-					start='10% 80%'
-					end='50% 20%'
-				/>
-
-				<div className='base-container relative z-1'>
+				<div className='base-container'>
 
 					<div className='row pb-10 lg:pb-[5vw]'>
 
@@ -133,21 +124,23 @@ export default function PipelinePage() {
 
 					<div className='row items-stretch gap-y-8'>
 
-						<div className='col-lg-5'>
-							<div className='relative aspect-4/5 lg:h-full rounded-md lg:rounded-lg overflow-hidden'>
-								<Image
-									src={imgFlagship}
-									alt='Pesquisa laboratorial da plataforma Aether'
-									fill
-									className='object-cover'
-									sizes='(max-width: 1024px) 100vw, 40vw'
-								/>
-								<div className='absolute inset-0 bg-green-dark/20' />
+						<div className='col-xl-5'>
+							<div className='relative aspect-4/5 sm:aspect-4/3 xl:aspect-auto xl:h-full rounded-md xl:rounded-xl overflow-hidden'>
+								<ScrollingImage>
+									<Image
+										src={imgFlagship}
+										alt='Pesquisa laboratorial da plataforma Aether'
+										fill
+										className='object-cover'
+										sizes='(max-width: 1024px) 100vw, 40vw'
+									/>
+								</ScrollingImage>
+								<div className='absolute z-2 inset-0 bg-green-dark mix-blend-soft-light' />
 							</div>
 						</div>
 
-						<div className='col-lg-7'>
-							<div className='lg:pl-[3vw] h-full flex flex-col'>
+						<div className='col-xl-7'>
+							<div className='xl:pl-[3vw] h-full flex flex-col'>
 
 								<p className='text-20 leading-relaxed opacity-90'>
 									A Aether Global Pharma integra os Projetos de Alto Impacto em Saúde - iniciativa do Ministério da Saúde e da EMBRAPII - com o desenvolvimento de uma plataforma produtiva para IFA anti-inflamatória, em parceria com o CQMED e a unidade de Inovação de Fármacos da UFMG.
@@ -162,7 +155,7 @@ export default function PipelinePage() {
 									</p>
 								</div>
 
-								<div className='mt-8 lg:mt-auto lg:pt-10'>
+								<div className='mt-8 lg:mt-10'>
 									<span className='block text-sm font-semibold font-heading uppercase tracking-wide opacity-60 mb-4'>
 										Parceiros do projeto
 									</span>
@@ -178,35 +171,28 @@ export default function PipelinePage() {
 									</div>
 								</div>
 
-							</div>
-						</div>
-
-					</div>
-
-					<div className='row pt-12 lg:pt-[5vw]'>
-						<div className='col-12'>
-							<div className='grid grid-cols-1 md:grid-cols-2 gap-px rounded-md lg:rounded-lg overflow-hidden border border-green-light/15'>
-
-								<div className='bg-green-light/[0.04] p-8 lg:p-10'>
-									<span className='block text-72 lg:text-[6vw] font-heading font-bold leading-none'>
-										R$ <Counter number={90} /> mi
-									</span>
-									<span className='block text-18 mt-4 opacity-70'>
-										Chamada pública nacional dos Projetos de Alto Impacto em Saúde
-									</span>
-								</div>
-
-								<div className='bg-green-light/[0.04] p-8 lg:p-10'>
-									<span className='block text-72 lg:text-[6vw] font-heading font-bold leading-none'>
-										R$ 12,5 mi
-									</span>
-									<span className='block text-18 mt-4 opacity-70'>
-										Investimento total destinado ao desenvolvimento do projeto
-									</span>
+								<div className='mt-8 lg:mt-10 grid grid-cols-1 gap-px rounded-md lg:rounded-lg overflow-hidden border border-green-light/15'>
+									<div className='bg-green-light/4 p-7 lg:p-8'>
+										<span className='block text-60 lg:text-[4vw] font-heading font-bold leading-none'>
+											R$ <Counter number={90} /> mi
+										</span>
+										<span className='block text-16 mt-3 opacity-70'>
+											Chamada pública nacional dos Projetos de Alto Impacto em Saúde
+										</span>
+									</div>
+									<div className='bg-green-light/4 p-7 lg:p-8'>
+										<span className='block text-60 lg:text-[4vw] font-heading font-bold leading-none'>
+											R$ <Counter number={12.5} /> mi
+										</span>
+										<span className='block text-16 mt-3 opacity-70'>
+											Investimento total destinado ao desenvolvimento do projeto
+										</span>
+									</div>
 								</div>
 
 							</div>
 						</div>
+
 					</div>
 
 				</div>
@@ -342,56 +328,6 @@ export default function PipelinePage() {
 					</div>
 
 				</div>
-			</section>
-
-			{/* CTA final */}
-			<section className='relative overflow-hidden py-24 lg:py-[10vw] bg-green-dark text-green-light'>
-
-				<div className='absolute bottom-0 right-0 w-1/2 max-w-xl opacity-[0.04] pointer-events-none select-none flex items-end justify-end pr-10 pb-10'>
-					<Image
-						src='/img/svg/logo/icon-bio.svg'
-						alt=''
-						width={400}
-						height={400}
-						className='w-full h-auto'
-						aria-hidden
-					/>
-				</div>
-
-				<div className='base-container relative z-1 text-center'>
-					<div className='row'>
-						<div className='col-lg-8 offset-lg-2'>
-
-							<h2 className='text-60 font-heading font-semibold leading-[1.05]!'>
-								<AnimatedText text='Tem uma tecnologia em desenvolvimento?<br />Submeta seu projeto à plataforma Aether.' />
-							</h2>
-
-							<p className='text-20 mt-8 lg:mt-10 opacity-90'>
-								Avaliamos projetos científicos com potencial translacional em biotecnologia e saúde humana, conduzidos por pesquisadores, startups e instituições de pesquisa no Brasil e no exterior.
-							</p>
-
-							<div className='flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8 mt-12 lg:mt-14'>
-
-								<Button
-									style='light-2'
-									href={pages.inscreva}
-									text='Inscreva seu projeto'
-									icon='diagonal-arrow'
-								/>
-
-								<Button
-									style='dark-2'
-									href={pages.contato}
-									text='Fale com nosso time'
-									icon='diagonal-arrow'
-								/>
-
-							</div>
-
-						</div>
-					</div>
-				</div>
-
 			</section>
 
 		</div>

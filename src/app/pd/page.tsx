@@ -337,7 +337,7 @@ export default function PDPage() {
 							</StaggerUp>
 
 							<Button
-								style='blue-dark'
+								style='dark'
 								href={pages.sobreIct}
 								text='Conheça o ICT AetherBio+'
 								icon='diagonal-arrow'

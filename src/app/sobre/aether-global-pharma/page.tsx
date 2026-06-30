@@ -15,7 +15,7 @@ import Button from '@/components/Button'
 import { pages } from '@/utils/routes'
 
 // img
-import labMeeting from '@/assets/img/scientists.jpg'
+import labMeeting from '@/assets/img/data.jpg'
 
 // metadata
 export const metadata: Metadata = {
@@ -281,7 +281,7 @@ export default function AetherGlobalPharmaPage() {
 						<div className='col-lg-3' />
 
 						<div className='col-lg-9'>
-							<div className='relative overflow-hidden rounded-md lg:rounded-lg p-10 lg:p-[3.5vw] bg-linear-to-br from-sapphire to-navy-mid text-blue-100'>
+							<div className='relative overflow-hidden rounded-md lg:rounded-lg p-10 lg:p-[3.5vw] text-green-light' style={{ background: 'linear-gradient(106deg, rgba(85,83,40,1) 0%, rgba(60,64,44,1) 26%, rgba(56,45,50,1) 62%, rgba(39,39,59,1) 100%)' }}>
 
 								<div className='row'>
 
@@ -289,7 +289,7 @@ export default function AetherGlobalPharmaPage() {
 
 										<MaskedIcon
 											url='/img/svg/logo/icon-bio.svg'
-											className='block w-10 lg:w-12 aspect-square bg-blue-100 mb-8'
+											className='block w-10 lg:w-12 aspect-square bg-green-light mb-8'
 										/>
 
 										<p className='text-24 font-heading leading-snug'>
@@ -302,7 +302,7 @@ export default function AetherGlobalPharmaPage() {
 
 										<div className='mt-10 lg:mt-12'>
 											<Button
-												style='blue-light'
+												style='light'
 												href={pages.sobreIct}
 												text='Conheça o ICT AetherBio+'
 												icon='diagonal-arrow'
