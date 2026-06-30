@@ -4,6 +4,7 @@ import { GoogleAnalytics } from '@next/third-parties/google'
 import Script from 'next/script'
 import clsx from 'clsx'
 import type { Viewport } from 'next'
+import { Inter, Syne } from 'next/font/google'
 
 // components
 import Menu from '@/components/Menu'
@@ -14,6 +15,9 @@ import Preloader from '@/components/Preloader'
 import PageTransition from '@/components/Utils/PageTransition'
 import { NotFoundProvider } from '@/components/Utils/NotFoundContext'
 import ViewportHeight from '@/components/Utils/ViewportHeight'
+
+// utils
+import { contact } from '@/utils/routes'
 
 // css
 import '@/assets/css/global.css'
@@ -61,8 +65,6 @@ export const viewport: Viewport = {
 	initialScale: 1
 }
 
-import { Inter, Syne } from 'next/font/google'
-
 const inter = Inter({
 	weight: ['400', '600', '700'],
 	style: ['normal'],
@@ -109,11 +111,11 @@ export default function RootLayout({
 		"contactPoint": [
 			{
 				"@type": "ContactPoint",
-				"email": "poliveira@aethergp.com",
+				"email": contact.email,
 				"contactType": "customer support"
 			}
 		],
-		"email": "poliveira@aethergp.com",
+		"email": contact.email,
 		"sameAs": [
 			"https://www.instagram.com/aetherglobalpharma/"
 		],

@@ -15,7 +15,7 @@ import { Form, Input, Select, Textarea, InputHidden, Honeypot, Submit } from '@/
 
 // utils
 import { email, phone } from '@/utils/functions'
-import { social } from '@/utils/routes'
+import { social, contact } from '@/utils/routes'
 
 // metadata
 export const metadata: Metadata = {
@@ -49,9 +49,6 @@ const subjectOptions = [
 	{ value: 'Imprensa', label: 'Imprensa' },
 	{ value: 'Outros assuntos', label: 'Outros assuntos' }
 ]
-
-const PUBLIC_EMAIL = 'contato@aethergp.com.br'
-const PHONE = '+55 (41) 99698-0730'
 
 const MAP_SRC = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3601.624946455032!2d-49.29010442399409!3d-25.484196177527387!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94dce359c443d8e3%3A0xdb55f50153993a47!2sR.%20Jos%C3%A9%20Casemiro%20Stenzowski%2C%2021%20-%20Novo%20Mundo%2C%20Curitiba%20-%20PR%2C%2081010-370!5e0!3m2!1spt-BR!2sbr!4v1781447134921!5m2!1spt-BR!2sbr'
 const MAP_LINK = 'https://www.google.com/maps/search/?api=1&query=Rua%20Jos%C3%A9%20Casemiro%20Stenzowski%2C%2021D%2C%20Curitiba%20-%20PR'
@@ -157,20 +154,20 @@ export default function ContatoPage() {
 								<div>
 									<span className='block text-sm opacity-60 mb-1'>E-mail</span>
 									<a
-										href={email(PUBLIC_EMAIL)}
+										href={email(contact.email)}
 										className='hover-underline'
 									>
-										{PUBLIC_EMAIL}
+										{contact.email}
 									</a>
 								</div>
 
 								<div>
 									<span className='block text-sm opacity-60 mb-1'>Telefone</span>
 									<a
-										href={phone(PHONE)}
+										href={phone(contact.phone)}
 										className='hover-underline'
 									>
-										{PHONE}
+										{contact.phone}
 									</a>
 								</div>
 								*/}

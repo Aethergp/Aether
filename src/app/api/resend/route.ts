@@ -1,4 +1,10 @@
+// libraries
 import { Resend } from 'resend'
+import { S3Client, GetObjectCommand } from '@aws-sdk/client-s3'
+import { getSignedUrl } from '@aws-sdk/s3-request-presigner'
+
+// utils
+import { contact } from '@/utils/routes'
 
 if (!process.env.RESEND_API_KEY) {
 	throw new Error('RESEND_API_KEY is not defined')
@@ -6,11 +12,25 @@ if (!process.env.RESEND_API_KEY) {
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
-const getDestinationEmail = (): string => {
-	return 'poliveira@aethergp.com'
+const s3 = new S3Client({
+	region: 'auto',
+	endpoint: process.env.R2_ENDPOINT,
+	credentials: {
+		accessKeyId: process.env.R2_ACCESS_KEY_ID!,
+		secretAccessKey: process.env.R2_SECRET_ACCESS_KEY!,
+	},
+})
+
+const getR2DownloadUrl = async (key: string) => {
+	const command = new GetObjectCommand({ Bucket: process.env.R2_BUCKET!, Key: key })
+	return getSignedUrl(s3, command, { expiresIn: 60 * 60 * 24 * 7 }) // 7 dias (máximo do SigV4)
 }
 
-const IGNORED_FIELDS = ['form', 'company'] // company = honeypot
+const getDestinationEmail = (): string => {
+	return contact.email
+}
+
+const IGNORED_FIELDS = ['form', 'b_website'] // b_website = honeypot
 
 const MAX_FILE_BYTES = 15 * 1024 * 1024
 
@@ -50,7 +70,7 @@ export async function POST(req: Request) {
 		const { body, file } = await parseRequest(req)
 
 		// honeypot (anti-spam)
-		if (body.company) {
+		if (body.b_website) {
 			return new Response(
 				JSON.stringify({ status: 'success' }),
 				{ status: 200 }
@@ -89,8 +109,14 @@ export async function POST(req: Request) {
 		const destinationEmail = getDestinationEmail()
 		const isInscricao = body.form === 'inscricao'
 
+		const r2Key = typeof body.Documento === 'string' && body.Documento.startsWith('inscricoes/') ? body.Documento : null
+		let r2DownloadUrl: string | null = null
+		if (r2Key) {
+			r2DownloadUrl = await getR2DownloadUrl(r2Key)
+		}
+
 		const keyValuePairs = Object.entries(body).filter(
-			([key]) => !IGNORED_FIELDS.includes(key)
+			([key]) => !IGNORED_FIELDS.includes(key) && key !== 'Documento'
 		)
 
 		const formattedData = keyValuePairs
@@ -108,6 +134,17 @@ export async function POST(req: Request) {
 			)
 			.join('')
 
+		const documentoRow = r2DownloadUrl
+			? `<tr style="vertical-align: top;">
+				<td style="padding: 10px; border: 1px solid #ccc; background-color: #f2f2f2; font-size: 14px; line-height: 1.25; color: #030304;">
+					<strong>Documento:</strong>
+				</td>
+				<td style="padding: 10px; border: 1px solid #ccc; font-size: 14px; line-height: 1.25; color: #030304;">
+					<a href="${r2DownloadUrl}" style="color: #555328;">Baixar arquivo (link válido por 7 dias)</a>
+				</td>
+			</tr>`
+			: ''
+
 		const htmlMessage = `
 			<div style="background-color: #f2f2f2; padding: 50px 20px; font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif;">
 				<div style="margin: auto; background-color: #fff; padding: 40px; width: 520px; max-width: 100%;">
@@ -120,6 +157,7 @@ export async function POST(req: Request) {
 					<table style="border-collapse: collapse; width: 100%;" cellspacing="0" cellpadding="0">
 						<tbody>
 							${formattedData}
+							${documentoRow}
 						</tbody>
 					</table>
 				</div>
@@ -128,7 +166,7 @@ export async function POST(req: Request) {
 
 		const textMessage = keyValuePairs
 			.map(([key, value]) => `${key}: ${normalizeValue(value)}`)
-			.join('\n')
+			.join('\n') + (r2DownloadUrl ? `\nDocumento: ${r2DownloadUrl}` : '')
 
 		const attachments = file
 			? [{ filename: file.name, content: Buffer.from(await file.arrayBuffer()) }]
@@ -141,7 +179,7 @@ export async function POST(req: Request) {
 				: 'Mensagem enviada de Formulário de Contato'
 
 		const { error } = await resend.emails.send({
-			from: 'Aether Global Pharma <aether@aethergp.com.br>',
+			from: `Aether Global Pharma <${contact.email}>`,
 			to: [destinationEmail],
 			replyTo: normalizeValue(body.Email),
 			subject,
@@ -182,7 +220,7 @@ export async function POST(req: Request) {
 			`
 
 			const { error: confirmationError } = await resend.emails.send({
-				from: 'Aether Global Pharma <aether@aethergp.com.br>',
+				from: `Aether Global Pharma <${contact.email}>`,
 				to: [normalizeValue(body.Email)],
 				subject: 'Recebemos a inscrição do seu projeto - Aether',
 				html: confirmationHtml,

@@ -111,8 +111,8 @@ export const social = {
 
 // contact
 export const contact = {
-	//phone: '(41) 3340-4300',
-	email: 'poliveira@aethergp.com',
+	phone: '+55 (41) 99661-6144',
+	email: 'aether@aethergp.com.br',
 	//address: 'Av. Rep. Argentina, 1228 - Sala 2210 - Vila Izabel, Curitiba - PR, 80610-260',
 	//gmaps: 'https://maps.app.goo.gl/Sg1E92zC1FYNJMYx7'
 }

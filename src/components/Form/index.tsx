@@ -866,6 +866,7 @@ interface FileUploadProps {
 	hideLabel?: boolean
 	className?: string
 	required?: boolean
+	uploadToR2?: boolean
 }
 
 export const FileUpload = ({
@@ -877,7 +878,8 @@ export const FileUpload = ({
 	maxSizeMB = 15,
 	hideLabel,
 	className,
-	required
+	required,
+	uploadToR2 = false
 }: FileUploadProps) => {
 	const {
 		register,
@@ -889,28 +891,98 @@ export const FileUpload = ({
 	const inputRef = useRef<HTMLInputElement | null>(null)
 	const maxBytes = maxSizeMB * 1024 * 1024
 
-	const files = watch(name) as FileList | undefined
-	const file = files?.[0]
+	const [uploadState, setUploadState] = useState<'idle' | 'uploading' | 'done' | 'error'>('idle')
+	const [uploadedFile, setUploadedFile] = useState<{ name: string; size: number } | null>(null)
+	const [uploadError, setUploadError] = useState('')
+
+	const files = watch(name) as FileList | string | undefined
+	const isStandardFile = !uploadToR2 && files instanceof FileList ? files[0] : null
 
 	const { ref, ...field } = register(name, {
 		required: required && 'Este campo é obrigatório',
-		validate: {
-			size: (value: FileList) =>
-				!value?.[0] || value[0].size <= maxBytes || `O arquivo excede ${maxSizeMB} MB. Reduza o tamanho ou envie um resumo.`,
-			type: (value: FileList) =>
-				!value?.[0] || value[0].type === 'application/pdf' || 'Formato não suportado. Envie um arquivo PDF.'
-		}
+		...(uploadToR2
+			? {}
+			: {
+				validate: {
+					size: (value: FileList) =>
+						!value?.[0] || value[0].size <= maxBytes || `O arquivo excede ${maxSizeMB} MB. Reduza o tamanho ou envie um resumo.`,
+					type: (value: FileList) =>
+						!value?.[0] || value[0].type === 'application/pdf' || 'Formato não suportado. Envie um arquivo PDF.'
+				}
+			})
 	})
 
-	const clear = () => {
+	const clearStandard = () => {
 		setValue(name, undefined, { shouldValidate: true })
 		if (inputRef.current) inputRef.current.value = ''
+	}
+
+	const clearR2 = () => {
+		setUploadState('idle')
+		setUploadedFile(null)
+		setUploadError('')
+		setValue(name, '', { shouldValidate: true })
+		if (inputRef.current) inputRef.current.value = ''
+	}
+
+	const handleR2Change = async (e: React.ChangeEvent<HTMLInputElement>) => {
+		const file = e.target.files?.[0]
+		if (!file) return
+
+		if (file.type !== 'application/pdf') {
+			setUploadError('Formato não suportado. Envie um arquivo PDF.')
+			setUploadState('error')
+			return
+		}
+
+		if (file.size > maxBytes) {
+			setUploadError(`O arquivo excede ${maxSizeMB} MB. Reduza o tamanho ou envie um resumo.`)
+			setUploadState('error')
+			return
+		}
+
+		setUploadState('uploading')
+		setUploadError('')
+
+		try {
+			const presignRes = await fetch('/api/r2-presign', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ filename: file.name, contentType: file.type, size: file.size })
+			})
+
+			if (!presignRes.ok) {
+				const err = await presignRes.json()
+				throw new Error(err.error || 'Erro ao preparar upload.')
+			}
+
+			const { url, key } = await presignRes.json()
+
+			const uploadRes = await fetch(url, {
+				method: 'PUT',
+				body: file,
+				headers: { 'Content-Type': file.type }
+			})
+
+			if (!uploadRes.ok) throw new Error('Erro ao enviar arquivo.')
+
+			setValue(name, key, { shouldValidate: true })
+			setUploadedFile({ name: file.name, size: file.size })
+			setUploadState('done')
+		} catch (err) {
+			setUploadError(err instanceof Error ? err.message : 'Erro ao enviar arquivo.')
+			setUploadState('error')
+			if (inputRef.current) inputRef.current.value = ''
+		}
 	}
 
 	const formatSize = (bytes: number) => {
 		const mb = bytes / 1024 / 1024
 		return mb < 0.1 ? `${Math.round(bytes / 1024)} KB` : `${mb.toFixed(1)} MB`
 	}
+
+	const showEmpty = uploadToR2 ? uploadState === 'idle' || uploadState === 'error' : !isStandardFile
+	const showDone = uploadToR2 ? uploadState === 'done' : !!isStandardFile
 
 	return (
 		<div
@@ -939,10 +1011,13 @@ export const FileUpload = ({
 					ref(element)
 					inputRef.current = element
 				}}
-				{...field}
+				{...(uploadToR2
+					? { onChange: handleR2Change, name }
+					: field
+				)}
 			/>
 
-			{!file ? (
+			{showEmpty && (
 				<label
 					htmlFor={id}
 					className={clsx(
@@ -956,10 +1031,18 @@ export const FileUpload = ({
 						</svg>
 					</span>
 					<span className='text-sm opacity-75'>
-						Clique para anexar um arquivo
+						{uploadState === 'error' ? uploadError : 'Clique para anexar um arquivo'}
 					</span>
 				</label>
-			) : (
+			)}
+
+			{uploadState === 'uploading' && (
+				<div className='flex items-center gap-3 border border-dashed border-gray-lighter rounded-md p-4'>
+					<span className='text-sm opacity-75'>A enviar arquivo...</span>
+				</div>
+			)}
+
+			{showDone && (
 				<div className='flex items-center justify-between gap-3 border border-gray-lighter rounded-md p-4'>
 					<span className='flex items-center gap-3 min-w-0 text-green-dark'>
 						<span className='flex items-center justify-center w-5 h-5 shrink-0 text-current'>
@@ -969,14 +1052,16 @@ export const FileUpload = ({
 							</svg>
 						</span>
 						<span className='truncate text-sm'>
-							{file.name}
-							<span className='opacity-60'>{` · ${formatSize(file.size)}`}</span>
+							{uploadToR2 ? uploadedFile?.name : isStandardFile?.name}
+							<span className='opacity-60'>
+								{` · ${formatSize(uploadToR2 ? (uploadedFile?.size ?? 0) : (isStandardFile?.size ?? 0))}`}
+							</span>
 						</span>
 					</span>
 
 					<button
 						type='button'
-						onClick={clear}
+						onClick={uploadToR2 ? clearR2 : clearStandard}
 						aria-label='Remover arquivo'
 						className='flex items-center justify-center w-5 h-5 shrink-0 text-green-dark transition-opacity duration-200 hover:opacity-60 cursor-pointer'
 					>
@@ -1011,13 +1096,13 @@ export const Honeypot = () => {
 			className='absolute left-[-9999px] w-px h-px overflow-hidden'
 			aria-hidden='true'
 		>
-			<label htmlFor='company'>Não preencher</label>
+			<label htmlFor='b_website'>Não preencher</label>
 			<input
 				type='text'
-				id='company'
+				id='b_website'
 				tabIndex={-1}
 				autoComplete='off'
-				{...(register ? register('company') : {})}
+				{...(register ? register('b_website') : {})}
 			/>
 		</div>
 	)

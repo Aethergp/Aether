@@ -13,7 +13,7 @@ import Button from '@/components/Button'
 import { Form, Input, Textarea, FileUpload, Checkbox, InputHidden, Honeypot, Submit } from '@/components/Form'
 
 // utils
-import { pages } from '@/utils/routes'
+import { pages, contact } from '@/utils/routes'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -124,6 +124,7 @@ function Steps() {
 							label='Documento de apoio'
 							name='Documento'
 							microcopy='Pitch deck, artigo publicado ou resumo executivo. PDF, máximo 15 MB. Lembre-se: nada sigiloso nesta etapa.'
+							uploadToR2
 						/>
 
 						<Checkbox
@@ -161,18 +162,18 @@ export default function ProjectForm() {
 	return (
 		<Form
 			endpoint='/api/resend'
-			isFormData
 			onSuccess={{
 				title: 'Inscrição enviada com sucesso',
 				text: 'Obrigado por compartilhar seu projeto. Nossa equipe científica fará a avaliação inicial e retornaremos o mais breve possível pelo e-mail informado.'
 			}}
 			onError={{
 				title: 'Erro ao enviar inscrição',
-				text: 'Ocorreu um erro ao enviar sua inscrição. Por favor, tente novamente. Se o problema persistir, escreva para contato@aethergp.com.br.'
+				text: `Ocorreu um erro ao enviar sua inscrição. Por favor, tente novamente. Se o problema persistir, escreva para ${contact.email}.`
 			}}
 		>
 
 			<InputHidden name='form' value='inscricao' id='form' />
+			
 			<Honeypot />
 
 			<Steps />
