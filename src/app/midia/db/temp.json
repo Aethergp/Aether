@@ -1,5 +1,23 @@
 [
 	{
+		"id": "6",
+		"type": "blog",
+		"slug": "o-vazio-dos-biosimilares-e-a-janela-que-o-brasil-nao-pode-ignorar",
+		"title": "O vazio dos biosimilares e a janela que o Brasil não pode ignorar",
+		"excerpt": "A indústria farmacêutica global enfrenta um dos maiores ciclos de perda de exclusividade da história. Noventa por cento das oportunidades abertas ainda não têm concorrentes em desenvolvimento. O que isso significa para a ciência brasileira?",
+		"date": "2026-06-30",
+		"category": "Blog",
+		"image": {
+			"url": "/img/midia/mercado-farmaceutico-global-2030.jpg",
+			"alt": "Cápsula farmacêutica sobre mapa global com dados de mercado"
+		},
+		"externalUrl": null,
+		"source": null,
+		"author": "Equipe Aether",
+		"readingTime": 4,
+		"content": "<p>Quando o Brasil discute inovação farmacêutica, o mercado global está tendo uma conversa diferente - mais específica e mais urgente. A pergunta que organiza os laboratórios, os fundos de venture capital e os escritórios de propriedade intelectual ao redor do mundo não é mais \"quem produz mais ciência?\". É \"quem vai fornecer os próximos ativos farmacêuticos do mundo?\"</p><p>A distinção importa.</p><h2>Um mercado de 2,6 trilhões de dólares - e um buraco de noventa por cento</h2><p>Segundo a IQVIA, o mercado global de medicamentos deve alcançar aproximadamente 2,6 trilhões de dólares até 2030. Os maiores vetores de crescimento estão concentrados em oncologia, imunologia, diabetes e obesidade - áreas onde a demanda cresce mais rápido do que a oferta de novos ativos consegue acompanhar.</p><p>Mas existe uma dimensão dessa corrida que ainda não ganhou a atenção que merece: a indústria farmacêutica global está entrando em um dos maiores ciclos de perda de exclusividade de sua história. Centenas de bilhões de dólares em receitas protegidas por patentes serão expostas à concorrência nos próximos anos, à medida que moléculas estratégicas perdem sua proteção.</p><p>E aqui está o dado que muda o enquadramento inteiro.</p><p>A IQVIA identificou o que chamou de <em>biosimilar void</em>: dos mais de cem biológicos que perderão proteção patentária entre 2025 e 2034, apenas dez por cento possuem biosimilares em desenvolvimento. Noventa por cento dessas oportunidades permanecem sem um concorrente sendo construído.</p><p>Isso não é uma lacuna de mercado. É uma estrutura aberta - e está disponível para quem chegar com ciência, estratégia e propriedade intelectual consolidada.</p><h2>A questão que precisa ser reformulada</h2><p>O desafio brasileiro não está na capacidade científica. Temos grupos de pesquisa de alto nível, pesquisadores formados em centros de excelência internacionais e infraestrutura que, em diversas áreas, compete com países de renda muito superior.</p><p>O que ainda falta é a etapa seguinte: transformar o conhecimento científico em propriedade intelectual robusta e, a partir disso, em ativos competitivos no cenário global.</p><p>A questão estratégica deixa de ser quem publica mais artigos e passa a ser quem consegue mover conhecimento científico para o registro de patente, e da patente para o desenvolvimento de uma molécula, de um análogo, de uma nova plataforma farmacêutica com valor de mercado real.</p><p>Não se trata de desvalorizar a ciência básica - ela é a base de tudo. Trata-se de reconhecer que a cadeia não termina no paper. Ela começa ali.</p><h2>A corrida já começou</h2><p>As janelas de oportunidade abertas pela perda de exclusividade têm prazo. O desenvolvimento de um biosimilar ou de uma nova molécula leva anos - e os competidores que começarem mais cedo constroem vantagens que são difíceis de reverter.</p><p>O Brasil possui capacidade científica para participar dessa corrida. A questão é se vai organizá-la a tempo.</p><p>Ciência gera conhecimento. Propriedade intelectual gera ativos. Ativos geram soberania.</p><p><a href=\"https://www.linkedin.com/posts/patricia-p-oliveira_inovaaexaeto-ciaeancia-propriedadeintelectual-ugcPost-7477511658609901568-yXz5/\" target=\"_blank\" rel=\"noopener noreferrer\">Confira o vídeo completo sobre este tema no LinkedIn.</a></p>"
+	},
+	{
 		"id": "5",
 		"type": "blog",
 		"slug": "brasil-nao-tem-escassez-de-ciencia-tem-escassez-de-ativos-cientificos",
