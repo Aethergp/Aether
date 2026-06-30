@@ -156,8 +156,6 @@ export default function TRLScale() {
 							)}
 						>
 
-							<span className={clsx('absolute left-0 top-0 bottom-0 w-1', phase.bar)} />
-
 							<button
 								type='button'
 								onClick={() => toggle(level.n)}

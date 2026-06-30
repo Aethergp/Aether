@@ -7,10 +7,11 @@ import MaskedIcon from '@/components/MaskedIcon'
 import AnimatedText from '@/components/Utils/Animations/AnimatedText'
 import AnimatedTitle from '@/components/Utils/Animations/AnimatedTitle'
 import StaggerUp from '@/components/Utils/Animations/StaggerUp'
-import StrokePath from '@/components/Utils/Animations/StrokePath'
-import ContactBanner from '@/components/ContactBanner'
 import ScrollingImage from '@/components/Utils/Animations/ScrollingImage'
 import TRLScale from './TRLScale'
+
+// img
+import imgContext from '@/assets/img/stairs.png'
 
 export const metadata: Metadata = {
 	title: 'TRL - Níveis de Maturidade Tecnológica | Aether Global Pharma',
@@ -112,19 +113,25 @@ export default function TRLPage() {
 			</section>
 
 			{/* Contexto */}
-			<section className='relative overflow-hidden py-16 lg:py-[8vw]'>
-
-				<StrokePath
-					d='M795.5 175.674C677 -59.8263 184.68 17.711 72.5 556.174C-50 1144.17 359.5 1493.17 754.5 1587.17'
-					viewBox='0 0 657 1636'
-					className='-z-1 top-[5%] -right-2 w-vw sm:w-[45vw]'
-					start='10% 80%'
-					end='50% 20%'
-				/>
-
+			<section className='relative overflow-hidden'>
 				<div className='base-container'>
 
-					<div className='row pb-10 lg:pb-[5vw]'>
+					<div className='relative w-full aspect-square sm:aspect-4/3 lg:aspect-video rounded-md xl:rounded-xl overflow-hidden'>
+
+						<div className='absolute z-2 inset-0 bg-green-dark mix-blend-screen' />
+
+						<ScrollingImage>
+							<Image
+								src={imgContext}
+								alt='TRL'
+								fill
+								className='object-cover'
+								sizes='100vw'
+							/>
+						</ScrollingImage>
+					</div>
+
+					<div className='row pb-10 lg:pb-[5vw] pt-16 lg:pt-[6vw]'>
 
 						<div className='col-lg-3 pb-8 lg:pb-0'>
 							<MaskedIcon
@@ -144,7 +151,7 @@ export default function TRLPage() {
 
 					</div>
 
-					<div className='row pt-2 lg:pt-[4vw]'>
+					<div className='row pt-2 lg:pt-[2vw]'>
 
 						<div className='col-lg-3' />
 
