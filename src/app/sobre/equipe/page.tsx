@@ -11,14 +11,11 @@ import Button from '@/components/Button'
 import Committee from './Committee'
 import ContactBanner from '@/components/ContactBanner'
 
-// img - placeholders (swap for approved photos later)
+// imgs
 import portrait from '@/assets/img/patricia.jpg'
-import member1 from '@/assets/img/team/member-1.png'
-import member2 from '@/assets/img/team/member-2.png'
-import member3 from '@/assets/img/team/member-3.png'
-import member4 from '@/assets/img/team/member-4.png'
-import member5 from '@/assets/img/team/member-5.png'
-import member6 from '@/assets/img/team/member-6.png'
+import claudia from '@/assets/img/team/claudia.png'
+import andre from '@/assets/img/team/andre.png'
+import pessoa from '@/assets/img/team/pessoa.png'
 
 export const metadata: Metadata = {
 	title: 'Equipe - Lideranças e comitê científico | Aether Global Pharma',
@@ -45,17 +42,17 @@ export const metadata: Metadata = {
 }
 
 const bio = [
-	'Há mais de 25 anos, Patricia atua na interseção entre desenvolvimento farmacêutico, estratégia regulatória e operações industriais, liderando projetos que transformam conhecimento científico em soluções viáveis e escaláveis.',
-	'Sua trajetória combina experiência regulatória junto à ANVISA, ao MAPA e a autoridades internacionais com engenharia farmacêutica e operações industriais em multinacionais como P&G, Reckitt Benckiser e JTI, além de instituições como o TECPAR e o Laboratório Lifal.',
-	'À frente da Aether, lidera a plataforma que conecta ciência, capital e indústria para transformar moléculas promissoras e tecnologias em saúde em ativos farmacêuticos globais.'
+	'Com mais de 25 anos de experiência na indústria farmacêutica e em ambientes altamente regulados, <b>Patricia P. Oliveira</b> construiu sua trajetória na interseção entre desenvolvimento farmacêutico, estratégia regulatória, inovação e operações industriais.',
+	'Sua experiência reúne atuação junto à ANVISA, ao MAPA e a autoridades internacionais, além da liderança de projetos, operações industriais e iniciativas de inovação em organizações nacionais e multinacionais.',
+	'Como fundadora e CEO da <b>Aether Global Pharma</b> e presidente do <b>ICT AetherBio+</b>, lidera uma plataforma integrada de <b>Pharmaceutical Asset Venture Building</b>, conectando ciência de alto potencial, propriedade intelectual, capital e indústria para construir, desenvolver e valorizar ativos farmacêuticos com potencial global.'
 ]
 
 const realizacoes = [
 	'Mais de 300 produtos aprovados junto à ANVISA',
 	'Certificação da linha de produção da fração PMT da vacina Hib no TECPAR',
-	'Certificações internacionais para exportação em mercados altamente regulados',
-	'Implantação da primeira fábrica de ácido hialurônico reticulado da América Latina',
-	'Liderança de equipes industriais com mais de 200 profissionais em ambiente GMP'
+	'Certificações internacionais para exportação a mercados altamente regulados',
+	'Implantação da fábrica de ácido hialurônico reticulado da América Latina',
+	'Liderança de operações e equipes industriais com mais de 200 profissionais em ambiente GMP'
 ]
 
 // PLACEHOLDER - nomes, titulações, instituições, bios e fotos do comitê são
@@ -64,12 +61,9 @@ const realizacoes = [
 const bioPlaceholder = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pesquisador(a) com atuação em desenvolvimento e validação de tecnologias em saúde. Nome, titulação e instituição a confirmar com o cliente.'
 
 const comite = [
-	{ name: 'Nome a confirmar', titulacao: 'PhD', area: 'Química Medicinal', instituicao: 'Instituição a confirmar', bio: bioPlaceholder, photo: member4 },
-	{ name: 'Nome a confirmar', titulacao: 'PhD', area: 'Farmacologia', instituicao: 'Instituição a confirmar', bio: bioPlaceholder, photo: member2 },
-	{ name: 'Nome a confirmar', titulacao: 'PhD', area: 'Biotecnologia', instituicao: 'Instituição a confirmar', bio: bioPlaceholder, photo: member3 },
-	{ name: 'Nome a confirmar', titulacao: 'PhD', area: 'Imunologia', instituicao: 'Instituição a confirmar', bio: bioPlaceholder, photo: member5 },
-	{ name: 'Nome a confirmar', titulacao: 'PhD', area: 'Engenharia Farmacêutica', instituicao: 'Instituição a confirmar', bio: bioPlaceholder, photo: member1 },
-	{ name: 'Nome a confirmar', titulacao: 'PhD', area: 'Assuntos Regulatórios', instituicao: 'Instituição a confirmar', bio: bioPlaceholder, photo: member6 }
+	{ name: 'Claudia Ramos', titulacao: 'PhD', area: 'Química Medicinal', instituicao: 'Instituição a confirmar', bio: bioPlaceholder, photo: claudia },
+	{ name: 'André Chaia', titulacao: 'PhD', area: 'Farmacologia', instituicao: 'Instituição a confirmar', bio: bioPlaceholder, photo: andre },
+	{ name: 'Nome a confirmar', titulacao: 'PhD', area: 'Biotecnologia', instituicao: 'Instituição a confirmar', bio: bioPlaceholder, photo: pessoa }
 ]
 
 export default function EquipePage() {
@@ -158,13 +152,16 @@ export default function EquipePage() {
 
 							<div className='flex flex-col gap-5 mt-8 lg:mt-10 text-18 leading-relaxed lg:pr-[4vw]'>
 								{bio.map((paragraph, i) => (
-									<p key={i}>{paragraph}</p>
+									<p
+										key={i}
+										dangerouslySetInnerHTML={{ __html: paragraph }}
+									/>
 								))}
 							</div>
 
-							<div className='mt-12 lg:mt-14'>
+							<div className='mt-12'>
 
-								<h4 className='font-semibold font-heading mb-8 lg:mb-10'>
+								<h4 className='font-semibold font-heading'>
 									<AnimatedText text='(realizações em destaque)' />
 								</h4>
 

@@ -45,7 +45,7 @@ const criterios = [
 	},
 	{
 		title: 'Potencial translacional',
-		text: 'Caminho identificável entre a descoberta científica e uma aplicação terapêutica concreta - medicamento, biofármaco, terapia avançada ou plataforma tecnológica associada.'
+		text: 'Caminho identificável entre a descoberta científica e uma aplicação terapêutica concreta: medicamento, biofármaco, terapia avançada ou plataforma tecnológica associada.'
 	},
 	{
 		title: 'Propriedade intelectual protegível',
@@ -53,7 +53,7 @@ const criterios = [
 	},
 	{
 		title: 'Origem em pesquisadores, startups ou instituições',
-		text: 'Projetos originados em universidades, centros de pesquisa, institutos de ciência e tecnologia, startups de base científica ou colaborações entre esses atores - no Brasil ou no exterior.'
+		text: 'Projetos originados em universidades, centros de pesquisa, institutos de ciência e tecnologia, startups de base científica ou colaborações entre esses atores, no Brasil ou no exterior.'
 	}
 ]
 
@@ -136,7 +136,7 @@ export default function PDPage() {
 
 						<div className='col-lg-6'>
 							<p className='text-20 leading-relaxed'>
-								<AnimatedText text='Traduzir uma descoberta científica em um ativo farmacêutico global é um percurso longo e multidisciplinar. Exige validação técnica independente, avanço progressivo de maturidade tecnológica, captação de fomento qualificado e uma estratégia de propriedade intelectual construída desde os primeiros estágios.<br /><br />Na plataforma Aether, esse percurso é conduzido pelo ICT AetherBio+ - instituto de ciência, tecnologia e inovação responsável pela condução científica e tecnológica de cada projeto, com governança independente e rigor metodológico.' />
+								<AnimatedText text='Traduzir uma descoberta científica em um ativo farmacêutico global é um percurso longo e multidisciplinar. Exige validação técnica independente, avanço progressivo de maturidade tecnológica, captação de fomento qualificado e uma estratégia de propriedade intelectual construída desde os primeiros estágios.<br /><br />Na plataforma Aether, esse percurso é conduzido pelo ICT AetherBio+, instituto de ciência, tecnologia e inovação responsável pela condução científica e tecnológica de cada projeto, com governança independente e rigor metodológico.' />
 							</p>
 						</div>
 
@@ -175,7 +175,7 @@ export default function PDPage() {
 						<div className='col-lg-3' />
 						<div className='col-lg-9'>
 							<p className='text-20 leading-relaxed pb-10 lg:pb-[3vw]'>
-								<AnimatedText text='A plataforma Aether é translacional por natureza - avalia projetos científicos em biotecnologia e saúde humana com potencial de transformação em ativos farmacêuticos globais. Na prática, priorizamos projetos com as seguintes características:' />
+								<AnimatedText text='A plataforma Aether é translacional por natureza e avalia projetos científicos em biotecnologia e saúde humana com potencial de transformação em ativos farmacêuticos globais. Na prática, priorizamos projetos com as seguintes características:' />
 							</p>
 						</div>
 					</div>
@@ -277,7 +277,7 @@ export default function PDPage() {
 									</h2>
 
 									<p className='text-18 leading-relaxed relative z-1 max-w-sm'>
-										A jornada completa de um ativo farmacêutico, detalhada nível a nível - dos princípios científicos básicos a implantação comercial comprovada.
+										A jornada completa de um ativo farmacêutico, detalhada nível a nível, dos princípios científicos básicos à implantação comercial comprovada.
 									</p>
 
 									<div className='mt-auto pt-4 relative z-1'>

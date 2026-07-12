@@ -163,7 +163,7 @@ export default function Banner() {
 
 					<TextReveal>
 						<p className='text-green-light text-20 w-200 max-w-full block'>
-							Identificamos, desenvolvemos e valorizamos propriedade intelectual originada em universidades e centros de pesquisa no Brasil e no exterior, conectando ciência de alto potencial terapêutico ao desenvolvimento farmacêutico global por meio de governança científica, estratégia regulatória e proteção jurídica consistente.
+							Identificamos ciência de alto potencial terapêutico em universidades e centros de pesquisa no Brasil e no exterior e a transformamos em ativos farmacêuticos protegidos, desenvolvidos e preparados para o mercado global. Integramos desenvolvimento científico, propriedade intelectual, estratégia regulatória e governança para reduzir riscos, avançar tecnologias e construir ativos com potencial de licenciamento e geração de valor.
 						</p>
 					</TextReveal>
 

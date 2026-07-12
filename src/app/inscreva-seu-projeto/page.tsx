@@ -44,7 +44,7 @@ const steps = [
 	},
 	{
 		title: 'Conversamos',
-		text: 'Se houver aderência ao modelo da plataforma, entramos em contato para uma conversa aprofundada - com acordo de confidencialidade, quando aplicável.'
+		text: 'Se houver aderência ao modelo da plataforma, entramos em contato para uma conversa aprofundada, com acordo de confidencialidade quando aplicável.'
 	}
 ]
 
@@ -85,7 +85,7 @@ export default function InscrevaSeuProjetoPage() {
 
 						<div className='col-md-10 offset-md-2 col-lg-9 offset-lg-3'>
 							<p className='text-20 leading-relaxed text-green-dark mt-6 lg:mt-8 max-w-[62ch]'>
-								<AnimatedText text='Se você desenvolve uma tecnologia com potencial terapêutico - em universidade, centro de pesquisa, startup ou empresa -, conte para a gente. A inscrição leva poucos minutos, em duas etapas, e toda submissão é avaliada pela equipe científica da plataforma.' />
+								<AnimatedText text='Se você desenvolve uma tecnologia com potencial terapêutico em universidade, centro de pesquisa, startup ou empresa, conte para a gente. A inscrição leva poucos minutos, em duas etapas, e toda submissão é avaliada pela equipe científica da plataforma.' />
 							</p>
 						</div>
 
@@ -146,7 +146,7 @@ export default function InscrevaSeuProjetoPage() {
 						<div className='col-md-3'>
 
 							<div className='bg-green-pale rounded-md p-6 lg:p-8 text-16 leading-relaxed'>
-								Trate esta inscrição como uma apresentação inicial. Não inclua dados experimentais sigilosos, sequências, estruturas ou qualquer informação que comprometa um futuro pedido de patente - esses detalhes serão tratados em etapa posterior, sob acordo de confidencialidade.
+								Trate esta inscrição como uma apresentação inicial. Não inclua dados experimentais sigilosos, sequências, estruturas ou qualquer informação que comprometa um futuro pedido de patente. Esses detalhes serão tratados em etapa posterior, sob acordo de confidencialidade.
 							</div>
 
 						</div>

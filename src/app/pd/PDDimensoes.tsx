@@ -24,7 +24,7 @@ const dimensoes = [
 	},
 	{
 		title: 'Maturação Tecnológica (TRL)',
-		text: 'Conduzimos o avanço de Technology Readiness Level - dos princípios básicos até a implantação operacional comprovada - preservando integralmente a titularidade dos ativos de propriedade intelectual ao longo do processo.',
+		text: 'Conduzimos o avanço de Technology Readiness Level, dos princípios básicos até a implantação operacional comprovada, preservando integralmente a titularidade dos ativos de propriedade intelectual ao longo do processo.',
 		image: img2
 	},
 	{
@@ -210,7 +210,7 @@ export default function PDDimensoes() {
 					{/* Scrim */}
 					<div className='absolute inset-0 z-1 bg-green-dark/60' />
 
-					{/* Vertical progress bar — center-right */}
+					{/* Vertical progress bar - center-right */}
 					<div className='absolute right-12 lg:right-[5vw] top-1/2 -translate-y-1/2 z-3 flex flex-col gap-[5px]'>
 						{dimensoes.map((_, i) => (
 							<div

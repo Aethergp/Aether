@@ -198,20 +198,20 @@ export default function Context({
 						>
 							{[
 								{
-									title: 'Redução de Risco Tecnológico',
-									text: 'Incertezas científicas, regulatórias e de escalonamento industrial precisam ser tratadas de forma integrada ao longo do desenvolvimento. Sem essa abordagem, tecnologias promissoras permanecem em estágios iniciais e tornam-se pouco atrativas para parceiros industriais e investidores especializados.',
+									title: 'Desrisking e Desenvolvimento do Ativo',
+									text: 'Reduzimos progressivamente as incertezas científicas, tecnológicas e de escalonamento por meio de uma estratégia estruturada de desenvolvimento. O objetivo é avançar tecnologias promissoras em maturidade e construir ativos farmacêuticos mais robustos e atrativos para parceiros estratégicos e licenciadores.',
 								},
 								{
 									title: 'Governança Científica e Regulatória',
-									text: 'A ausência de validação técnica independente, combinada à falta de estratégia regulatória desde as fases iniciais, compromete a credibilidade dos ativos e pode gerar barreiras relevantes nos processos de desenvolvimento e concessão de registro junto às agências reguladoras.',
+									text: 'Integramos governança científica, desenvolvimento tecnológico e estratégia regulatória desde as fases iniciais. Cada ativo evolui com critérios de decisão, marcos de desenvolvimento e evidências orientadas às exigências do desenvolvimento farmacêutico e às futuras rotas de licenciamento.',
 								},
 								{
-									title: 'Consolidação de Propriedade Intelectual',
-									text: 'Titularidades fragmentadas, proteção incompleta e ausência de estratégia global de propriedade intelectual reduzem significativamente o valor tecnológico dos ativos e limitam sua capacidade de desenvolvimento e licenciamento internacional.',
+									title: 'Estratégia e Consolidação de Propriedade Intelectual',
+									text: 'Estruturamos a propriedade intelectual como elemento central de valor do ativo. Avaliamos titularidade, liberdade de operação e estratégia de proteção para construir portfólios de PI consistentes, defensáveis e alinhados ao potencial de desenvolvimento e licenciamento global.',
 								},
 								{
-									title: 'Inserção <br />Internacional',
-									text: 'A ausência de posicionamento institucional adequado dificulta a integração com o ecossistema global de inovação farmacêutica, restringindo o acesso a parceiros estratégicos, programas avançados de desenvolvimento e capital especializado em life sciences.',
+									title: 'Posicionamento e Licenciamento Global',
+									text: 'Preparamos e posicionamos os ativos para conexão com o ecossistema farmacêutico global. Estruturamos oportunidades de parceria, co-desenvolvimento e licenciamento, aproximando ativos científicos de indústrias e parceiros estratégicos capazes de conduzi-los às próximas etapas de desenvolvimento.',
 								}
 							].map((item, i) => (
 								<SwiperSlide
@@ -258,7 +258,7 @@ export default function Context({
 									pinSection={pinRef}
 								>
 									<h2 className='flex flex-wrap justify-center items-center gap-x-4'>
-										A Aether foi criada para atuar exatamente nessa lacuna do ecossistema científico.
+										Entre a descoberta científica e a indústria farmacêutica, construímos ativos.
 									</h2>
 								</TextReveal>
 							</div>

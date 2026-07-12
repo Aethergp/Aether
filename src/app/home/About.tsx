@@ -31,13 +31,13 @@ export default function About() {
                         </AnimatedTitle>
 
                         <p className='text-20 leading-relaxed block my-10 2xl:pr-20'>
-                            <AnimatedText text='A <strong>Aether Global Pharma</strong> e o <strong>ICT AetherBio+</strong> operam de forma sinérgica, combinando uma holding privada de propriedade intelectual com um instituto de ciência e tecnologia.<br /><br />A plataforma conecta pesquisa acadêmica, capital especializado e indústria farmacêutica global para transformar descobertas científicas em ativos farmacêuticos estratégicos.' />
+                            <AnimatedText text='A Aether Global Pharma e o ICT AetherBio+ operam de forma sinérgica para transformar ciência de alto potencial em ativos farmacêuticos estruturados para avançar ao longo da jornada de desenvolvimento e gerar valor.<br /><br /> O ICT AetherBio+ articula competências científicas, infraestrutura, parceiros e recursos para promover o avanço e o desrisking tecnológico dos projetos. A Aether Global Pharma conduz a estratégia de desenvolvimento e valorização dos ativos, integrando propriedade intelectual, estratégia regulatória, capital e posicionamento para parcerias e licenciamento.<br /><br /> Juntas, conectam universidades e pesquisadores, capital especializado e indústria farmacêutica, criando uma jornada estruturada para que descobertas promissoras avancem com maior maturidade, consistência e potencial global ampliando, para a indústria, o acesso a ativos selecionados, protegidos e progressivamente desenvolvidos para inovação externa.' />
                         </p>
 
                         <Button
                             style='dark'
-                            href='/pd'
-                            text='Pesquisa & Desenvolvimento'
+                            href='/sobre'
+                            text='Como construímos ativos'
                             icon='diagonal-arrow'
                         />
 

@@ -44,12 +44,12 @@ export const metadata: Metadata = {
 }
 
 const funcoes = [
-	{ text: 'Desrisking tecnológico baseado em evidências científicas' },
-	{ text: 'Captação de fomento público nacional e internacional' },
-	{ text: 'Governança científica independente dos projetos' },
-	{ text: 'Gestão do avanço de TRLs sem diluição da propriedade intelectual', href: pages.trl },
-	{ text: 'Articulação com universidades, centros de pesquisa e CROs' },
-	{ text: 'Geração qualificada de projetos científicos com potencial translacional' }
+	{ text: 'Desrisking científico e tecnológico orientado à construção de ativos farmacêuticos' },
+	{ text: 'Governança científica e gestão estruturada do avanço de maturidade tecnológica' },
+	{ text: 'Articulação com universidades, centros de pesquisa, CROs e parceiros especializados' },
+	{ text: 'Estruturação e qualificação de projetos científicos com potencial translacional' },
+	{ text: 'Captação e articulação de fomento público e recursos não dilutivos, nacionais e internacionais' },
+	{ text: 'Geração de evidências e avanço de TRLs para redução de incertezas e valorização dos ativos', href: pages.trl }
 ]
 
 export default function IctAetherBioPage() {
@@ -74,11 +74,11 @@ export default function IctAetherBioPage() {
 								style="wine"
 								className='text-60 font-heading font-semibold'
 							>
-								Um instituto sem fins lucrativos no centro da inovação.
+								Um ICT dedicado ao avanço da inovação farmacêutica.
 							</AnimatedTitle>
 
 							<p className='text-20 leading-relaxed mt-6 lg:mt-8 lg:pr-[6vw] text-wine'>
-								<AnimatedText text='Como instituição sem fins lucrativos, o AetherBio+ promove o avanço da maturidade tecnológica das descobertas científicas, assegura a governança científica independente de cada projeto e viabiliza a captação de fomento público nacional e internacional, apoiado por um comitê científico composto por pesquisadores especialistas em diferentes áreas terapêuticas.' />
+								<AnimatedText text='Como instituição de ciência, tecnologia e inovação sem fins lucrativos, o ICT AetherBio+ promove o avanço da maturidade de projetos científicos com potencial terapêutico. Sua atuação integra governança científica, articulação de competências especializadas, geração de evidências e acesso a mecanismos de fomento, criando condições para reduzir incertezas e apoiar a evolução dos projetos ao longo da jornada de desenvolvimento farmacêutico.' />
 							</p>
 						</div>
 
@@ -164,11 +164,11 @@ export default function IctAetherBioPage() {
 								<div className='row'>
 									<div className='col-lg-9'>
 										<p className='text-24 font-heading leading-snug'>
-											Cada projeto do AetherBio+ é acompanhado por um comitê científico formado por pesquisadores especialistas em diferentes áreas terapêuticas, responsável pela validação técnica independente das decisões de desenvolvimento.
+											Cada projeto é acompanhado por uma governança científica especializada, responsável por apoiar a avaliação técnica e as decisões críticas ao longo de seu desenvolvimento.
 										</p>
 
 										<p className='text-18 leading-relaxed mt-6 opacity-80'>
-											É essa governança que assegura que cada molécula evolua com rigor científico, conformidade regulatória e geração qualificada de dados - reduzindo incertezas e aumentando a atratividade dos ativos para licenciamento e parcerias industriais.
+											A atuação multidisciplinar fortalece o rigor científico, a qualidade das evidências e a consistência das decisões, contribuindo para a redução progressiva de riscos e para a construção de ativos farmacêuticos mais robustos.
 										</p>
 									</div>
 								</div>
@@ -199,14 +199,14 @@ export default function IctAetherBioPage() {
 							</AnimatedTitle>
 
 							<p className='text-20 leading-relaxed my-8 lg:my-10 text-wine'>
-								<AnimatedText text='Se você desenvolve uma tecnologia com potencial terapêutico - em universidade, centro de pesquisa ou startup -, o AetherBio+ pode ser o caminho entre a descoberta e o desenvolvimento farmacêutico global. A inscrição é simples, em duas etapas, e toda submissão é tratada com confidencialidade.' />
+								<AnimatedText text='Se você desenvolve uma tecnologia com potencial terapêutico em uma universidade, centro de pesquisa ou outro ambiente de inovação, o ICT AetherBio+ pode contribuir para construir o caminho entre a descoberta científica e as próximas etapas do desenvolvimento farmacêutico. Projetos submetidos à plataforma passam por um processo estruturado de avaliação, com confidencialidade e análise de seu potencial científico, tecnológico e translacional.' />
 							</p>
 
 							<div>
 								<Button
 									style='blue-dark'
 									href={pages.inscreva}
-									text='Inscreva seu projeto'
+									text='Submeta seu projeto'
 									icon='diagonal-arrow'
 								/>
 							</div>
@@ -246,7 +246,7 @@ export default function IctAetherBioPage() {
 								style='dark'
 								className='text-60 font-heading font-semibold'
 							>
-								O pilar científico de uma plataforma maior.
+								O pilar científico e tecnológico de uma plataforma integrada.
 							</AnimatedTitle>
 						</div>
 					</div>
@@ -267,7 +267,11 @@ export default function IctAetherBioPage() {
 										/>
 
 										<p className='text-24 font-heading leading-snug'>
-											O AetherBio+ é o pilar científico da plataforma Aether. A dimensão estratégica, jurídica e comercial dos ativos é conduzida pela Aether Global Pharma - holding responsável pela titularidade e valorização da propriedade intelectual.
+											O ICT AetherBio+ promove o avanço científico e tecnológico dos projetos, a geração de evidências e a redução progressiva de riscos. A Aether Global Pharma conduz a estratégia de construção e valorização dos ativos, integrando propriedade intelectual, capital, parcerias e licenciamento.
+										</p>
+
+										<p className='text-18 leading-relaxed mt-6 opacity-80'>
+											Juntas, as duas entidades conectam ciência, desenvolvimento, capital e indústria para construir e valorizar ativos farmacêuticos com potencial global.
 										</p>
 
 										<div className='mt-10 lg:mt-12'>

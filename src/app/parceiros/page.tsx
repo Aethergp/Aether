@@ -22,13 +22,13 @@ import abstract from '@/assets/img/abstract.jpg'
 // metadata
 export const metadata: Metadata = {
 	title: 'Parceiros - Ecossistema científico e institucional | Aether Global Pharma',
-	description: 'Conheça as universidades, centros de pesquisa e instituições de inovação que compõem o ecossistema científico da Aether Global Pharma - e descubra como se tornar um parceiro.',
+	description: 'Conheça as universidades, centros de pesquisa e instituições de inovação que compõem o ecossistema científico da Aether Global Pharma, e descubra como se tornar um parceiro.',
 	alternates: {
 		canonical: '/parceiros'
 	},
 	openGraph: {
 		title: 'Parceiros - Ecossistema científico e institucional | Aether Global Pharma',
-		description: 'Conheça as universidades, centros de pesquisa e instituições de inovação que compõem o ecossistema científico da Aether Global Pharma - e descubra como se tornar um parceiro.',
+		description: 'Conheça as universidades, centros de pesquisa e instituições de inovação que compõem o ecossistema científico da Aether Global Pharma, e descubra como se tornar um parceiro.',
 		url: 'https://aethergp.com.br/parceiros',
 		siteName: 'Aether Global Pharma',
 		images: [
@@ -81,7 +81,7 @@ export default function ParceirosPage() {
 							</TextReveal>
 
 							<p className='text-20 mt-6 lg:mt-8 lg:pr-[8vw] opacity-90'>
-								<AnimatedText text='A plataforma Aether opera em colaboração com universidades, centros de pesquisa e instituições de inovação que sustentam o desenvolvimento dos nossos ativos - da pesquisa básica à produção em escala.' />
+								<AnimatedText text='A plataforma Aether opera em colaboração com universidades, centros de pesquisa e instituições de inovação que sustentam o desenvolvimento dos nossos ativos, da pesquisa básica à produção em escala.' />
 							</p>
 
 						</div>

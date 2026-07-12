@@ -16,7 +16,7 @@ import MagneticButton from '@/components/Utils/Animations/MagneticButton'
 import BioGrainient from './BioGrainient'
 
 
-const words = ['+ Moléculas', '+ Patentes', '+ Oportunidades']
+const words = ['+ Ciência de alto potencial', '+ Evidências', '+ Ativos farmacêuticos']
 export default function Hero() {
 
 	const rootRef = useRef<HTMLElement>(null)
@@ -92,7 +92,7 @@ export default function Hero() {
 
 							<MaskedIcon
 								url='/img/svg/logo/aether-bio.svg'
-								className='block w-full max-w-[32rem] aspect-[1179/148] bg-cream'
+								className='block w-full max-w-lg aspect-1179/148 bg-cream'
 								position='left center'
 							/>
 						</div>
@@ -101,30 +101,23 @@ export default function Hero() {
 					<div className='row pt-12 lg:pt-[6vw]'>
 						<div className='col-lg-10'>
 							<h1 className='text-72 font-heading font-semibold leading-[1.05]!'>
-								<AnimatedText text='Onde ideias ganham forma para transformar o mundo.' />
+								<AnimatedText text='Onde ciência de alto potencial avança para se tornar um ativo farmacêutico.' />
 							</h1>
 						</div>
 					</div>
 
 					<div className='row pt-10 lg:pt-[4vw]'>
+						
 						<div className='col-lg-3' />
+
 						<div className='col-lg-8'>
 							<p className='text-20 leading-relaxed opacity-90'>
-								<AnimatedText text='O AetherBio+ é um Instituto de Ciência e Tecnologia dedicado a impulsionar pesquisas avançadas em saúde e biotecnologia. Seu propósito é viabilizar o desenvolvimento de novas moléculas e a geração de patentes, atuando como catalisador entre a pesquisa científica e sua aplicação prática.' />
+								<AnimatedText text='O ICT AetherBio+ é o pilar científico e tecnológico da plataforma Aether, responsável por articular competências, infraestrutura e recursos para promover o avanço e o desrisking de projetos farmacêuticos de alto potencial. Conectamos pesquisadores, universidades, centros de pesquisa e parceiros especializados para gerar evidências, reduzir incertezas e ampliar a maturidade científica e tecnológica dos projetos.' />
 							</p>
 						</div>
+
 					</div>
 
-				</div>
-
-				<div className='base-container pt-12 lg:pt-[4vw]'>
-					<div className='row'>
-						<div className='col-lg-9'>
-							<p className='text-36 lg:text-40 font-heading font-semibold leading-[1.1]!'>
-								<AnimatedText text='Como um organismo vivo, a Aether se expande. O AetherBio+ é seu novo ramo de inovação - conectando conhecimento e propósito.' />
-							</p>
-						</div>
-					</div>
 				</div>
 
 				<div

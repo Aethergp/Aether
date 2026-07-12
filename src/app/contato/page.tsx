@@ -109,7 +109,7 @@ export default function ContatoPage() {
 							<div className='flex flex-col gap-6 md:flex-row md:items-center md:justify-between bg-green-pale rounded-md p-8 lg:p-10'>
 
 								<p className='text-18 md:pr-10'>
-									É pesquisador e quer apresentar uma tecnologia? Use nosso formulário dedicado - sua proposta chega direto à equipe científica.
+									É pesquisador e quer apresentar uma tecnologia? Use nosso formulário dedicado: sua proposta chega direto à equipe científica.
 								</p>
 
 								<Button

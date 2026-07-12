@@ -63,6 +63,10 @@ export default function Companies() {
                             >
                                 Dois pilares institucionais. Uma estratégia integrada.
                             </AnimatedTitle>
+
+                            <p className='text-24 font-heading mt-6 lg:mt-8'>
+                                <AnimatedText text='Uma arquitetura institucional para construir e valorizar ativos farmacêuticos.' />
+                            </p>
                         </div>
 
                     </div>
@@ -79,7 +83,7 @@ export default function Companies() {
 
 						<div className='col-lg-6'>
                             <p className='text-20 leading-relaxed'>
-                                <AnimatedText text='A plataforma Aether opera por meio de duas entidades complementares, cada uma com funções específicas dentro de um modelo integrado de captura e valorização de propriedade intelectual.' />
+                                <AnimatedText text='A plataforma Aether opera por meio de duas entidades complementares, com funções distintas e integradas ao longo da jornada de desenvolvimento dos ativos. Essa arquitetura permite articular ciência, propriedade intelectual, capital e estratégia de desenvolvimento em um modelo orientado à redução de risco, construção de valor e licenciamento.' />
                             </p>
 						</div>
 						
@@ -141,7 +145,7 @@ export default function Companies() {
 
                             <div className='col-md-10 col-lg-8 col-xl-6'>
                                 <p className='text-20 leading-relaxed'>
-                                    <AnimatedText text='A Aether Global Pharma é a holding privada responsável pela gestão estratégica e jurídica dos ativos de propriedade intelectual da plataforma.<br /><br />Atuando no Brasil e internacionalmente, a empresa detém a titularidade dos ativos gerados ou desenvolvidos no ecossistema da Aether e conduz as interações com a indústria farmacêutica global e investidores especializados.' />
+                                    <AnimatedText text='A Aether Global Pharma é o pilar empresarial da plataforma e atua como uma <b>Pharmaceutical Asset Venture Builder</b>, dedicada à construção, desenvolvimento e valorização de ativos farmacêuticos originados em ciência de alto potencial.<br /><br />A empresa conduz a estratégia integrada dos ativos, articulando propriedade intelectual, desenvolvimento, capital e posicionamento de mercado. Atua na construção de oportunidades de parceria, co-desenvolvimento e licenciamento, conectando ativos progressivamente desenvolvidos à indústria farmacêutica e ao capital especializado.' />
                                 </p>
                                 <div className='mt-10'>
                                     <Button
@@ -166,12 +170,12 @@ export default function Companies() {
                             <div className='col-lg-6'>
                                 <StaggerUp className='flex flex-col gap-1'>
                                     {[
-                                        'Titularidade das patentes e ativos de propriedade intelectual',
-                                        'Estratégia jurídica e posicionamento global dos ativos farmacêuticos',
-                                        'Consolidação contratual e definição de modelos de licenciamento',
-                                        'Desenvolvimento de parcerias com a indústria farmacêutica global',
-                                        'Relacionamento com investidores e fundos especializados em life sciences',
-                                        'Estruturação de acordos de royalties, milestones e eventos de liquidez'
+                                        'Estratégia, gestão e valorização do portfólio de ativos farmacêuticos',
+                                        'Titularidade e gestão estratégica dos ativos de propriedade intelectual',
+                                        'Estruturação das estratégias de desenvolvimento e geração de valor',
+                                        'Articulação de capital privado e investidores especializados em life sciences',
+                                        'Desenvolvimento de parcerias com a indústria farmacêutica',
+                                        'Estruturação de modelos de co-desenvolvimento, licenciamento, royalties, milestones e eventos de liquidez'
                                     ].map((item, i) => (
                                         <div
                                             key={i}
@@ -232,7 +236,7 @@ export default function Companies() {
 
                             <div className='col-md-10 col-lg-8 col-xl-6'>
                                 <p className='text-20 leading-relaxed'>
-                                    <AnimatedText text='O ICT AetherBio+ é o instituto de ciência, tecnologia e inovação da plataforma, responsável pela condução científica e tecnológica dos projetos.<br /><br />Como instituição sem fins lucrativos, o AetherBio+ promove o avanço da maturidade tecnológica das descobertas científicas, assegura a governança científica independente de cada projeto e viabiliza a captação de fomento público nacional e internacional, apoiado por um comitê científico composto por pesquisadores especialistas em diferentes áreas terapêuticas.' />
+                                    <AnimatedText text='<b>O ICT AetherBio+ é o pilar científico e tecnológico da plataforma, responsável por articular competências, infraestrutura e recursos para promover o avanço e o desrisking de projetos farmacêuticos de alto potencial.</b><br /><br />Como instituição de ciência, tecnologia e inovação sem fins lucrativos, atua na governança científica dos projetos e na construção de estratégias de desenvolvimento orientadas ao avanço da maturidade tecnológica. Conecta pesquisadores, universidades, centros de pesquisa e parceiros especializados, mobilizando capacidades científicas e tecnológicas para gerar evidências, reduzir incertezas e preparar os projetos para as próximas etapas de desenvolvimento.<br /><br />Sua atuação também viabiliza o acesso a mecanismos de fomento e cooperação científica, nacionais e internacionais, apoiada por uma governança especializada e multidisciplinar.' />
                                 </p>
                                 <div className='mt-10'>
                                     <Button
@@ -257,12 +261,12 @@ export default function Companies() {
                             <div className='col-lg-6'>
                                 <StaggerUp className='flex flex-col gap-1'>
                                     {[
-                                        'Desrisking tecnológico baseado em evidências científicas',
-                                        'Captação de fomento público nacional e internacional',
-                                        'Governança científica independente dos projetos',
-                                        'Gestão do avanço de TRLs sem diluição da propriedade intelectual',
-                                        'Articulação com universidades, centros de pesquisa e CROs',
-                                        'Geração qualificada de projetos científicos com potencial translacional'
+                                        'Desrisking científico e tecnológico orientado à construção de ativos farmacêuticos',
+                                        'Governança científica e gestão estruturada do avanço de maturidade tecnológica',
+                                        'Articulação com universidades, centros de pesquisa, CROs e parceiros especializados',
+                                        'Estruturação e qualificação de projetos científicos com potencial translacional',
+                                        'Captação e articulação de fomento público e recursos não dilutivos, nacionais e internacionais',
+                                        'Geração de evidências e avanço de TRLs para redução de incertezas e valorização dos ativos'
                                     ].map((item, i) => (
                                         <div
                                             key={i}

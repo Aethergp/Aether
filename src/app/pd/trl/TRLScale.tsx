@@ -57,64 +57,64 @@ const levels: Level[] = [
 		n: 1,
 		phase: 0,
 		name: 'Princípios básicos observados',
-		desc: 'Pesquisa científica de natureza acadêmica, com identificação e observação dos princípios fundamentais. A tecnologia ainda é um conceito teórico ou hipótese científica em formação.',
-		pharma: 'Identificação de alvo molecular, revisão de literatura, hipóteses sobre mecanismos de ação, seleção de ingredientes ativos candidatos.'
+		desc: 'Pesquisa científica de natureza exploratória, com identificação e observação dos princípios fundamentais relacionados à tecnologia. O conhecimento ainda se encontra em estágio inicial de investigação.',
+		pharma: 'Identificação de alvos, mecanismos biológicos, classes moleculares ou princípios ativos candidatos; revisão de literatura e formulação das primeiras hipóteses científicas.'
 	},
 	{
 		n: 2,
 		phase: 0,
 		name: 'Conceito tecnológico formulado',
-		desc: 'Os princípios básicos já foram estudados e uma aplicação prática é formulada, ainda sem prova experimental consolidada. A hipótese se traduz em um conceito técnico específico.',
-		pharma: 'Definição da classe de compostos, proposição de formulação, desenho de estudos de viabilidade iniciais.'
+		desc: 'Os princípios fundamentais começam a ser traduzidos em uma aplicação potencial. Hipóteses científicas e tecnológicas são formuladas e os primeiros caminhos para sua validação são definidos.',
+		pharma: 'Definição do conceito terapêutico, seleção inicial de candidatos, proposição de mecanismo de ação e planejamento dos primeiros estudos de viabilidade.'
 	},
 	{
 		n: 3,
 		phase: 0,
 		name: 'Prova de conceito experimental',
-		desc: 'Estudos analíticos e de laboratório confirmam a viabilidade da tecnologia. Um modelo de prova de conceito é construído e testado em condições controladas.',
-		pharma: 'Triagem (screening) de moléculas, ensaios in vitro iniciais, validação analítica do princípio ativo.'
+		desc: 'Evidências experimentais iniciais demonstram a viabilidade do conceito. A hipótese é testada em condições controladas e os primeiros resultados permitem avaliar o potencial da tecnologia.',
+		pharma: 'Ensaios in vitro, estudos analíticos, caracterização inicial e geração de evidências preliminares de atividade, mecanismo ou viabilidade do ativo.'
 	},
 	{
 		n: 4,
 		phase: 1,
 		name: 'Validação em ambiente de laboratório',
-		desc: 'Os componentes da tecnologia são validados de forma integrada em ambiente de bancada. A prova de conceito evolui para um sistema funcional em escala de laboratório.',
-		pharma: 'Estudos in vivo iniciais em modelos animais, validação de formulação, primeiros ensaios de eficácia pré-clínica.'
+		desc: 'Os principais componentes da tecnologia são integrados e validados em ambiente controlado. A prova de conceito evolui para uma configuração mais robusta e reprodutível.',
+		pharma: 'Caracterização ampliada do ativo, otimização inicial, desenvolvimento analítico, estudos de formulação ou processo e geração de evidências de eficácia em modelos experimentais apropriados.'
 	},
 	{
 		n: 5,
 		phase: 1,
 		name: 'Validação em ambiente relevante',
-		desc: 'A tecnologia é validada em ambiente que se aproxima significativamente do real, com rigor regulatório crescente e documentação formal dos resultados.',
-		pharma: 'Estudos pré-clínicos regulatórios - toxicologia, farmacocinética, farmacodinâmica - segundo padrões de Boas Práticas de Laboratório (BPL/GLP).'
+		desc: 'A tecnologia é avaliada em condições que representam de forma mais consistente sua aplicação pretendida. A geração de evidências torna-se mais estruturada e orientada à redução de riscos para as etapas subsequentes.',
+		pharma: 'Estudos pré-clínicos avançados, evolução de CMC, caracterização do processo e do produto, estudos de estabilidade e planejamento de estudos regulatórios, conforme a estratégia específica do ativo.'
 	},
 	{
 		n: 6,
 		phase: 1,
 		name: 'Demonstração em ambiente relevante',
-		desc: 'Um protótipo funcional é demonstrado em escala e condições próximas às da aplicação final. A tecnologia deixa a bancada e se prepara para o contato com o ambiente operacional.',
-		pharma: 'Produção do lote clínico em escala piloto, submissão regulatória inicial (IND / dossiê de pesquisa clínica) junto à agência reguladora.'
+		desc: 'A tecnologia é demonstrada de forma integrada em condições relevantes, com evidências suficientes para sustentar decisões de desenvolvimento, transferência tecnológica e preparação para etapas subsequentes.',
+		pharma: 'Processo de obtenção ou produção tecnicamente estabelecido em escala compatível com o estágio de desenvolvimento, caracterização do ativo, geração de evidências pré-clínicas e documentação técnica alinhada à estratégia de desenvolvimento, transferência e evolução regulatória.'
 	},
 	{
 		n: 7,
 		phase: 2,
 		name: 'Demonstração em ambiente operacional',
-		desc: 'O sistema completo é testado em ambiente real. A tecnologia é submetida a condições operacionais finais, com ajustes incrementais baseados nos resultados.',
-		pharma: 'Ensaios clínicos fase I e fase II - avaliação de segurança, farmacocinética em humanos e eficácia preliminar.'
+		desc: 'A tecnologia alcança estágio avançado de desenvolvimento e passa a ser avaliada em condições de uso ou aplicação próximas ao ambiente operacional pretendido.',
+		pharma: 'Início ou avanço do desenvolvimento clínico, quando aplicável, acompanhado pela evolução de CMC, produção, controle de qualidade e estratégia regulatória.'
 	},
 	{
 		n: 8,
 		phase: 2,
 		name: 'Sistema completo e qualificado',
-		desc: 'A tecnologia é qualificada formalmente por meio de testes e demonstrações. Todas as especificações são atendidas e o produto está pronto para registro e comercialização.',
-		pharma: 'Ensaios clínicos fase III em larga escala, submissão para aprovação regulatória (registro), auditoria de fabricação e qualificação industrial.'
+		desc: 'A tecnologia apresenta elevado grau de maturidade, com seus principais componentes qualificados e evidências robustas para sustentar as etapas finais de desenvolvimento e aprovação.',
+		pharma: 'Desenvolvimento clínico avançado, consolidação do processo produtivo, qualificação industrial e preparação ou submissão do conjunto de evidências requerido para aprovação regulatória, conforme a modalidade terapêutica e a jurisdição aplicável.'
 	},
 	{
 		n: 9,
 		phase: 2,
 		name: 'Sistema implantado em operação',
-		desc: 'A tecnologia está em uso operacional comprovado, comercializada e monitorada em ambiente real. O ativo é mensurável em receita, impacto clínico e geração contínua de evidências.',
-		pharma: 'Medicamento comercializado, fase IV (farmacovigilância pós-mercado), acompanhamento de eventos adversos e estudos de efetividade em uso real.'
+		desc: 'A tecnologia alcança maturidade operacional e sua aplicação é comprovada em ambiente real.',
+		pharma: 'Medicamento ou tecnologia em utilização após as aprovações aplicáveis, com produção e operação estabelecidas e geração contínua de evidências de segurança, efetividade e desempenho em uso real.'
 	}
 ]
 

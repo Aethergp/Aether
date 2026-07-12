@@ -19,13 +19,13 @@ import { pages } from '@/utils/routes'
 
 export const metadata: Metadata = {
 	title: 'Pipeline - Projetos em Desenvolvimento | Aether Global Pharma',
-	description: 'O pipeline da Aether reúne os projetos científicos em desenvolvimento na plataforma, conduzidos pelo ICT AetherBio+ - incluindo a plataforma produtiva para IFA anti-inflamatória selecionada pelo Ministério da Saúde e pela EMBRAPII.',
+	description: 'O pipeline da Aether reúne os projetos científicos em desenvolvimento na plataforma, conduzidos pelo ICT AetherBio+, incluindo a plataforma produtiva para IFA anti-inflamatória selecionada pelo Ministério da Saúde e pela EMBRAPII.',
 	alternates: {
 		canonical: '/pd/pipeline'
 	},
 	openGraph: {
 		title: 'Pipeline - Projetos em Desenvolvimento | Aether Global Pharma',
-		description: 'O pipeline da Aether reúne os projetos científicos em desenvolvimento na plataforma, conduzidos pelo ICT AetherBio+ - incluindo a plataforma produtiva para IFA anti-inflamatória selecionada pelo Ministério da Saúde e pela EMBRAPII.',
+		description: 'O pipeline da Aether reúne os projetos científicos em desenvolvimento na plataforma, conduzidos pelo ICT AetherBio+, incluindo a plataforma produtiva para IFA anti-inflamatória selecionada pelo Ministério da Saúde e pela EMBRAPII.',
 		url: 'https://aethergp.com.br/pd/pipeline',
 		siteName: 'Aether Global Pharma',
 		images: [
@@ -52,19 +52,19 @@ const dimensoes = [
 	{
 		eyebrow: '01',
 		title: 'Estágio de maturidade',
-		text: 'Cada ativo avança pela escala TRL - dos princípios científicos básicos à implantação operacional comprovada. O estágio de cada projeto é divulgado conforme o desenvolvimento amadurece.',
+		text: 'Cada ativo avança pela escala TRL, dos princípios científicos básicos à implantação operacional comprovada. O estágio de cada projeto é divulgado conforme o desenvolvimento amadurece.',
 		icon: '/img/svg/logo/icon-gp.svg'
 	},
 	{
 		eyebrow: '02',
 		title: 'Área terapêutica',
-		text: 'Os projetos são organizados por frente científica e aplicação clínica - de plataformas produtivas a biofármacos e terapias avançadas - refletindo a natureza translacional da plataforma.',
+		text: 'Os projetos são organizados por frente científica e aplicação clínica, de plataformas produtivas a biofármacos e terapias avançadas, refletindo a natureza translacional da plataforma.',
 		icon: '/img/svg/logo/icon-gp.svg'
 	},
 	{
 		eyebrow: '03',
 		title: 'Status do desenvolvimento',
-		text: 'Cada ativo carrega o seu momento atual - captação de fomento, validação técnica, parcerias industriais ou avanço regulatório - conduzido com governança científica independente.',
+		text: 'Cada ativo carrega o seu momento atual (captação de fomento, validação técnica, parcerias industriais ou avanço regulatório), conduzido com governança científica independente.',
 		icon: '/img/svg/logo/icon-gp.svg'
 	}
 ]
@@ -143,7 +143,7 @@ export default function PipelinePage() {
 							<div className='xl:pl-[3vw] h-full flex flex-col'>
 
 								<p className='text-20 leading-relaxed opacity-90'>
-									A Aether Global Pharma integra os Projetos de Alto Impacto em Saúde - iniciativa do Ministério da Saúde e da EMBRAPII - com o desenvolvimento de uma plataforma produtiva para IFA anti-inflamatória, em parceria com o CQMED e a unidade de Inovação de Fármacos da UFMG.
+									A Aether Global Pharma integra os Projetos de Alto Impacto em Saúde, iniciativa do Ministério da Saúde e da EMBRAPII, com o desenvolvimento de uma plataforma produtiva para IFA anti-inflamatória, em parceria com o CQMED e a unidade de Inovação de Fármacos da UFMG.
 								</p>
 
 								<div className='mt-8 lg:mt-10 p-7 lg:p-8 rounded-sm lg:rounded-md bg-green-light/[0.07] border border-green-light/15'>
@@ -290,7 +290,7 @@ export default function PipelinePage() {
 							</AnimatedTitle>
 
 							<p className='text-18 leading-relaxed mt-6 lg:mt-8 opacity-70 max-w-2xl'>
-								<AnimatedText text='A partir de 2027, novos ativos entram no pipeline, em diferentes estágios de maturidade. Alguns projetos permanecem sob confidencialidade até a liberação para divulgação - e passam a ser detalhados aqui à medida que avançam.' />
+								<AnimatedText text='A partir de 2027, novos ativos entram no pipeline, em diferentes estágios de maturidade. Alguns projetos permanecem sob confidencialidade até a liberação para divulgação, e passam a ser detalhados aqui à medida que avançam.' />
 							</p>
 						</div>
 

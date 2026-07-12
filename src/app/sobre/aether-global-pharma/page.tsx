@@ -19,13 +19,13 @@ import labMeeting from '@/assets/img/data.jpg'
 
 // metadata
 export const metadata: Metadata = {
-	title: 'Aether Global Pharma - Holding de propriedade intelectual farmacêutica',
+	title: 'Aether Global Pharma - Pharmaceutical Asset Venture Builder',
 	description: 'A Aether Global Pharma detém e valoriza ativos de propriedade intelectual farmacêutica, conduzindo licenciamento, parcerias com a indústria global e relacionamento com investidores especializados.',
 	alternates: {
 		canonical: '/sobre/aether-global-pharma'
 	},
 	openGraph: {
-		title: 'Aether Global Pharma - Holding de propriedade intelectual farmacêutica',
+		title: 'Aether Global Pharma - Pharmaceutical Asset Venture Builder',
 		description: 'A Aether Global Pharma detém e valoriza ativos de propriedade intelectual farmacêutica, conduzindo licenciamento, parcerias com a indústria global e relacionamento com investidores especializados.',
 		url: 'https://aethergp.com.br/sobre/aether-global-pharma',
 		siteName: 'Aether Global Pharma',
@@ -43,30 +43,48 @@ export const metadata: Metadata = {
 }
 
 const funcoes = [
-	'Titularidade das patentes e ativos de propriedade intelectual',
-	'Estratégia jurídica e posicionamento global dos ativos farmacêuticos',
-	'Consolidação contratual e definição de modelos de licenciamento',
-	'Desenvolvimento de parcerias com a indústria farmacêutica global',
-	'Relacionamento com investidores e fundos especializados em life sciences',
-	'Estruturação de acordos de royalties, milestones e eventos de liquidez'
+	{
+		title: 'Estratégia e gestão do portfólio de ativos farmacêuticos',
+		text: 'Construção de uma tese de portfólio orientada por potencial científico, terapêutico, estratégico e de mercado.'
+	},
+	{
+		title: 'Propriedade intelectual e proteção dos ativos',
+		text: 'Estruturação, titularidade e gestão estratégica da propriedade intelectual, alinhadas à construção de valor e ao potencial de desenvolvimento global.'
+	},
+	{
+		title: 'Estratégia de desenvolvimento e geração de valor',
+		text: 'Definição da jornada de desenvolvimento dos ativos, dos marcos de valorização e das decisões de investimento, em integração com o ICT AetherBio+ e parceiros especializados.'
+	},
+	{
+		title: 'Capital e investimento especializado',
+		text: 'Articulação de capital privado, investidores, family offices e fundos especializados para financiar o desenvolvimento e a valorização do portfólio.'
+	},
+	{
+		title: 'Parcerias com a indústria farmacêutica',
+		text: 'Construção de oportunidades de inovação externa, co-desenvolvimento e colaboração com empresas farmacêuticas nacionais e internacionais.'
+	},
+	{
+		title: 'Licenciamento e monetização dos ativos',
+		text: 'Estruturação de modelos de licenciamento, royalties, milestones, parcerias estratégicas e outros eventos de geração e realização de valor.'
+	}
 ]
 
 const modelo = [
 	{
-		title: 'Captura',
-		text: 'Identificação de tecnologias com potencial terapêutico em universidades e centros de pesquisa, com consolidação de titularidade e proteção de propriedade intelectual desde a origem.'
+		title: 'Originação e Seleção',
+		text: 'Identificação e avaliação de descobertas e tecnologias com potencial terapêutico em universidades, centros de pesquisa e outros ambientes de inovação. Cada oportunidade é analisada sob as perspectivas científica, tecnológica, de propriedade intelectual, regulatória e estratégica antes de ingressar no portfólio.'
 	},
 	{
-		title: 'Desrisking',
-		text: 'Condução científica pelo ICT AetherBio+: avanço de maturidade tecnológica validado por evidências, com governança independente e sem diluição da propriedade intelectual.'
+		title: 'Desenvolvimento e Desrisking',
+		text: 'Estruturação da estratégia de desenvolvimento e avanço da maturidade do projeto, com geração progressiva de evidências e redução de incertezas científicas e tecnológicas. Essa etapa é conduzida em articulação com o ICT AetherBio+, universidades, centros de pesquisa e parceiros especializados.'
 	},
 	{
-		title: 'Posicionamento',
-		text: 'Estratégia regulatória e jurídica global, preparando o ativo para os mercados e as agências reguladoras relevantes.'
+		title: 'Construção e Valorização do Ativo',
+		text: 'Integração entre propriedade intelectual, desenvolvimento, estratégia regulatória e marcos de maturidade para fortalecer a robustez e o valor do ativo. O investimento é orientado para etapas capazes de gerar evidências relevantes, reduzir riscos e ampliar seu potencial estratégico.'
 	},
 	{
-		title: 'Valorização',
-		text: 'Licenciamento, parcerias industriais e acordos estruturados em royalties, milestones e eventos de liquidez com a indústria farmacêutica global.'
+		title: 'Parcerias e Licenciamento',
+		text: 'Posicionamento dos ativos para oportunidades de inovação externa, co-desenvolvimento, parcerias estratégicas e licenciamento com a indústria farmacêutica, por meio de modelos de geração de valor que podem incluir upfront payments, milestones, royalties e outros eventos de liquidez.'
 	}
 ]
 
@@ -112,7 +130,7 @@ export default function AetherGlobalPharmaPage() {
 						<div className='row pt-12 lg:pt-[6vw]'>
 							<div className='col-lg-10'>
 								<h1 className='text-60 font-heading font-semibold leading-[1.05]!'>
-									<AnimatedText text='A holding que transforma propriedade intelectual em ativos farmacêuticos globais.' />
+									<AnimatedText text='Construímos e valorizamos ativos farmacêuticos a partir de ciência de alto potencial.' />
 								</h1>
 							</div>
 						</div>
@@ -121,7 +139,7 @@ export default function AetherGlobalPharmaPage() {
 							<div className='col-lg-3' />
 							<div className='col-lg-8'>
 								<p className='text-20 leading-relaxed opacity-90'>
-									<AnimatedText text='A Aether Global Pharma é a holding privada responsável pela gestão estratégica e jurídica dos ativos de propriedade intelectual da plataforma. Atuando no Brasil e internacionalmente, detém a titularidade dos ativos gerados ou desenvolvidos no ecossistema da Aether e conduz as interações com a indústria farmacêutica global e investidores especializados.' />
+									<AnimatedText text='A Aether Global Pharma é o pilar empresarial da plataforma Aether e atua como uma <b>Pharmaceutical Asset Venture Builder</b>, dedicada à construção, ao desenvolvimento e à valorização de ativos farmacêuticos. Integramos propriedade intelectual, estratégia de desenvolvimento, capital e conexão com a indústria para conduzir ativos de alto potencial ao longo de uma jornada estruturada de redução de risco e geração de valor, criando oportunidades de parceria, co-desenvolvimento e licenciamento no mercado farmacêutico global.' />
 								</p>
 							</div>
 						</div>
@@ -142,13 +160,17 @@ export default function AetherGlobalPharmaPage() {
 
 							<div className='col-lg-9'>
 								<h2 className='text-60 font-heading font-semibold text-green-light'>
-									O escopo de uma holding de propriedade intelectual.
+									O escopo de uma Pharmaceutical Asset Venture Builder.
 								</h2>
+
+								<p className='text-20 leading-relaxed text-green-light mt-6 lg:mt-8 lg:pr-[6vw] opacity-90'>
+									<AnimatedText text='A Aether Global Pharma atua na construção estratégica e na valorização de um portfólio de ativos farmacêuticos. Sua atuação integra as dimensões necessárias para que descobertas científicas avancem como ativos estruturados, protegidos e progressivamente desenvolvidos, com potencial de parceria e licenciamento.' />
+								</p>
 							</div>
 
 						</div>
 
-						<div className='row'>
+						<div className='row pt-8 lg:pt-[3vw]'>
 
 							<div className='col-lg-3' />
 
@@ -157,7 +179,7 @@ export default function AetherGlobalPharmaPage() {
 									{funcoes.map((item, i) => (
 										<div
 											key={i}
-											className='flex items-start gap-4 bg-green-pale px-6 py-5 rounded-sm h-full'
+											className='flex items-start gap-4 bg-green-pale px-6 py-6 rounded-sm h-full'
 										>
 
 											<Image
@@ -165,12 +187,17 @@ export default function AetherGlobalPharmaPage() {
 												alt=''
 												width={20}
 												height={20}
-												className='w-4 h-auto mt-1 shrink-0'
+												className='w-4 h-auto mt-1.5 shrink-0'
 												loading='lazy'
 											/>
 
-											<span className='text-18 leading-relaxed'>
-												{item}
+											<span className='block'>
+												<span className='block text-18 font-heading font-semibold leading-snug'>
+													{item.title}
+												</span>
+												<span className='block text-16 leading-relaxed mt-2 opacity-80'>
+													{item.text}
+												</span>
 											</span>
 
 										</div>
@@ -200,7 +227,7 @@ export default function AetherGlobalPharmaPage() {
 
 							<div className='col-lg-4 offset-lg-1 max-lg:mt-8'>
 								<p className='text-18 leading-relaxed opacity-90'>
-									<AnimatedText text='Um percurso estruturado que conduz a ciência da origem acadêmica até o ativo farmacêutico pronto para o mercado global.' />
+									<AnimatedText text='Um percurso estruturado que transforma ciência de alto potencial em ativos farmacêuticos progressivamente desenvolvidos, protegidos e preparados para oportunidades de parceria e licenciamento.' />
 								</p>
 							</div>
 
@@ -271,7 +298,7 @@ export default function AetherGlobalPharmaPage() {
 								style='dark'
 								className='text-60 font-heading font-semibold'
 							>
-								Estratégia de um lado. Ciência do outro.
+								Estratégia e ciência integradas para construir valor.
 							</AnimatedTitle>
 						</div>
 					</div>
@@ -283,34 +310,26 @@ export default function AetherGlobalPharmaPage() {
 						<div className='col-lg-9'>
 							<div className='relative overflow-hidden rounded-md lg:rounded-lg p-10 lg:p-[3.5vw] text-green-light' style={{ background: 'linear-gradient(106deg, rgba(85,83,40,1) 0%, rgba(60,64,44,1) 26%, rgba(56,45,50,1) 62%, rgba(39,39,59,1) 100%)' }}>
 
-								<div className='row'>
+								<MaskedIcon
+									url='/img/svg/logo/icon-bio.svg'
+									className='block w-10 lg:w-12 aspect-square bg-green-light mb-8'
+								/>
 
-									<div className='col-lg-8'>
+								<p className='text-24 font-heading leading-snug'>
+									A Aether Global Pharma conduz a estratégia de construção e valorização dos ativos, integrando propriedade intelectual, capital, parcerias e licenciamento. O ICT AetherBio+ promove o avanço científico e tecnológico dos projetos, a geração de evidências e a redução progressiva de riscos.
+								</p>
 
-										<MaskedIcon
-											url='/img/svg/logo/icon-bio.svg'
-											className='block w-10 lg:w-12 aspect-square bg-green-light mb-8'
-										/>
+								<p className='text-18 leading-relaxed mt-6 opacity-80'>
+									Funções complementares e governança independente fortalecem a construção de ativos farmacêuticos robustos e com potencial global.
+								</p>
 
-										<p className='text-24 font-heading leading-snug'>
-											Enquanto a Aether Global Pharma conduz a dimensão estratégica, jurídica e comercial dos ativos, o ICT AetherBio+ - instituto sem fins lucrativos da plataforma - responde pela condução científica e tecnológica dos projetos, com governança independente.
-										</p>
-
-										<p className='text-18 leading-relaxed mt-6 opacity-80'>
-											Essa separação de papéis protege a integridade científica dos projetos e a solidez jurídica dos ativos.
-										</p>
-
-										<div className='mt-10 lg:mt-12'>
-											<Button
-												style='light'
-												href={pages.sobreIct}
-												text='Conheça o ICT AetherBio+'
-												icon='diagonal-arrow'
-											/>
-										</div>
-
-									</div>
-
+								<div className='mt-10 lg:mt-12'>
+									<Button
+										style='light'
+										href={pages.sobreIct}
+										text='Conheça o ICT AetherBio+'
+										icon='diagonal-arrow'
+									/>
 								</div>
 
 							</div>

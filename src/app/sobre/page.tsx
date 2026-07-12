@@ -23,14 +23,14 @@ import scientists from '@/assets/img/team-2.jpg'
 
 // metadata
 export const metadata: Metadata = {
-	title: 'Sobre a Aether - Inovação, Espiritualidade e Ousadia | Aether Global Pharma',
-	description: 'Conheça a Aether: uma plataforma que une holding de propriedade intelectual e instituto de ciência e tecnologia para transformar pesquisa científica em soluções reais para a saúde.',
+	title: 'Sobre a Aether - Plataforma integrada de inovação farmacêutica | Aether Global Pharma',
+	description: 'Conheça a Aether: uma plataforma que une o pilar empresarial de construção e valorização de ativos farmacêuticos ao instituto de ciência e tecnologia para transformar pesquisa científica em soluções reais para a saúde.',
 	alternates: {
 		canonical: '/sobre'
 	},
 	openGraph: {
-		title: 'Sobre a Aether - Inovação, Espiritualidade e Ousadia | Aether Global Pharma',
-		description: 'Conheça a Aether: uma plataforma que une holding de propriedade intelectual e instituto de ciência e tecnologia para transformar pesquisa científica em soluções reais para a saúde.',
+		title: 'Sobre a Aether - Plataforma integrada de inovação farmacêutica | Aether Global Pharma',
+		description: 'Conheça a Aether: uma plataforma que une o pilar empresarial de construção e valorização de ativos farmacêuticos ao instituto de ciência e tecnologia para transformar pesquisa científica em soluções reais para a saúde.',
 		url: 'https://aethergp.com.br/sobre',
 		siteName: 'Aether Global Pharma',
 		images: [
@@ -49,15 +49,15 @@ export const metadata: Metadata = {
 const valores = [
 	{
 		title: 'Inovação',
-		text: 'Buscamos ciência de fronteira e a conduzimos com método: maturidade tecnológica, governança científica e estratégia regulatória desde o primeiro dia.'
+		text: 'Buscamos ciência de fronteira e a conduzimos com método, avançando tecnologias promissoras rumo a ativos farmacêuticos com potencial global.'
 	},
 	{
-		title: 'Espiritualidade',
-		text: 'Acreditamos que ciência e propósito caminham juntos. Cada projeto existe para chegar às pessoas - não apenas ao mercado.'
+		title: 'Humanização',
+		text: 'Acreditamos que ciência e propósito caminham juntos. Cada projeto existe para chegar às pessoas, não apenas ao mercado.'
 	},
 	{
-		title: 'Ousadia',
-		text: 'Atuamos onde o ecossistema falha: na travessia entre a descoberta acadêmica e o ativo farmacêutico global, assumindo a complexidade que outros evitam.'
+		title: 'Excelência',
+		text: 'Governança científica, rigor regulatório e estratégia de propriedade intelectual em cada etapa, construindo ativos robustos, defensáveis e confiáveis.'
 	}
 ]
 
@@ -108,22 +108,22 @@ const timeline = [
 
 const pilares = [
 	{
-		eyebrow: 'empresa-mãe',
+		eyebrow: 'pilar empresarial',
 		icon: '/img/svg/logo/icon-gp.svg',
 		iconColor: 'bg-green-light',
 		name: 'Aether Global Pharma',
-		text: 'A holding privada que dá nome à plataforma - responsável pela estratégia comercial, parcerias industriais, licenciamento de tecnologias e inserção dos ativos no mercado farmacêutico global.',
+		text: 'O pilar empresarial da plataforma, que atua como uma Pharmaceutical Asset Venture Builder. Conduz a estratégia integrada dos ativos, articulando propriedade intelectual, desenvolvimento, capital e posicionamento de mercado para parcerias e licenciamento.',
 		href: pages.sobreAgp,
 		cta: 'Conhecer a AGP',
 		cardClass: 'bg-green-dark text-green-light',
 		buttonStyle: 'light-2' as const
 	},
 	{
-		eyebrow: 'instituto científico',
+		eyebrow: 'pilar científico',
 		icon: '/img/svg/logo/icon-bio-green-dark.svg',
 		iconColor: 'bg-white',
 		name: 'ICT AetherBio+',
-		text: 'O instituto de ciência, tecnologia e inovação da plataforma - uma organização sem fins lucrativos que conduz cada projeto da validação técnica à maturação de TRL, com governança independente e comitê científico especializado.',
+		text: 'O pilar científico e tecnológico da plataforma: instituição sem fins lucrativos que promove o avanço e o desrisking dos projetos, com governança científica independente e comitê especializado.',
 		href: pages.sobreIct,
 		cta: 'Conhecer o Bio+',
 		cardClass: 'bg-linear-to-br from-sapphire to-navy-mid text-white',
@@ -195,8 +195,8 @@ export default function SobrePage() {
 								<div className='col-lg-10'>
 									<h1 className='text-72 font-heading font-bold text-green-light'>
 										Inovação <br />
-										Espiritualidade <br />
-										Ousadia
+										Humanização <br />
+										Excelência
 									</h1>
 								</div>
 							</div>
@@ -290,7 +290,7 @@ export default function SobrePage() {
 							</AnimatedTitle>
 
 							<p className='text-20 leading-relaxed mt-6 lg:mt-8 lg:pr-[6vw]'>
-								<AnimatedText text='A plataforma Aether opera por meio de duas entidades complementares, cada uma com funções específicas dentro de um modelo integrado de captura e valorização de propriedade intelectual.' />
+								<AnimatedText text='A plataforma Aether opera por meio de duas entidades complementares, com funções distintas e integradas ao longo da jornada de desenvolvimento dos ativos. Essa arquitetura permite articular ciência, propriedade intelectual, capital e estratégia de desenvolvimento em um modelo orientado à redução de risco, construção de valor e licenciamento.' />
 							</p>
 						</div>
 

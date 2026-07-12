@@ -42,18 +42,18 @@ const jornada = [
 		fase: 'Pesquisa e Descoberta',
 		range: 'TRL 1-3',
 		subtitle: 'Fundamentos científicos',
-		desc: 'Estudos de bancada, hipóteses terapêuticas e primeiras provas de conceito experimentais. A tecnologia ainda está em ambiente acadêmico, com valor principal concentrado em propriedade intelectual inicial.',
-		onde: 'Universidades, centros de pesquisa, laboratórios acadêmicos.',
+		desc: 'Investigação dos princípios fundamentais, formulação de hipóteses e geração das primeiras evidências experimentais. A tecnologia evolui do conhecimento científico inicial para uma prova de conceito, com avaliação progressiva de seu potencial de aplicação.',
+		onde: 'Universidades, centros de pesquisa e laboratórios acadêmicos.',
 		card: 'bg-white border border-green-dark/12 text-green-dark',
 		muted: 'text-green-dark/50',
 		divider: 'border-green-dark/12'
 	},
 	{
-		fase: 'Desenvolvimento Pré-Clínico',
+		fase: 'Desenvolvimento Translacional e Pré-Clínico',
 		range: 'TRL 4-6',
-		subtitle: 'Validação e escala',
-		desc: 'Validação laboratorial, estudos pré-clínicos regulatórios e demonstração em ambiente relevante. A tecnologia passa a ser tratada como ativo técnico, com dossiês documentais e submissões iniciais junto a agências reguladoras.',
-		onde: 'Laboratórios estruturados, CROs, parcerias industriais.',
+		subtitle: 'Validação e redução de incertezas',
+		desc: 'A tecnologia avança da prova de conceito para níveis crescentes de validação, integração e demonstração em condições relevantes. São geradas evidências científicas, tecnológicas e pré-clínicas, acompanhadas pelo desenvolvimento progressivo de CMC, estratégia regulatória e documentação técnica.',
+		onde: 'Laboratórios especializados, centros de pesquisa, CROs, CDMOs e parceiros tecnológicos e industriais.',
 		card: 'bg-green-pale text-green-dark',
 		muted: 'text-green-dark/55',
 		divider: 'border-green-dark/15'
@@ -61,9 +61,9 @@ const jornada = [
 	{
 		fase: 'Desenvolvimento Clínico e Operacional',
 		range: 'TRL 7-9',
-		subtitle: 'Comprovação e mercado',
-		desc: 'Ensaios clínicos em humanos, qualificação regulatória e comercialização aprovada. A tecnologia se torna um ativo farmacêutico global, sujeito a licenciamento, parcerias industriais e geração de royalties.',
-		onde: 'Centros clínicos, agências reguladoras, indústria farmacêutica.',
+		subtitle: 'Comprovação e aplicação',
+		desc: 'A tecnologia alcança níveis avançados de maturidade, com geração de evidências em ambiente clínico e operacional, qualificação regulatória, preparação para produção em escala e, quando aplicável, aprovação e utilização no mercado.',
+		onde: 'Centros clínicos, CROs, indústria farmacêutica, unidades produtivas e agências reguladoras.',
 		card: 'bg-green-dark text-green-light',
 		muted: 'text-green-light/60',
 		divider: 'border-green-light/20'
@@ -71,12 +71,12 @@ const jornada = [
 ]
 
 const principios = [
-	'Governança científica independente a cada estágio, com acompanhamento por comitê especializado.',
-	'Documentação técnica alinhada desde o início às exigências regulatórias nacionais e internacionais.',
-	'Estratégia de propriedade intelectual construída em paralelo à evolução técnica, com titularidade consolidada.',
-	'Captação de fomento público e privado adequada ao TRL em curso.',
-	'Articulação com universidades, CROs e parceiros industriais no momento certo do desenvolvimento.',
-	'Preparação progressiva para licenciamento e inserção na indústria farmacêutica global.'
+	'<b>Governança científica independente</b> em cada estágio, com acompanhamento especializado.',
+	'<b>Documentação técnica</b> construída progressivamente e alinhada às exigências regulatórias aplicáveis.',
+	'<b>Estratégia de propriedade intelectual</b> conduzida em paralelo à evolução científica e tecnológica.',
+	'<b>Captação de recursos públicos e privados</b> adequada à maturidade e às necessidades de cada projeto.',
+	'<b>Articulação com universidades, centros de pesquisa, CROs e parceiros industriais</b> no momento adequado do desenvolvimento.',
+	'<b>Preparação progressiva para transferência tecnológica, parcerias e licenciamento</b> no mercado farmacêutico global.'
 ]
 
 export default function TRLPage() {
@@ -100,12 +100,9 @@ export default function TRLPage() {
 							</h1>
 
 							<p className='text-24 font-heading mt-8 lg:mt-12 lg:pr-[8vw]'>
-								<AnimatedText text='A escala de Technology Readiness Level - TRL - descreve o percurso completo de uma tecnologia farmacêutica, dos princípios científicos fundamentais à comprovação operacional em uso comercial. É a linguagem comum que conecta pesquisa acadêmica, indústria farmacêutica, agências reguladoras e investidores especializados.' />
+								<AnimatedText text='A escala de <b>Technology Readiness Level (TRL)</b> organiza a maturidade de uma tecnologia em nove níveis, da observação dos princípios fundamentais à demonstração em ambiente operacional.<br /><br /> Na Aether, essa referência é aplicada ao desenvolvimento farmacêutico por meio de uma abordagem integrada, considerando evidências científicas, maturidade tecnológica, desenvolvimento não clínico, CMC, estratégia regulatória e preparação para transferência e licenciamento.' />
 							</p>
 
-							<p className='text-15 leading-relaxed mt-8 lg:mt-10 opacity-50 max-w-xl'>
-								<AnimatedText text='Baseado na norma NBR ISO 16290:2015 e no Guia TRL da Rede Brasileira de Inovação Farmacêutica.' />
-							</p>
 						</div>
 
 					</div>
@@ -163,15 +160,15 @@ export default function TRLPage() {
 
 						<div className='col-lg-6'>
 							<p className='text-20 leading-relaxed'>
-								<AnimatedText text='A escala TRL foi desenvolvida pela NASA na década de 1970 e hoje é adotada globalmente como padrão para avaliar a maturidade de tecnologias em desenvolvimento. No setor farmacêutico, ela oferece um vocabulário técnico que permite comparar projetos, dimensionar riscos e tomar decisões de investimento em diferentes estágios - desde a pesquisa básica em universidades até a implantação comercial de um novo medicamento.<br /><br />Cada avanço de nível representa a geração de evidências científicas mais robustas e uma redução mensurável do risco tecnológico. Na Aether, o TRL não é apenas um indicador: é o eixo que organiza a condução científica, o planejamento regulatório, a captação de fomento e a estratégia de propriedade intelectual de cada projeto.' />
+								<AnimatedText text='A escala TRL foi desenvolvida originalmente pela NASA e hoje é amplamente utilizada como referência para avaliar a maturidade de tecnologias em desenvolvimento.<br /><br /> No setor farmacêutico, sua aplicação exige uma leitura contextualizada. A evolução de um ativo não ocorre de forma exclusivamente linear: desenvolvimento científico, CMC, estudos não clínicos, estratégia regulatória e desenvolvimento clínico avançam de maneira integrada e podem apresentar diferentes níveis de maturidade ao longo do percurso.<br /><br /> Na Aether, o TRL é utilizado como um dos eixos para organizar a evolução dos ativos, orientar decisões de desenvolvimento, identificar lacunas, planejar a geração de evidências, estruturar a captação de recursos e apoiar as estratégias de propriedade intelectual, transferência tecnológica e licenciamento.<br /><br /> Cada avanço de maturidade representa a geração de evidências mais robustas e a redução progressiva de incertezas científicas e tecnológicas.' />
 							</p>
 
 							<div className='mt-8 lg:mt-10 p-7 lg:p-8 rounded-sm lg:rounded-md bg-green-pale'>
 								<span className='block text-sm font-semibold font-heading uppercase tracking-wide opacity-60 mb-3'>
-									Referência normativa
+									Referência metodológica
 								</span>
 								<p className='text-16 leading-relaxed'>
-									A Aether adota como referência técnica a norma <strong className='font-semibold'>NBR ISO 16290:2015</strong> e as adaptações setoriais propostas pelo <strong className='font-semibold'>Guia TRL da RBIF</strong> (Rede Brasileira de Inovação Farmacêutica), com foco no desenvolvimento de novos medicamentos e biofármacos.
+									A Aether utiliza a escala TRL como referência para avaliação contextualizada da maturidade tecnológica, considerando a <b>ISO 16290</b> e sua aplicação ao desenvolvimento farmacêutico.
 								</p>
 							</div>
 						</div>
@@ -294,7 +291,7 @@ export default function TRLPage() {
 							</AnimatedTitle>
 
 							<p className='text-18 leading-relaxed mt-6 lg:mt-8 opacity-70 max-w-2xl'>
-								<AnimatedText text='Clique em cada nível para ver a descrição técnica e a tradução correspondente no desenvolvimento farmacêutico. As cores acompanham as três fases da jornada.' />
+								<AnimatedText text='Clique em cada nível para conhecer sua descrição e uma referência de aplicação no desenvolvimento farmacêutico. A correspondência entre TRL e etapas farmacêuticas é contextual e pode variar conforme a natureza e a estratégia de desenvolvimento de cada tecnologia.' />
 							</p>
 						</div>
 
@@ -335,11 +332,11 @@ export default function TRLPage() {
 
 						<div className='col-lg-9'>
 							<h2 className='text-60 font-heading font-semibold'>
-								<AnimatedText text='Avançar em TRL sem diluir o valor do ativo.' />
+								<AnimatedText text='Avançar em maturidade preservando o valor estratégico do ativo.' />
 							</h2>
 
 							<p className='text-20 leading-relaxed mt-8 lg:mt-10 opacity-90 max-w-3xl'>
-								<AnimatedText text='Cada salto de nível na escala TRL representa tanto um avanço técnico quanto uma decisão estratégica. Tão importante quanto gerar as evidências científicas necessárias é preservar integralmente a titularidade, a proteção e o posicionamento global dos ativos de propriedade intelectual ao longo do percurso.' />
+								<AnimatedText text='Cada avanço de maturidade representa tanto uma evolução técnica quanto uma decisão estratégica. Tão importante quanto gerar as evidências necessárias é construir, ao longo do desenvolvimento, um ativo cientificamente robusto, tecnicamente transferível e estrategicamente posicionado para parcerias e licenciamento.' />
 							</p>
 						</div>
 
@@ -360,16 +357,17 @@ export default function TRLPage() {
 											url='/img/svg/logo/icon-gp.svg'
 											className='block w-4 aspect-square bg-green-light mt-1 shrink-0'
 										/>
-										<span className='text-18 leading-relaxed'>
-											{item}
-										</span>
+										<span
+											className='text-18 leading-relaxed'
+											dangerouslySetInnerHTML={{ __html: item }}
+										/>
 									</div>
 								))}
 							</StaggerUp>
 
 							<blockquote className='mt-12 lg:mt-16 border-l-2 border-green-dark pl-8 lg:pl-10'>
 								<p className='text-30 lg:text-36 font-heading font-semibold leading-tight'>
-									&ldquo;Gestão do avanço de TRLs sem diluição da propriedade intelectual.&rdquo;
+									&ldquo;Gestão do avanço de maturidade tecnológica com preservação e valorização estratégica da propriedade intelectual.&rdquo;
 								</p>
 								<footer className='text-16 mt-5 opacity-60'>
 									- uma das funções centrais do ICT AetherBio+

@@ -82,7 +82,7 @@ function Steps() {
 							id='resumo'
 							label='Resuma sua tecnologia em um parágrafo curto.'
 							name='Resumo da tecnologia'
-							microcopy='Em linguagem livre - o essencial do que ela é e faz.'
+							microcopy='Em linguagem livre: o essencial do que ela é e faz.'
 							placeholder='Descreva sua tecnologia'
 							required
 						/>
@@ -99,7 +99,7 @@ function Steps() {
 							id='limitacoes'
 							label='Quais limitações ou desafios você enfrenta hoje com a tecnologia?'
 							name='Limitações atuais'
-							microcopy='Técnicos, regulatórios, de financiamento - o que estiver travando o avanço.'
+							microcopy='Técnicos, regulatórios, de financiamento: o que estiver travando o avanço.'
 							placeholder='Descreva as limitações'
 							required
 						/>

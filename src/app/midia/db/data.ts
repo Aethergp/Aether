@@ -54,8 +54,8 @@ const DEFAULT_AUTHOR = 'Equipe Aether'
 
 // temporary article body, clearly marked, until real posts are produced
 const PLACEHOLDER_CONTENT = `
-<p><em>⟨ Conteúdo de exemplo - o texto final deste artigo será produzido posteriormente. ⟩</em></p>
-<p>A plataforma Aether integra ciência, propriedade intelectual e estratégia de mercado em um único ecossistema. Este espaço editorial reúne os bastidores desse trabalho - das descobertas científicas em estágio inicial à valorização dos ativos no cenário global.</p>
+<p><em>⟨ Conteúdo de exemplo, o texto final deste artigo será produzido posteriormente. ⟩</em></p>
+<p>A plataforma Aether integra ciência, propriedade intelectual e estratégia de mercado em um único ecossistema. Este espaço editorial reúne os bastidores desse trabalho, das descobertas científicas em estágio inicial à valorização dos ativos no cenário global.</p>
 <h2>Da bancada ao mercado</h2>
 <p>O avanço da maturidade tecnológica de uma descoberta depende de um conjunto coordenado de decisões científicas, regulatórias e jurídicas. Tratadas de forma integrada desde o início, essas decisões reduzem incertezas e tornam o ativo mais atrativo para parceiros industriais e investidores especializados.</p>
 <ul>
