@@ -51,20 +51,20 @@ const parceiros = [
 const dimensoes = [
 	{
 		eyebrow: '01',
-		title: 'Estágio de maturidade',
-		text: 'Cada ativo avança pela escala TRL, dos princípios científicos básicos à implantação operacional comprovada. O estágio de cada projeto é divulgado conforme o desenvolvimento amadurece.',
+		title: 'Maturidade do Ativo',
+		text: '<b>Onde o ativo está na jornada de desenvolvimento.</b> O nível de maturidade tecnológica permite compreender o estágio atual do projeto, as evidências já construídas e os próximos marcos necessários para seu avanço.',
 		icon: '/img/svg/logo/icon-gp.svg'
 	},
 	{
 		eyebrow: '02',
-		title: 'Área terapêutica',
-		text: 'Os projetos são organizados por frente científica e aplicação clínica, de plataformas produtivas a biofármacos e terapias avançadas, refletindo a natureza translacional da plataforma.',
+		title: 'Tese de Valor',
+		text: '<b>Por que esse ativo merece avançar.</b> Cada projeto é analisado a partir de seu racional científico, potencial terapêutico, estratégia de propriedade intelectual e capacidade de gerar valor ao longo do desenvolvimento.',
 		icon: '/img/svg/logo/icon-gp.svg'
 	},
 	{
 		eyebrow: '03',
-		title: 'Status do desenvolvimento',
-		text: 'Cada ativo carrega o seu momento atual (captação de fomento, validação técnica, parcerias industriais ou avanço regulatório), conduzido com governança científica independente.',
+		title: 'Próximo marco de valorização',
+		text: '<b>O que precisa acontecer para aumentar o valor do ativo.</b> Identificamos o próximo milestone capaz de reduzir risco, fortalecer as evidências e ampliar o potencial do ativo para investimento, parceria estratégica ou licenciamento.',
 		icon: '/img/svg/logo/icon-gp.svg'
 	}
 ]
@@ -86,11 +86,11 @@ export default function PipelinePage() {
 
 						<div className='col-lg-9'>
 							<h1 className='text-72 font-heading font-bold text-green-dark'>
-								<AnimatedText text='Os projetos que avançam na plataforma Aether.' />
+								<AnimatedText text='Um portfólio de ativos farmacêuticos em construção.' />
 							</h1>
 
 							<p className='text-24 font-heading mt-8 lg:mt-12 lg:pr-[8vw]'>
-								<AnimatedText text='O pipeline reúne os ativos científicos em desenvolvimento na plataforma, organizados por estágio de maturidade tecnológica, área terapêutica e status atual. Cada projeto é conduzido pelo ICT AetherBio+, com governança independente e proteção integral da propriedade intelectual.' />
+								<AnimatedText text='A Aether identifica, seleciona e desenvolve ativos farmacêuticos com potencial de valorização ao longo de sua jornada de maturação. Como uma <b>Pharmaceutical Asset Venture Builder</b>, construímos um portfólio orientado por ciência, propriedade intelectual e marcos progressivos de desenvolvimento, com foco na redução de risco e na criação de valor até oportunidades de parceria, investimento ou licenciamento.' />
 							</p>
 						</div>
 
@@ -244,13 +244,14 @@ export default function PipelinePage() {
 											</span>
 										</div>
 
-										<h3 className='text-24 font-heading font-semibold leading-tight mt-2'>
+										<h3 className='text-24 font-heading font-semibold leading-tight! mt-2'>
 											{item.title}
 										</h3>
 
-										<p className='text-16 leading-relaxed opacity-80'>
-											{item.text}
-										</p>
+										<p
+											className='text-16 leading-relaxed opacity-80'
+											dangerouslySetInnerHTML={{ __html: item.text }}
+										/>
 									</div>
 								))}
 							</StaggerUp>
@@ -321,9 +322,6 @@ export default function PipelinePage() {
 								))}
 							</StaggerUp>
 
-							<p className='text-15 leading-relaxed mt-8 opacity-50 max-w-xl'>
-								Quadro ilustrativo dos próximos ativos do pipeline. Os projetos reais substituem estes espaços conforme entram em divulgação.
-							</p>
 						</div>
 					</div>
 

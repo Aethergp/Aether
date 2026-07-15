@@ -13,14 +13,14 @@ import { getMediaPosts } from './db/data'
 
 // metadata
 export const metadata: Metadata = {
-	title: 'Mídia - Notícias e artigos | Aether Global Pharma',
-	description: 'Acompanhe a Aether: artigos sobre ciência, propriedade intelectual e desenvolvimento farmacêutico, além da cobertura da imprensa sobre a plataforma.',
+	title: 'Mídia - Notícias e insights | Aether Global Pharma',
+	description: 'Acompanhe a Aether: insights sobre ciência, propriedade intelectual e desenvolvimento farmacêutico, além da cobertura da imprensa sobre a plataforma.',
 	alternates: {
 		canonical: '/midia'
 	},
 	openGraph: {
-		title: 'Mídia - Notícias e artigos | Aether Global Pharma',
-		description: 'Acompanhe a Aether: artigos sobre ciência, propriedade intelectual e desenvolvimento farmacêutico, além da cobertura da imprensa sobre a plataforma.',
+		title: 'Mídia - Notícias e insights | Aether Global Pharma',
+		description: 'Acompanhe a Aether: insights sobre ciência, propriedade intelectual e desenvolvimento farmacêutico, além da cobertura da imprensa sobre a plataforma.',
 		url: 'https://aethergp.com.br/midia',
 		siteName: 'Aether Global Pharma',
 		images: [
@@ -58,7 +58,7 @@ export default function MidiaPage() {
 
 							<TextReveal>
 								<h1 className='text-60 font-heading font-semibold text-green-dark'>
-									Ciência, propriedade intelectual e o caminho até o mercado.
+									Ciência, ativos farmacêuticos e inovação em movimento.
 								</h1>
 							</TextReveal>
 
@@ -69,7 +69,7 @@ export default function MidiaPage() {
 					<div className="row mt-4 lg:mt-[9vw]">
 						<div className="col-lg-9 offset-lg-3">
 							<p className='text-20 leading-relaxed text-green-dark'>
-								<AnimatedText text='Artigos da equipe Aether e a cobertura da imprensa sobre a plataforma, os projetos e o ecossistema de desenvolvimento farmacêutico.' />
+								<AnimatedText text='Insights da equipe Aether e a cobertura da imprensa sobre a plataforma, os projetos e o ecossistema de desenvolvimento farmacêutico.' />
 							</p>
 						</div>
 					</div>
