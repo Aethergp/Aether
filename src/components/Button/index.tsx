@@ -14,7 +14,7 @@ type BaseLinkProps = ComponentProps<typeof Link>
 
 interface BaseProps {
 	className?: string
-	style: 'light' | 'light-2' | 'dark' | 'dark-2' | 'blue' | 'blue-dark' | 'blue-light'
+	style: 'light' | 'light-2' | 'dark' | 'dark-2' | 'blue' | 'blue-dark' | 'blue-light' | 'white'
 	text: string
 	icon?: 'diagonal-arrow' | 'close' | 'linkedin'
 	chevron?: boolean
@@ -60,7 +60,8 @@ export default function Button({
 		style === 'light-2' && 'hover:**:data-text:text-green-light hover:**:data-text:bg-black hover:**:data-icon-hover:bg-black',
 		style === 'blue' && 'hover:**:data-text:text-cyan hover:**:data-text:bg-sapphire hover:**:data-icon-hover:bg-sapphire',
 		style === 'blue-dark' && 'hover:**:data-text:text-light-blue hover:**:data-text:bg-wine hover:**:data-icon-hover:bg-wine',
-		style === 'blue-light' && 'hover:**:data-text:text-sapphire hover:**:data-text:bg-white hover:**:data-icon-hover:bg-white'
+		style === 'blue-light' && 'hover:**:data-text:text-sapphire hover:**:data-text:bg-white hover:**:data-icon-hover:bg-white',
+		style === 'white' && 'hover:**:data-text:bg-light-blue hover:**:data-icon-hover:bg-light-blue'
 	)
 
 	const content = (
@@ -72,7 +73,8 @@ export default function Button({
 					(style === 'light' || style === 'light-2') && 'bg-green-light text-green-dark',
 					style === 'blue' && 'bg-cyan text-sapphire',
 					style === 'blue-dark' && 'bg-sapphire text-light-blue',
-					style === 'blue-light' && 'bg-light-blue text-sapphire'
+					style === 'blue-light' && 'bg-light-blue text-sapphire',
+					style === 'white' && 'bg-white text-sapphire'
 				)}
 				data-text
 			>
@@ -96,7 +98,8 @@ export default function Button({
 							(style === 'light' || style === 'light-2') && 'bg-green-light text-green-dark',
 							style === 'blue' && 'bg-cyan text-sapphire',
 							style === 'blue-dark' && 'bg-sapphire text-light-blue',
-							style === 'blue-light' && 'bg-light-blue text-sapphire'
+							style === 'blue-light' && 'bg-light-blue text-sapphire',
+							style === 'white' && 'bg-white text-sapphire'
 						)}
 						data-icon
 					>
@@ -141,7 +144,8 @@ export default function Button({
 							(style === 'light' || style === 'light-2') && 'bg-green-dark text-green-light',
 							style === 'blue' && 'bg-sapphire text-cyan',
 							style === 'blue-dark' && 'bg-sapphire text-light-blue',
-							style === 'blue-light' && 'bg-light-blue text-sapphire'
+							style === 'blue-light' && 'bg-light-blue text-sapphire',
+							style === 'white' && 'bg-white text-sapphire'
 						)}
 						data-icon-hover
 					>

@@ -72,7 +72,7 @@ const funcoes = [
 const modelo = [
 	{
 		title: 'Originação e Seleção',
-		text: 'Identificação e avaliação de descobertas e tecnologias com potencial terapêutico em universidades, centros de pesquisa e outros ambientes de inovação. Cada oportunidade é analisada sob as perspectivas científica, tecnológica, de propriedade intelectual, regulatória e estratégica antes de ingressar no portfólio.'
+		text: 'Identificação e avaliação de descobertas e tecnologias com potencial terapêutico em universidades, centros de pesquisa e outros ambientes científicos. Cada oportunidade é analisada sob as perspectivas científica, tecnológica, de propriedade intelectual, regulatória e estratégica antes de ingressar no portfólio.'
 	},
 	{
 		title: 'Desenvolvimento e Desrisking',

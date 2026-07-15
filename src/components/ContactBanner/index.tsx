@@ -48,11 +48,11 @@ export default function ContactBanner({ className }: Props) {
                         <div className='col-lg-8 offset-lg-2'>
 
                             <h2 className='text-60 font-heading font-semibold leading-[1.05]!'>
-                                <AnimatedText text='Quer trabalhar com a gente ou propor uma colaboração?' />
+                                <AnimatedText text='Vamos construir a próxima geração de ativos farmacêuticos.' />
                             </h2>
 
                             <p className='text-20 mt-6 lg:mt-8 opacity-90'>
-                                Buscamos pesquisadores, especialistas e parceiros que compartilhem o compromisso de transformar ciência em soluções com impacto global. Fale com a nossa equipe e vamos explorar caminhos juntos.
+                                Buscamos pesquisadores, universidades, empresas, investidores e parceiros estratégicos comprometidos em transformar ciência de excelência em soluções terapêuticas com impacto global.
                             </p>
 
                             <div className='flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8 mt-10 lg:mt-12'>

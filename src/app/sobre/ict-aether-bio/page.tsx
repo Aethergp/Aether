@@ -74,7 +74,7 @@ export default function IctAetherBioPage() {
 								style="wine"
 								className='text-60 font-heading font-semibold'
 							>
-								Um ICT dedicado ao avanço da inovação farmacêutica.
+								Um ICT dedicado ao avanço da maturidade tecnológica de projetos farmacêuticos.
 							</AnimatedTitle>
 
 							<p className='text-20 leading-relaxed mt-6 lg:mt-8 lg:pr-[6vw] text-wine'>
@@ -199,7 +199,7 @@ export default function IctAetherBioPage() {
 							</AnimatedTitle>
 
 							<p className='text-20 leading-relaxed my-8 lg:my-10 text-wine'>
-								<AnimatedText text='Se você desenvolve uma tecnologia com potencial terapêutico em uma universidade, centro de pesquisa ou outro ambiente de inovação, o ICT AetherBio+ pode contribuir para construir o caminho entre a descoberta científica e as próximas etapas do desenvolvimento farmacêutico. Projetos submetidos à plataforma passam por um processo estruturado de avaliação, com confidencialidade e análise de seu potencial científico, tecnológico e translacional.' />
+								<AnimatedText text='Se você desenvolve uma tecnologia com potencial terapêutico em uma universidade, centro de pesquisa ou outro ambiente científico, o ICT AetherBio+ pode contribuir para construir o caminho entre a descoberta científica e as próximas etapas do desenvolvimento farmacêutico. Projetos submetidos à plataforma passam por um processo estruturado de avaliação, com confidencialidade e análise de seu potencial científico, tecnológico e translacional.' />
 							</p>
 
 							<div>

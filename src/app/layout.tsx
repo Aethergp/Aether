@@ -28,8 +28,8 @@ export const metadata: Metadata = {
 	alternates: {
         canonical: './',
     },
-	title: 'Aether Global Pharma | Inovação e Ciência Farmacêutica',
-	description: 'Aether Global Pharma é uma empresa farmacêutica global que conecta pesquisa científica, indústria e bem-estar humano. Atuamos com inovação, ciência e responsabilidade para transformar descobertas em soluções reais para a saúde.',
+	title: 'Aether Global Pharma | Ciência e Ativos Farmacêuticos',
+	description: 'A Aether Global Pharma é uma plataforma especializada em transformar ciência em ativos farmacêuticos: desrisking científico, propriedade intelectual, maturidade tecnológica, transferência de tecnologia e licenciamento global.',
 	icons: {
 		icon: [
 			{ url: '/icon.svg', type: 'image/svg+xml' },
@@ -43,16 +43,16 @@ export const metadata: Metadata = {
 	},
 	manifest: '/manifest.json',
 	openGraph: {
-		title: 'Aether Global Pharma | Inovação e Ciência Farmacêutica',
-		description: 'Aether Global Pharma é uma empresa farmacêutica global que conecta pesquisa científica, indústria e bem-estar humano. Atuamos com inovação, ciência e responsabilidade para transformar descobertas em soluções reais para a saúde.',
+		title: 'Aether Global Pharma | Ciência e Ativos Farmacêuticos',
+		description: 'A Aether Global Pharma é uma plataforma especializada em transformar ciência em ativos farmacêuticos: desrisking científico, propriedade intelectual, maturidade tecnológica, transferência de tecnologia e licenciamento global.',
 		url: 'https://aethergp.com.br',
-		siteName: 'Aether Global Pharma | Inovação e Ciência Farmacêutica',
+		siteName: 'Aether Global Pharma | Ciência e Ativos Farmacêuticos',
 		images: [
 			{
 				url: 'https://aethergp.com.br/img/og-image.jpg',
 				width: 1280,
 				height: 628,
-				alt: 'Aether Global Pharma | Inovação e Ciência Farmacêutica'
+				alt: 'Aether Global Pharma | Ciência e Ativos Farmacêuticos'
 			}
 		],
 		locale: 'pt_BR',
@@ -93,11 +93,11 @@ export default function RootLayout({
 	const jsonLd = {
 		"@context": "https://schema.org",
 		"@type": "Organization",
-		"name": "Aether Global Pharma | Inovação e Ciência Farmacêutica",
+		"name": "Aether Global Pharma | Ciência e Ativos Farmacêuticos",
 		"legalName": "Aether Global Pharma LTDA",
 		"url": "https://aethergp.com.br",
 		"logo": "https://aethergp.com.br/img/og-image.jpg",
-		"description": "Aether Global Pharma é uma empresa farmacêutica global que conecta pesquisa científica, indústria e bem-estar humano. Atuamos com inovação, ciência e responsabilidade para transformar descobertas em soluções reais para a saúde.",
+		"description": "A Aether Global Pharma é uma plataforma especializada em transformar ciência em ativos farmacêuticos: desrisking científico, propriedade intelectual, maturidade tecnológica, transferência de tecnologia e licenciamento global.",
 		/*
 		"address": {
 			"@type": "PostalAddress",
@@ -123,7 +123,9 @@ export default function RootLayout({
 			"Aether Global Pharma",
 			"empresa farmacêutica global",
 			"pesquisa farmacêutica",
-			"inovação em saúde",
+			"ativos farmacêuticos",
+			"transferência de tecnologia",
+			"licenciamento farmacêutico",
 			"biotecnologia",
 			"ICT AetherBio+",
 			"Instituto de Ciência e Tecnologia",

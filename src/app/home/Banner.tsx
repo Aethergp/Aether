@@ -133,7 +133,7 @@ export default function Banner() {
 						ref={titleRef}
 						className='text-72 font-heading font-bold text-green-light md:w-280 max-w-full block reveal-text md:pr-20'
 					>
-						Transformamos descobertas científicas em ativos farmacêuticos globais.
+						Transformamos pesquisa científica em ativos farmacêuticos licenciáveis.
 					</h1>
 
                     <button
@@ -163,7 +163,7 @@ export default function Banner() {
 
 					<TextReveal>
 						<p className='text-green-light text-20 w-200 max-w-full block'>
-							Identificamos ciência de alto potencial terapêutico em universidades e centros de pesquisa no Brasil e no exterior e a transformamos em ativos farmacêuticos protegidos, desenvolvidos e preparados para o mercado global. Integramos desenvolvimento científico, propriedade intelectual, estratégia regulatória e governança para reduzir riscos, avançar tecnologias e construir ativos com potencial de licenciamento e geração de valor.
+							A Aether é uma <b>Pharmaceutical Asset Venture Builder</b> que integra ciência, propriedade intelectual, desenvolvimento tecnológico e estratégia de mercado para construir ativos farmacêuticos prontos para licenciamento global.
 						</p>
 					</TextReveal>
 

@@ -42,8 +42,8 @@ export const metadata: Metadata = {
 }
 
 const bio = [
-	'Com mais de 25 anos de experiência na indústria farmacêutica e em ambientes altamente regulados, <b>Patricia P. Oliveira</b> construiu sua trajetória na interseção entre desenvolvimento farmacêutico, estratégia regulatória, inovação e operações industriais.',
-	'Sua experiência reúne atuação junto à ANVISA, ao MAPA e a autoridades internacionais, além da liderança de projetos, operações industriais e iniciativas de inovação em organizações nacionais e multinacionais.',
+	'Com mais de 25 anos de experiência na indústria farmacêutica e em ambientes altamente regulados, <b>Patricia P. Oliveira</b> construiu sua trajetória na interseção entre desenvolvimento farmacêutico, estratégia regulatória, transferência de tecnologia e operações industriais.',
+	'Sua experiência reúne atuação junto à ANVISA, ao MAPA e a autoridades internacionais, além da liderança de projetos, operações industriais e iniciativas de desenvolvimento tecnológico em organizações nacionais e multinacionais.',
 	'Como fundadora e CEO da <b>Aether Global Pharma</b> e presidente do <b>ICT AetherBio+</b>, lidera uma plataforma integrada de <b>Pharmaceutical Asset Venture Building</b>, conectando ciência de alto potencial, propriedade intelectual, capital e indústria para construir, desenvolver e valorizar ativos farmacêuticos com potencial global.'
 ]
 

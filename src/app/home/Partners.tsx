@@ -34,7 +34,7 @@ export default function Partners() {
 
                     <div className='col-lg-5 col-xl-4 pt-4 lg:pt-1 xl:pt-3'>
                         <p className='text-20'>
-                            <AnimatedText text='A plataforma Aether opera em colaboração com universidades, centros de pesquisa e instituições de inovação que compõem um ecossistema científico altamente qualificado.' />
+                            <AnimatedText text='A plataforma Aether opera em colaboração com universidades, centros de pesquisa e instituições científicas e tecnológicas que compõem um ecossistema altamente qualificado.' />
                         </p>
                     </div>
 

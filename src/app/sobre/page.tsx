@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 // components
 import MaskedIcon from '@/components/MaskedIcon'
-import Context from '@/app/home/Context'
+import Context from './Context'
 import Timeline from './Timeline'
 import Grainient from '@/components/Grainient'
 import AnimatedText from '@/components/Utils/Animations/AnimatedText'
@@ -23,13 +23,13 @@ import scientists from '@/assets/img/team-2.jpg'
 
 // metadata
 export const metadata: Metadata = {
-	title: 'Sobre a Aether - Plataforma integrada de inovação farmacêutica | Aether Global Pharma',
+	title: 'Sobre a Aether - Plataforma integrada de ativos farmacêuticos | Aether Global Pharma',
 	description: 'Conheça a Aether: uma plataforma que une o pilar empresarial de construção e valorização de ativos farmacêuticos ao instituto de ciência e tecnologia para transformar pesquisa científica em soluções reais para a saúde.',
 	alternates: {
 		canonical: '/sobre'
 	},
 	openGraph: {
-		title: 'Sobre a Aether - Plataforma integrada de inovação farmacêutica | Aether Global Pharma',
+		title: 'Sobre a Aether - Plataforma integrada de ativos farmacêuticos | Aether Global Pharma',
 		description: 'Conheça a Aether: uma plataforma que une o pilar empresarial de construção e valorização de ativos farmacêuticos ao instituto de ciência e tecnologia para transformar pesquisa científica em soluções reais para a saúde.',
 		url: 'https://aethergp.com.br/sobre',
 		siteName: 'Aether Global Pharma',
@@ -48,86 +48,79 @@ export const metadata: Metadata = {
 
 const valores = [
 	{
-		title: 'Inovação',
-		text: 'Buscamos ciência de fronteira e a conduzimos com método, avançando tecnologias promissoras rumo a ativos farmacêuticos com potencial global.'
+		title: 'Ciência',
+		text: 'Selecionamos pesquisas com elevado potencial terapêutico e conduzimos seu desenvolvimento com rigor técnico, visão translacional e foco em aplicação industrial.'
 	},
 	{
-		title: 'Humanização',
-		text: 'Acreditamos que ciência e propósito caminham juntos. Cada projeto existe para chegar às pessoas, não apenas ao mercado.'
+		title: 'Propriedade Intelectual',
+		text: 'Transformamos conhecimento científico em ativos farmacêuticos por meio de desenvolvimento tecnológico, desrisking e estratégia integrada de propriedade intelectual.'
 	},
 	{
-		title: 'Excelência',
-		text: 'Governança científica, rigor regulatório e estratégia de propriedade intelectual em cada etapa, construindo ativos robustos, defensáveis e confiáveis.'
+		title: 'Licenciamento Global',
+		text: 'Posicionamos ativos para conexão com a indústria farmacêutica, investidores e parceiros estratégicos, ampliando seu potencial de transferência tecnológica e comercialização.'
 	}
 ]
 
-// marcos 2000 / 2025 / 2026 confirmados pela Patricia; os 5 intermediários são
-// PLACEHOLDER (lorem ipsum) - anos e textos a alinhar com o cliente
 const timeline = [
 	{
 		year: '2000',
-		title: 'Origem como Bap Consult',
-		text: 'A empresa nasce como consultoria, ponto de partida da trajetória que daria origem à plataforma.'
+		title: 'Origem na indústria farmacêutica',
+		text: 'Início da atuação da fundadora em qualidade, produção industrial, assuntos regulatórios e desenvolvimento farmacêutico.'
 	},
 	{
 		year: '2005',
-		title: 'Lorem ipsum dolor sit amet',
-		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Marco a confirmar com o cliente.'
-	},
-	{
-		year: '2009',
-		title: 'Consectetur adipiscing elit',
-		text: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Marco a confirmar com o cliente.'
+		title: 'Expansão em projetos industriais',
+		text: 'Atuação em projetos de implantação, validação, desenvolvimento industrial e gestão estratégica no setor farmacêutico.'
 	},
 	{
 		year: '2013',
-		title: 'Ut enim ad minim veniam',
-		text: 'Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Marco a confirmar com o cliente.'
+		title: 'Consolidação da experiência internacional',
+		text: 'Participação em projetos de desenvolvimento tecnológico, transferência de tecnologia e gestão de operações farmacêuticas de alta complexidade.'
 	},
 	{
-		year: '2017',
-		title: 'Duis aute irure dolor',
-		text: 'In reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Marco a confirmar com o cliente.'
-	},
-	{
-		year: '2021',
-		title: 'Excepteur sint occaecat',
-		text: 'Cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Marco a confirmar com o cliente.'
+		year: '2020',
+		title: 'Evolução para a construção de ativos tecnológicos',
+		text: 'A experiência acumulada evidencia uma oportunidade: transformar ciência em ativos farmacêuticos estruturados para licenciamento.'
 	},
 	{
 		year: '2025',
-		title: 'Aether Global Pharma e ICT AetherBio+',
-		text: 'Durante o período da fundadora no Canadá, a razão social é alterada para Aether Global Pharma, marcando a virada para a inovação farmacêutica. No mesmo ano nasce o ICT AetherBio+, que passa a complementar as atividades de gestão de pesquisas.'
+		title: 'Fundação da Aether Global Pharma',
+		text: 'Nasce uma empresa dedicada à construção, desenvolvimento e monetização de ativos farmacêuticos.'
+	},
+	{
+		year: '2025',
+		title: 'Criação do ICT AetherBio+',
+		text: 'Constituição do braço científico da plataforma para acelerar a maturação tecnológica das pesquisas.'
 	},
 	{
 		year: '2026',
-		title: 'Projetos de Alto Impacto em Saúde',
-		text: 'Seleção na chamada Projetos de Alto Impacto em Saúde, iniciativa do Ministério da Saúde e da EMBRAPII.'
+		title: 'Consolidação da Plataforma Aether',
+		text: 'Captação de projetos estratégicos, fomento federal, parcerias científicas e expansão da atuação como plataforma integrada de desenvolvimento de ativos farmacêuticos.'
 	}
 ]
 
 const pilares = [
 	{
-		eyebrow: 'pilar empresarial',
+		eyebrow: 'Pharmaceutical Asset Venture Builder',
 		icon: '/img/svg/logo/icon-gp.svg',
 		iconColor: 'bg-green-light',
 		name: 'Aether Global Pharma',
-		text: 'O pilar empresarial da plataforma, que atua como uma Pharmaceutical Asset Venture Builder. Conduz a estratégia integrada dos ativos, articulando propriedade intelectual, desenvolvimento, capital e posicionamento de mercado para parcerias e licenciamento.',
+		text: 'Responsável pela estratégia empresarial da plataforma, conduzindo desenvolvimento dos ativos, propriedade intelectual, estruturação financeira, parcerias estratégicas e licenciamento internacional.',
 		href: pages.sobreAgp,
 		cta: 'Conhecer a AGP',
 		cardClass: 'bg-green-dark text-green-light',
 		buttonStyle: 'light-2' as const
 	},
 	{
-		eyebrow: 'pilar científico',
+		eyebrow: 'Pilar Científico',
 		icon: '/img/svg/logo/icon-bio-green-dark.svg',
 		iconColor: 'bg-white',
 		name: 'ICT AetherBio+',
-		text: 'O pilar científico e tecnológico da plataforma: instituição sem fins lucrativos que promove o avanço e o desrisking dos projetos, com governança científica independente e comitê especializado.',
+		text: 'Instituição científica responsável pelo avanço tecnológico dos projetos, governança científica, coordenação das pesquisas, desrisking e interação com universidades, centros de pesquisa e agências de fomento.',
 		href: pages.sobreIct,
 		cta: 'Conhecer o Bio+',
 		cardClass: 'bg-linear-to-br from-sapphire to-navy-mid text-white',
-		buttonStyle: 'blue' as const
+		buttonStyle: 'white' as const
 	}
 ]
 
@@ -194,9 +187,9 @@ export default function SobrePage() {
 							<div className='row'>
 								<div className='col-lg-10'>
 									<h1 className='text-72 font-heading font-bold text-green-light'>
-										Inovação <br />
-										Humanização <br />
-										Excelência
+										Ciência <br />
+										Propriedade Intelectual <br />
+										Licenciamento Global
 									</h1>
 								</div>
 							</div>
@@ -211,11 +204,11 @@ export default function SobrePage() {
 
 							<div className='col-lg-9'>
 								<p className='text-24 font-heading lg:pr-[6vw]'>
-									<AnimatedText text='Com leveza nos negócios e profundidade nas pesquisas, a Aether propõe um novo jeito de atuar no setor farmacêutico: mais humano, mais conectado e mais consciente.' />
+									<AnimatedText text='Um novo modelo para transformar ciência em valor.' />
 								</p>
 
 								<p className='text-20 leading-relaxed mt-8 lg:mt-10 lg:pr-[12vw] opacity-90'>
-									<AnimatedText text='Nosso propósito é ser o elo entre a pesquisa científica, a indústria e a vida das pessoas. Mais do que desenvolver, acreditamos em traduzir inovação em bem-estar.' />
+									<AnimatedText text='A maior parte das descobertas científicas nunca chega ao mercado. Não por falta de mérito científico, mas porque poucas tecnologias percorrem toda a jornada necessária para se tornarem ativos farmacêuticos atrativos para a indústria. <br /><br /> A Plataforma Aether foi criada para preencher essa lacuna, conectando pesquisa, desenvolvimento, propriedade intelectual, capital e estratégia de mercado em um modelo estruturado de geração de valor.' />
 								</p>
 							</div>
 
@@ -234,7 +227,7 @@ export default function SobrePage() {
 
 							<div className='col-lg-9'>
 								<h2 className='text-60 font-heading font-semibold'>
-									<AnimatedText text='Três princípios que orientam cada decisão.' />
+									<AnimatedText text='Três princípios orientam todas as decisões.' />
 								</h2>
 							</div>
 
@@ -286,11 +279,11 @@ export default function SobrePage() {
 								style='dark'
 								className='text-60 font-heading font-semibold'
 							>
-								Dois pilares institucionais. Uma estratégia integrada.
+								Uma plataforma. Dois pilares complementares.
 							</AnimatedTitle>
 
 							<p className='text-20 leading-relaxed mt-6 lg:mt-8 lg:pr-[6vw]'>
-								<AnimatedText text='A plataforma Aether opera por meio de duas entidades complementares, com funções distintas e integradas ao longo da jornada de desenvolvimento dos ativos. Essa arquitetura permite articular ciência, propriedade intelectual, capital e estratégia de desenvolvimento em um modelo orientado à redução de risco, construção de valor e licenciamento.' />
+								<AnimatedText text='A Plataforma Aether integra duas instituições com funções distintas e complementares, permitindo conduzir toda a jornada de desenvolvimento dos ativos farmacêuticos, desde a pesquisa até sua preparação para o mercado.' />
 							</p>
 						</div>
 
@@ -350,7 +343,7 @@ export default function SobrePage() {
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
 							<h3 className='font-semibold font-heading lg:pt-2'>
-								<AnimatedText text='(nossa história)' />
+								<AnimatedText text='(nossa trajetória)' />
 							</h3>
 						</div>
 
@@ -392,11 +385,11 @@ export default function SobrePage() {
 								style='dark'
 								className='text-60 font-heading font-semibold'
 							>
-								Pessoas que conectam ciência e estratégia.
+								Pessoas que transformam ciência em ativos farmacêuticos.
 							</AnimatedTitle>
 
 							<p className='text-20 leading-relaxed my-8 lg:my-10'>
-								<AnimatedText text='A Aether reúne lideranças com experiência em desenvolvimento farmacêutico, propriedade intelectual e gestão científica, apoiadas por um comitê de pesquisadores especialistas em diferentes áreas terapêuticas.' />
+								<AnimatedText text='A Plataforma Aether reúne profissionais com experiência em desenvolvimento farmacêutico, propriedade intelectual, assuntos regulatórios, estratégia empresarial e transferência de tecnologia. Nosso modelo integra especialistas científicos, executivos e parceiros estratégicos para conduzir ativos desde a descoberta até oportunidades de licenciamento global.' />
 							</p>
 
 							<Button
