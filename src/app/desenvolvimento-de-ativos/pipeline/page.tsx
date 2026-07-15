@@ -21,12 +21,12 @@ export const metadata: Metadata = {
 	title: 'Pipeline - Projetos em Desenvolvimento | Aether Global Pharma',
 	description: 'O pipeline da Aether reúne os projetos científicos em desenvolvimento na plataforma, conduzidos pelo ICT AetherBio+, incluindo a plataforma produtiva para IFA anti-inflamatória selecionada pelo Ministério da Saúde e pela EMBRAPII.',
 	alternates: {
-		canonical: '/pd/pipeline'
+		canonical: '/desenvolvimento-de-ativos/pipeline'
 	},
 	openGraph: {
 		title: 'Pipeline - Projetos em Desenvolvimento | Aether Global Pharma',
 		description: 'O pipeline da Aether reúne os projetos científicos em desenvolvimento na plataforma, conduzidos pelo ICT AetherBio+, incluindo a plataforma produtiva para IFA anti-inflamatória selecionada pelo Ministério da Saúde e pela EMBRAPII.',
-		url: 'https://aethergp.com.br/pd/pipeline',
+		url: 'https://aethergp.com.br/desenvolvimento-de-ativos/pipeline',
 		siteName: 'Aether Global Pharma',
 		images: [
 			{

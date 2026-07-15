@@ -17,12 +17,12 @@ export const metadata: Metadata = {
 	title: 'TRL - Níveis de Maturidade Tecnológica | Aether Global Pharma',
 	description: 'A escala TRL 1-9 aplicada ao desenvolvimento farmacêutico: do princípio científico à comercialização. Abordagem técnica da Aether, baseada na ISO 16290 e no Guia TRL da RBIF.',
 	alternates: {
-		canonical: '/pd/trl'
+		canonical: '/desenvolvimento-de-ativos/trl'
 	},
 	openGraph: {
 		title: 'TRL - Níveis de Maturidade Tecnológica | Aether Global Pharma',
 		description: 'A escala TRL 1-9 aplicada ao desenvolvimento farmacêutico: do princípio científico à comercialização. Abordagem técnica da Aether, baseada na ISO 16290 e no Guia TRL da RBIF.',
-		url: 'https://aethergp.com.br/pd/trl',
+		url: 'https://aethergp.com.br/desenvolvimento-de-ativos/trl',
 		siteName: 'Aether Global Pharma',
 		images: [
 			{

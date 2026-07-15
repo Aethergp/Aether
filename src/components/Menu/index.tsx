@@ -89,7 +89,7 @@ export default function Menu() {
 
 						<div className='flex items-stretch justify-end gap-1'>
 
-							<ul className='flex items-center justify-end gap-1 max-lg:hidden'>
+							<ul className='flex items-center justify-end gap-1 max-xl:hidden'>
 								{headerLinks.map((item, i) => (
 									<li key={i} className='relative group'>
 										<Button
@@ -122,7 +122,7 @@ export default function Menu() {
 
 							<MagneticButton>
 								<button
-									className='flex flex-col items-center justify-center gap-[.3rem] px-4 py-4 lg:py-3 rounded-sm md:rounded-md bg-green-dark text-green-light cursor-pointer min-h-full group transition-all duration-200 hover:bg-black'
+									className='flex flex-col items-center justify-center gap-[.3rem] px-4 py-4 xl:py-3 rounded-sm md:rounded-md bg-green-dark text-green-light cursor-pointer min-h-full group transition-all duration-200 hover:bg-black'
 									onClick={() => setIsOpen(true)}
 								>
 									<span className='h-px bg-green-light block w-6 sm:w-7 transition-all duration-200 group-hover:translate-y-[.4rem]' data-line-top />

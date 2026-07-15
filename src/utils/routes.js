@@ -23,9 +23,9 @@ export const pages = {
 	parceiros: '/parceiros',
 
 	// p&d (hub + subpages - hub/pipeline not built yet, constants kept for forward links)
-	pd: '/pd',
-	trl: '/pd/trl',
-	pdPipeline: '/pd/pipeline',
+	pd: '/desenvolvimento-de-ativos',
+	trl: '/desenvolvimento-de-ativos/trl',
+	pdPipeline: '/desenvolvimento-de-ativos/pipeline',
 
 	// contact
 	contato: '/contato',
@@ -43,7 +43,7 @@ export const pages = {
  * @typedef {{ href: string, label: string, home?: boolean, children?: NavChild[] }} NavItem
  */
 
-// subpage groups - referenced as `children` on the Sobre / P&D nav entries so the
+// subpage groups - referenced as `children` on the Sobre / Desenvolvimento de Ativos nav entries so the
 // menu (header dropdown + mobile sub-list) and footer can render them nested. the
 // subpages don't all exist yet (they 404 until built) - links are intentional.
 /** @type {NavChild[]} */
@@ -66,7 +66,7 @@ const pdChildren = [
 export const navLinks = [
 	{ href: pages.home, label: 'Início', home: true },
 	{ href: pages.sobre, label: 'Sobre', children: sobreChildren },
-	{ href: pages.pd, label: 'P&D', children: pdChildren },
+	{ href: pages.pd, label: 'Desenvolvimento de Ativos', children: pdChildren },
 	{ href: pages.midia, label: 'Mídia' },
 	{ href: pages.parceiros, label: 'Parceiros' },
 	{ href: pages.inscreva, label: 'Inscreva seu Projeto' },
@@ -74,11 +74,11 @@ export const navLinks = [
 ]
 
 // desktop header - a trimmed subset (no Início/Parceiros), but now carries the
-// Sobre / P&D groups (rendered as hover dropdowns). edit independently of navLinks.
+// Sobre / Desenvolvimento de Ativos groups (rendered as hover dropdowns). edit independently of navLinks.
 /** @type {NavItem[]} */
 export const headerLinks = [
 	{ href: pages.sobre, label: 'Sobre', children: sobreChildren },
-	{ href: pages.pd, label: 'P&D', children: pdChildren },
+	{ href: pages.pd, label: 'Desenvolvimento de Ativos', children: pdChildren },
 	{ href: pages.midia, label: 'Mídia' },
 	//{ href: pages.inscreva, label: 'Inscreva seu Projeto' },
 	{ href: pages.contato, label: 'Contato' }
@@ -90,7 +90,7 @@ export const headerLinks = [
 /** @type {NavItem[][]} */
 export const footerColumns = [
 	[{ href: pages.sobre, label: 'Sobre', children: sobreChildren }],
-	[{ href: pages.pd, label: 'P&D', children: [
+	[{ href: pages.pd, label: 'Desenvolvimento de Ativos', children: [
 		{ href: pages.trl, label: 'TRL' },
 		{ href: pages.pdPipeline, label: 'Pipeline' }
 	] }],

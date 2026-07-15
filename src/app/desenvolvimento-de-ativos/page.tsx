@@ -15,15 +15,15 @@ import PDDimensoes from './PDDimensoes'
 import { pages } from '@/utils/routes'
 
 export const metadata: Metadata = {
-	title: 'P&D - Pesquisa e Desenvolvimento | Aether Global Pharma',
+	title: 'Desenvolvimento de Ativos - Pesquisa e Desenvolvimento | Aether Global Pharma',
 	description: 'Abordagem científica da Aether: maturação de TRL, governança científica independente e proteção integral da propriedade intelectual na condução de projetos farmacêuticos globais.',
 	alternates: {
-		canonical: '/pd'
+		canonical: '/desenvolvimento-de-ativos'
 	},
 	openGraph: {
-		title: 'P&D - Pesquisa e Desenvolvimento | Aether Global Pharma',
+		title: 'Desenvolvimento de Ativos - Pesquisa e Desenvolvimento | Aether Global Pharma',
 		description: 'Abordagem científica da Aether: maturação de TRL, governança científica independente e proteção integral da propriedade intelectual na condução de projetos farmacêuticos globais.',
-		url: 'https://aethergp.com.br/pd',
+		url: 'https://aethergp.com.br/desenvolvimento-de-ativos',
 		siteName: 'Aether Global Pharma',
 		images: [
 			{
@@ -41,29 +41,30 @@ export const metadata: Metadata = {
 const criterios = [
 	{
 		title: 'Fundamentação científica robusta',
-		text: 'Hipóteses sustentadas por evidências experimentais, metodologia reproduzível e dados técnicos ou publicações que permitam avaliação por pares.'
+		text: 'Hipóteses sustentadas por evidências experimentais, metodologia tecnicamente consistente e dados que permitam análise crítica, validação e definição dos próximos marcos de desenvolvimento.'
 	},
 	{
 		title: 'Potencial translacional',
-		text: 'Caminho identificável entre a descoberta científica e uma aplicação terapêutica concreta: medicamento, biofármaco, terapia avançada ou plataforma tecnológica associada.'
+		text: 'Possibilidade concreta de transformar a descoberta científica em uma solução terapêutica ou tecnologia aplicável ao desenvolvimento farmacêutico.'
 	},
 	{
-		title: 'Propriedade intelectual protegível',
-		text: 'Titularidade clara, ineditismo técnico verificável e potencial de proteção por patente ou regime equivalente ao longo do avanço de TRL.'
+		title: 'Potencial de propriedade intelectual',
+		text: 'Capacidade de construção ou fortalecimento de uma posição de propriedade intelectual que contribua para a exclusividade, defensibilidade e valor estratégico do ativo.'
 	},
 	{
-		title: 'Origem em pesquisadores, startups ou instituições',
-		text: 'Projetos originados em universidades, centros de pesquisa, institutos de ciência e tecnologia, startups de base científica ou colaborações entre esses atores, no Brasil ou no exterior.'
+		title: 'Potencial de desenvolvimento e monetização',
+		text: 'Existência de uma trajetória tecnicamente viável de desenvolvimento e de uma hipótese clara de geração de valor por meio de licenciamento, parceria estratégica, transferência de tecnologia ou outra operação relacionada ao ativo.'
 	}
 ]
 
 const governancaPills = [
 	'Instituição sem fins lucrativos',
-	'Governança independente',
-	'Comitê científico multidisciplinar'
+	'Ciência e tecnologia',
+	'Governança científica especializada',
+	'Desenvolvimento translacional'
 ]
 
-export default function PDPage() {
+export default function DesenvolvimentodeAtivos() {
 	return (
 		<div className='bg-white'>
 
@@ -74,7 +75,7 @@ export default function PDPage() {
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
 							<h3 className='font-semibold font-heading lg:pt-2'>
-								<AnimatedText text='(pesquisa & desenvolvimento)' />
+								<AnimatedText text='(desenvolvimento de ativos)' />
 							</h3>
 						</div>
 
@@ -84,7 +85,7 @@ export default function PDPage() {
 							</h1>
 
 							<p className='text-24 font-heading mt-8 lg:mt-12 lg:pr-[8vw]'>
-								<AnimatedText text='Conduzimos o desenvolvimento científico e tecnológico dos projetos da plataforma com governança independente, maturação progressiva de TRL e proteção integral da propriedade intelectual. Cada projeto avança sustentado por evidências científicas robustas e por um comitê científico de especialistas.' />
+								<AnimatedText text='Na Aether, pesquisa e desenvolvimento são orientados à construção de valor. <br /><br />Como uma <b>Pharmaceutical Asset Venture Builder</b>, identificamos e desenvolvemos descobertas científicas com potencial de se tornarem ativos farmacêuticos protegidos, tecnicamente validados e estrategicamente posicionados para licenciamento, parceria industrial ou outras operações de monetização. <br /><br />Cada ativo avança por uma jornada estruturada de desrisking científico e tecnológico, maturação de TRL, estratégia de propriedade intelectual e governança especializada.' />
 							</p>
 						</div>
 
@@ -118,7 +119,7 @@ export default function PDPage() {
 								style='dark'
 								className='text-60 font-heading font-semibold'
 							>
-								O desenvolvimento farmacêutico exige mais do que ciência.
+								Uma descoberta científica ainda não é um ativo farmacêutico.
 							</AnimatedTitle>
 						</div>
 
@@ -136,7 +137,7 @@ export default function PDPage() {
 
 						<div className='col-lg-6'>
 							<p className='text-20 leading-relaxed'>
-								<AnimatedText text='Traduzir uma descoberta científica em um ativo farmacêutico global é um percurso longo e multidisciplinar. Exige validação técnica independente, avanço progressivo de maturidade tecnológica, captação de fomento qualificado e uma estratégia de propriedade intelectual construída desde os primeiros estágios.<br /><br />Na plataforma Aether, esse percurso é conduzido pelo ICT AetherBio+, instituto de ciência, tecnologia e inovação responsável pela condução científica e tecnológica de cada projeto, com governança independente e rigor metodológico.' />
+								<AnimatedText text='Transformar ciência em um ativo farmacêutico exige mais do que gerar resultados experimentais. Exige identificar o potencial de aplicação, construir proteção intelectual, reduzir incertezas críticas e gerar as evidências necessárias para aumentar progressivamente a maturidade e o valor do ativo. <br /><br /> Na plataforma Aether, o desenvolvimento é orientado por uma lógica de asset building: cada decisão científica, tecnológica e estratégica deve contribuir para tornar o ativo mais robusto, protegível e atrativo para futuros parceiros industriais, licenciados e investidores especializados em life sciences. <br /><br />A execução científica e tecnológica é conduzida em articulação com o ICT AetherBio+, universidades, centros de pesquisa, especialistas e parceiros tecnológicos, dentro de uma governança estruturada para cada ativo.' />
 							</p>
 						</div>
 
@@ -156,7 +157,7 @@ export default function PDPage() {
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
 							<h3 className='font-semibold font-heading lg:pt-2'>
-								<AnimatedText text='(perfil dos projetos)' />
+								<AnimatedText text='(perfil dos ativos)' />
 							</h3>
 						</div>
 
@@ -165,7 +166,7 @@ export default function PDPage() {
 								style='dark'
 								className='text-60 font-heading font-semibold'
 							>
-								O que a Aether avalia.
+								O que buscamos construir.
 							</AnimatedTitle>
 						</div>
 
@@ -175,13 +176,15 @@ export default function PDPage() {
 						<div className='col-lg-3' />
 						<div className='col-lg-9'>
 							<p className='text-20 leading-relaxed pb-10 lg:pb-[3vw]'>
-								<AnimatedText text='A plataforma Aether é translacional por natureza e avalia projetos científicos em biotecnologia e saúde humana com potencial de transformação em ativos farmacêuticos globais. Na prática, priorizamos projetos com as seguintes características:' />
+								<AnimatedText text='A Aether identifica e seleciona descobertas científicas e tecnologias em saúde com potencial de transformação em ativos farmacêuticos protegidos, desenvolvíveis e licenciáveis. Priorizamos oportunidades que apresentem uma combinação consistente dos seguintes atributos:' />
 							</p>
 						</div>
 					</div>
 
 					<div className='row'>
+
 						<div className='col-lg-3' />
+
 						<div className='col-lg-9'>
 							<StaggerUp className='grid grid-cols-1 md:grid-cols-2 gap-4'>
 								{criterios.map((item, i) => (
@@ -198,6 +201,11 @@ export default function PDPage() {
 									</div>
 								))}
 							</StaggerUp>
+
+							<p className='text-20 leading-relaxed pt-6'>
+								As oportunidades podem se originar em universidades, ICTs, centros de pesquisa, startups científicas, pesquisadores independentes e outras organizações de inovação, no Brasil ou no exterior.
+							</p>
+
 						</div>
 					</div>
 
@@ -212,7 +220,7 @@ export default function PDPage() {
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
 							<h3 className='font-semibold font-heading lg:pt-2'>
-								<AnimatedText text='(nossas frentes)' />
+								<AnimatedText text='(nossa plataforma de desenvolvimento)' />
 							</h3>
 						</div>
 
@@ -221,7 +229,7 @@ export default function PDPage() {
 								style='dark'
 								className='text-60 font-heading font-semibold'
 							>
-								Como estruturamos a pesquisa e o desenvolvimento.
+								Uma plataforma para construir e maturar ativos farmacêuticos.
 							</AnimatedTitle>
 						</div>
 
@@ -238,7 +246,7 @@ export default function PDPage() {
 									</div>
 
 									<span className='text-sm font-semibold opacity-60 uppercase tracking-wide'>
-										Projetos em desenvolvimento
+										Ativos em desenvolvimento
 									</span>
 
 									<h2 className='text-48 font-heading font-semibold relative z-1'>
@@ -246,14 +254,14 @@ export default function PDPage() {
 									</h2>
 
 									<p className='text-18 leading-relaxed opacity-90 relative z-1 max-w-sm'>
-										Conheça os projetos em andamento na plataforma Aether, organizados por estágio de maturidade tecnológica, área terapêutica e status atual do desenvolvimento.
+										Conheça os ativos que integram o pipeline da Aether, organizados por estágio de maturidade, área terapêutica e status de desenvolvimento.
 									</p>
 
 									<div className='mt-auto pt-4 relative z-1'>
 										<Button
 											style='light-2'
 											href={pages.pdPipeline}
-											text='Explorar pipeline'
+											text='Explorar o pipeline'
 											icon='diagonal-arrow'
 										/>
 									</div>
@@ -269,22 +277,22 @@ export default function PDPage() {
 									</div>
 
 									<span className='text-sm font-semibold opacity-60 uppercase tracking-wide'>
-										Níveis TRL 1-9
+										Maturidade tecnológica
 									</span>
 
 									<h2 className='text-48 font-heading font-semibold relative z-1'>
-										Maturidade tecnológica
+										Jornada de desenvolvimento
 									</h2>
 
 									<p className='text-18 leading-relaxed relative z-1 max-w-sm'>
-										A jornada completa de um ativo farmacêutico, detalhada nível a nível, dos princípios científicos básicos à implantação comercial comprovada.
+										Acompanhe a evolução dos ativos ao longo dos níveis de maturidade tecnológica e os principais marcos associados à redução de risco e à geração de valor.
 									</p>
 
 									<div className='mt-auto pt-4 relative z-1'>
 										<Button
 											style='dark'
 											href={pages.trl}
-											text='Conhecer os níveis TRL'
+											text='Conhecer os níveis de TRL'
 											icon='diagonal-arrow'
 										/>
 									</div>
@@ -318,11 +326,11 @@ export default function PDPage() {
 						<div className='col-lg-8 offset-lg-3'>
 
 							<h2 className='text-48 font-heading font-semibold mb-8 lg:mb-10'>
-								<AnimatedText text='Governança científica que valida cada passo.' />
+								<AnimatedText text='Ciência e tecnologia integradas à construção dos ativos.' />
 							</h2>
 
 							<p className='text-20 leading-relaxed opacity-70 mb-10 lg:mb-12 max-w-2xl'>
-								<AnimatedText text='O ICT AetherBio+ é uma instituição sem fins lucrativos apoiada por um comitê científico independente, formado por pesquisadores com atuação consolidada em diferentes áreas terapêuticas. O comitê assegura validação técnica, rigor metodológico e independência científica em cada projeto conduzido pela plataforma.' />
+								<AnimatedText text='O ICT AetherBio+ integra a plataforma Aether como ambiente institucional de ciência, tecnologia e inovação, apoiando a execução e a governança do desenvolvimento científico e tecnológico dos ativos. Em articulação com universidades, centros de pesquisa, especialistas e parceiros tecnológicos, o ICT contribui para a geração de evidências, o avanço de maturidade tecnológica e a execução dos programas de desenvolvimento definidos para cada ativo. Essa arquitetura permite conectar ciência, propriedade intelectual, capital e estratégia de desenvolvimento em uma única tese de construção de valor.' />
 							</p>
 
 							<StaggerUp className='flex flex-wrap gap-3 mb-10 lg:mb-12'>

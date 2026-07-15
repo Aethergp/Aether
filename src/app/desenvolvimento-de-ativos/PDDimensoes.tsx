@@ -18,23 +18,23 @@ gsap.registerPlugin(ScrollTrigger, SplitText)
 
 const dimensoes = [
 	{
-		title: 'Desrisking Tecnológico',
-		text: 'Reduzimos incertezas científicas, regulatórias e de escalonamento industrial desde as fases iniciais do projeto. O resultado é um conjunto de evidências técnicas robustas que tornam a tecnologia atrativa para parceiros industriais e investidores especializados em life sciences.',
+		title: 'Desrisking Científico e Tecnológico',
+		text: 'Identificamos as incertezas críticas de cada ativo e estruturamos seu desenvolvimento para reduzi-las progressivamente. A geração de evidências científicas, a validação tecnológica e o avanço de maturidade são orientados por marcos de decisão, permitindo concentrar capital e recursos nos ativos que demonstram maior consistência e potencial de valorização. O objetivo não é apenas avançar a pesquisa. É aumentar a qualidade e a confiabilidade do ativo.',
 		image: img1
 	},
 	{
-		title: 'Maturação Tecnológica (TRL)',
-		text: 'Conduzimos o avanço de Technology Readiness Level, dos princípios básicos até a implantação operacional comprovada, preservando integralmente a titularidade dos ativos de propriedade intelectual ao longo do processo.',
+		title: 'Propriedade Intelectual e Defensibilidade',
+		text: 'A propriedade intelectual é parte central da construção do ativo farmacêutico. Avaliamos titularidade, novidade, potencial de proteção, liberdade de operação e estratégia de expansão da proteção ao longo do desenvolvimento. Ciência protegida deixa de ser apenas conhecimento e passa a constituir um ativo intangível com potencial de geração de valor econômico.',
 		image: img2
 	},
 	{
-		title: 'Governança Científica Independente',
-		text: 'Cada projeto é acompanhado por um comitê científico composto por pesquisadores especialistas na respectiva área terapêutica. Essa independência assegura validação técnica e rigor metodológico em todas as decisões de desenvolvimento.',
+		title: 'Governança Científica Especializada',
+		text: 'Cada ativo é acompanhado por especialistas selecionados de acordo com sua natureza científica, tecnológica e terapêutica. A governança científica fortalece a qualidade das decisões, o rigor metodológico e a análise independente dos marcos de desenvolvimento, apoiando decisões de continuidade, redirecionamento ou NO GO. Na Aether, avançar também significa saber quando não avançar.',
 		image: img3
 	},
 	{
-		title: 'Fomento e Financiamento Qualificado',
-		text: 'Articulamos a captação de fomento público nacional e internacional adequado a cada estágio de desenvolvimento, alinhando recursos financeiros às necessidades técnicas específicas do projeto em curso.',
+		title: 'Maturação e Valorização do Ativo',
+		text: 'O desenvolvimento é estruturado para aumentar progressivamente a maturidade científica, tecnológica e estratégica de cada ativo. À medida que riscos relevantes são reduzidos, evidências são consolidadas e a propriedade intelectual é fortalecida, o ativo amplia seu potencial de interesse para a indústria farmacêutica e para parceiros especializados. Cada avanço deve aumentar não apenas o TRL, mas também a qualidade estratégica e o potencial de monetização do ativo.',
 		image: img4
 	}
 ]
@@ -215,7 +215,7 @@ export default function PDDimensoes() {
 						{dimensoes.map((_, i) => (
 							<div
 								key={i}
-								className='w-[3px] h-14 rounded-full overflow-hidden'
+								className='w-0.75 h-14 rounded-full overflow-hidden'
 								style={{ background: 'rgba(224,230,161,0.2)' }}
 							>
 								<div
@@ -263,7 +263,7 @@ export default function PDDimensoes() {
 										}}
 									>
 										<div className='row'>
-											<div className='col-lg-7'>
+											<div className='col-lg-8'>
 												<h2
 													data-title
 													className='text-60 font-heading font-semibold mb-6'
@@ -272,7 +272,7 @@ export default function PDDimensoes() {
 												</h2>
 												<p
 													data-body
-													className='text-20 leading-relaxed opacity-90 max-w-xl'
+													className='text-20 leading-relaxed opacity-90'
 												>
 													{item.text}
 												</p>
