@@ -8,7 +8,7 @@ import AnimatedTitle from '@/components/Utils/Animations/AnimatedTitle'
 import StaggerUp from '@/components/Utils/Animations/StaggerUp'
 import ScrollingImage from '@/components/Utils/Animations/ScrollingImage'
 import Button from '@/components/Button'
-import Committee from './Committee'
+import Committee from '@/components/Committee'
 import ContactBanner from '@/components/ContactBanner'
 
 // imgs
@@ -16,8 +16,6 @@ import portrait from '@/assets/img/patricia.jpg'
 import claudia from '@/assets/img/team/claudia.png'
 import andre from '@/assets/img/team/andre.png'
 import luciani from '@/assets/img/team/luciani.png'
-import katlin from '@/assets/img/team/katlin.png'
-import phili from '@/assets/img/team/phili.png'
 
 export const metadata: Metadata = {
 	title: 'Equipe - Lideranças e comitê científico | Aether Global Pharma',
@@ -84,24 +82,6 @@ const comite = [
 		bio: 'Profissional com sólida experiência em Assuntos Regulatórios e Garantia da Qualidade, atua na elaboração, implementação e execução de treinamentos e procedimentos regulatórios e de qualidade.<br /><br />É fundadora da Vigidoc, empresa especializada em assessoria regulatória e qualidade para negócios que atuam em mercados regulados. Tem experiência na regularização de empresas em início de atividade, incluindo a obtenção de licenças e registros junto às autoridades sanitárias. Atua em registro de produtos perante a ANVISA, apoiando empresas no cumprimento dos requisitos regulatórios e na manutenção da conformidade ao longo do ciclo de vida dos produtos.',
 		photo: luciani,
 		linked: 'https://www.linkedin.com/in/lucianifagotti/'
-	},
-	{
-		name: 'Katlin B. Massirer',
-		titulacao: 'PhD',
-		area: 'Coordenadora CQMED',
-		instituicao: 'CQMED',
-		bio: 'Coordenadora do Centro de Química Medicinal (CQMED-Unicamp), uma Unidade Embrapii de Inovação Industrial na área de Fármacos/Biofármacos, desde 2017. Pesquisadora da área de: proteínas de ligação a RNA em doenças, química medicinal, bioinformática, e proteínas recombinantes para diagnóstico. Tem mais de 15 anos de experiência em planejamento e execução de projetos de pesquisa e inovação, com 46 publicações internacionais de alto impacto. <br /><br />Atua na coordenação de projetos internacionais na área de splicing de RNA e química medicinal, com a University of Oxford, University of California San Diego, Tubingen University e o Structural Genomics Consortium (SGC) no Canadá. Em 2025 recebeu prêmio de pesquisadora destaque da Embrapii e em 2024 recebeu honraria como profissional de destaque em pesquisa na área de saúde pela Câmara Municipal de Campinas, SP. Atua como coordenadora adjunta do CBMEG e Coordenadora da CIBIO-CBMEG.',
-		photo: katlin,
-		linked: 'https://www.linkedin.com/in/katlin-massirer-86a0779/'
-	},
-	{
-		name: 'Ronaldo Pilli',
-		titulacao: 'PhD',
-		area: 'Coordenador Química',
-		instituicao: 'CQMED',
-		bio: 'Professor na Unicamp na área de Síntese Orgânica, com ênfase em síntese assimétrica, síntese de fármacos e produtos naturais, com avaliação de atividade biológica. Coordena a área de Química do CQMED-Unicamp. Possui pedidos de patente relacionados a métodos de preparação de princípios farmacêuticos, incluindo fenidato de metila, tamoxifeno, levobupivacaína e fluoxetina.<br /><br />Ocupou posições de destaque na gestão acadêmica e científica, como diretor do Instituto de Química e Pró-Reitor de Pesquisa da Unicamp, além de atuação em instâncias estratégicas de formulação de políticas científicas no CNPq e na FAPESP, incluindo a vice-presidência do Conselho Superior da FAPESP. <br /><br />É coautor do livro-texto Substâncias Carboniladas e Derivados, referência na área de Química Orgânica, com edição nacional e internacional em inglês. <br /><br />Recebeu importantes prêmios e honrarias nacionais e internacionais, como o Prêmio Zeferino Vaz (Unicamp), a Medalha Simão Mathias (SBQ), a Medalha Israel Vargas e o BMOS Award. É membro da Academia de Ciências do Estado de São Paulo e da Academia Brasileira de Ciências.',
-		photo: phili,
-		//linked: 'https://www.linkedin.com/in/katlin-massirer-86a0779/'
 	}
 ]
 

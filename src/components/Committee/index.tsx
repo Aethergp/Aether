@@ -83,7 +83,7 @@ export default function Committee({ members }: Props) {
 								<div className='absolute inset-0 bg-green-dark/10 transition-opacity duration-500 group-hover:opacity-0' />
 							</div>
 
-							<h4 className='text-20 font-heading font-semibold mt-4 text-green-dark/70'>
+							<h4 className='text-20 font-heading font-semibold mt-4'>
 								{m.name}
 							</h4>
 							{m.area && <p className='text-16 opacity-70 mt-1'>{m.area}</p>}

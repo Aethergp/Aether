@@ -10,9 +10,12 @@ import StaggerUp from '@/components/Utils/Animations/StaggerUp'
 import Counter from '@/components/Utils/Animations/Counter'
 import Button from '@/components/Button'
 import ScrollingImage from '@/components/Utils/Animations/ScrollingImage'
+import Committee from '@/components/Committee'
 
 // img
 import imgFlagship from '@/assets/img/water.jpg'
+import katlin from '@/assets/img/team/katlin.png'
+import phili from '@/assets/img/team/phili.png'
 
 // utils
 import { pages } from '@/utils/routes'
@@ -46,6 +49,27 @@ const parceiros = [
 	'EMBRAPII',
 	'CQMED',
 	'UFMG - Inovação de Fármacos'
+]
+
+const responsaveis = [
+	{
+		name: 'Katlin B. Massirer',
+		titulacao: 'PhD',
+		area: 'Coordenadora CQMED',
+		instituicao: 'CQMED',
+		bio: 'Coordenadora do Centro de Química Medicinal (CQMED-Unicamp), uma Unidade Embrapii de Inovação Industrial na área de Fármacos/Biofármacos, desde 2017. Pesquisadora da área de: proteínas de ligação a RNA em doenças, química medicinal, bioinformática, e proteínas recombinantes para diagnóstico. Tem mais de 15 anos de experiência em planejamento e execução de projetos de pesquisa e inovação, com 46 publicações internacionais de alto impacto. <br /><br />Atua na coordenação de projetos internacionais na área de splicing de RNA e química medicinal, com a University of Oxford, University of California San Diego, Tubingen University e o Structural Genomics Consortium (SGC) no Canadá. Em 2025 recebeu prêmio de pesquisadora destaque da Embrapii e em 2024 recebeu honraria como profissional de destaque em pesquisa na área de saúde pela Câmara Municipal de Campinas, SP. Atua como coordenadora adjunta do CBMEG e Coordenadora da CIBIO-CBMEG.',
+		photo: katlin,
+		linked: 'https://www.linkedin.com/in/katlin-massirer-86a0779/'
+	},
+	{
+		name: 'Ronaldo Pilli',
+		titulacao: 'PhD',
+		area: 'Coordenador Química',
+		instituicao: 'CQMED',
+		bio: 'Professor na Unicamp na área de Síntese Orgânica, com ênfase em síntese assimétrica, síntese de fármacos e produtos naturais, com avaliação de atividade biológica. Coordena a área de Química do CQMED-Unicamp. Possui pedidos de patente relacionados a métodos de preparação de princípios farmacêuticos, incluindo fenidato de metila, tamoxifeno, levobupivacaína e fluoxetina.<br /><br />Ocupou posições de destaque na gestão acadêmica e científica, como diretor do Instituto de Química e Pró-Reitor de Pesquisa da Unicamp, além de atuação em instâncias estratégicas de formulação de políticas científicas no CNPq e na FAPESP, incluindo a vice-presidência do Conselho Superior da FAPESP. <br /><br />É coautor do livro-texto Substâncias Carboniladas e Derivados, referência na área de Química Orgânica, com edição nacional e internacional em inglês. <br /><br />Recebeu importantes prêmios e honrarias nacionais e internacionais, como o Prêmio Zeferino Vaz (Unicamp), a Medalha Simão Mathias (SBQ), a Medalha Israel Vargas e o BMOS Award. É membro da Academia de Ciências do Estado de São Paulo e da Academia Brasileira de Ciências.',
+		photo: phili
+		//linked: 'https://www.linkedin.com/in/katlin-massirer-86a0779/'
+	}
 ]
 
 const dimensoes = [
@@ -194,6 +218,32 @@ export default function PipelinePage() {
 						</div>
 
 					</div>
+
+				</div>
+			</section>
+
+			{/* Responsáveis científicos */}
+			<section className='pb-16 lg:pb-[8vw] bg-green-dark text-green-light -mt-px'>
+				<div className='base-container'>
+
+					<div className='row pb-10 lg:pb-[5vw]'>
+						<div className='col-lg-3 pb-4 lg:pb-0'>
+							<h3 className='font-semibold font-heading pt-2'>
+								<AnimatedText text='(responsáveis científicos)' />
+							</h3>
+						</div>
+						<div className='col-lg-9'>
+							<h2 className='text-60 font-heading font-semibold'>
+								Quem lidera a ciência deste projeto.
+							</h2>
+
+							<p className='text-20 leading-relaxed mt-6 lg:mt-8 lg:pr-[8vw]'>
+								<AnimatedText text='A condução científica da plataforma produtiva para IFA anti-inflamatória é responsabilidade dos pesquisadores do CQMED-Unicamp. Clique em cada perfil para conhecer a trajetória.' />
+							</p>
+						</div>
+					</div>
+
+					<Committee members={responsaveis} />
 
 				</div>
 			</section>
