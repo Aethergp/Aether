@@ -15,7 +15,9 @@ import ContactBanner from '@/components/ContactBanner'
 import portrait from '@/assets/img/patricia.jpg'
 import claudia from '@/assets/img/team/claudia.png'
 import andre from '@/assets/img/team/andre.png'
-import pessoa from '@/assets/img/team/pessoa.png'
+import luciani from '@/assets/img/team/luciani.png'
+import katlin from '@/assets/img/team/katlin.png'
+import phili from '@/assets/img/team/phili.png'
 
 export const metadata: Metadata = {
 	title: 'Equipe - Lideranças e comitê científico | Aether Global Pharma',
@@ -55,15 +57,52 @@ const realizacoes = [
 	'Liderança de operações e equipes industriais com mais de 200 profissionais em ambiente GMP'
 ]
 
-// PLACEHOLDER - nomes, titulações, instituições, bios e fotos do comitê são
-// TEMPORÁRIOS. A lista real depende do alinhamento jurídico da Patricia com
-// cada pesquisador (nome, titulação, área, instituição + autorização individual).
-const bioPlaceholder = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pesquisador(a) com atuação em desenvolvimento e validação de tecnologias em saúde. Nome, titulação e instituição a confirmar com o cliente.'
-
 const comite = [
-	{ name: 'Claudia Ramos', titulacao: 'PhD', area: 'Química Medicinal', instituicao: 'Instituição a confirmar', bio: bioPlaceholder, photo: claudia },
-	{ name: 'André Chaia', titulacao: 'PhD', area: 'Farmacologia', instituicao: 'Instituição a confirmar', bio: bioPlaceholder, photo: andre },
-	{ name: 'Nome a confirmar', titulacao: 'PhD', area: 'Biotecnologia', instituicao: 'Instituição a confirmar', bio: bioPlaceholder, photo: pessoa }
+	{
+		name: 'Claudia Ramos',
+		titulacao: '',
+		area: 'Scientific Advisor',
+		instituicao: '',
+		bio: 'Acredita que a inovação em saúde somente alcança impacto real quando ciência, regulação e estratégia caminham de forma integrada.<br /><br />Farmacêutica Bioquímica com mais de 20 anos de atuação em Assuntos Regulatórios e Vigilância Sanitária, desenvolveu sua trajetória em instituições como ANVISA, Organização Pan-Americana da Saúde (OPAS), Fundação para o Desenvolvimento Científico e Tecnológico em Saúde (FIOTEC), Ministério da Saúde e consultoria especializada para a indústria farmacêutica. Sua experiência concentra-se na produção de inteligência regulatória, elaboração de pareceres técnico-científicos, interpretação de marcos regulatórios, avaliação de processos administrativos e estruturação de documentos que subsidiam decisões estratégicas em ambientes regulatórios complexos. Ao longo da carreira, participou da consolidação de entendimentos regulatórios, da sistematização de conhecimento institucional e do desenvolvimento de análises técnicas envolvendo medicamentos, produtos para saúde, cosméticos, saneantes e alimentos, além de planejamento regulatório e estratégico para precificação de medicamentos novos junto à CMED (Câmara de Regulação do Mercado de Medicamentos). Tem especial interesse em iniciativas voltadas à maturação tecnológica de ativos farmacêuticos, governança científica, avaliação regulatória de tecnologias inovadoras, inteligência regulatória aplicada à inovação e construção de estratégias que aproximem universidades, centros de pesquisa, setor produtivo e autoridades sanitárias. Defende que a previsibilidade regulatória constitui um dos principais fatores para reduzir riscos tecnológicos, acelerar o desenvolvimento de ativos inovadores e ampliar as oportunidades de transferência de tecnologia.',
+		photo: claudia,
+		linked: 'https://www.linkedin.com/in/claudia-s-ramos-santos-4a9937a8/'
+	},
+	{
+		name: 'André Adriano Chaia',
+		titulacao: '',
+		area: 'Scientific Advisor',
+		instituicao: '',
+		bio: 'Farmacêutico e mestre em Microbiologia, construiu uma trajetória de mais de 26 anos dedicada a transformar complexidade regulatória em vantagem competitiva para a indústria de life sciences. Sua carreira ganhou contornos decisivos durante quase uma década na ANVISA, onde atuou como Consultor Técnico Especializado, analisando dossiês de registro, renovação e pós-registro de medicamentos novos, genéricos e similares, avaliando segurança e eficácia, e participando da elaboração e acompanhamento de novas legislações.<br /><br />Sua atuação multissetorial - indústria, consultoria, ANVISA, ICT e ambiente acadêmico - permite uma visão 360° do ciclo de vida regulatório. Como professor universitário por mais de 10 anos, formou profissionais com mentalidade crítica e alinhada às melhores práticas de qualidade, segurança e conformidade. Em paralelo, no ICT, atua para aproximar pesquisa científica, investimentos e estratégia regulatória, ajudando projetos em estágios iniciais a atravessarem o "vale da morte" da inovação e a evoluírem até se tornarem produtos e patentes com real potencial de mercado.<br /><br />Hoje, atua como parceiro estratégico para empresas que buscam navegar com segurança em um ambiente regulatório exigente, sem perder competitividade. Combina experiência adquirida na ANVISA, histórico robusto de registros bem-sucedidos e vivência em auditorias regulatórias para desenhar caminhos normativos sólidos, encurtar prazos, prevenir retrabalhos e sustentar decisões de alto impacto em portfólios farmacêuticos complexos. Seu compromisso é usar a inteligência regulatória como alavanca de negócios, destravando oportunidades e agregando valor tangível a cada projeto.',
+		photo: andre,
+		linked: 'https://www.linkedin.com/in/andr%C3%A9-adriano-chaia-a94a343a/'
+	},
+	{
+		name: 'Luciani Fagotti',
+		titulacao: '',
+		area: 'Scientific Advisor',
+		instituicao: '',
+		bio: 'Profissional com sólida experiência em Assuntos Regulatórios e Garantia da Qualidade, atua na elaboração, implementação e execução de treinamentos e procedimentos regulatórios e de qualidade.<br /><br />É fundadora da Vigidoc, empresa especializada em assessoria regulatória e qualidade para negócios que atuam em mercados regulados. Tem experiência na regularização de empresas em início de atividade, incluindo a obtenção de licenças e registros junto às autoridades sanitárias. Atua em registro de produtos perante a ANVISA, apoiando empresas no cumprimento dos requisitos regulatórios e na manutenção da conformidade ao longo do ciclo de vida dos produtos.',
+		photo: luciani,
+		linked: 'https://www.linkedin.com/in/lucianifagotti/'
+	},
+	{
+		name: 'Katlin B. Massirer',
+		titulacao: 'PhD',
+		area: 'Coordenadora CQMED',
+		instituicao: 'CQMED',
+		bio: 'Coordenadora do Centro de Química Medicinal (CQMED-Unicamp), uma Unidade Embrapii de Inovação Industrial na área de Fármacos/Biofármacos, desde 2017. Pesquisadora da área de: proteínas de ligação a RNA em doenças, química medicinal, bioinformática, e proteínas recombinantes para diagnóstico. Tem mais de 15 anos de experiência em planejamento e execução de projetos de pesquisa e inovação, com 46 publicações internacionais de alto impacto. <br /><br />Atua na coordenação de projetos internacionais na área de splicing de RNA e química medicinal, com a University of Oxford, University of California San Diego, Tubingen University e o Structural Genomics Consortium (SGC) no Canadá. Em 2025 recebeu prêmio de pesquisadora destaque da Embrapii e em 2024 recebeu honraria como profissional de destaque em pesquisa na área de saúde pela Câmara Municipal de Campinas, SP. Atua como coordenadora adjunta do CBMEG e Coordenadora da CIBIO-CBMEG.',
+		photo: katlin,
+		linked: 'https://www.linkedin.com/in/katlin-massirer-86a0779/'
+	},
+	{
+		name: 'Ronaldo Pilli',
+		titulacao: 'PhD',
+		area: 'Coordenador Química',
+		instituicao: 'CQMED',
+		bio: 'Professor na Unicamp na área de Síntese Orgânica, com ênfase em síntese assimétrica, síntese de fármacos e produtos naturais, com avaliação de atividade biológica. Coordena a área de Química do CQMED-Unicamp. Possui pedidos de patente relacionados a métodos de preparação de princípios farmacêuticos, incluindo fenidato de metila, tamoxifeno, levobupivacaína e fluoxetina.<br /><br />Ocupou posições de destaque na gestão acadêmica e científica, como diretor do Instituto de Química e Pró-Reitor de Pesquisa da Unicamp, além de atuação em instâncias estratégicas de formulação de políticas científicas no CNPq e na FAPESP, incluindo a vice-presidência do Conselho Superior da FAPESP. <br /><br />É coautor do livro-texto Substâncias Carboniladas e Derivados, referência na área de Química Orgânica, com edição nacional e internacional em inglês. <br /><br />Recebeu importantes prêmios e honrarias nacionais e internacionais, como o Prêmio Zeferino Vaz (Unicamp), a Medalha Simão Mathias (SBQ), a Medalha Israel Vargas e o BMOS Award. É membro da Academia de Ciências do Estado de São Paulo e da Academia Brasileira de Ciências.',
+		photo: phili,
+		//linked: 'https://www.linkedin.com/in/katlin-massirer-86a0779/'
+	}
 ]
 
 export default function EquipePage() {
@@ -209,10 +248,6 @@ export default function EquipePage() {
 					</div>
 
 					<Committee members={comite} />
-
-					<p className='text-16 opacity-60 mt-10 lg:mt-12'>
-						Os nomes e perfis do comitê serão divulgados após o alinhamento com cada pesquisador.
-					</p>
 
 				</div>
 			</section>

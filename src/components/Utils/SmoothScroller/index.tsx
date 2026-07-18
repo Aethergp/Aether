@@ -100,10 +100,11 @@ export default function SmoothScroller({
         }
 
         const handleWheel = (e: WheelEvent) => {
-            e.preventDefault()
-
-            // pause smooth scroll when data-scroll-paused is set (e.g. menu open)
+            // pause smooth scroll when data-scroll-paused is set (e.g. menu/modal open)
+            // must return BEFORE preventDefault so nested overflow-y-auto can scroll
             if (viewport.hasAttribute('data-scroll-paused')) return
+
+            e.preventDefault()
 
             // update target scroll position
             state.targetScroll += e.deltaY
