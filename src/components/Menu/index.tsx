@@ -3,7 +3,6 @@
 // libraries
 import clsx from 'clsx'
 import { Link } from 'next-transition-router'
-import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 // components
@@ -14,6 +13,7 @@ import MagneticButton from '@/components/Utils/Animations/MagneticButton'
 import { useAnchorScroll } from '@/hooks/useAnchorScroll'
 import { useIsNotFound } from '@/components/Utils/NotFoundContext'
 import { navLinks, headerLinks, pages } from '@/utils/routes'
+import { usePathname } from '@/i18n/navigation'
 
 // svg
 import Logo from '@/assets/svg/logo/aether-gp.svg'

@@ -51,22 +51,42 @@ Suggested build order: the `/sobre` **hub is built**; next are its 3 subpages (`
 
 ## Internationalization (i18n branch, in progress)
 
-**Phase 0 done** (install + base config, no route changes): `next-intl` installed and wired into
-`next.config.mjs` via `createNextIntlPlugin('./src/i18n/request.ts')`; `src/i18n/{routing,request,navigation}.ts`
-+ `src/middleware.ts` + placeholder `src/messages/{pt-BR,en-US,es}.json` + typed `AppConfig` in
-`src/types/next-intl.d.ts`. Locales: `pt-BR` (default, no prefix) / `en-US` (`/en-us`) / `es` (`/es`).
-Middleware layers a first-visit geolocation redirect (`x-vercel-ip-country` → BR/Spanish-speaking-country/else)
-in front of next-intl's own middleware — see CLAUDE.md → Architecture → "Internationalization (next-intl)"
-for the mechanics and the non-obvious `src/middleware.ts` (not root) file-location gotcha.
+**Phase 0 done:** `next-intl` installed and wired into `next.config.mjs` via
+`createNextIntlPlugin('./src/i18n/request.ts')`; `src/i18n/{routing,request,navigation}.ts` + typed
+`AppConfig` in `src/types/next-intl.d.ts`. Locales: `pt-BR` (default, no prefix) / `en-US` (`/en-us`) /
+`es` (`/es`).
 
-**Known current state:** production build (`npm run build`) passes clean and the middleware bundles
-correctly (46.1 kB), but since routes aren't restructured yet, next-intl's internal locale rewrite means
-**every route currently 404s when actually served** (`npm run dev` / `npm start`) — expected until Phase 1.
+**Phase 1 done (2026-07-21):** all routes moved from `src/app/*` to `src/app/[locale]/*` (mechanical
+move, zero content change, verified with a full rebuild + browser check that pt-BR renders byte-identical
+to before); `NextIntlClientProvider` + locale validation wired into `src/app/[locale]/layout.tsx`; minimal
+root `src/app/layout.tsx` (passthrough) + `src/app/not-found.tsx` (non-localized fallback) added since
+Next.js requires them once a root `not-found.tsx` exists; `src/app/[locale]/[...rest]/page.tsx`
+(`notFound()`) added so unknown paths render the styled locale-aware 404 instead of the bare root
+fallback; `usePathname`/`useRouter` swapped to `@/i18n/navigation` in `Menu`, `Footer`, `MediaFeed` so
+prefix-sensitive comparisons/links keep working per locale. See CLAUDE.md → Architecture →
+"Internationalization (next-intl)" for the full mechanics and gotchas (middleware file location,
+catch-all requirement, the nav-link-locale-prefix gap, the broken sitemap).
 
-**Phase 1 (not started):** move routes under `src/app/[locale]/...`, wire `NextIntlClientProvider` into
-`layout.tsx`, replace the placeholder message files with real copy extracted from the existing pt-BR
-strings, add `alternates.languages` (hreflang) to each route's `metadata` using `getPathname` from
-`src/i18n/navigation.ts`, and update `next-sitemap.config.js` for locale-prefixed URLs.
+**Content rollout (page by page, started 2026-07-21): `404`, `/contato`, `/parceiros` are fully
+migrated** — `generateMetadata`/`getTranslations`, every string in `src/messages/{pt-BR,en-US,es}.json`,
+verified in-browser in all 3 locales (title tag, OG, body copy, form labels all switch correctly; pt-BR
+default unaffected). Chose these first because they're the smallest pages. Everything else (`/`, `/sobre`
++ 3 subpages, `/desenvolvimento-de-ativos` + 2 subpages, `/midia` + post template, `/inscreva-seu-projeto`,
+the 2 legal pages) **still renders hardcoded pt-BR copy regardless of locale** — intentional incremental
+state, not a bug. The global `Menu`/`Footer` nav labels are *not yet* translated either (same reason:
+not one of the 3 target pages) — pick a page, follow the pattern in `src/app/[locale]/contato/page.tsx`
+(the richer example — form + subject options where the emailed `value` stays pt-BR but the visible
+`label` translates) or `src/app/[locale]/parceiros/page.tsx` (simpler, no form).
+
+**Not started:**
+- Every other route's content extraction/translation (the bulk of the remaining work; legal pages
+  especially are large).
+- Locale-aware internal navigation (`Menu`/`Footer`/`Button` all use `next-transition-router`'s `Link`
+  fed unprefixed `pages.x` constants — clicking a nav link from `/en-us/...` currently drops back to
+  pt-BR; needs either a `Link` swap or routing hrefs through next-intl's `getPathname`).
+- `alternates.languages` (hreflang) on migrated pages' metadata.
+- Fixing `next-sitemap` for the `[locale]` segment (currently emits an empty sitemap on build — see
+  CLAUDE.md gotcha).
 
 ## Cross-cutting gaps to resolve
 

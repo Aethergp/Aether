@@ -2,13 +2,13 @@
 
 // libraries
 import { Link } from 'next-transition-router'
-import { usePathname } from 'next/navigation'
 import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
 
 // utils
 import { social, footerColumns, pages } from '@/utils/routes'
 import { getYear } from '@/utils/functions'
+import { usePathname } from '@/i18n/navigation'
 
 export default function Footer() {
 

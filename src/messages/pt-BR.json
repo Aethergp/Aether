@@ -1,3 +1,53 @@
 {
-	"test": "Olá mundo"
+	"NotFoundPage": {
+		"metaTitle": "Erro 404: Página não encontrada | Aether Global Pharma"
+	},
+	"ContatoPage": {
+		"metaTitle": "Contato | Aether Global Pharma",
+		"metaDescription": "Fale com a Aether Global Pharma: parcerias científicas, licenciamento, investimento, imprensa e colaborações institucionais.",
+		"eyebrow": "(contato)",
+		"heading": "Entre em contato para oportunidades de parceria científica,",
+		"subheading": "desenvolvimento tecnológico ou colaboração institucional.",
+		"researcherText": "É pesquisador e quer apresentar uma tecnologia? Use nosso formulário dedicado: sua proposta chega direto à equipe científica.",
+		"researcherButton": "Inscreva seu projeto",
+		"contactEyebrow": "(fale conosco)",
+		"form": {
+			"successTitle": "Mensagem enviada com sucesso",
+			"successText": "Obrigado por entrar em contato. Entraremos em contato o mais breve possível.",
+			"errorTitle": "Erro ao enviar mensagem",
+			"errorText": "Ocorreu um erro ao enviar a mensagem. Por favor, tente novamente.",
+			"nameLabel": "Nome",
+			"namePlaceholder": "Nome completo",
+			"emailLabel": "E-mail",
+			"emailPlaceholder": "Email",
+			"companyLabel": "Empresa / Instituição",
+			"companyPlaceholder": "Empresa ou instituição (opcional)",
+			"subjectLabel": "Assunto",
+			"subjectPlaceholder": "Selecione o assunto",
+			"subjectScientific": "Parceria científica ou institucional",
+			"subjectLicensing": "Licenciamento e negócios",
+			"subjectInvestment": "Investimento",
+			"subjectPress": "Imprensa",
+			"subjectOther": "Outros assuntos",
+			"messageLabel": "Mensagem",
+			"messagePlaceholder": "Mensagem",
+			"submit": "Enviar"
+		}
+	},
+	"ParceirosPage": {
+		"metaTitle": "Parceiros - Ecossistema científico | Aether Global Pharma",
+		"metaDescription": "Universidades, centros de pesquisa e instituições que compõem o ecossistema da Aether Global Pharma. Descubra como se tornar um parceiro.",
+		"eyebrow": "(parceiros)",
+		"heading": "Um ecossistema científico e institucional de alto nível",
+		"intro": "A plataforma Aether opera em colaboração com universidades, centros de pesquisa e instituições científicas e tecnológicas que sustentam o desenvolvimento dos nossos ativos, da pesquisa básica à produção em escala.",
+		"backgroundAlt": "Fundo",
+		"scientistsAlt": "Pesquisadores",
+		"logosHeading": "Quem está junto da Aether",
+		"schemaListName": "Ecossistema científico e institucional da Aether",
+		"ctaEyebrow": "(seja um parceiro)",
+		"ctaHeading": "Quer transformar ciência em ativos farmacêuticos com a Aether?",
+		"ctaText": "Buscamos universidades, ICTs, centros de pesquisa, parceiros industriais e investidores especializados que compartilhem o compromisso de transformar ciência em ativos com impacto global. Fale com a nossa equipe e vamos explorar caminhos de colaboração.",
+		"ctaButton": "Seja um parceiro",
+		"partnershipAlt": "Pesquisa científica na plataforma Aether"
+	}
 }

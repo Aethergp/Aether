@@ -1,6 +1,8 @@
 // libraries
 import type { Metadata } from 'next'
 import Image from 'next/image'
+import type { Locale } from 'next-intl'
+import { getTranslations } from 'next-intl/server'
 
 // components
 import AnimatedText from '@/components/Utils/Animations/AnimatedText'
@@ -21,32 +23,44 @@ import partnership from '@/assets/img/banner.jpg'
 import scientists from '@/assets/img/scientists.jpg'
 import abstract from '@/assets/img/abstract.jpg'
 
+interface Props {
+	params: Promise<{ locale: Locale }>
+}
+
 // metadata
-export const metadata: Metadata = {
-	title: 'Parceiros - Ecossistema científico | Aether Global Pharma',
-	description: 'Universidades, centros de pesquisa e instituições que compõem o ecossistema da Aether Global Pharma. Descubra como se tornar um parceiro.',
-	alternates: {
-		canonical: '/parceiros'
-	},
-	openGraph: {
-		title: 'Parceiros - Ecossistema científico | Aether Global Pharma',
-		description: 'Universidades, centros de pesquisa e instituições que compõem o ecossistema da Aether Global Pharma. Descubra como se tornar um parceiro.',
-		url: 'https://aethergp.com.br/parceiros',
-		siteName: 'Aether Global Pharma',
-		images: [
-			{
-				url: '/img/og/parceiros.jpg',
-				width: 1200,
-				height: 630,
-				alt: 'Aether Global Pharma'
-			}
-		],
-		locale: 'pt_BR',
-		type: 'website'
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+	const { locale } = await params
+	const t = await getTranslations({ locale, namespace: 'ParceirosPage' })
+
+	return {
+		title: t('metaTitle'),
+		description: t('metaDescription'),
+		alternates: {
+			canonical: '/parceiros'
+		},
+		openGraph: {
+			title: t('metaTitle'),
+			description: t('metaDescription'),
+			url: 'https://aethergp.com.br/parceiros',
+			siteName: 'Aether Global Pharma',
+			images: [
+				{
+					url: '/img/og/parceiros.jpg',
+					width: 1200,
+					height: 630,
+					alt: 'Aether Global Pharma'
+				}
+			],
+			locale: 'pt_BR',
+			type: 'website'
+		}
 	}
 }
 
-export default function ParceirosPage() {
+export default async function ParceirosPage({ params }: Props) {
+	const { locale } = await params
+	const t = await getTranslations({ locale, namespace: 'ParceirosPage' })
+
 	return (
 		<div className='bg-white'>
 
@@ -55,15 +69,15 @@ export default function ParceirosPage() {
 				data={pageGraph({
 					type: 'CollectionPage',
 					path: '/parceiros',
-					name: metadata.title as string,
-					description: metadata.description as string,
+					name: t('metaTitle'),
+					description: t('metaDescription'),
 					trail: [
-						{ name: 'Parceiros', item: '/parceiros' }
+						{ name: t('metaTitle'), item: '/parceiros' }
 					],
 					extend: {
 						mainEntity: {
 							'@type': 'ItemList',
-							name: 'Ecossistema científico e institucional da Aether',
+							name: t('schemaListName'),
 							numberOfItems: partners.length,
 							itemListElement: partners.map((item, i) => ({
 								'@type': 'ListItem',
@@ -87,7 +101,7 @@ export default function ParceirosPage() {
 
 					<Image
 						src={abstract}
-						alt='Background'
+						alt={t('backgroundAlt')}
 						fill
 						className='cover'
 						sizes='100vw'
@@ -99,7 +113,7 @@ export default function ParceirosPage() {
 
 						<div className='col-lg-3'>
 							<p className='font-semibold font-heading mb-6 lg:pt-1'>
-								<AnimatedText text='(parceiros)' />
+								<AnimatedText text={t('eyebrow')} />
 							</p>
 						</div>
 
@@ -107,12 +121,12 @@ export default function ParceirosPage() {
 
 							<TextReveal>
 								<h1 className='text-60 font-heading font-semibold text-green-light'>
-									Um ecossistema científico e institucional de alto nível
+									{t('heading')}
 								</h1>
 							</TextReveal>
 
 							<p className='text-20 mt-6 lg:mt-8 lg:pr-[8vw] opacity-90'>
-								<AnimatedText text='A plataforma Aether opera em colaboração com universidades, centros de pesquisa e instituições científicas e tecnológicas que sustentam o desenvolvimento dos nossos ativos, da pesquisa básica à produção em escala.' />
+								<AnimatedText text={t('intro')} />
 							</p>
 
 						</div>
@@ -131,7 +145,7 @@ export default function ParceirosPage() {
 								<ScrollingImage>
 									<Image
 										src={scientists}
-										alt='Pesquisadores'
+										alt={t('scientistsAlt')}
 										fill
 										className='cover'
 										loading='lazy'
@@ -157,7 +171,7 @@ export default function ParceirosPage() {
 								style='dark'
 								className='text-60 font-heading font-semibold'
 							>
-								Quem está junto da Aether
+								{t('logosHeading')}
 							</AnimatedTitle>
 						</div>
 
@@ -195,22 +209,22 @@ export default function ParceirosPage() {
 						<div className='flex flex-col justify-center p-10 md:p-16 lg:p-[5vw]'>
 
 							<span className='block text-sm font-semibold uppercase tracking-wide opacity-70 mb-6'>
-								(seja um parceiro)
+								{t('ctaEyebrow')}
 							</span>
 
 							<h2 className='text-60 font-heading font-semibold leading-[1.05]!'>
-								<AnimatedText text='Quer transformar ciência em ativos farmacêuticos com a Aether?' />
+								<AnimatedText text={t('ctaHeading')} />
 							</h2>
 
 							<p className='text-20 mt-6 lg:mt-8 opacity-90'>
-								Buscamos universidades, ICTs, centros de pesquisa, parceiros industriais e investidores especializados que compartilhem o compromisso de transformar ciência em ativos com impacto global. Fale com a nossa equipe e vamos explorar caminhos de colaboração.
+								{t('ctaText')}
 							</p>
 
 							<div className='mt-10 lg:mt-12'>
 								<Button
 									style='light-2'
 									href={pages.contato}
-									text='Seja um parceiro'
+									text={t('ctaButton')}
 									icon='diagonal-arrow'
 								/>
 							</div>
@@ -221,7 +235,7 @@ export default function ParceirosPage() {
 							<ScrollingImage>
 								<Image
 									src={partnership}
-									alt='Pesquisa científica na plataforma Aether'
+									alt={t('partnershipAlt')}
 									fill
 									className='cover'
 									sizes='(max-width: 1024px) 100vw, 50vw'

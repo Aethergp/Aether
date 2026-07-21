@@ -2,6 +2,8 @@
 import type { Metadata } from 'next'
 import clsx from 'clsx'
 import Image from 'next/image'
+import type { Locale } from 'next-intl'
+import { getTranslations } from 'next-intl/server'
 
 // components
 import AnimatedText from '@/components/Utils/Animations/AnimatedText'
@@ -19,38 +21,39 @@ import { email, phone } from '@/utils/functions'
 import { social, contact } from '@/utils/routes'
 import { pageGraph } from '@/utils/schema'
 
-// metadata
-export const metadata: Metadata = {
-	title: 'Contato | Aether Global Pharma',
-	description: 'Fale com a Aether Global Pharma: parcerias científicas, licenciamento, investimento, imprensa e colaborações institucionais.',
-	alternates: {
-		canonical: '/contato'
-	},
-	openGraph: {
-		title: 'Contato | Aether Global Pharma',
-		description: 'Fale com a Aether Global Pharma: parcerias científicas, licenciamento, investimento, imprensa e colaborações institucionais.',
-		url: 'https://aethergp.com.br/contato',
-		siteName: 'Aether Global Pharma',
-		images: [
-			{
-				url: '/img/og/contato.jpg',
-				width: 1200,
-				height: 630,
-				alt: 'Aether Global Pharma'
-			}
-		],
-		locale: 'pt_BR',
-		type: 'website'
-	}
+interface Props {
+	params: Promise<{ locale: Locale }>
 }
 
-const subjectOptions = [
-	{ value: 'Parceria científica ou institucional', label: 'Parceria científica ou institucional' },
-	{ value: 'Licenciamento e negócios', label: 'Licenciamento e negócios' },
-	{ value: 'Investimento', label: 'Investimento' },
-	{ value: 'Imprensa', label: 'Imprensa' },
-	{ value: 'Outros assuntos', label: 'Outros assuntos' }
-]
+// metadata
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+	const { locale } = await params
+	const t = await getTranslations({ locale, namespace: 'ContatoPage' })
+
+	return {
+		title: t('metaTitle'),
+		description: t('metaDescription'),
+		alternates: {
+			canonical: '/contato'
+		},
+		openGraph: {
+			title: t('metaTitle'),
+			description: t('metaDescription'),
+			url: 'https://aethergp.com.br/contato',
+			siteName: 'Aether Global Pharma',
+			images: [
+				{
+					url: '/img/og/contato.jpg',
+					width: 1200,
+					height: 630,
+					alt: 'Aether Global Pharma'
+				}
+			],
+			locale: 'pt_BR',
+			type: 'website'
+		}
+	}
+}
 
 const MAP_SRC = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3601.624946455032!2d-49.29010442399409!3d-25.484196177527387!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94dce359c443d8e3%3A0xdb55f50153993a47!2sR.%20Jos%C3%A9%20Casemiro%20Stenzowski%2C%2021%20-%20Novo%20Mundo%2C%20Curitiba%20-%20PR%2C%2081010-370!5e0!3m2!1spt-BR!2sbr!4v1781447134921!5m2!1spt-BR!2sbr'
 const MAP_LINK = 'https://www.google.com/maps/search/?api=1&query=Rua%20Jos%C3%A9%20Casemiro%20Stenzowski%2C%2021D%2C%20Curitiba%20-%20PR'
@@ -73,7 +76,18 @@ const offices = [
 	}
 ]
 
-export default function ContatoPage() {
+export default async function ContatoPage({ params }: Props) {
+	const { locale } = await params
+	const t = await getTranslations({ locale, namespace: 'ContatoPage' })
+
+	const subjectOptions = [
+		{ value: 'Parceria científica ou institucional', label: t('form.subjectScientific') },
+		{ value: 'Licenciamento e negócios', label: t('form.subjectLicensing') },
+		{ value: 'Investimento', label: t('form.subjectInvestment') },
+		{ value: 'Imprensa', label: t('form.subjectPress') },
+		{ value: 'Outros assuntos', label: t('form.subjectOther') }
+	]
+
 	return (
 		<div className='bg-white'>
 
@@ -82,10 +96,10 @@ export default function ContatoPage() {
 				data={pageGraph({
 					type: 'ContactPage',
 					path: '/contato',
-					name: metadata.title as string,
-					description: metadata.description as string,
+					name: t('metaTitle'),
+					description: t('metaDescription'),
 					trail: [
-						{ name: 'Contato', item: '/contato' }
+						{ name: t('metaTitle'), item: '/contato' }
 					]
 				})}
 			/>
@@ -97,17 +111,17 @@ export default function ContatoPage() {
 						<div className='col-lg-9 offset-lg-2'>
 
 							<p className='font-semibold font-heading mb-6'>
-								<AnimatedText text='(contato)' />
+								<AnimatedText text={t('eyebrow')} />
 							</p>
 
 							<TextReveal>
 								<h1 className='text-60 font-heading font-semibold text-green-dark'>
-									Entre em contato para oportunidades de parceria científica,
+									{t('heading')}
 								</h1>
 							</TextReveal>
 
 							<p className='text-30 font-heading text-green-dark mt-3 lg:mt-5'>
-								desenvolvimento tecnológico ou colaboração institucional.
+								{t('subheading')}
 							</p>
 
 						</div>
@@ -124,13 +138,13 @@ export default function ContatoPage() {
 							<div className='flex flex-col gap-6 md:flex-row md:items-center md:justify-between bg-green-pale rounded-md p-8 lg:p-10'>
 
 								<p className='text-18 md:pr-10'>
-									É pesquisador e quer apresentar uma tecnologia? Use nosso formulário dedicado: sua proposta chega direto à equipe científica.
+									{t('researcherText')}
 								</p>
 
 								<Button
 									style='dark'
 									href='/inscreva-seu-projeto'
-									text='Inscreva seu projeto'
+									text={t('researcherButton')}
 									icon='diagonal-arrow'
 									className='shrink-0'
 								/>
@@ -160,7 +174,7 @@ export default function ContatoPage() {
 						<div className='col-lg-4 col-xl-3'>
 
 							<h2 className='font-semibold font-heading mb-8 lg:mb-12'>
-								<AnimatedText text='(fale conosco)' />
+								<AnimatedText text={t('contactEyebrow')} />
 							</h2>
 
 							<StaggerUp className='flex flex-col gap-6 text-18'>
@@ -210,12 +224,12 @@ export default function ContatoPage() {
 							<Form
 								endpoint='/api/resend'
 								onSuccess={{
-									title: 'Mensagem enviada com sucesso',
-									text: 'Obrigado por entrar em contato. Entraremos em contato o mais breve possível.'
+									title: t('form.successTitle'),
+									text: t('form.successText')
 								}}
 								onError={{
-									title: 'Erro ao enviar mensagem',
-									text: 'Ocorreu um erro ao enviar a mensagem. Por favor, tente novamente.'
+									title: t('form.errorTitle'),
+									text: t('form.errorText')
 								}}
 								clearOnSubmit
 							>
@@ -230,49 +244,49 @@ export default function ContatoPage() {
 
 								<Input
 									id='nome'
-									label='Nome'
+									label={t('form.nameLabel')}
 									name='Nome'
 									type='text'
-									placeholder='Nome completo'
+									placeholder={t('form.namePlaceholder')}
 									required
 								/>
 
 								<Input
 									id='email'
-									label='E-mail'
+									label={t('form.emailLabel')}
 									name='Email'
 									type='email'
-									placeholder='Email'
+									placeholder={t('form.emailPlaceholder')}
 									required
 								/>
 
 								<Input
 									id='empresa'
-									label='Empresa / Instituição'
+									label={t('form.companyLabel')}
 									name='Empresa'
 									type='text'
-									placeholder='Empresa ou instituição (opcional)'
+									placeholder={t('form.companyPlaceholder')}
 								/>
 
 								<Select
 									id='assunto'
-									label='Assunto'
+									label={t('form.subjectLabel')}
 									name='Assunto'
-									placeholder='Selecione o assunto'
+									placeholder={t('form.subjectPlaceholder')}
 									options={subjectOptions}
 									required
 								/>
 
 								<Textarea
 									id='mensagem'
-									label='Mensagem'
+									label={t('form.messageLabel')}
 									name='Mensagem'
-									placeholder='Mensagem'
+									placeholder={t('form.messagePlaceholder')}
 									required
 								/>
 
 								<Submit
-									text='Enviar'
+									text={t('form.submit')}
 									style='dark'
 								/>
 

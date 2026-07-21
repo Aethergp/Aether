@@ -10,7 +10,7 @@ import UxArrowDiagonal from '@/assets/svg/ux/arrow-diagonal.svg'
 import UxLink from '@/assets/svg/ux/link.svg'
 
 // utils
-import { type MediaPost, mediaHref, formatDate } from '@/app/midia/db/data'
+import { type MediaPost, mediaHref, formatDate } from '@/app/[locale]/midia/db/data'
 
 interface Props {
 	post: MediaPost

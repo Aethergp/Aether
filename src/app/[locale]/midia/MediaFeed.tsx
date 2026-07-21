@@ -4,7 +4,7 @@
 import clsx from 'clsx'
 import { useMemo } from 'react'
 import { gsap } from 'gsap'
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
 
 // components
 import StaggerUp from '@/components/Utils/Animations/StaggerUp'
@@ -13,6 +13,7 @@ import Pagination from '@/components/Pagination'
 
 // utils
 import { type MediaPost, type MediaType, POSTS_PER_PAGE } from './db/data'
+import { usePathname, useRouter } from '@/i18n/navigation'
 
 interface Props {
 	posts: MediaPost[]

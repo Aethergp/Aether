@@ -1,11 +1,25 @@
+// libraries
+import type { Metadata } from 'next'
+import type { Locale } from 'next-intl'
+import { getTranslations } from 'next-intl/server'
+
 // components
 import Grainient from '@/components/Grainient'
 
-export const metadata = {
-	title: 'Erro 404: Página não encontrada | Aether Global Pharma',
-	robots: {
-		index: false,
-		follow: true
+interface Props {
+	params: Promise<{ locale: Locale }>
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+	const { locale } = await params
+	const t = await getTranslations({ locale, namespace: 'NotFoundPage' })
+
+	return {
+		title: t('metaTitle'),
+		robots: {
+			index: false,
+			follow: true
+		}
 	}
 }
 
