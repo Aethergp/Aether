@@ -3,6 +3,7 @@
 // libraries
 import clsx from 'clsx'
 import { Link } from 'next-transition-router'
+import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 
 // components
@@ -23,6 +24,7 @@ import UxArrowRight from '@/assets/svg/ux/arrow-right.svg'
 
 export default function Menu() {
 
+	const t = useTranslations('Nav')
 	const scrollTo = useAnchorScroll()
 
 	// light logo over the dark home hero, dark logo over light pages
@@ -95,7 +97,7 @@ export default function Menu() {
 									<li key={i} className='relative group'>
 										<Button
 											href={item.href}
-											text={item.label}
+											text={t(item.label)}
 											style='dark'
 											chevron={!!item.children}
 											onClick={item.href.startsWith('/') ? undefined : (e) => scrollTo(e, item.href)}
@@ -110,7 +112,7 @@ export default function Menu() {
 																href={child.href}
 																className='block px-4 py-2.5 rounded-sm text-green-dark whitespace-nowrap transition-colors duration-200 hover:bg-green-dark hover:text-green-light'
 															>
-																{child.label}
+																{t(child.label)}
 															</Link>
 														</li>
 													))}
@@ -206,7 +208,7 @@ export default function Menu() {
 										}}
 										className='text-30 font-heading font-semibold transition-all duration-200 hover:translate-x-2 block w-full py-4'
 									>
-										{item.label}
+										{t(item.label)}
 									</Link>
 
 									{item.children && (
@@ -214,7 +216,7 @@ export default function Menu() {
 											type='button'
 											onClick={() => toggleAccordion(i)}
 											aria-expanded={open}
-											aria-label={`${open ? 'Recolher' : 'Expandir'} ${item.label}`}
+											aria-label={t(open ? 'recolher' : 'expandir', { label: t(item.label) })}
 											className='shrink-0 relative w-10 h-10 rounded-xs bg-green-dark text-green-light flex items-center justify-center cursor-pointer transition-colors duration-200 hover:bg-black'
 										>
 											<span className='absolute w-3 h-px rounded-full bg-current' />
@@ -240,7 +242,7 @@ export default function Menu() {
 														onClick={() => setIsOpen(false)}
 														className='group/sub flex items-center justify-between gap-4 bg-green-dark/[0.07] rounded-md px-5 py-3.5 text-18 font-heading font-medium text-green-dark transition-colors duration-200 hover:bg-green-dark hover:text-green-light'
 													>
-														{child.label}
+														{t(child.label)}
 														<UxArrowRight className='w-3 h-3 shrink-0 opacity-70 transition-transform duration-200 group-hover/sub:translate-x-1' />
 													</Link>
 												</li>

@@ -39,24 +39,28 @@ export const pages = {
 }
 
 /**
- * @typedef {{ href: string, label: string }} NavChild
- * @typedef {{ href: string, label: string, home?: boolean, children?: NavChild[] }} NavItem
+ * @typedef {'inicio'|'sobre'|'sobreAgp'|'sobreIct'|'sobreEquipe'|'pd'|'trlFull'|'trlShort'|'pipeline'|'midia'|'parceiros'|'inscreva'|'contato'} NavLabelKey
+ * @typedef {{ href: string, label: NavLabelKey }} NavChild
+ * @typedef {{ href: string, label: NavLabelKey, home?: boolean, children?: NavChild[] }} NavItem
  */
+
+// `label` here is a key into the "Nav" message namespace (src/messages/*.json), NOT
+// display text - Menu/Footer resolve it via `useTranslations('Nav')` at render time.
 
 // subpage groups - referenced as `children` on the Sobre / Desenvolvimento de Ativos nav entries so the
 // menu (header dropdown + mobile sub-list) and footer can render them nested. the
 // subpages don't all exist yet (they 404 until built) - links are intentional.
 /** @type {NavChild[]} */
 const sobreChildren = [
-	{ href: pages.sobreAgp, label: 'Aether Global Pharma' },
-	{ href: pages.sobreIct, label: 'ICT AetherBio+' },
-	{ href: pages.sobreEquipe, label: 'Equipe' }
+	{ href: pages.sobreAgp, label: 'sobreAgp' },
+	{ href: pages.sobreIct, label: 'sobreIct' },
+	{ href: pages.sobreEquipe, label: 'sobreEquipe' }
 ]
 
 /** @type {NavChild[]} */
 const pdChildren = [
-	{ href: pages.trl, label: 'Maturidade Tecnológica (TRL)' },
-	{ href: pages.pdPipeline, label: 'Pipeline' }
+	{ href: pages.trl, label: 'trlFull' },
+	{ href: pages.pdPipeline, label: 'pipeline' }
 ]
 
 // full navigation - feeds the mobile (fullscreen) menu and the footer.
@@ -64,43 +68,43 @@ const pdChildren = [
 // to top on home and navigates home from other pages. items may carry `children`.
 /** @type {NavItem[]} */
 export const navLinks = [
-	{ href: pages.home, label: 'Início', home: true },
-	{ href: pages.sobre, label: 'Sobre', children: sobreChildren },
-	{ href: pages.pd, label: 'Desenvolvimento de Ativos', children: pdChildren },
-	{ href: pages.midia, label: 'Mídia' },
-	{ href: pages.parceiros, label: 'Parceiros' },
-	{ href: pages.inscreva, label: 'Inscreva seu Projeto' },
-	{ href: pages.contato, label: 'Contato' }
+	{ href: pages.home, label: 'inicio', home: true },
+	{ href: pages.sobre, label: 'sobre', children: sobreChildren },
+	{ href: pages.pd, label: 'pd', children: pdChildren },
+	{ href: pages.midia, label: 'midia' },
+	{ href: pages.parceiros, label: 'parceiros' },
+	{ href: pages.inscreva, label: 'inscreva' },
+	{ href: pages.contato, label: 'contato' }
 ]
 
 // desktop header - a trimmed subset (no Início/Parceiros), but now carries the
 // Sobre / Desenvolvimento de Ativos groups (rendered as hover dropdowns). edit independently of navLinks.
 /** @type {NavItem[]} */
 export const headerLinks = [
-	{ href: pages.sobre, label: 'Sobre', children: sobreChildren },
-	{ href: pages.pd, label: 'Desenvolvimento de Ativos', children: pdChildren },
-	{ href: pages.midia, label: 'Mídia' },
-	//{ href: pages.inscreva, label: 'Inscreva seu Projeto' },
-	{ href: pages.contato, label: 'Contato' }
+	{ href: pages.sobre, label: 'sobre', children: sobreChildren },
+	{ href: pages.pd, label: 'pd', children: pdChildren },
+	{ href: pages.midia, label: 'midia' },
+	//{ href: pages.inscreva, label: 'inscreva' },
+	{ href: pages.contato, label: 'contato' }
 ]
 
 // footer "Navegação" laid out as 4 columns - each column is a list of items, each
 // item may carry `children` (rendered indented). distinct from the flat menu lists.
-// (footer uses the short "TRL" label; the menu dropdown uses the fuller one.)
+// (footer uses the short "trlShort" key; the menu dropdown uses "trlFull".)
 /** @type {NavItem[][]} */
 export const footerColumns = [
-	[{ href: pages.sobre, label: 'Sobre', children: sobreChildren }],
-	[{ href: pages.pd, label: 'Desenvolvimento de Ativos', children: [
-		{ href: pages.trl, label: 'TRL' },
-		{ href: pages.pdPipeline, label: 'Pipeline' }
+	[{ href: pages.sobre, label: 'sobre', children: sobreChildren }],
+	[{ href: pages.pd, label: 'pd', children: [
+		{ href: pages.trl, label: 'trlShort' },
+		{ href: pages.pdPipeline, label: 'pipeline' }
 	] }],
 	[
-		{ href: pages.midia, label: 'Mídia' },
-		{ href: pages.parceiros, label: 'Parceiros' }
+		{ href: pages.midia, label: 'midia' },
+		{ href: pages.parceiros, label: 'parceiros' }
 	],
 	[
-		{ href: pages.inscreva, label: 'Inscreva seu Projeto' },
-		{ href: pages.contato, label: 'Contato' }
+		{ href: pages.inscreva, label: 'inscreva' },
+		{ href: pages.contato, label: 'contato' }
 	]
 ]
 

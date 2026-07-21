@@ -3,6 +3,7 @@
 // libraries
 import { Link } from 'next-transition-router'
 import { gsap } from 'gsap'
+import { useTranslations } from 'next-intl'
 import { useGSAP } from '@gsap/react'
 
 // utils
@@ -12,6 +13,7 @@ import { usePathname } from '@/i18n/navigation'
 
 export default function Footer() {
 
+	const t = useTranslations('Nav')
 	const pathname = usePathname()
 
 	useGSAP(() => {
@@ -89,7 +91,7 @@ export default function Footer() {
 													href={item.href}
 													className='hover-underline'
 												>
-													{item.label}
+													{t(item.label)}
 												</Link>
 
 												{item.children && (
@@ -100,7 +102,7 @@ export default function Footer() {
 																	href={child.href}
 																	className='hover-underline'
 																>
-																	{child.label}
+																	{t(child.label)}
 																</Link>
 															</li>
 														))}
@@ -120,7 +122,7 @@ export default function Footer() {
 						<div className='flex flex-col gap-1 md:items-end'>
 							<p className='block mb-2'>
 								<b>
-									Conecte-se
+									{t('conecteSe')}
 								</b>
 							</p>
 
@@ -154,12 +156,12 @@ export default function Footer() {
 					<div className='col flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-sm opacity-70'>
 
 						<div className='flex flex-wrap items-center gap-x-6 gap-y-2'>
-							<p>Copyright Aether © {year}</p>
+							<p>{t('copyright', { year })}</p>
 							<Link
 								href={pages.privacy}
 								className='hover-underline'
 							>
-								Política de Privacidade
+								{t('privacyLink')}
 							</Link>
 						</div>
 
@@ -167,7 +169,7 @@ export default function Footer() {
 							onClick={(e) => scrollToTop(e as unknown as React.MouseEvent<HTMLAnchorElement>)}
 							className='hover-underline-alt hover-underline-alt--light cursor-pointer w-fit'
 						>
-							Voltar ao topo
+							{t('voltarAoTopo')}
 						</button>
 
 					</div>

@@ -1,4 +1,25 @@
 {
+	"Nav": {
+		"inicio": "Inicio",
+		"sobre": "Nosotros",
+		"sobreAgp": "Aether Global Pharma",
+		"sobreIct": "ICT AetherBio+",
+		"sobreEquipe": "Equipo",
+		"pd": "Desarrollo de Activos",
+		"trlFull": "Madurez Tecnológica (TRL)",
+		"trlShort": "TRL",
+		"pipeline": "Pipeline",
+		"midia": "Medios",
+		"parceiros": "Socios",
+		"inscreva": "Inscriba su Proyecto",
+		"contato": "Contacto",
+		"conecteSe": "Conéctese",
+		"voltarAoTopo": "Volver arriba",
+		"copyright": "Copyright Aether © {year}",
+		"privacyLink": "Política de Privacidad",
+		"expandir": "Expandir {label}",
+		"recolher": "Contraer {label}"
+	},
 	"NotFoundPage": {
 		"metaTitle": "Error 404: Página no encontrada | Aether Global Pharma"
 	},

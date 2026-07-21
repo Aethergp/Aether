@@ -1,4 +1,25 @@
 {
+	"Nav": {
+		"inicio": "Home",
+		"sobre": "About",
+		"sobreAgp": "Aether Global Pharma",
+		"sobreIct": "ICT AetherBio+",
+		"sobreEquipe": "Team",
+		"pd": "Asset Development",
+		"trlFull": "Technology Readiness Level (TRL)",
+		"trlShort": "TRL",
+		"pipeline": "Pipeline",
+		"midia": "Media",
+		"parceiros": "Partners",
+		"inscreva": "Submit your Project",
+		"contato": "Contact",
+		"conecteSe": "Connect",
+		"voltarAoTopo": "Back to top",
+		"copyright": "Copyright Aether © {year}",
+		"privacyLink": "Privacy Policy",
+		"expandir": "Expand {label}",
+		"recolher": "Collapse {label}"
+	},
 	"NotFoundPage": {
 		"metaTitle": "404 Error: Page Not Found | Aether Global Pharma"
 	},
