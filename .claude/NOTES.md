@@ -49,6 +49,25 @@ Suggested build order: the `/sobre` **hub is built**; next are its 3 subpages (`
 `/sobre/ict-aether-bio`, `/sobre/equipe`) → `/pd` + `/pd/trl` → `/pd/pipeline` (waits on content). `/contato`,
 `/inscreva-seu-projeto`, `/midia`, `/parceiros`, legal pages are already built.
 
+## Internationalization (i18n branch, in progress)
+
+**Phase 0 done** (install + base config, no route changes): `next-intl` installed and wired into
+`next.config.mjs` via `createNextIntlPlugin('./src/i18n/request.ts')`; `src/i18n/{routing,request,navigation}.ts`
++ `src/middleware.ts` + placeholder `src/messages/{pt-BR,en-US,es}.json` + typed `AppConfig` in
+`src/types/next-intl.d.ts`. Locales: `pt-BR` (default, no prefix) / `en-US` (`/en-us`) / `es` (`/es`).
+Middleware layers a first-visit geolocation redirect (`x-vercel-ip-country` → BR/Spanish-speaking-country/else)
+in front of next-intl's own middleware — see CLAUDE.md → Architecture → "Internationalization (next-intl)"
+for the mechanics and the non-obvious `src/middleware.ts` (not root) file-location gotcha.
+
+**Known current state:** production build (`npm run build`) passes clean and the middleware bundles
+correctly (46.1 kB), but since routes aren't restructured yet, next-intl's internal locale rewrite means
+**every route currently 404s when actually served** (`npm run dev` / `npm start`) — expected until Phase 1.
+
+**Phase 1 (not started):** move routes under `src/app/[locale]/...`, wire `NextIntlClientProvider` into
+`layout.tsx`, replace the placeholder message files with real copy extracted from the existing pt-BR
+strings, add `alternates.languages` (hreflang) to each route's `metadata` using `getPathname` from
+`src/i18n/navigation.ts`, and update `next-sitemap.config.js` for locale-prefixed URLs.
+
 ## Cross-cutting gaps to resolve
 
 - **Palette / brand manual.** The client confirmed the full brand palette (swatch image, this session):

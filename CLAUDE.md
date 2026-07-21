@@ -38,7 +38,7 @@ There is **no test suite**. `RESEND_API_KEY` must be set (`.env.local`) or the `
 
 ## Stack
 
-Next.js 15 (App Router) · React 18 · TypeScript (strict) · Tailwind CSS v4 · GSAP · Resend · **ogl** (WebGL, for the `Grainient` animated-gradient background). Path alias `@/*` → `./src/*`. `reactStrictMode: false` is intentional — Strict Mode's double-mount re-fires the GSAP/animation effects.
+Next.js 15 (App Router) · React 18 · TypeScript (strict) · Tailwind CSS v4 · GSAP · Resend · **ogl** (WebGL, for the `Grainient` animated-gradient background) · **next-intl** (i18n, mid-rollout — see Architecture → Internationalization). Path alias `@/*` → `./src/*`. `reactStrictMode: false` is intentional — Strict Mode's double-mount re-fires the GSAP/animation effects.
 
 ## Code style
 
@@ -52,7 +52,7 @@ Tabs (width 4), matching the existing files. **Keep comments minimal** - no sect
 
 ## Architecture — the non-obvious parts
 
-These four mechanisms are interdependent and span multiple files. Understand them before touching scroll, animation, or navigation code.
+These mechanisms are interdependent and span multiple files. Understand them before touching scroll, animation, or navigation code.
 
 ### 1. Custom smooth scroll — the page does NOT scroll the window
 
@@ -76,6 +76,14 @@ Entrance animations run **on mount** - the `Banner` H1 SplitText reveal uses `gs
 ### 4. SVG imports are React components
 
 Configured via `@svgr/webpack` in `next.config.mjs` with `removeViewBox: false`. `import Icon from './x.svg'` gives a component; append `?url` (`import url from './x.svg?url'`) to get a URL string instead.
+
+### 5. Internationalization (next-intl) — Phase 0 scaffolding only, routes not yet restructured
+
+`next-intl` config lives in `src/i18n/` (`routing.ts` defines the 3 locales — `pt-BR` default/no prefix, `en-US` → `/en-us`, `es` → `/es` — via `localePrefix: { mode: 'as-needed', prefixes: {...} }`; `request.ts` is the server config passed to the `next-intl/plugin` wrapper in `next.config.mjs`; `navigation.ts` exports the locale-aware `Link`/`useRouter`/`usePathname`/`redirect`). Messages are placeholder-only in `src/messages/{pt-BR,en-US,es}.json`. Typed messages/locale come from `src/types/next-intl.d.ts` (`AppConfig` augmentation keyed off `pt-BR.json`, the default locale).
+
+- **The middleware file lives at `src/middleware.ts`, NOT the project root.** Next's dev bundler looks for `middleware.ts` one level up from wherever `app/`/`pages/` resolves (`getPossibleMiddlewareFilenames(path.join(rootDir, '..'))`) — since this project's app dir is `src/app`, that's `src/`, not the repo root. A root-level `middleware.ts` is silently never detected (empty `middleware-manifest.json`, no compile log, no error) — confirmed against the installed `next@15.5.19` source, not assumed from generic docs.
+- **`src/middleware.ts` layers a geolocation redirect in front of `next-intl`'s own `createMiddleware(routing)`.** On a request with no `NEXT_LOCALE` cookie, it reads `x-vercel-ip-country` (Vercel-only header — always absent locally, so local dev without a manually-set cookie/header falls through to the `en-US` default branch) and maps `BR` → `pt-BR`, a fixed set of Spanish-speaking country codes → `es`, everything else → `en-US`; it sets the cookie itself so the geo decision sticks and next-intl's own Accept-Language-based negotiation never overrides it on repeat visits. Once the cookie exists, every request goes straight to `intlMiddleware(request)`.
+- **Routes are NOT yet under `src/app/[locale]/...`, so next-intl's internal locale rewrite currently 404s everything.** `createMiddleware` always rewrites the matched path to a locale-prefixed internal path for the App Router to resolve (`x-middleware-rewrite: /pt-BR` etc.), which requires a `[locale]` segment that doesn't exist yet. This is expected mid-rollout state on the `i18n` branch, not a bug — restructuring routes under `[locale]` and wiring `NextIntlClientProvider` into `layout.tsx` is the next phase. Don't be alarmed if `npm run dev` on this branch 404s every route.
 
 ## Animations (GSAP)
 
