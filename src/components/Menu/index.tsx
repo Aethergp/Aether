@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react'
 // components
 import Button from '@/components/Button'
 import MagneticButton from '@/components/Utils/Animations/MagneticButton'
+import LocaleSwitcher from '@/components/LocaleSwitcher'
 
 // utils
 import { useAnchorScroll } from '@/hooks/useAnchorScroll'
@@ -120,6 +121,8 @@ export default function Menu() {
 								))}
 							</ul>
 
+							<LocaleSwitcher className='max-sm:hidden' />
+
 							<MagneticButton>
 								<button
 									className='flex flex-col items-center justify-center gap-[.3rem] px-4 py-4 xl:py-3 rounded-sm md:rounded-md bg-green-dark text-green-light cursor-pointer min-h-full group transition-all duration-200 hover:bg-black'
@@ -168,6 +171,10 @@ export default function Menu() {
 						<UxClose className='w-2 h-2' />
 					</button>
 
+				</div>
+
+				<div className='px-6 sm:px-10 pb-6 sm:pb-10 shrink-0 sm:hidden'>
+					<LocaleSwitcher variant='inline' />
 				</div>
 
 				<ul className='flex flex-col gap-1 p-6 sm:p-10 pt-0 sm:pt-0 flex-1 overflow-y-auto'>

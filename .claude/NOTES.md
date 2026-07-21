@@ -78,12 +78,24 @@ not one of the 3 target pages) — pick a page, follow the pattern in `src/app/[
 (the richer example — form + subject options where the emailed `value` stays pt-BR but the visible
 `label` translates) or `src/app/[locale]/parceiros/page.tsx` (simpler, no form).
 
+**Locale detection + manual switching done (2026-07-21):** the middleware's geolocation redirect now
+falls through to next-intl's own Accept-Language negotiation when `x-vercel-ip-country` is absent
+(local dev, or any non-Vercel host) instead of hardcoding `en-US` — a real user complaint (local dev
+always landing on English regardless of browser language) traced to that hardcoded fallback. A manual
+`LocaleSwitcher` (`src/components/LocaleSwitcher/`) is now wired into `Menu`: a hover-dropdown in the
+desktop header (`max-sm:hidden`) and a 3-pill inline row in the fs mobile menu (`sm:hidden`) - geo/
+Accept-Language only pick the *first-visit default*, a visitor can always override it. See CLAUDE.md →
+"Internationalization (next-intl)" for the mechanics and the mobile-overflow bug this caught (the
+dropdown variant alone, shown unconditionally, pushed the hamburger button off-screen below 576px).
+
 **Not started:**
 - Every other route's content extraction/translation (the bulk of the remaining work; legal pages
   especially are large).
-- Locale-aware internal navigation (`Menu`/`Footer`/`Button` all use `next-transition-router`'s `Link`
+- Locale-aware internal *navigation* (`Menu`/`Footer`/`Button` all use `next-transition-router`'s `Link`
   fed unprefixed `pages.x` constants — clicking a nav link from `/en-us/...` currently drops back to
-  pt-BR; needs either a `Link` swap or routing hrefs through next-intl's `getPathname`).
+  pt-BR; needs either a `Link` swap or routing hrefs through next-intl's `getPathname`). Note this is
+  separate from the `LocaleSwitcher`, which is unaffected (it computes its own locale-aware href via
+  `@/i18n/navigation`'s `useRouter`).
 - `alternates.languages` (hreflang) on migrated pages' metadata.
 - Fixing `next-sitemap` for the `[locale]` segment (currently emits an empty sitemap on build — see
   CLAUDE.md gotcha).
