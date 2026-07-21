@@ -43,7 +43,7 @@ export const metadata: Metadata = {
 
 const bio = [
 	'Com mais de 25 anos de experiência na indústria farmacêutica e em ambientes altamente regulados, <b>Patricia P. Oliveira</b> construiu sua trajetória na interseção entre desenvolvimento farmacêutico, estratégia regulatória, transferência de tecnologia e operações industriais.',
-	'Sua experiência reúne atuação junto à ANVISA, ao MAPA e a autoridades internacionais, além da liderança de projetos, operações industriais e iniciativas de desenvolvimento tecnológico em organizações nacionais e multinacionais.',
+	'Sua experiência reúne atuação junto à ANVISA e a autoridades internacionais, além da liderança de projetos, operações industriais e iniciativas de desenvolvimento tecnológico em organizações nacionais e multinacionais.',
 	'Como fundadora e CEO da <b>Aether Global Pharma</b> e presidente do <b>ICT AetherBio+</b>, lidera uma plataforma integrada de <b>Pharmaceutical Asset Venture Building</b>, conectando ciência de alto potencial, propriedade intelectual, capital e indústria para construir, desenvolver e valorizar ativos farmacêuticos com potencial global.'
 ]
 
@@ -51,7 +51,7 @@ const realizacoes = [
 	'Mais de 300 produtos aprovados junto à ANVISA',
 	'Certificação da linha de produção da fração PMT da vacina Hib no TECPAR',
 	'Certificações internacionais para exportação a mercados altamente regulados',
-	'Implantação da fábrica de ácido hialurônico reticulado da América Latina',
+	'Implantação de uma fábrica de ácido hialurônico em Pinhais',
 	'Liderança de operações e equipes industriais com mais de 200 profissionais em ambiente GMP'
 ]
 

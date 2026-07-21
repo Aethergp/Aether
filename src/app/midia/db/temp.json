@@ -1,5 +1,23 @@
 [
 	{
+		"id": "7",
+		"type": "blog",
+		"slug": "propriedade-intelectual-nao-e-apenas-protecao-e-infraestrutura-economica",
+		"title": "Propriedade intelectual não é apenas proteção. É infraestrutura econômica.",
+		"excerpt": "Na indústria farmacêutica, a propriedade intelectual deixa de ser um instrumento jurídico isolado e passa a ser o mecanismo que transforma conhecimento em ativo estratégico, capaz de atrair investimento e gerar soberania tecnológica.",
+		"date": "2026-07-13",
+		"category": "Blog",
+		"image": {
+			"url": "/img/midia/propriedade-intelectual.jpg",
+			"alt": "Propriedade intelectual como infraestrutura econômica na inovação farmacêutica"
+		},
+		"externalUrl": null,
+		"source": null,
+		"author": "Equipe Aether",
+		"readingTime": 3,
+		"content": "<p>Existe uma confusão recorrente quando falamos sobre propriedade intelectual. Muitas pessoas ainda enxergam a PI apenas como um instrumento jurídico de proteção. Na indústria farmacêutica, essa visão está ultrapassada.</p><p>A propriedade intelectual não é apenas proteção: ela é uma infraestrutura econômica. É um mecanismo que transforma conhecimento em ativo.</p><h2>Do conhecimento ao ativo</h2><p>Uma descoberta científica sem proteção intelectual pode gerar publicações, reconhecimento acadêmico e avanço do conhecimento, mas dificilmente gerará valor econômico sustentável.</p><p>Por outro lado, uma descoberta protegida, estruturada e desenvolvida pode se tornar um ativo estratégico, capaz de atrair investimentos, gerar licenciamento, royalties, parcerias internacionais e desenvolvimento industrial.</p><p>É exatamente nesse ponto que a conversa sobre inovação precisa amadurecer.</p><h2>A arquitetura de valor de uma molécula</h2><p>O verdadeiro valor de uma molécula está na combinação entre ciência, proteção intelectual, estratégia regulatória e potencial de mercado. Essa é a arquitetura que determina se uma tecnologia será apenas uma descoberta científica ou um ativo global.</p><p>Quando observamos os grandes casos de sucesso da indústria farmacêutica mundial, percebemos que os maiores valores não foram construídos apenas sobre ciência de excelência. Foram construídos sobre ativos cuidadosamente estruturados.</p><h2>O desafio brasileiro</h2><p>Por isso, acredito que uma das discussões mais importantes para o futuro da ciência brasileira é como produzir mais conhecimento e propriedade intelectual de qualidade. Porque conhecimento gera impacto científico, mas propriedade intelectual bem estruturada gera impacto econômico, desenvolvimento produtivo e soberania tecnológica.</p><p>O desafio é garantir que ela permaneça pertencendo ao Brasil enquanto gera valor ao mundo. Essa é a diferença entre produzir conhecimento e construir patrimônio tecnológico.</p><p><strong>Ciência gera conhecimento.<br />Propriedade intelectual gera ativos.<br />Ativos geram soberania.</strong></p><p><a href=\"https://www.linkedin.com/posts/patricia-p-oliveira_inovaaexaeto-ciaeancia-propriedadeintelectual-ugcPost-7480610919530754049-lfeZ\" target=\"_blank\" rel=\"noopener noreferrer\">Confira o vídeo completo sobre este tema no LinkedIn.</a></p>"
+	},
+	{
 		"id": "6",
 		"type": "blog",
 		"slug": "o-vazio-dos-biosimilares-e-a-janela-que-o-brasil-nao-pode-ignorar",

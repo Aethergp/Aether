@@ -65,29 +65,68 @@ export default function Committee({ members }: Props) {
 			<StaggerUp className='grid sm:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-6'>
 				{members.map((m, i) => (
 					<div key={i}>
-						<button
-							type='button'
-							onClick={() => setSelected(i)}
-							className='group block w-full text-left cursor-pointer'
-						>
+						<div className='group block w-full text-left'>
 							<div className='relative w-full aspect-square overflow-hidden rounded-sm lg:rounded-md bg-green-dark/10'>
-								<Image
-									src={m.photo}
-									alt={m.name}
-									fill
-									style={{ objectPosition: 'center 18%' }}
-									className='cover grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-105'
-									loading='lazy'
-									sizes='(max-width: 768px) 50vw, 33vw'
-								/>
-								<div className='absolute inset-0 bg-green-dark/10 transition-opacity duration-500 group-hover:opacity-0' />
+
+								{m.linked && (
+									<div className='absolute z-2 bottom-4 left-4 lg:bottom-6 lg:left-6'>
+										<Button
+											style='light'
+											href={m.linked}
+											text='LinkedIn'
+											icon='linkedin'
+											target='_blank'
+											rel='noopener noreferrer'
+											aria-label={`Perfil de ${m.name} no LinkedIn`}
+										/>
+									</div>
+								)}
+
+								<button
+									type='button'
+									onClick={() => setSelected(i)}
+									className='cursor-pointer'
+								>
+
+									<Image
+										src={m.photo}
+										alt={m.name}
+										fill
+										style={{ objectPosition: 'center 18%' }}
+										className='cover grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-105'
+										loading='lazy'
+										sizes='(max-width: 768px) 50vw, 33vw'
+									/>
+
+									<div className='absolute inset-0 bg-green-dark/10 transition-opacity duration-500 group-hover:opacity-0' />
+
+								</button>
+
 							</div>
 
-							<h4 className='text-20 font-heading font-semibold mt-4'>
-								{m.name}
-							</h4>
-							{m.area && <p className='text-16 opacity-70 mt-1'>{m.area}</p>}
-						</button>
+							<button
+								type='button'
+								onClick={() => setSelected(i)}
+								className='cursor-pointer block w-fit'
+							>
+								<h4 className='text-20 font-heading font-semibold mt-4'>
+									{m.name}
+								</h4>
+							</button>
+
+							{m.area && (
+								<button
+									type='button'
+									onClick={() => setSelected(i)}
+									className='cursor-pointer block w-fit'
+								>
+									<p className='text-16 opacity-70 mt-1'>
+										{m.area}
+									</p>
+								</button>
+							)}
+
+						</div>
 					</div>
 				))}
 			</StaggerUp>
