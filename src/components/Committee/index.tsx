@@ -109,9 +109,9 @@ export default function Committee({ members }: Props) {
 								onClick={() => setSelected(i)}
 								className='cursor-pointer block w-fit'
 							>
-								<h4 className='text-20 font-heading font-semibold mt-4'>
+								<h3 className='text-20 font-heading font-semibold mt-4'>
 									{m.name}
-								</h4>
+								</h3>
 							</button>
 
 							{m.area && (

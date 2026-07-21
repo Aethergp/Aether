@@ -73,7 +73,7 @@ Suggested build order: the `/sobre` **hub is built**; next are its 3 subpages (`
   hero and the dark `/parceiros` hero, `green-dark` over light pages. The header is `position:absolute top-0`
   (it scrolls away with the page), so this only governs the logo over the **top** of each page - a dark hero
   + light page body just needs the route added to `darkHeader`. **Add new dark-hero routes (`/pd`, `/sobre`
-  banners) to that check when built.** The page transition was reworked to the preloader-style green-block
+  banners) to that check when built.** The page transition uses the green-block
   + spinning icon.
 - **Nav surfaces are decoupled** (`src/utils/routes.js`): **`navLinks`** → fs/mobile menu, **`headerLinks`**
   → desktop header, **`footerColumns`** (`NavItem[][]`) → footer. Edit each independently. Sobre/P&D carry
@@ -112,3 +112,57 @@ Suggested build order: the `/sobre` **hub is built**; next are its 3 subpages (`
 Blog/news only, via GraphQL. `graphql-request` is already a dep; `wp.aethergp.com.br` is already an
 allowed image host. Build static now with a WP-mappable data shape so the swap stays contained. See
 CLAUDE.md → "Blog / news".
+
+## SEO / performance baseline (done 2026-07-20)
+
+### JSON-LD architecture
+
+All structured data lives in **`src/utils/schema.ts`** and renders through **`src/components/JsonLd`**.
+Every node carries a stable `@id` so nodes reference each other instead of being repeated.
+
+- **Global (layout, every page):** an `@graph` of `Organization` + `ResearchOrganization` (ICT
+  AetherBio+, linked both ways via `parentOrganization`/`subOrganization`) + `Person` (Patricia P.
+  Oliveira, `founder`) + `WebSite`.
+- **Per page: call `pageGraph({ type, path, name, description, trail, extend?, extra? })`** - it emits
+  a typed WebPage bound to the WebSite/Organization plus its `BreadcrumbList`, and is the ONLY thing a
+  new route needs. Pass `name`/`description` as `metadata.title`/`metadata.description` so the schema
+  can't drift from the meta tags. `trail: []` (home) skips the breadcrumb node.
+  Types in use: `AboutPage` (/sobre/*), `ContactPage` (/contato), `CollectionPage` (/midia,
+  /parceiros, /pipeline), `WebPage` (everything else).
+- **Blog:** `src/app/midia/db/schema.ts` holds `blogNode(posts)` (the `Blog` on /midia, internal posts
+  only - press links are third-party, so claiming them as `blogPost` would misrepresent authorship)
+  and `articleNode(post)` (`BlogPosting` on /midia/[slug]). Keep these next to `db/data.ts` so the
+  WordPress swap only has to preserve the `MediaPost` shape.
+- **People:** `person({...})` + `personId(name, basePath)`. **`worksFor` is only for Aether's own
+  people.** External researchers (the CQMED coordinators on /pipeline) get **`affiliation`** instead -
+  asserting they work for Aether would be false. `plainText(html, max)` trims bios for `description`.
+
+Validated: every `@type`, property name and property-domain pairing checks out against the official
+schema.org vocabulary, no unresolved `@id` references, and all Google-required rich-result fields
+(BreadcrumbList / BlogPosting / Organization) are present.
+
+### Other
+
+- **No public phone/e-mail.** The client does not want either published. `Organization.contactPoint`
+  points at `/contato` (form only); address is country+region only (no street). **`/contato` itself
+  still renders `contact.email` + `contact.phone` and should be revisited.**
+- **Images:** optimization is on, sources capped at 2560px, `quality` defaults to 75. The `/sobre`
+  hero went 10MB → ~32KB (AVIF, 640w). Don't commit uncompressed originals.
+- **On-page SEO (done):** all titles <=60 and descriptions <=160; Twitter cards site-wide; a distinct
+  1200x630 OG image per route in `public/img/og/`; heading hierarchy valid on all 15 routes (the
+  `( ... )` eyebrows became `<p>`, or `<h2>` where they were a section's only heading); content
+  photography has real alt text.
+
+- **Known issue - `/midia` feed is client-only.** `MediaFeed` is a `'use client'` component using
+  `useSearchParams()`, which triggers a CSR bailout, so the prerendered HTML for `/midia` contains
+  **zero `<a href="/midia/...">` links and no post headings** - only the `h1`. The posts themselves are
+  statically rendered, are in the sitemap, and are listed in the `Blog.blogPost` JSON-LD, so they are
+  discoverable; but the hub page passes no internal link equity and has almost no indexable content.
+  Fix when convenient: server-render the unfiltered first page of results and let the client component
+  take over only for filtering/pagination.
+
+- **Still open (not done):** visible breadcrumb UI (the `BreadcrumbList` schema already drives the
+  SERP breadcrumb, so this is a UX/nav improvement and a design decision - it would restyle 8 hero
+  sections); video poster/`preload`; `priority` on hero images; analytics + Search Console.
+  **Deliberately skipped:** `FAQPage`/`HowTo` - Google dropped those rich results for non-government
+  sites in 2023, so they'd add markup with no SERP payoff.

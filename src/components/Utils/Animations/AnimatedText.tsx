@@ -33,8 +33,12 @@ export default function AnimatedText({
             splitsRef.current.forEach(s => s.revert())
             splitsRef.current = []
 
-            // Wait for fonts to load before initializing SplitText
-            if (typeof document !== 'undefined' && document.fonts) {
+            // SplitText must not run against the fallback font. When the webfonts
+            // are already loaded we skip the await so the split happens
+            // synchronously inside the layout effect - awaiting would yield a
+            // frame in which the server-rendered text paints unsplit and then
+            // snaps to the hidden state.
+            if (typeof document !== 'undefined' && document.fonts && document.fonts.status !== 'loaded') {
                 await document.fonts.ready
             }
 
@@ -101,10 +105,26 @@ export default function AnimatedText({
         }
     }, { scope: item })
 
+    // the text is rendered server-side so it exists in the HTML for crawlers; the
+    // effect above then replaces it with the split markup. Rendering an empty
+    // span here (the previous behaviour) left every heading/paragraph that uses
+    // this component blank in the SSR output.
+    if (typeof text === 'string') {
+        return (
+            <span
+                className='reveal-text'
+                ref={item}
+                dangerouslySetInnerHTML={{ __html: text }}
+            />
+        )
+    }
+
     return (
         <span
             className='reveal-text'
             ref={item}
-        />
+        >
+            {text}
+        </span>
     )
 }

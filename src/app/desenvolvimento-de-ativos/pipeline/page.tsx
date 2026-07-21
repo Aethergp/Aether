@@ -11,31 +11,33 @@ import Counter from '@/components/Utils/Animations/Counter'
 import Button from '@/components/Button'
 import ScrollingImage from '@/components/Utils/Animations/ScrollingImage'
 import Committee from '@/components/Committee'
+import JsonLd from '@/components/JsonLd'
 
 // img
 import imgFlagship from '@/assets/img/water.jpg'
-import katlin from '@/assets/img/team/katlin.png'
-import phili from '@/assets/img/team/phili.png'
+import katlin from '@/assets/img/team/katlin.jpg'
+import phili from '@/assets/img/team/phili.jpg'
 
 // utils
 import { pages } from '@/utils/routes'
+import { pageGraph, person, personId, plainText } from '@/utils/schema'
 
 export const metadata: Metadata = {
-	title: 'Pipeline - Projetos em Desenvolvimento | Aether Global Pharma',
-	description: 'O pipeline da Aether reúne os projetos científicos em desenvolvimento na plataforma, conduzidos pelo ICT AetherBio+, incluindo a plataforma produtiva para IFA anti-inflamatória selecionada pelo Ministério da Saúde e pela EMBRAPII.',
+	title: 'Pipeline de Projetos Científicos | Aether Global Pharma',
+	description: 'Projetos científicos em desenvolvimento na plataforma Aether, conduzidos pelo ICT AetherBio+, incluindo a plataforma produtiva para IFA anti-inflamatória.',
 	alternates: {
 		canonical: '/desenvolvimento-de-ativos/pipeline'
 	},
 	openGraph: {
-		title: 'Pipeline - Projetos em Desenvolvimento | Aether Global Pharma',
-		description: 'O pipeline da Aether reúne os projetos científicos em desenvolvimento na plataforma, conduzidos pelo ICT AetherBio+, incluindo a plataforma produtiva para IFA anti-inflamatória selecionada pelo Ministério da Saúde e pela EMBRAPII.',
+		title: 'Pipeline de Projetos Científicos | Aether Global Pharma',
+		description: 'Projetos científicos em desenvolvimento na plataforma Aether, conduzidos pelo ICT AetherBio+, incluindo a plataforma produtiva para IFA anti-inflamatória.',
 		url: 'https://aethergp.com.br/desenvolvimento-de-ativos/pipeline',
 		siteName: 'Aether Global Pharma',
 		images: [
 			{
-				url: '/img/og-image.jpg',
-				width: 1280,
-				height: 628,
+				url: '/img/og/desenvolvimento-de-ativos-pipeline.jpg',
+				width: 1200,
+				height: 630,
 				alt: 'Aether Global Pharma'
 			}
 		],
@@ -97,15 +99,45 @@ export default function PipelinePage() {
 	return (
 		<div className='bg-white'>
 
+			<JsonLd
+				id='jsonld-pd-pipeline'
+				data={pageGraph({
+					type: 'CollectionPage',
+					path: '/desenvolvimento-de-ativos/pipeline',
+					name: metadata.title as string,
+					description: metadata.description as string,
+					trail: [
+						{ name: 'Desenvolvimento de Ativos', item: '/desenvolvimento-de-ativos' },
+						{ name: 'Pipeline', item: '/desenvolvimento-de-ativos/pipeline' }
+					],
+					extend: {
+						mainEntity: responsaveis.map((m) => ({
+							'@id': personId(m.name, '/desenvolvimento-de-ativos/pipeline')
+						}))
+					},
+					// external researchers: affiliation, never worksFor - they are not
+					// Aether employees
+					extra: responsaveis.map((m) => person({
+						name: m.name,
+						jobTitle: m.area,
+						description: plainText(m.bio),
+						image: m.photo.src,
+						linkedin: m.linked,
+						basePath: '/desenvolvimento-de-ativos/pipeline',
+						affiliation: m.instituicao
+					}))
+				})}
+			/>
+
 			{/* Hero */}
 			<section className='pt-[26vh] lg:pt-[30vh] pb-16 lg:pb-[7vw]'>
 				<div className='base-container'>
 					<div className='row'>
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
-							<h3 className='font-semibold font-heading'>
+							<p className='font-semibold font-heading'>
 								<AnimatedText text='(pipeline)' />
-							</h3>
+							</p>
 						</div>
 
 						<div className='col-lg-9'>
@@ -129,9 +161,9 @@ export default function PipelinePage() {
 					<div className='row pb-10 lg:pb-[5vw]'>
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
-							<h3 className='font-semibold font-heading'>
+							<p className='font-semibold font-heading'>
 								<AnimatedText text='(projeto em destaque)' />
-							</h3>
+							</p>
 						</div>
 
 						<div className='col-lg-9'>
@@ -228,9 +260,9 @@ export default function PipelinePage() {
 
 					<div className='row pb-10 lg:pb-[5vw]'>
 						<div className='col-lg-3 pb-4 lg:pb-0'>
-							<h3 className='font-semibold font-heading pt-2'>
+							<p className='font-semibold font-heading pt-2'>
 								<AnimatedText text='(responsáveis científicos)' />
-							</h3>
+							</p>
 						</div>
 						<div className='col-lg-9'>
 							<h2 className='text-60 font-heading font-semibold'>
@@ -255,9 +287,9 @@ export default function PipelinePage() {
 					<div className='row pb-10 lg:pb-[5vw]'>
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
-							<h3 className='font-semibold font-heading'>
+							<p className='font-semibold font-heading'>
 								<AnimatedText text='(como organizamos)' />
-							</h3>
+							</p>
 						</div>
 
 						<div className='col-lg-9'>
@@ -327,9 +359,9 @@ export default function PipelinePage() {
 					<div className='row pb-10 lg:pb-[5vw]'>
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
-							<h3 className='font-semibold font-heading'>
+							<p className='font-semibold font-heading'>
 								<AnimatedText text='(em expansão)' />
-							</h3>
+							</p>
 						</div>
 
 						<div className='col-lg-9'>

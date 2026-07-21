@@ -11,8 +11,8 @@ import { SplitText } from 'gsap/SplitText'
 // img
 import img1 from '@/assets/img/xray.jpg'
 import img2 from '@/assets/img/bio-lab.jpg'
-import img3 from '@/assets/img/group.png'
-import img4 from '@/assets/img/pillars.png'
+import img3 from '@/assets/img/group.jpg'
+import img4 from '@/assets/img/pillars.jpg'
 
 gsap.registerPlugin(ScrollTrigger, SplitText)
 
@@ -20,22 +20,26 @@ const dimensoes = [
 	{
 		title: 'Desrisking Científico e Tecnológico',
 		text: 'Identificamos as incertezas críticas de cada ativo e estruturamos seu desenvolvimento para reduzi-las progressivamente. A geração de evidências científicas, a validação tecnológica e o avanço de maturidade são orientados por marcos de decisão, permitindo concentrar capital e recursos nos ativos que demonstram maior consistência e potencial de valorização. O objetivo não é apenas avançar a pesquisa. É aumentar a qualidade e a confiabilidade do ativo.',
-		image: img1
+		image: img1,
+		alt: 'Equipe científica analisando exames de imagem em tela de laboratório'
 	},
 	{
 		title: 'Propriedade Intelectual e Defensibilidade',
 		text: 'A propriedade intelectual é parte central da construção do ativo farmacêutico. Avaliamos titularidade, novidade, potencial de proteção, liberdade de operação e estratégia de expansão da proteção ao longo do desenvolvimento. Ciência protegida deixa de ser apenas conhecimento e passa a constituir um ativo intangível com potencial de geração de valor econômico.',
-		image: img2
+		image: img2,
+		alt: 'Pesquisadora utilizando microscópio em laboratório de análises'
 	},
 	{
 		title: 'Governança Científica Especializada',
 		text: 'Cada ativo é acompanhado por especialistas selecionados de acordo com sua natureza científica, tecnológica e terapêutica. A governança científica fortalece a qualidade das decisões, o rigor metodológico e a análise independente dos marcos de desenvolvimento, apoiando decisões de continuidade, redirecionamento ou NO GO. Na Aether, avançar também significa saber quando não avançar.',
-		image: img3
+		image: img3,
+		alt: 'Equipe de cientistas reunida em laboratório para decisão de governança científica'
 	},
 	{
 		title: 'Maturação e Valorização do Ativo',
 		text: 'O desenvolvimento é estruturado para aumentar progressivamente a maturidade científica, tecnológica e estratégica de cada ativo. À medida que riscos relevantes são reduzidos, evidências são consolidadas e a propriedade intelectual é fortalecida, o ativo amplia seu potencial de interesse para a indústria farmacêutica e para parceiros especializados. Cada avanço deve aumentar não apenas o TRL, mas também a qualidade estratégica e o potencial de monetização do ativo.',
-		image: img4
+		image: img4,
+		alt: 'Pódios ascendentes com um broto, representando a maturação progressiva do ativo'
 	}
 ]
 
@@ -198,7 +202,7 @@ export default function PDDimensoes() {
 						>
 							<Image
 								src={item.image}
-								alt=''
+								alt={item.alt}
 								fill
 								className='cover'
 								sizes='100vw'
@@ -303,7 +307,7 @@ export default function PDDimensoes() {
 								<div className='relative aspect-4/3 rounded-sm overflow-hidden bg-green-dark'>
 									<Image
 										src={item.image}
-										alt=''
+										alt={item.alt}
 										fill
 										className='object-cover'
 										sizes='100vw'

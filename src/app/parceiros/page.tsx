@@ -9,10 +9,12 @@ import TextReveal from '@/components/Utils/Animations/TextReveal'
 import StaggerScale from '@/components/Utils/Animations/StaggerScale'
 import ScrollingImage from '@/components/Utils/Animations/ScrollingImage'
 import Button from '@/components/Button'
+import JsonLd from '@/components/JsonLd'
 
 // utils
 import { partners } from '@/utils/partners'
 import { pages } from '@/utils/routes'
+import { pageGraph, SITE_URL } from '@/utils/schema'
 
 // img
 import partnership from '@/assets/img/banner.jpg'
@@ -21,21 +23,21 @@ import abstract from '@/assets/img/abstract.jpg'
 
 // metadata
 export const metadata: Metadata = {
-	title: 'Parceiros - Ecossistema científico e institucional | Aether Global Pharma',
-	description: 'Conheça as universidades, centros de pesquisa e instituições científicas e tecnológicas que compõem o ecossistema da Aether Global Pharma, e descubra como se tornar um parceiro.',
+	title: 'Parceiros - Ecossistema científico | Aether Global Pharma',
+	description: 'Universidades, centros de pesquisa e instituições que compõem o ecossistema da Aether Global Pharma. Descubra como se tornar um parceiro.',
 	alternates: {
 		canonical: '/parceiros'
 	},
 	openGraph: {
-		title: 'Parceiros - Ecossistema científico e institucional | Aether Global Pharma',
-		description: 'Conheça as universidades, centros de pesquisa e instituições científicas e tecnológicas que compõem o ecossistema da Aether Global Pharma, e descubra como se tornar um parceiro.',
+		title: 'Parceiros - Ecossistema científico | Aether Global Pharma',
+		description: 'Universidades, centros de pesquisa e instituições que compõem o ecossistema da Aether Global Pharma. Descubra como se tornar um parceiro.',
 		url: 'https://aethergp.com.br/parceiros',
 		siteName: 'Aether Global Pharma',
 		images: [
 			{
-				url: '/img/og-image.jpg',
-				width: 1280,
-				height: 628,
+				url: '/img/og/parceiros.jpg',
+				width: 1200,
+				height: 630,
 				alt: 'Aether Global Pharma'
 			}
 		],
@@ -47,6 +49,35 @@ export const metadata: Metadata = {
 export default function ParceirosPage() {
 	return (
 		<div className='bg-white'>
+
+			<JsonLd
+				id='jsonld-parceiros'
+				data={pageGraph({
+					type: 'CollectionPage',
+					path: '/parceiros',
+					name: metadata.title as string,
+					description: metadata.description as string,
+					trail: [
+						{ name: 'Parceiros', item: '/parceiros' }
+					],
+					extend: {
+						mainEntity: {
+							'@type': 'ItemList',
+							name: 'Ecossistema científico e institucional da Aether',
+							numberOfItems: partners.length,
+							itemListElement: partners.map((item, i) => ({
+								'@type': 'ListItem',
+								position: i + 1,
+								item: {
+									'@type': 'Organization',
+									name: item.alt,
+									logo: `${SITE_URL}${item.src}`
+								}
+							}))
+						}
+					}
+				})}
+			/>
 
 			<section className='bg-green-dark text-green-light pt-40 sm:pt-48 lg:pt-64 2xl:pt-[14vw] overflow-hidden'>
 
@@ -67,9 +98,9 @@ export default function ParceirosPage() {
 					<div className='row'>
 
 						<div className='col-lg-3'>
-							<h3 className='font-semibold font-heading mb-6 lg:pt-1'>
+							<p className='font-semibold font-heading mb-6 lg:pt-1'>
 								<AnimatedText text='(parceiros)' />
-							</h3>
+							</p>
 						</div>
 
 						<div className='col-lg-9'>

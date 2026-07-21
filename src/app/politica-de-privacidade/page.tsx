@@ -5,6 +5,10 @@ import type { Metadata } from 'next'
 import AnimatedText from '@/components/Utils/Animations/AnimatedText'
 import TextReveal from '@/components/Utils/Animations/TextReveal'
 import StrokePath from '@/components/Utils/Animations/StrokePath'
+import JsonLd from '@/components/JsonLd'
+
+// utils
+import { pageGraph } from '@/utils/schema'
 
 // metadata
 export const metadata: Metadata = {
@@ -35,6 +39,19 @@ export default function PoliticaDePrivacidadePage() {
 	return (
 		<div className='bg-white'>
 
+			<JsonLd
+				id='jsonld-privacidade'
+				data={pageGraph({
+					type: 'WebPage',
+					path: '/politica-de-privacidade',
+					name: metadata.title as string,
+					description: metadata.description as string,
+					trail: [
+						{ name: 'Política de Privacidade', item: '/politica-de-privacidade' }
+					]
+				})}
+			/>
+
 			<section className='pt-36 lg:pt-56 xl:pt-[12vw] pb-20 lg:pb-[8vw]'>
 
 				<StrokePath
@@ -52,9 +69,9 @@ export default function PoliticaDePrivacidadePage() {
 
 						<div className='col-lg-3'>
 
-							<h3 className='font-semibold font-heading lg:pt-4'>
+							<p className='font-semibold font-heading lg:pt-4'>
 								<AnimatedText text='(seus direitos)' />
-							</h3>
+							</p>
 
 						</div>
 
@@ -131,9 +148,9 @@ export default function PoliticaDePrivacidadePage() {
 					<div className='row mt-10 lg:mt-[5vw]'>
 
 						<div className="col-lg-3">
-							<h3 className='font-semibold font-heading'>
+							<h2 className='font-semibold font-heading'>
 								<AnimatedText text='(compromisso do usuário)' />
-							</h3>
+							</h2>
 						</div>
 
 						<div className='col-lg-9 col-xl-6 max-lg:mt-4'>
@@ -165,9 +182,9 @@ export default function PoliticaDePrivacidadePage() {
 					<div className='row mt-10 lg:mt-[5vw]'>
 
 						<div className="col-lg-3">
-							<h3 className='font-semibold font-heading'>
+							<h2 className='font-semibold font-heading'>
 								<AnimatedText text='(mais informações)' />
-							</h3>
+							</h2>
 						</div>
 
 						<div className='col-lg-9 col-xl-6 max-lg:mt-4'>

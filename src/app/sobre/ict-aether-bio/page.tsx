@@ -11,9 +11,11 @@ import StaggerUp from '@/components/Utils/Animations/StaggerUp'
 import ScrollingImage from '@/components/Utils/Animations/ScrollingImage'
 import Button from '@/components/Button'
 import Hero from './Hero'
+import JsonLd from '@/components/JsonLd'
 
 // utils
 import { pages } from '@/utils/routes'
+import { pageGraph } from '@/utils/schema'
 
 // img
 import bioLab from '@/assets/img/team.jpg'
@@ -21,20 +23,20 @@ import bioLab from '@/assets/img/team.jpg'
 // metadata
 export const metadata: Metadata = {
 	title: 'ICT AetherBio+ - Instituto de Ciência e Tecnologia | Aether',
-	description: 'O ICT AetherBio+ impulsiona pesquisas avançadas em saúde e biotecnologia: maturidade tecnológica, governança científica independente e captação de fomento para transformar descobertas em soluções reais.',
+	description: 'O ICT AetherBio+ impulsiona pesquisas em saúde e biotecnologia: maturidade tecnológica, governança científica independente e captação de fomento.',
 	alternates: {
 		canonical: '/sobre/ict-aether-bio'
 	},
 	openGraph: {
 		title: 'ICT AetherBio+ - Instituto de Ciência e Tecnologia | Aether',
-		description: 'O ICT AetherBio+ impulsiona pesquisas avançadas em saúde e biotecnologia: maturidade tecnológica, governança científica independente e captação de fomento para transformar descobertas em soluções reais.',
+		description: 'O ICT AetherBio+ impulsiona pesquisas em saúde e biotecnologia: maturidade tecnológica, governança científica independente e captação de fomento.',
 		url: 'https://aethergp.com.br/sobre/ict-aether-bio',
 		siteName: 'Aether Global Pharma',
 		images: [
 			{
-				url: '/img/og-image.jpg',
-				width: 1280,
-				height: 628,
+				url: '/img/og/sobre-ict-aether-bio.jpg',
+				width: 1200,
+				height: 630,
 				alt: 'ICT AetherBio+'
 			}
 		],
@@ -56,6 +58,20 @@ export default function IctAetherBioPage() {
 	return (
 		<div className='bg-white'>
 
+			<JsonLd
+				id='jsonld-sobre-ict'
+				data={pageGraph({
+					type: 'AboutPage',
+					path: '/sobre/ict-aether-bio',
+					name: metadata.title as string,
+					description: metadata.description as string,
+					trail: [
+						{ name: 'Sobre', item: '/sobre' },
+						{ name: 'ICT AetherBio+', item: '/sobre/ict-aether-bio' }
+					]
+				})}
+			/>
+
 			<Hero />
 
 			<section className='py-16 lg:py-[8vw]'>
@@ -64,9 +80,9 @@ export default function IctAetherBioPage() {
 					<div className='row pb-10 lg:pb-[5vw]'>
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
-							<h3 className='font-semibold font-heading text-wine lg:pt-2'>
+							<p className='font-semibold font-heading text-wine lg:pt-2'>
 								<AnimatedText text='(o instituto)' />
-							</h3>
+							</p>
 						</div>
 
 						<div className='col-lg-9'>
@@ -87,9 +103,9 @@ export default function IctAetherBioPage() {
 					<div className='row'>
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
-							<h3 className='font-semibold font-heading text-wine'>
+							<p className='font-semibold font-heading text-wine'>
 								<AnimatedText text='(principais funções)' />
-							</h3>
+							</p>
 						</div>
 
 						<div className='col-lg-9'>
@@ -140,9 +156,9 @@ export default function IctAetherBioPage() {
 
 					<div className='row pb-10 lg:pb-[4vw]'>
 						<div className='col-lg-3 pb-4 lg:pb-0'>
-							<h3 className='font-semibold font-heading text-wine lg:pt-2'>
+							<p className='font-semibold font-heading text-wine lg:pt-2'>
 								<AnimatedText text='(governança)' />
-							</h3>
+							</p>
 						</div>
 						<div className='col-lg-9'>
 							<AnimatedTitle
@@ -237,9 +253,9 @@ export default function IctAetherBioPage() {
 
 					<div className='row pb-10 lg:pb-[4vw]'>
 						<div className='col-lg-3 pb-4 lg:pb-0'>
-							<h3 className='font-semibold font-heading text-green-dark lg:pt-2'>
+							<p className='font-semibold font-heading text-green-dark lg:pt-2'>
 								<AnimatedText text='(plataforma integrada)' />
-							</h3>
+							</p>
 						</div>
 						<div className='col-lg-9'>
 							<AnimatedTitle

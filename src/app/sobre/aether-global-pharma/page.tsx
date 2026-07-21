@@ -10,9 +10,11 @@ import AnimatedTitle from '@/components/Utils/Animations/AnimatedTitle'
 import StaggerUp from '@/components/Utils/Animations/StaggerUp'
 import ScrollingImage from '@/components/Utils/Animations/ScrollingImage'
 import Button from '@/components/Button'
+import JsonLd from '@/components/JsonLd'
 
 // utils
 import { pages } from '@/utils/routes'
+import { pageGraph } from '@/utils/schema'
 
 // img
 import labMeeting from '@/assets/img/data.jpg'
@@ -20,20 +22,20 @@ import labMeeting from '@/assets/img/data.jpg'
 // metadata
 export const metadata: Metadata = {
 	title: 'Aether Global Pharma - Pharmaceutical Asset Venture Builder',
-	description: 'A Aether Global Pharma detém e valoriza ativos de propriedade intelectual farmacêutica, conduzindo licenciamento, parcerias com a indústria global e relacionamento com investidores especializados.',
+	description: 'A Aether Global Pharma detém e valoriza ativos de propriedade intelectual farmacêutica: licenciamento, parcerias industriais e investidores especializados.',
 	alternates: {
 		canonical: '/sobre/aether-global-pharma'
 	},
 	openGraph: {
 		title: 'Aether Global Pharma - Pharmaceutical Asset Venture Builder',
-		description: 'A Aether Global Pharma detém e valoriza ativos de propriedade intelectual farmacêutica, conduzindo licenciamento, parcerias com a indústria global e relacionamento com investidores especializados.',
+		description: 'A Aether Global Pharma detém e valoriza ativos de propriedade intelectual farmacêutica: licenciamento, parcerias industriais e investidores especializados.',
 		url: 'https://aethergp.com.br/sobre/aether-global-pharma',
 		siteName: 'Aether Global Pharma',
 		images: [
 			{
-				url: '/img/og-image.jpg',
-				width: 1280,
-				height: 628,
+				url: '/img/og/sobre-aether-global-pharma.jpg',
+				width: 1200,
+				height: 630,
 				alt: 'Aether Global Pharma'
 			}
 		],
@@ -91,6 +93,20 @@ const modelo = [
 export default function AetherGlobalPharmaPage() {
 	return (
 		<div className='bg-white'>
+
+			<JsonLd
+				id='jsonld-sobre-agp'
+				data={pageGraph({
+					type: 'AboutPage',
+					path: '/sobre/aether-global-pharma',
+					name: metadata.title as string,
+					description: metadata.description as string,
+					trail: [
+						{ name: 'Sobre', item: '/sobre' },
+						{ name: 'Aether Global Pharma', item: '/sobre/aether-global-pharma' }
+					]
+				})}
+			/>
 
 			<div className='relative pb-1 overflow-hidden' style={{ clipPath: 'inset(0% 0% 0% 0%)' }}>
 
@@ -153,9 +169,9 @@ export default function AetherGlobalPharmaPage() {
 						<div className='row pb-10 lg:pb-[5vw]'>
 
 							<div className='col-lg-3 pb-4 lg:pb-0'>
-								<h3 className='font-semibold font-heading text-green-light md:pt-3'>
+								<p className='font-semibold font-heading text-green-light md:pt-3'>
 									<AnimatedText text='(principais funções)' />
-								</h3>
+								</p>
 							</div>
 
 							<div className='col-lg-9'>
@@ -187,6 +203,7 @@ export default function AetherGlobalPharmaPage() {
 												alt=''
 												width={20}
 												height={20}
+												aria-hidden
 												className='w-4 h-auto mt-1.5 shrink-0'
 												loading='lazy'
 											/>
@@ -289,9 +306,9 @@ export default function AetherGlobalPharmaPage() {
 
 					<div className='row pb-10 lg:pb-[4vw]'>
 						<div className='col-lg-3 pb-4 lg:pb-0'>
-							<h3 className='font-semibold font-heading lg:pt-2'>
+							<p className='font-semibold font-heading lg:pt-2'>
 								<AnimatedText text='(plataforma integrada)' />
-							</h3>
+							</p>
 						</div>
 						<div className='col-lg-9'>
 							<AnimatedTitle

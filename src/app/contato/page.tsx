@@ -12,10 +12,12 @@ import StrokePath from '@/components/Utils/Animations/StrokePath'
 import ScrollingImage from '@/components/Utils/Animations/ScrollingImage'
 import Button from '@/components/Button'
 import { Form, Input, Select, Textarea, InputHidden, Honeypot, Submit } from '@/components/Form'
+import JsonLd from '@/components/JsonLd'
 
 // utils
 import { email, phone } from '@/utils/functions'
 import { social, contact } from '@/utils/routes'
+import { pageGraph } from '@/utils/schema'
 
 // metadata
 export const metadata: Metadata = {
@@ -31,9 +33,9 @@ export const metadata: Metadata = {
 		siteName: 'Aether Global Pharma',
 		images: [
 			{
-				url: '/img/og-image.jpg',
-				width: 1280,
-				height: 628,
+				url: '/img/og/contato.jpg',
+				width: 1200,
+				height: 630,
 				alt: 'Aether Global Pharma'
 			}
 		],
@@ -75,15 +77,28 @@ export default function ContatoPage() {
 	return (
 		<div className='bg-white'>
 
+			<JsonLd
+				id='jsonld-contato'
+				data={pageGraph({
+					type: 'ContactPage',
+					path: '/contato',
+					name: metadata.title as string,
+					description: metadata.description as string,
+					trail: [
+						{ name: 'Contato', item: '/contato' }
+					]
+				})}
+			/>
+
 			<section className='pt-36 lg:pt-56 xl:pt-[12vw] pb-12 lg:pb-[5vw]'>
 
 				<div className='base-container'>
 					<div className='row'>
 						<div className='col-lg-9 offset-lg-2'>
 
-							<h3 className='font-semibold font-heading mb-6'>
+							<p className='font-semibold font-heading mb-6'>
 								<AnimatedText text='(contato)' />
-							</h3>
+							</p>
 
 							<TextReveal>
 								<h1 className='text-60 font-heading font-semibold text-green-dark'>
@@ -144,9 +159,9 @@ export default function ContatoPage() {
 
 						<div className='col-lg-4 col-xl-3'>
 
-							<h3 className='font-semibold font-heading mb-8 lg:mb-12'>
+							<h2 className='font-semibold font-heading mb-8 lg:mb-12'>
 								<AnimatedText text='(fale conosco)' />
-							</h3>
+							</h2>
 
 							<StaggerUp className='flex flex-col gap-6 text-18'>
 

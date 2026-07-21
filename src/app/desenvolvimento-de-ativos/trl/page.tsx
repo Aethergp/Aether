@@ -9,26 +9,30 @@ import AnimatedTitle from '@/components/Utils/Animations/AnimatedTitle'
 import StaggerUp from '@/components/Utils/Animations/StaggerUp'
 import ScrollingImage from '@/components/Utils/Animations/ScrollingImage'
 import TRLScale from './TRLScale'
+import JsonLd from '@/components/JsonLd'
+
+// utils
+import { pageGraph } from '@/utils/schema'
 
 // img
-import imgContext from '@/assets/img/stairs.png'
+import imgContext from '@/assets/img/stairs.jpg'
 
 export const metadata: Metadata = {
-	title: 'TRL - Níveis de Maturidade Tecnológica | Aether Global Pharma',
-	description: 'A escala TRL 1-9 aplicada ao desenvolvimento farmacêutico: do princípio científico à comercialização. Abordagem técnica da Aether, baseada na ISO 16290 e no Guia TRL da RBIF.',
+	title: 'TRL - Maturidade Tecnológica | Aether Global Pharma',
+	description: 'A escala TRL 1-9 aplicada ao desenvolvimento farmacêutico, do princípio científico à comercialização. Baseada na ISO 16290 e no Guia TRL da RBIF.',
 	alternates: {
 		canonical: '/desenvolvimento-de-ativos/trl'
 	},
 	openGraph: {
-		title: 'TRL - Níveis de Maturidade Tecnológica | Aether Global Pharma',
-		description: 'A escala TRL 1-9 aplicada ao desenvolvimento farmacêutico: do princípio científico à comercialização. Abordagem técnica da Aether, baseada na ISO 16290 e no Guia TRL da RBIF.',
+		title: 'TRL - Maturidade Tecnológica | Aether Global Pharma',
+		description: 'A escala TRL 1-9 aplicada ao desenvolvimento farmacêutico, do princípio científico à comercialização. Baseada na ISO 16290 e no Guia TRL da RBIF.',
 		url: 'https://aethergp.com.br/desenvolvimento-de-ativos/trl',
 		siteName: 'Aether Global Pharma',
 		images: [
 			{
-				url: '/img/og-image.jpg',
-				width: 1280,
-				height: 628,
+				url: '/img/og/desenvolvimento-de-ativos-trl.jpg',
+				width: 1200,
+				height: 630,
 				alt: 'Aether Global Pharma'
 			}
 		],
@@ -83,15 +87,29 @@ export default function TRLPage() {
 	return (
 		<div className='bg-white'>
 
+			<JsonLd
+				id='jsonld-pd-trl'
+				data={pageGraph({
+					type: 'WebPage',
+					path: '/desenvolvimento-de-ativos/trl',
+					name: metadata.title as string,
+					description: metadata.description as string,
+					trail: [
+						{ name: 'Desenvolvimento de Ativos', item: '/desenvolvimento-de-ativos' },
+						{ name: 'TRL', item: '/desenvolvimento-de-ativos/trl' }
+					]
+				})}
+			/>
+
 			{/* Hero */}
 			<section className='pt-[26vh] lg:pt-[30vh] pb-16 lg:pb-[7vw]'>
 				<div className='base-container'>
 					<div className='row'>
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
-							<h3 className='font-semibold font-heading lg:pt-2'>
+							<p className='font-semibold font-heading lg:pt-2'>
 								<AnimatedText text='(maturidade tecnológica)' />
-							</h3>
+							</p>
 						</div>
 
 						<div className='col-lg-9'>
@@ -153,9 +171,9 @@ export default function TRLPage() {
 						<div className='col-lg-3' />
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
-							<h3 className='font-semibold font-heading'>
+							<p className='font-semibold font-heading'>
 								<AnimatedText text='(a escala)' />
-							</h3>
+							</p>
 						</div>
 
 						<div className='col-lg-6'>
@@ -185,9 +203,9 @@ export default function TRLPage() {
 					<div className='row pb-10 lg:pb-[5vw]'>
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
-							<h3 className='font-semibold font-heading lg:pt-2'>
+							<p className='font-semibold font-heading lg:pt-2'>
 								<AnimatedText text='(a jornada)' />
-							</h3>
+							</p>
 						</div>
 
 						<div className='col-lg-9'>
@@ -277,9 +295,9 @@ export default function TRLPage() {
 					<div className='row pb-10 lg:pb-[5vw]'>
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
-							<h3 className='font-semibold font-heading lg:pt-2'>
+							<p className='font-semibold font-heading lg:pt-2'>
 								<AnimatedText text='(os nove níveis)' />
-							</h3>
+							</p>
 						</div>
 
 						<div className='col-lg-9'>
@@ -325,9 +343,9 @@ export default function TRLPage() {
 					<div className='row pb-10 lg:pb-[5vw]'>
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
-							<h3 className='font-semibold font-heading lg:pt-2'>
+							<p className='font-semibold font-heading lg:pt-2'>
 								<AnimatedText text='(a abordagem aether)' />
-							</h3>
+							</p>
 						</div>
 
 						<div className='col-lg-9'>

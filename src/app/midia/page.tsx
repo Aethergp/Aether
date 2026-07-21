@@ -7,9 +7,12 @@ import AnimatedText from '@/components/Utils/Animations/AnimatedText'
 import TextReveal from '@/components/Utils/Animations/TextReveal'
 import StrokePath from '@/components/Utils/Animations/StrokePath'
 import MediaFeed from './MediaFeed'
+import JsonLd from '@/components/JsonLd'
 
 // utils
 import { getMediaPosts } from './db/data'
+import { blogNode } from './db/schema'
+import { pageGraph, SITE_URL } from '@/utils/schema'
 
 // metadata
 export const metadata: Metadata = {
@@ -25,9 +28,9 @@ export const metadata: Metadata = {
 		siteName: 'Aether Global Pharma',
 		images: [
 			{
-				url: '/img/og-image.jpg',
-				width: 1280,
-				height: 628,
+				url: '/img/og/midia.jpg',
+				width: 1200,
+				height: 630,
 				alt: 'Aether Global Pharma'
 			}
 		],
@@ -43,15 +46,32 @@ export default function MidiaPage() {
 	return (
 		<div className='bg-white'>
 
+			<JsonLd
+				id='jsonld-midia'
+				data={pageGraph({
+					type: 'CollectionPage',
+					path: '/midia',
+					name: metadata.title as string,
+					description: metadata.description as string,
+					trail: [
+						{ name: 'Mídia', item: '/midia' }
+					],
+					extend: {
+						mainEntity: { '@id': `${SITE_URL}/midia#blog` }
+					},
+					extra: [blogNode(posts)]
+				})}
+			/>
+
 			<section className='pt-36 sm:pt-44 lg:pt-60 2xl:pt-[12vw] pb-12 lg:pb-[5vw]'>
 				<div className='base-container'>
 
 					<div className="row">
 
 						<div className="col-lg-3">
-							<h3 className='font-semibold font-heading mb-6 lg:pt-1'>
+							<p className='font-semibold font-heading mb-6 lg:pt-1'>
 								<AnimatedText text='(mídia)' />
-							</h3>
+							</p>
 						</div>
 
 						<div className='col-lg-9'>

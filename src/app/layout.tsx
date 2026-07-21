@@ -1,7 +1,5 @@
 // libraries
 import type { Metadata } from 'next'
-import { GoogleAnalytics } from '@next/third-parties/google'
-import Script from 'next/script'
 import clsx from 'clsx'
 import type { Viewport } from 'next'
 import { Inter, Syne } from 'next/font/google'
@@ -11,13 +9,13 @@ import Menu from '@/components/Menu'
 import SmoothScroller from '@/components/Utils/SmoothScroller'
 import Guidelines from '@/components/Utils/Guidelines'
 import Footer from '@/components/Footer'
-import Preloader from '@/components/Preloader'
 import PageTransition from '@/components/Utils/PageTransition'
 import { NotFoundProvider } from '@/components/Utils/NotFoundContext'
 import ViewportHeight from '@/components/Utils/ViewportHeight'
+import JsonLd from '@/components/JsonLd'
 
 // utils
-import { contact } from '@/utils/routes'
+import { graph, organization, ictOrganization, founder, website } from '@/utils/schema'
 
 // css
 import '@/assets/css/global.css'
@@ -29,7 +27,7 @@ export const metadata: Metadata = {
         canonical: './',
     },
 	title: 'Aether Global Pharma | Ciência e Ativos Farmacêuticos',
-	description: 'A Aether Global Pharma é uma plataforma especializada em transformar ciência em ativos farmacêuticos: desrisking científico, propriedade intelectual, maturidade tecnológica, transferência de tecnologia e licenciamento global.',
+	description: 'Plataforma especializada em transformar ciência em ativos farmacêuticos: desrisking científico, propriedade intelectual e licenciamento global.',
 	icons: {
 		icon: [
 			{ url: '/icon.svg', type: 'image/svg+xml' },
@@ -44,9 +42,9 @@ export const metadata: Metadata = {
 	manifest: '/manifest.json',
 	openGraph: {
 		title: 'Aether Global Pharma | Ciência e Ativos Farmacêuticos',
-		description: 'A Aether Global Pharma é uma plataforma especializada em transformar ciência em ativos farmacêuticos: desrisking científico, propriedade intelectual, maturidade tecnológica, transferência de tecnologia e licenciamento global.',
+		description: 'Plataforma especializada em transformar ciência em ativos farmacêuticos: desrisking científico, propriedade intelectual e licenciamento global.',
 		url: 'https://aethergp.com.br',
-		siteName: 'Aether Global Pharma | Ciência e Ativos Farmacêuticos',
+		siteName: 'Aether Global Pharma',
 		images: [
 			{
 				url: 'https://aethergp.com.br/img/og-image.jpg',
@@ -57,6 +55,11 @@ export const metadata: Metadata = {
 		],
 		locale: 'pt_BR',
 		type: 'website'
+	},
+	// only the card type is set here: `twitter` is inherited by every route, so
+	// pinning a title/description/image would override each page's own
+	twitter: {
+		card: 'summary_large_image'
 	}
 }
 
@@ -88,52 +91,6 @@ interface RootLayoutProps {
 export default function RootLayout({
 	children
 }:RootLayoutProps ) {
-
-	// schema
-	const jsonLd = {
-		"@context": "https://schema.org",
-		"@type": "Organization",
-		"name": "Aether Global Pharma | Ciência e Ativos Farmacêuticos",
-		"legalName": "Aether Global Pharma LTDA",
-		"url": "https://aethergp.com.br",
-		"logo": "https://aethergp.com.br/img/og-image.jpg",
-		"description": "A Aether Global Pharma é uma plataforma especializada em transformar ciência em ativos farmacêuticos: desrisking científico, propriedade intelectual, maturidade tecnológica, transferência de tecnologia e licenciamento global.",
-		/*
-		"address": {
-			"@type": "PostalAddress",
-			"streetAddress": "Av. Rep. Argentina, 1228",
-			"addressLocality": "Vila Izabel, Curitiba",
-			"addressRegion": "PR",
-			"postalCode": "80610-260",
-			"addressCountry": "BR"
-		},
-		*/
-		"contactPoint": [
-			{
-				"@type": "ContactPoint",
-				"email": contact.email,
-				"contactType": "customer support"
-			}
-		],
-		"email": contact.email,
-		"sameAs": [
-			"https://www.instagram.com/aetherglobalpharma/"
-		],
-		"keywords": [
-			"Aether Global Pharma",
-			"empresa farmacêutica global",
-			"pesquisa farmacêutica",
-			"ativos farmacêuticos",
-			"transferência de tecnologia",
-			"licenciamento farmacêutico",
-			"biotecnologia",
-			"ICT AetherBio+",
-			"Instituto de Ciência e Tecnologia",
-			"desenvolvimento de moléculas",
-			"patentes farmacêuticas",
-			"indústria farmacêutica Brasil Canadá"
-		]
-	}
 
 	return (
 		<html
@@ -184,13 +141,10 @@ export default function RootLayout({
 					href='/manifest.json'
 				/>
 
-				<Script
-					id='jsonld'
-					type='application/ld+json'
-					dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+				<JsonLd
+					id='jsonld-org'
+					data={graph(organization, ictOrganization, founder, website)}
 				/>
-
-				{/* <GoogleAnalytics gaId='' /> */}
 
 			</head>
 
@@ -200,8 +154,6 @@ export default function RootLayout({
 				<div id='overlay' />
 
 				<ViewportHeight />
-
-				<Preloader />
 
 				<PageTransition>
 					<NotFoundProvider>

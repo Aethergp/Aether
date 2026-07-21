@@ -9,8 +9,11 @@ import ImageReveal from '@/components/Utils/Animations/ImageReveal'
 import Button from '@/components/Button'
 import ShareButtons from '../ShareButtons'
 import RelatedPosts from '../RelatedPosts'
+import JsonLd from '@/components/JsonLd'
 
 // utils
+import { pageGraph } from '@/utils/schema'
+import { articleNode } from '../db/schema'
 import {
 	getMediaPosts,
 	getMediaPostBySlug,
@@ -77,6 +80,23 @@ export default async function PostPage({ params }: Props) {
 
 	return (
 		<div className='bg-white'>
+
+			<JsonLd
+				id='jsonld-article'
+				data={pageGraph({
+					path: mediaHref(post),
+					name: `${post.title} | Aether Global Pharma`,
+					description: post.excerpt,
+					trail: [
+						{ name: 'Mídia', item: '/midia' },
+						{ name: post.title, item: mediaHref(post) }
+					],
+					extend: {
+						mainEntity: { '@id': `${shareUrl}#article` }
+					},
+					extra: [articleNode(post)]
+				})}
+			/>
 
 			<article>
 

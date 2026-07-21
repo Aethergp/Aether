@@ -76,6 +76,9 @@ export default function PageTransition({
 
     const enterAnimation = () => new Promise<void>((resolve) => {
         const tl = gsap.timeline({
+            onStart: () => {
+                ScrollTrigger.refresh(true)
+            },
             onComplete: () => {
                 resetOverlay()
                 resolve()

@@ -132,9 +132,9 @@ export default function Context({
 						<div className='col-lg-3' />
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
-							<h3 className='font-semibold font-heading'>
+							<p className='font-semibold font-heading'>
 								<AnimatedText text='(o contexto)' />
-							</h3>
+							</p>
 						</div>
 
 						<div className='col-lg-6'>

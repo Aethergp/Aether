@@ -2,8 +2,8 @@
 
 The *feeling* we're aiming for, plus the concrete building blocks this site is made of. Read this
 before designing a new section or page, then make choices that fit the sensibility. The home page
-(`src/app/home/*`) is the reference build — when in doubt, open a section there and match how it's
-composed. Implementation mechanics (smooth scroll, page transitions, the preloader `init` event, SVG
+(`src/app/_home/*`) is the reference build — when in doubt, open a section there and match how it's
+composed. Implementation mechanics (smooth scroll, page transitions, SVG
 imports) live in [../CLAUDE.md](../CLAUDE.md); this file is about *how it should look and feel*.
 
 ## The feeling
@@ -281,8 +281,8 @@ regression. (Mechanics in [../CLAUDE.md](../CLAUDE.md) → Animations → "The M
    on the stagger components only when an element should re-animate on scroll-back.
 4. **Register triggers inside component `useGSAP`/effects**, not globally — page transitions kill and
    rebuild all ScrollTriggers on navigation, and only per-component triggers get rebuilt.
-5. The hero's intro waits for the global **`init` event** the `Preloader` dispatches — gate any
-   "after preloader" animation on it, don't run it on mount.
+5. The hero's intro runs **on mount** (after `document.fonts.ready`) - there is no preloader and no
+   `init` gate. Never put a load-blocking overlay in front of above-the-fold content.
 
 Easing leans on `power2`/`power4.inOut` and `circ.out`; durations are unhurried. Motion leads the eye
 in reading order and never blocks the content.

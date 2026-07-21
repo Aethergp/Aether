@@ -14,30 +14,32 @@ import StaggerUp from '@/components/Utils/Animations/StaggerUp'
 import ScrollingImage from '@/components/Utils/Animations/ScrollingImage'
 import Button from '@/components/Button'
 import ContactBanner from '@/components/ContactBanner'
+import JsonLd from '@/components/JsonLd'
 
 // utils
 import { pages } from '@/utils/routes'
+import { pageGraph } from '@/utils/schema'
 
 // img
 import scientists from '@/assets/img/team-2.jpg'
 
 // metadata
 export const metadata: Metadata = {
-	title: 'Sobre a Aether - Plataforma integrada de ativos farmacêuticos | Aether Global Pharma',
-	description: 'Conheça a Aether: uma plataforma que une o pilar empresarial de construção e valorização de ativos farmacêuticos ao instituto de ciência e tecnologia para transformar pesquisa científica em soluções reais para a saúde.',
+	title: 'Sobre a Aether - Plataforma de ativos farmacêuticos',
+	description: 'Conheça a Aether: a plataforma que une a construção e valorização de ativos farmacêuticos ao instituto de ciência e tecnologia ICT AetherBio+.',
 	alternates: {
 		canonical: '/sobre'
 	},
 	openGraph: {
-		title: 'Sobre a Aether - Plataforma integrada de ativos farmacêuticos | Aether Global Pharma',
-		description: 'Conheça a Aether: uma plataforma que une o pilar empresarial de construção e valorização de ativos farmacêuticos ao instituto de ciência e tecnologia para transformar pesquisa científica em soluções reais para a saúde.',
+		title: 'Sobre a Aether - Plataforma de ativos farmacêuticos',
+		description: 'Conheça a Aether: a plataforma que une a construção e valorização de ativos farmacêuticos ao instituto de ciência e tecnologia ICT AetherBio+.',
 		url: 'https://aethergp.com.br/sobre',
 		siteName: 'Aether Global Pharma',
 		images: [
 			{
-				url: '/img/og-image.jpg',
-				width: 1280,
-				height: 628,
+				url: '/img/og/sobre.jpg',
+				width: 1200,
+				height: 630,
 				alt: 'Aether Global Pharma'
 			}
 		],
@@ -147,6 +149,19 @@ export default function SobrePage() {
 	return (
 		<div className='bg-white'>
 
+			<JsonLd
+				id='jsonld-sobre'
+				data={pageGraph({
+					type: 'AboutPage',
+					path: '/sobre',
+					name: metadata.title as string,
+					description: metadata.description as string,
+					trail: [
+						{ name: 'Sobre', item: '/sobre' }
+					]
+				})}
+			/>
+
 			<section className='relative overflow-hidden text-green-light mask-clip-fill' style={{ clipPath: 'inset(0% 0% 0% 0%)' }}>
 
 				<div className='fixed inset-0 z-0 w-lvw h-lvh'>
@@ -220,9 +235,9 @@ export default function SobrePage() {
 						<div className='row pb-10 lg:pb-[5vw]'>
 
 							<div className='col-lg-3 pb-4 lg:pb-0'>
-								<h3 className='font-semibold font-heading'>
+								<p className='font-semibold font-heading'>
 									<AnimatedText text='(nossos valores)' />
-								</h3>
+								</p>
 							</div>
 
 							<div className='col-lg-9'>
@@ -269,9 +284,9 @@ export default function SobrePage() {
 					<div className='row pb-10 lg:pb-[5vw]'>
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
-							<h3 className='font-semibold font-heading lg:pt-2'>
+							<p className='font-semibold font-heading lg:pt-2'>
 								<AnimatedText text='(a plataforma)' />
-							</h3>
+							</p>
 						</div>
 
 						<div className='col-lg-9'>
@@ -342,9 +357,9 @@ export default function SobrePage() {
 					<div className='row pb-10 lg:pb-[5vw]'>
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
-							<h3 className='font-semibold font-heading lg:pt-2'>
+							<p className='font-semibold font-heading lg:pt-2'>
 								<AnimatedText text='(nossa trajetória)' />
-							</h3>
+							</p>
 						</div>
 
 						<div className='col-lg-9'>
@@ -431,9 +446,9 @@ export default function SobrePage() {
 					<div className='row pb-10 lg:pb-[5vw]'>
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
-							<h3 className='font-semibold font-heading'>
+							<p className='font-semibold font-heading'>
 								<AnimatedText text='(presença)' />
-							</h3>
+							</p>
 						</div>
 
 						<div className='col-lg-9'>

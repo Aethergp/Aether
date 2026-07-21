@@ -2,7 +2,11 @@
 import Grainient from '@/components/Grainient'
 
 export const metadata = {
-	title: 'Erro 404: Página não encontrada | Aether Global Pharma'
+	title: 'Erro 404: Página não encontrada | Aether Global Pharma',
+	robots: {
+		index: false,
+		follow: true
+	}
 }
 
 export default function Error404() {

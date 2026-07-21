@@ -10,29 +10,33 @@ import ScrollingImage from '@/components/Utils/Animations/ScrollingImage'
 import Button from '@/components/Button'
 import Committee from '@/components/Committee'
 import ContactBanner from '@/components/ContactBanner'
+import JsonLd from '@/components/JsonLd'
+
+// utils
+import { pageGraph, person, personId, plainText, FOUNDER_ID, ORG_ID } from '@/utils/schema'
 
 // imgs
 import portrait from '@/assets/img/patricia.jpg'
-import claudia from '@/assets/img/team/claudia.png'
-import andre from '@/assets/img/team/andre.png'
-import luciani from '@/assets/img/team/luciani.png'
+import claudia from '@/assets/img/team/claudia.jpg'
+import andre from '@/assets/img/team/andre.jpg'
+import luciani from '@/assets/img/team/luciani.jpg'
 
 export const metadata: Metadata = {
-	title: 'Equipe - Lideranças e comitê científico | Aether Global Pharma',
+	title: 'Equipe e Comitê Científico | Aether Global Pharma',
 	description: 'Conheça as lideranças da Aether Global Pharma e do ICT AetherBio+: experiência em desenvolvimento farmacêutico, propriedade intelectual e governança científica.',
 	alternates: {
 		canonical: '/sobre/equipe'
 	},
 	openGraph: {
-		title: 'Equipe - Lideranças e comitê científico | Aether Global Pharma',
+		title: 'Equipe e Comitê Científico | Aether Global Pharma',
 		description: 'Conheça as lideranças da Aether Global Pharma e do ICT AetherBio+: experiência em desenvolvimento farmacêutico, propriedade intelectual e governança científica.',
 		url: 'https://aethergp.com.br/sobre/equipe',
 		siteName: 'Aether Global Pharma',
 		images: [
 			{
-				url: '/img/og-image.jpg',
-				width: 1280,
-				height: 628,
+				url: '/img/og/sobre-equipe.jpg',
+				width: 1200,
+				height: 630,
 				alt: 'Aether Global Pharma'
 			}
 		],
@@ -89,14 +93,42 @@ export default function EquipePage() {
 	return (
 		<div className='bg-white'>
 
+			<JsonLd
+				id='jsonld-equipe'
+				data={pageGraph({
+					type: 'AboutPage',
+					path: '/sobre/equipe',
+					name: metadata.title as string,
+					description: metadata.description as string,
+					trail: [
+						{ name: 'Sobre', item: '/sobre' },
+						{ name: 'Equipe', item: '/sobre/equipe' }
+					],
+					extend: {
+						mainEntity: [
+							{ '@id': FOUNDER_ID },
+							...comite.map((m) => ({ '@id': personId(m.name) }))
+						]
+					},
+					extra: comite.map((m) => person({
+						name: m.name,
+						jobTitle: m.area || 'Scientific Advisor',
+						description: plainText(m.bio),
+						image: m.photo.src,
+						linkedin: m.linked,
+						worksFor: ORG_ID
+					}))
+				})}
+			/>
+
 			<section className='pt-[26vh] lg:pt-[30vh] pb-16 lg:pb-[7vw]'>
 				<div className='base-container'>
 					<div className='row'>
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
-							<h3 className='font-semibold font-heading'>
+							<p className='font-semibold font-heading'>
 								<AnimatedText text='(equipe)' />
-							</h3>
+							</p>
 						</div>
 
 						<div className='col-lg-9'>
@@ -180,9 +212,9 @@ export default function EquipePage() {
 
 							<div className='mt-12'>
 
-								<h4 className='font-semibold font-heading'>
+								<p className='font-semibold font-heading'>
 									<AnimatedText text='(realizações em destaque)' />
-								</h4>
+								</p>
 
 								<StaggerUp className='flex flex-col'>
 									{realizacoes.map((item, i) => (
@@ -209,9 +241,9 @@ export default function EquipePage() {
 
 					<div className='row pb-10 lg:pb-[5vw]'>
 						<div className='col-lg-3 pb-4 lg:pb-0'>
-							<h3 className='font-semibold font-heading'>
+							<p className='font-semibold font-heading'>
 								<AnimatedText text='(comitê científico)' />
-							</h3>
+							</p>
 						</div>
 						<div className='col-lg-9'>
 							<AnimatedTitle

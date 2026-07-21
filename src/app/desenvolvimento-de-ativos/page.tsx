@@ -10,26 +10,28 @@ import StaggerUp from '@/components/Utils/Animations/StaggerUp'
 import StrokePath from '@/components/Utils/Animations/StrokePath'
 import Button from '@/components/Button'
 import PDDimensoes from './PDDimensoes'
+import JsonLd from '@/components/JsonLd'
 
 // utils
 import { pages } from '@/utils/routes'
+import { pageGraph } from '@/utils/schema'
 
 export const metadata: Metadata = {
-	title: 'Desenvolvimento de Ativos - Pesquisa e Desenvolvimento | Aether Global Pharma',
-	description: 'Abordagem científica da Aether: maturação de TRL, governança científica independente e proteção integral da propriedade intelectual na condução de projetos farmacêuticos globais.',
+	title: 'Desenvolvimento de Ativos Farmacêuticos | Aether',
+	description: 'Abordagem científica da Aether: maturação de TRL, governança independente e proteção integral da propriedade intelectual em projetos farmacêuticos.',
 	alternates: {
 		canonical: '/desenvolvimento-de-ativos'
 	},
 	openGraph: {
-		title: 'Desenvolvimento de Ativos - Pesquisa e Desenvolvimento | Aether Global Pharma',
-		description: 'Abordagem científica da Aether: maturação de TRL, governança científica independente e proteção integral da propriedade intelectual na condução de projetos farmacêuticos globais.',
+		title: 'Desenvolvimento de Ativos Farmacêuticos | Aether',
+		description: 'Abordagem científica da Aether: maturação de TRL, governança independente e proteção integral da propriedade intelectual em projetos farmacêuticos.',
 		url: 'https://aethergp.com.br/desenvolvimento-de-ativos',
 		siteName: 'Aether Global Pharma',
 		images: [
 			{
-				url: '/img/og-image.jpg',
-				width: 1280,
-				height: 628,
+				url: '/img/og/desenvolvimento-de-ativos.jpg',
+				width: 1200,
+				height: 630,
 				alt: 'Aether Global Pharma'
 			}
 		],
@@ -68,15 +70,28 @@ export default function DesenvolvimentodeAtivos() {
 	return (
 		<div className='bg-white'>
 
+			<JsonLd
+				id='jsonld-pd'
+				data={pageGraph({
+					type: 'WebPage',
+					path: '/desenvolvimento-de-ativos',
+					name: metadata.title as string,
+					description: metadata.description as string,
+					trail: [
+						{ name: 'Desenvolvimento de Ativos', item: '/desenvolvimento-de-ativos' }
+					]
+				})}
+			/>
+
 			{/* Hero */}
 			<section className='pt-[26vh] lg:pt-[30vh] pb-16 lg:pb-[7vw]'>
 				<div className='base-container'>
 					<div className='row'>
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
-							<h3 className='font-semibold font-heading lg:pt-2'>
+							<p className='font-semibold font-heading lg:pt-2'>
 								<AnimatedText text='(desenvolvimento de ativos)' />
-							</h3>
+							</p>
 						</div>
 
 						<div className='col-lg-9'>
@@ -130,9 +145,9 @@ export default function DesenvolvimentodeAtivos() {
 						<div className='col-lg-3' />
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
-							<h3 className='font-semibold font-heading'>
+							<p className='font-semibold font-heading'>
 								<AnimatedText text='(a abordagem)' />
-							</h3>
+							</p>
 						</div>
 
 						<div className='col-lg-6'>
@@ -156,9 +171,9 @@ export default function DesenvolvimentodeAtivos() {
 					<div className='row pb-10 lg:pb-[5vw]'>
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
-							<h3 className='font-semibold font-heading lg:pt-2'>
+							<p className='font-semibold font-heading lg:pt-2'>
 								<AnimatedText text='(perfil dos ativos)' />
-							</h3>
+							</p>
 						</div>
 
 						<div className='col-lg-9'>
@@ -219,9 +234,9 @@ export default function DesenvolvimentodeAtivos() {
 					<div className='row pb-10 lg:pb-[5vw]'>
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
-							<h3 className='font-semibold font-heading lg:pt-2'>
+							<p className='font-semibold font-heading lg:pt-2'>
 								<AnimatedText text='(nossa plataforma de desenvolvimento)' />
-							</h3>
+							</p>
 						</div>
 
 						<div className='col-lg-9'>

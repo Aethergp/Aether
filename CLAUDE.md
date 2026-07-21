@@ -64,12 +64,15 @@ These four mechanisms are interdependent and span multiple files. Understand the
 
 ### 2. Page transitions kill & rebuild ScrollTriggers
 
-`PageTransition` (`src/components/Utils/PageTransition/index.tsx`) uses `next-transition-router` with an overlay that **mirrors the preloader** (`[data-page-transition]`): on leave a `green-light` curtain rises up from the bottom (`yPercent` 100→0) while the brand star slides in from the left and rotates; after the route swaps, on enter the star slides out to the right and the curtain continues up and off the top (`yPercent` 0→-100). **The star uses the preloader's exact timing** — `marginLeft -25rem→0→40rem`, `rotate 0→180→360`, `duration: 2`, `ease: power2.inOut` — so match those if you touch it. On **leave** it also `.kill()`s every `ScrollTrigger.getAll()`; on **enter complete** the inner `ScrollTriggerRefresher` calls `ScrollTrigger.refresh(true)`. So per-page ScrollTriggers are torn down and rebuilt across navigations — register them in component effects (`useGSAP`), not globally, so the refresh picks them up. The block's hidden state is an inline `transform: translateY(100%)` (below the viewport) that GSAP animates.
+`PageTransition` (`src/components/Utils/PageTransition/index.tsx`) uses `next-transition-router` with an overlay (`[data-page-transition]`): on leave a `green-light` curtain rises up from the bottom (`yPercent` 100→0) while the brand star slides in from the left and rotates; after the route swaps, on enter the star slides out to the right and the curtain continues up and off the top (`yPercent` 0→-100). **The star timing is** `marginLeft -25rem→0→40rem`, `rotate 0→180→360`, `duration: 2`, `ease: power2.inOut` — so match those if you touch it. On **leave** it also `.kill()`s every `ScrollTrigger.getAll()`; on **enter complete** the inner `ScrollTriggerRefresher` calls `ScrollTrigger.refresh(true)`. So per-page ScrollTriggers are torn down and rebuilt across navigations — register them in component effects (`useGSAP`), not globally, so the refresh picks them up. The block's hidden state is an inline `transform: translateY(100%)` (below the viewport) that GSAP animates.
 
-### 3. Preloader → global `init` event
+### 3. No preloader - the hero paints immediately
 
-`Preloader` (`src/components/Preloader/index.tsx`) runs a GSAP intro then sets `window.__aetherInit = true` and `dispatchEvent(new Event('init'))` on `window`. Entrance animations that must wait for the preloader (e.g. the `Banner` H1 SplitText reveal) `addEventListener('init', …, { once: true })` rather than running on mount. **The preloader only runs on a full page load** — on client-side nav back to home it won't re-fire, so gated animations must check `window.__aetherInit` and run immediately if it's already set (the `Banner` does this), else wait for the event. Reuse this for any "after preloader" animation.
-
+There is **no preloader** and no global `init` event (both removed for Core Web Vitals: the overlay
+held an opaque full-screen curtain for ~3s and gated the `<h1>`, so LCP could never fire earlier).
+Entrance animations run **on mount** - the `Banner` H1 SplitText reveal uses `gsap.fromTo` inside
+`useGSAP` after `await document.fonts.ready`. **Never reintroduce a load-blocking overlay or an
+`init`-style gate on above-the-fold content.** `PageTransition` (route changes only) is unaffected.
 ### 4. SVG imports are React components
 
 Configured via `@svgr/webpack` in `next.config.mjs` with `removeViewBox: false`. `import Icon from './x.svg'` gives a component; append `?url` (`import url from './x.svg?url'`) to get a URL string instead.
@@ -84,7 +87,7 @@ GSAP is the **only** animation engine — `motion` is in `package.json` but unus
 2. **`await document.fonts.ready` before any `SplitText`** — otherwise lines are split against the fallback font and re-wrap when the webfont loads.
 3. **Reveal once by default** (`once: true` / `toggleActions: 'play none none none'`). The `Stagger*` components and `AnimatedText` take an `infinite` prop to re-animate on scroll-back.
 4. **Register triggers inside component `useGSAP`/effects, never globally** — `PageTransition` kills all ScrollTriggers on route leave and `ScrollTrigger.refresh(true)` on enter; only per-component triggers get rebuilt **on re-mount**. A *global* animated component (lives in the layout, never re-mounts — e.g. `Footer`) must depend its `useGSAP` on `usePathname()` to recreate, and use `gsap.fromTo` (see Gotchas).
-5. **The hero waits for the preloader `init` event** — gate intro animations on `window.addEventListener('init', …, { once: true })`, not on mount. The preloader runs once per full load, so on client-side nav back to home `init` never re-fires — check `window.__aetherInit` (set by the preloader) and reveal immediately when already initialised.
+5. **Above-the-fold intros run on mount, never behind a gate.** There is no preloader/`init` event; use `gsap.fromTo` in `useGSAP` (after `document.fonts.ready` when splitting text) so the hero is paintable as early as possible. Don't gate LCP content on an overlay, a timer, or a custom event.
 6. **`refreshPriority` orders layout-changing triggers.** Pinned/scrub reveals that insert pin-spacers run first (`TextReveal` pinned mode uses `refreshPriority: 1`); background path-draws yield (`refreshPriority: -1`) so their start/end are measured against the final layout. After creating a pin programmatically, `requestAnimationFrame(() => ScrollTrigger.refresh(true))`.
 
 ### Reusable animation components (`src/components/Utils/Animations/`)
@@ -94,7 +97,7 @@ Compose these instead of writing raw GSAP. All are `'use client'`, scope to a re
 | Component | Mechanic | Key props |
 |---|---|---|
 | `AnimatedTitle` | Per-line two-tone gradient **fill** (`.fill-title`), `backgroundPositionX` scrubbed `top 75%`→`bottom 60%` | `style: 'light'\|'dark'\|'wine'` (`dark`=fills to green-dark, `wine`=fills to `#3D0108` for the Bio+/ICT page) |
-| `AnimatedText` | Char-by-char **rise** (`y:110%`, `circ.out`, stagger `.0075`) at `top 85%`; rebuilds `<br>` as `.br-line` spans so SplitText never sees the break; accepts an HTML `text` string; adds `.completed` | `text`, `infinite` |
+| `AnimatedText` | Char-by-char **rise** (`y:110%`, `circ.out`, stagger `.0075`) at `top 85%`; rebuilds `<br>` as `.br-line` spans so SplitText never sees the break; accepts an HTML `text` string; adds `.completed`. **Renders `text` server-side** (see below) | `text`, `infinite` |
 | `TextReveal` | Per-line colored **block-wipe** (`scaleX` 0→1→0). Free mode fires once at `top 90%`; **pinned scrub mode** pins the section (`end: +=innerHeight*1.5`, `refreshPriority:1`) when given `scrub` + `pinSection` | `blockColor`, `scrub`, `pinSection`, `stagger`, `duration`, `animateOnScroll` |
 | `StaggerUp` | Children `y:20vh`+`opacity:0`→in, `ScrollTrigger.batch`, stagger `.125`, start `-50% 100%` | `infinite` |
 | `StaggerScale` | Children `scale:0`→`1`, batch, stagger `.125` | `infinite` |
@@ -121,6 +124,20 @@ Also: **`Video`** (`src/components/Video`) plays/pauses on scroll in/out of view
   - **Accordion submenus** (Sobre / P&D). A **boxed +/- toggle** (`w-10 h-10 rounded-xs bg-green-dark`, thin `w-3 h-px` / `h-3 w-px` bars; the vertical bar `scale-y-0` when open → `+`/`−`) expands a child list via a **`grid-rows-[0fr]→[1fr]`** transition. Children are **pill-buttons** (`bg-green-dark/[0.07] rounded-md px-5 py-3.5 text-18`, `hover:bg-green-dark`) with a trailing **right arrow** (`arrow-right.svg` — a plain `→`, **not** the diagonal `arrow-diagonal` which reads as an external link) that nudges `translate-x-1` on hover. `openAccordions: number[]` state.
 - **Timeline scroll-paint** (`src/app/sobre/Timeline.tsx`, `'use client'`): a vertical line that draws `green-dark` top→bottom on scroll while each node dot "lights up" to `green-light`+glow exactly as the line reaches it. **One** scrubbed `ScrollTrigger` (`trigger:root`, `start:'top 65%'`, `end:'bottom 65%'`, `scrub`) drives BOTH from the same `onUpdate(self.progress)`: `gsap.set(fill,{scaleY:p})` paints the line (a `top-0 bottom-0 origin-top` span over a faint track), and `filledPx = root.offsetHeight*p` is compared to each node's center (`getBoundingClientRect` rel. to root) to toggle lit/unlit. **Do not** split the node lighting into per-node triggers — that lit them at fixed scroll points unrelated to the line and lagged behind it.
 
+### `AnimatedText` must render its text server-side
+
+`AnimatedText` splits and animates by rewriting `innerHTML` in its effect. It used to return an
+**empty** `<span>`, so every heading and paragraph written as `<AnimatedText text='...' />` was blank
+in the SSR HTML - including the `<h1>` on most routes. It now renders `text` into the span
+(`dangerouslySetInnerHTML` for the HTML-string case, children otherwise) and the effect replaces it
+after mount. **Keep it that way**: an animation wrapper must never be the only thing standing between
+the copy and the server-rendered HTML.
+
+It also skips `await document.fonts.ready` when `document.fonts.status === 'loaded'`, so on the common
+path the split runs synchronously inside the layout effect and the server-rendered text never paints
+unsplit for a frame. The await still happens on a cold font load, which is what the
+"`await fonts.ready` before SplitText" rule actually protects against.
+
 ### Gotchas (learned building `/contato`)
 
 - **Tailwind v4 `scale-*`/`translate-*` utilities use the CSS `scale`/`translate` properties, which compose with — and can cancel — a GSAP `transform`.** A `scale-x-0` class on an element you then animate with `gsap.to(…, { scaleX: 1 })` stays collapsed (the CSS `scale: 0 1` multiplies GSAP's transform to zero). Set the hidden/animated state with an **inline `transform`** or `gsap.set`, never a Tailwind scale/translate class.
@@ -132,7 +149,7 @@ Also: **`Video`** (`src/components/Video`) plays/pauses on scroll in/out of view
 - **Recolor a single-color SVG icon to an exact token via a CSS `mask-image`, not `brightness-0 invert`.** `invert` only gives white/black; to tint an icon (loaded as an `<Image>`/URL) to a brand token, render a `<span>` with `bg-{token}` + inline `maskImage:url(icon)` (`maskSize:contain`, `maskRepeat:no-repeat`, `maskPosition:center`) on a sized square. This is how the `/sobre` pillar icons become `green-light` (on green-dark) and `white` (on the Bio+ navy) at the exact token color.
 - **One continuous background across sections — don't add a per-block scrim.** When a `Grainient` (or any field) spans several stacked sections, a scrim/overlay applied to only ONE block (e.g. a hero-bottom gradient) makes a visible **seam** at that block's edge. Use a single **uniform** tint over the whole shared-background section for legibility; the `/sobre` hero→valores seam was exactly this.
 - **Reuse a home section on another route via a prop, don't fork it.** `/sobre` renders the home `<Context />` directly; to drop its pinned "A Aether foi criada…" statement there it takes a **`showCreation` prop (default `true`)** so home is unchanged. Prefer a small opt-out prop over duplicating the markup.
-- **Preview-tool flakiness: the in-browser preview can get stuck on the preloader after many rapid reloads** (the `init` event never fires because `requestAnimationFrame` is throttled when the headless tab is backgrounded → `window.__aetherInit` stays false, gated content + the WebGL canvas never mount, and you see a flat `green-light` screen or the page-transition curtain). This is **not a code regression** — confirm with a server-side check (`curl` the route → 200 + the `<h1>` text in the SSR HTML, `tsc --noEmit`), then **stop and restart the preview server** for a clean browser state and navigate once via `location.href`. Don't chase it as a bug in the page.
+- **Preview-tool flakiness: `requestAnimationFrame` is throttled when the headless preview tab is backgrounded**, so GSAP time barely advances - a scroll/entrance animation appears frozen or crawls forward one step per screenshot. This is **not a code regression** - confirm with a server-side check (`curl` the route → 200 + the `<h1>` text in the SSR HTML, `tsc --noEmit`), and read animation *state* from the DOM rather than trusting a single screenshot. Restart the preview server for a clean browser state if needed.
 - **Global animated components must recreate their ScrollTriggers on navigation.** `PageTransition` kills *every* ScrollTrigger on leave; per-page components re-mount and rebuild theirs, but a component that lives in the layout (e.g. `Footer`) never re-mounts — so depend its `useGSAP` on `usePathname()` (`{ dependencies: [pathname] }`) to re-run and recreate on each route change. And use **`gsap.fromTo` with explicit from/to states**, never `gsap.from`/`gsap.to`: on recreation, `from`/`to` read the element's *current* (possibly mid-killed) value as the target and can animate it to a no-op — this is exactly why the footer wordmark got stuck hidden after the first navigation.
 
 ### Responsiveness & "nothing breaks on desktop/tablet/mobile"
@@ -151,7 +168,7 @@ Tailwind CSS v4, **CSS-first config** — there is no `tailwind.config`. Design 
 
 ## Routing & layout
 
-`src/app/layout.tsx` is the single global shell: it mounts `Preloader`, `PageTransition` → `SmoothScroller` → `Menu` + `<main>{children}</main>` + `Footer`, plus the Organization JSON-LD, OG metadata, and Google Analytics. The home page is composed in `src/app/home/page.tsx` from section components (`Banner`, `Context`, `About`, `Companies`, `Partners`, `Contact`); root `src/app/page.tsx` just re-exports it. Shared route/contact/social constants live in `src/utils/routes.js`.
+`src/app/layout.tsx` is the single global shell: it mounts `PageTransition` → `SmoothScroller` → `Menu` + `<main>{children}</main>` + `Footer`, plus the JSON-LD `@graph` (Organization + ResearchOrganization + WebSite, from `src/utils/schema.ts`) and OG metadata. The home page is composed **directly in `src/app/page.tsx`** from section components in `src/app/_home/` (`Banner`, `Context`, `About`, `Companies`, `Partners`, `Contact`) - `_home` is an underscore-prefixed **private folder** so it produces no route (there used to be a duplicate `/home` route competing with `/` for indexing; `/home` now 308s to `/` via `next.config.mjs`). Shared route/contact/social constants live in `src/utils/routes.js`.
 
 **Navigation links live in `src/utils/routes.js`, and the three surfaces are decoupled** — edit each independently:
 - **`headerLinks`** → desktop header (`Menu`, `max-lg:hidden`). Trimmed: **Sobre / P&D / Mídia / Contato** (Inscreva is **commented out** — kept only in the fs menu + footer). Items with `children` render the hover dropdown + chevron.
@@ -159,6 +176,57 @@ Tailwind CSS v4, **CSS-first config** — there is no `tailwind.config`. Design 
 - **`footerColumns`** (`NavItem[][]`) → the footer's **4-column** "Navegação" grid (Sobre+children · P&D+children · Mídia/Parceiros · Inscreva/Contato; `col-6 col-md-3` nested `.row`), with **Conecte-se + Copyright + "Voltar ao topo" right-aligned** in a sibling `col-lg-4 col-xl-3`. Omits Início; uses the short "TRL" child label vs the menu's fuller one.
 
 `children` subpage arrays (`sobreChildren`/`pdChildren`) are shared by `navLinks`/`headerLinks`. **The header dropdown + chevron, the fs layered-reveal + cascade + accordion, and the +/- toggle/pill mechanics are all in the Menu Signature recipe above** — read it before touching the menu. Subpages that don't exist yet are linked anyway (they 404 until built — same convention as `pages.trl`). Anchors (`#…`) scroll the home via `useAnchorScroll`; routes (`/…`) navigate; the `home` entry navigates home / scrolls to top. When a section becomes a real page flip its entry `#…`→`/…` (done for `/sobre`, `/parceiros`; `#contexto` was **removed**). In-page contact CTAs (Banner/About) point at `/contato`. **`routes.js` is JS but JSDoc-typed** (`@typedef NavItem` with optional `children`/`home`) so components read `item.children` without TS union errors — **keep the `/** @type {NavItem[]} */` annotations** when editing the lists.
+
+## On-page SEO rules
+
+- **Titles <= 60 chars, meta descriptions <= 160.** Both are set twice per route (`metadata` +
+  `metadata.openGraph`) - keep them in sync, and remember `pageGraph` reads `metadata.title` /
+  `metadata.description`, so fixing the metadata fixes the schema too.
+- **Every route needs its own OG image.** They live in `public/img/og/<slug>.jpg` at **1200x630**,
+  generated from that page's hero photo with a green-dark scrim plus the `aether-gp` wordmark in
+  `green-light`. The scrim strength is tuned per image so the wordmark keeps **>= 4.5:1** contrast
+  against the photo behind it - re-check that if you swap an image.
+- **`twitter` is set once in the layout and only carries `card: 'summary_large_image'`.** It is
+  inherited by every route, so adding a title/description/image there would override each page's own;
+  Next fills those from the page's `metadata` + `openGraph`.
+- **The `( ... )` eyebrow labels are NOT headings.** They are decorative section labels, so they render
+  as `<p>` - the real heading is the adjacent `<h1>`/`AnimatedTitle` (`AnimatedTitle` renders an
+  `<h2>`). The exception is a section whose eyebrow is its *only* heading (the legal-page clauses,
+  `/contato`, `/inscreva-seu-projeto`, the home `Companies` blocks): there the eyebrow is an `<h2>`.
+  Because Tailwind preflight zeroes heading margins and sizes, `<h3>` vs `<p>` vs `<h2>` is visually
+  identical here - pick the level by meaning, not by looks.
+- **One `<h1>` per route, no skipped levels.** All 15 routes currently validate; re-check after adding
+  a section.
+- **`alt=''` is only for decorative images** (logo watermarks, icon bullets, empty-state marks) and
+  should be paired with `aria-hidden`. Content photography gets real pt-BR alt text - carry it in the
+  data object next to the image (see `dimensoes` in `PDDimensoes.tsx`).
+
+## Structured data (JSON-LD)
+
+All schema lives in **`src/utils/schema.ts`**, rendered via **`src/components/JsonLd`**; every node has
+a stable `@id` and references others by `@id` rather than repeating them. The layout emits the global
+`@graph` (`Organization` + `ResearchOrganization` for ICT AetherBio+ + the founder `Person` +
+`WebSite`).
+
+**Every new route must call `pageGraph({ type, path, name, description, trail, extend?, extra? })`** -
+it produces the typed WebPage (`AboutPage`/`ContactPage`/`CollectionPage`/`WebPage`) plus its
+`BreadcrumbList` in one go. Pass `name: metadata.title as string` and
+`description: metadata.description as string` so the schema can never drift from the meta tags; pass
+`trail: []` on the home page to skip the pointless single-item breadcrumb. Use `extra` for additional
+nodes and `extend` to add `mainEntity` etc. to the page node.
+
+Blog nodes (`blogNode`, `articleNode`) live in `src/app/midia/db/schema.ts`, next to the data source,
+so a WordPress swap only has to preserve the `MediaPost` shape.
+
+**Two rules that are easy to get wrong:**
+- **`worksFor` is only for Aether's own people.** External researchers shown on a page (e.g. the CQMED
+  coordinators on `/pipeline`) take **`affiliation`** - claiming they work for Aether would be a
+  factual misstatement.
+- **Don't publish contact details.** The client does not want the phone or e-mail public, so
+  `Organization` carries a form-only `contactPoint` (`url: /contato`) and a country+region address, no
+  street, no `email`, no `telephone`.
+
+Full detail + what's still open: [.claude/NOTES.md](.claude/NOTES.md).
 
 ## Forms
 
@@ -203,4 +271,4 @@ Success/error feedback renders through `Modal` → `Dialog` (`@/components/Dialo
 
 ## Images
 
-`next/image` is set to `unoptimized: true` with the only remote host being the headless WordPress backend `wp.aethergp.com.br` (`graphql-request` is a dependency for future CMS data; not yet wired into built pages). Use the local `src/components/Image` wrapper for project images.
+`next/image` optimization is **on** (AVIF/WebP + srcset; the `src/components/Image` wrapper defaults `quality` to 75 - never raise it to 100). Source images are kept **≤2560px on the long edge** and compressed; don't commit multi-MB originals. The only remote host is the headless WordPress backend `wp.aethergp.com.br` (`graphql-request` is a dependency for future CMS data; not yet wired into built pages). Use the local `src/components/Image` wrapper for project images.

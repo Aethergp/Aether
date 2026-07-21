@@ -7,24 +7,28 @@ import AnimatedText from '@/components/Utils/Animations/AnimatedText'
 import TextReveal from '@/components/Utils/Animations/TextReveal'
 import StaggerUp from '@/components/Utils/Animations/StaggerUp'
 import ProjectForm from './ProjectForm'
+import JsonLd from '@/components/JsonLd'
+
+// utils
+import { pageGraph } from '@/utils/schema'
 
 // metadata
 export const metadata: Metadata = {
 	title: 'Inscreva seu Projeto | Aether Global Pharma',
-	description: 'Tem uma tecnologia com potencial terapêutico? Inscreva seu projeto na plataforma Aether: avaliação científica criteriosa, confidencialidade e um caminho até o desenvolvimento farmacêutico global.',
+	description: 'Tem uma tecnologia com potencial terapêutico? Inscreva seu projeto na Aether: avaliação científica criteriosa, confidencialidade e alcance global.',
 	alternates: {
 		canonical: '/inscreva-seu-projeto'
 	},
 	openGraph: {
 		title: 'Inscreva seu Projeto | Aether Global Pharma',
-		description: 'Tem uma tecnologia com potencial terapêutico? Inscreva seu projeto na plataforma Aether: avaliação científica criteriosa, confidencialidade e um caminho até o desenvolvimento farmacêutico global.',
+		description: 'Tem uma tecnologia com potencial terapêutico? Inscreva seu projeto na Aether: avaliação científica criteriosa, confidencialidade e alcance global.',
 		url: 'https://aethergp.com.br/inscreva-seu-projeto',
 		siteName: 'Aether Global Pharma',
 		images: [
 			{
-				url: '/img/og-image.jpg',
-				width: 1280,
-				height: 628,
+				url: '/img/og/inscreva-seu-projeto.jpg',
+				width: 1200,
+				height: 630,
 				alt: 'Aether Global Pharma'
 			}
 		],
@@ -52,15 +56,28 @@ export default function InscrevaSeuProjetoPage() {
 	return (
 		<div className='bg-white'>
 
+			<JsonLd
+				id='jsonld-inscreva'
+				data={pageGraph({
+					type: 'WebPage',
+					path: '/inscreva-seu-projeto',
+					name: metadata.title as string,
+					description: metadata.description as string,
+					trail: [
+						{ name: 'Inscreva seu Projeto', item: '/inscreva-seu-projeto' }
+					]
+				})}
+			/>
+
 			<section className='pt-36 lg:pt-56 xl:pt-[12vw] pb-12 lg:pb-[5vw] bg-green-light'>
 				<div className='base-container'>
 					<div className='row'>
 
 						<div className='col-md-10 offset-md-2 col-lg-9 offset-lg-3'>
 
-							<h3 className='font-semibold font-heading mb-6'>
+							<p className='font-semibold font-heading mb-6'>
 								<AnimatedText text='(inscreva seu projeto)' />
-							</h3>
+							</p>
 
 						</div>
 
@@ -101,9 +118,9 @@ export default function InscrevaSeuProjetoPage() {
 					<div className='row'>
 
 						<div className='col-lg-3'>
-							<h3 className='font-semibold font-heading mb-8 lg:mb-0'>
+							<h2 className='font-semibold font-heading mb-8 lg:mb-0'>
 								<AnimatedText text='(como funciona)' />
-							</h3>
+							</h2>
 						</div>
 
 						<div className='col-lg-9'>
@@ -117,9 +134,9 @@ export default function InscrevaSeuProjetoPage() {
 											{i + 1}
 										</span>
 										<div className='relative z-2'>
-											<h4 className='text-20 font-heading font-semibold text-green-pale mb-1'>
+											<h3 className='text-20 font-heading font-semibold text-green-pale mb-1'>
 												{step.title}
-											</h4>
+											</h3>
 											<p className='text-16 leading-relaxed text-green-pale'>
 												{step.text}
 											</p>
@@ -137,9 +154,9 @@ export default function InscrevaSeuProjetoPage() {
 
 				<div className='base-container relative z-2'>
 
-					<h3 className='font-semibold font-heading mb-6'>
+					<h2 className='font-semibold font-heading mb-6'>
 						<AnimatedText text='(confidencialidade)' />
-					</h3>
+					</h2>
 
 					<div className='row max-lg:flex max-lg:flex-col max-lg:gap-10'>
 
