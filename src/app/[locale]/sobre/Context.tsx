@@ -2,6 +2,7 @@
 
 // libraries
 import { useRef, useEffect } from 'react'
+import { useTranslations } from 'next-intl'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -28,6 +29,9 @@ export default function Context({
 	showCreation?: boolean
 	showCta?: boolean
 }) {
+
+	const t = useTranslations('SobreContext')
+	const items = t.raw('items') as { title: string, text: string }[]
 
 	const sectionRef = useRef<HTMLDivElement>(null)
     const pathRef = useRef<SVGPathElement>(null)
@@ -121,7 +125,7 @@ export default function Context({
 								style='dark'
 								className='text-60 font-heading font-semibold'
 							>
-								Ciência de fronteira gera descobertas. O desafio é transformá-las em ativos farmacêuticos.
+								{t('title')}
 							</AnimatedTitle>
 						</div>
 
@@ -133,13 +137,13 @@ export default function Context({
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
 							<p className='font-semibold font-heading'>
-								<AnimatedText text='(o contexto)' />
+								<AnimatedText text={t('eyebrow')} />
 							</p>
 						</div>
 
 						<div className='col-lg-6'>
 							<p className='text-20 leading-relaxed'>
-								<AnimatedText text='Universidades e centros de pesquisa produzem, todos os anos, tecnologias com elevado potencial terapêutico. Entretanto, sem desenvolvimento estruturado, governança científica, estratégia regulatória e proteção intelectual, a maior parte dessas descobertas permanece restrita ao ambiente acadêmico. <br /><br />A Plataforma Aether foi criada para conduzir essa jornada de maturação tecnológica e preparar ativos para licenciamento global.' />
+								<AnimatedText text={t('body')} />
 							</p>
 
 							{showCta && (
@@ -147,7 +151,7 @@ export default function Context({
 									<Button
 										style='dark'
 										href='/sobre'
-										text='Conheça a plataforma'
+										text={t('ctaButton')}
 										icon='diagonal-arrow'
 									/>
 								</div>
@@ -196,24 +200,7 @@ export default function Context({
 							}}
 							className='overflow-visible!'
 						>
-							{[
-								{
-									title: 'Scouting e Seleção Tecnológica',
-									text: 'Identificamos pesquisas de alto potencial e realizamos avaliações técnico-científicas, regulatórias e de propriedade intelectual para selecionar ativos com potencial de desenvolvimento e licenciamento.',
-								},
-								{
-									title: 'Desrisking Científico e Tecnológico',
-									text: 'Reduzimos progressivamente as incertezas científicas, tecnológicas e regulatórias por meio de desenvolvimento estruturado, validação experimental e evolução da maturidade tecnológica.',
-								},
-								{
-									title: 'Estratégia de Propriedade Intelectual',
-									text: 'Estruturamos portfólios robustos de propriedade intelectual, avaliando liberdade de operação, titularidade, proteção internacional e potencial competitivo.',
-								},
-								{
-									title: 'Posicionamento e Licenciamento Global',
-									text: 'Preparamos ativos para conexão com empresas farmacêuticas, investidores e parceiros estratégicos, estruturando oportunidades de co-desenvolvimento, investimento e licenciamento.',
-								}
-							].map((item, i) => (
+							{items.map((item, i) => (
 								<SwiperSlide
 									key={i}
 									className='h-auto!'
@@ -258,7 +245,7 @@ export default function Context({
 									pinSection={pinRef}
 								>
 									<h2 className='flex flex-wrap justify-center items-center gap-x-4'>
-										Entre a descoberta científica e a indústria farmacêutica, construímos ativos.
+										{t('creationStatement')}
 									</h2>
 								</TextReveal>
 							</div>

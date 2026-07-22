@@ -491,5 +491,120 @@
 		"relatedHeading": "Read more",
 		"relatedButton": "See all",
 		"shareLabel": "Share on {name}"
+	},
+	"ContactBanner": {
+		"heading": "Let's build the next generation of pharmaceutical assets.",
+		"text": "We're looking for researchers, universities, companies, investors, and strategic partners committed to turning excellent science into therapeutic solutions with global impact.",
+		"ctaButton": "Get in touch",
+		"secondaryLink": "Submit your project"
+	},
+	"SobreContext": {
+		"eyebrow": "(the context)",
+		"title": "Frontier science generates discoveries. The challenge is turning them into pharmaceutical assets.",
+		"body": "Universities and research centers produce technologies with high therapeutic potential every year. However, without structured development, scientific governance, regulatory strategy, and intellectual protection, most of these discoveries remain confined to academia. <br /><br />The Aether Platform was created to lead this technological maturation journey and prepare assets for global licensing.",
+		"ctaButton": "Discover the platform",
+		"items": [
+			{
+				"title": "Technology Scouting and Selection",
+				"text": "We identify high-potential research and conduct technical-scientific, regulatory, and intellectual property assessments to select assets with development and licensing potential."
+			},
+			{
+				"title": "Scientific and Technological De-risking",
+				"text": "We progressively reduce scientific, technological, and regulatory uncertainties through structured development, experimental validation, and technology-readiness progress."
+			},
+			{
+				"title": "Intellectual Property Strategy",
+				"text": "We structure robust intellectual property portfolios, assessing freedom to operate, ownership, international protection, and competitive potential."
+			},
+			{
+				"title": "Global Positioning and Licensing",
+				"text": "We prepare assets for connection with pharmaceutical companies, investors, and strategic partners, structuring co-development, investment, and licensing opportunities."
+			}
+		],
+		"creationStatement": "Between scientific discovery and the pharmaceutical industry, we build assets."
+	},
+	"SobrePage": {
+		"metaTitle": "About Aether - Pharmaceutical Asset Platform",
+		"metaDescription": "Discover Aether: the platform that unites pharmaceutical asset building and value creation with the ICT AetherBio+ science and technology institute.",
+		"heroTitleLines": ["Science", "Intellectual Property", "Global Licensing"],
+		"heroSubtitle": "A new model for turning science into value.",
+		"heroText": "Most scientific discoveries never reach the market. Not for lack of scientific merit, but because few technologies complete the full journey needed to become pharmaceutical assets attractive to industry. <br /><br /> The Aether Platform was created to fill that gap, connecting research, development, intellectual property, capital, and market strategy in a structured value-creation model.",
+		"valuesEyebrow": "(our values)",
+		"valuesHeading": "Three principles guide every decision.",
+		"valores": [
+			{
+				"title": "Science",
+				"text": "We select research with high therapeutic potential and lead its development with technical rigor, translational vision, and a focus on industrial application."
+			},
+			{
+				"title": "Intellectual Property",
+				"text": "We turn scientific knowledge into pharmaceutical assets through technological development, de-risking, and an integrated intellectual property strategy."
+			},
+			{
+				"title": "Global Licensing",
+				"text": "We position assets for connection with the pharmaceutical industry, investors, and strategic partners, expanding their potential for technology transfer and commercialization."
+			}
+		],
+		"platformEyebrow": "(the platform)",
+		"platformHeading": "One platform. Two complementary pillars.",
+		"platformText": "The Aether Platform brings together two institutions with distinct, complementary roles, enabling the entire pharmaceutical asset development journey, from research to market preparation.",
+		"pilares": [
+			{
+				"eyebrow": "Pharmaceutical Asset Venture Builder",
+				"name": "Aether Global Pharma",
+				"text": "Responsible for the platform's business strategy, leading asset development, intellectual property, financial structuring, strategic partnerships, and international licensing.",
+				"cta": "Learn about AGP"
+			},
+			{
+				"eyebrow": "Scientific Pillar",
+				"name": "ICT AetherBio+",
+				"text": "Scientific institution responsible for the projects' technological advancement, scientific governance, research coordination, de-risking, and engagement with universities, research centers, and funding agencies.",
+				"cta": "Learn about Bio+"
+			}
+		],
+		"trajectoryEyebrow": "(our journey)",
+		"trajectoryHeading": "A platform born within research.",
+		"timeline": [
+			{
+				"year": "2000",
+				"title": "Origins in the pharmaceutical industry",
+				"text": "The founder begins her career in quality, industrial production, regulatory affairs, and pharmaceutical development."
+			},
+			{
+				"year": "2005",
+				"title": "Expansion into industrial projects",
+				"text": "Work on implementation, validation, industrial development, and strategic management projects in the pharmaceutical sector."
+			},
+			{
+				"year": "2013",
+				"title": "Consolidation of international experience",
+				"text": "Participation in technological development projects, technology transfer, and management of highly complex pharmaceutical operations."
+			},
+			{
+				"year": "2020",
+				"title": "Evolution toward building technology assets",
+				"text": "Accumulated experience reveals an opportunity: turning science into pharmaceutical assets structured for licensing."
+			},
+			{
+				"year": "2025",
+				"title": "Founding of Aether Global Pharma",
+				"text": "A company dedicated to building, developing, and monetizing pharmaceutical assets is born."
+			},
+			{
+				"year": "2025",
+				"title": "Creation of ICT AetherBio+",
+				"text": "The platform's scientific arm is established to accelerate the technological maturation of research."
+			},
+			{
+				"year": "2026",
+				"title": "Consolidation of the Aether Platform",
+				"text": "Securing strategic projects, federal funding, and scientific partnerships, and expanding operations as an integrated pharmaceutical asset development platform."
+			}
+		],
+		"teamEyebrow": "(who leads)",
+		"teamHeading": "People who turn science into pharmaceutical assets.",
+		"teamText": "The Aether Platform brings together professionals with experience in pharmaceutical development, intellectual property, regulatory affairs, business strategy, and technology transfer. Our model integrates scientific experts, executives, and strategic partners to guide assets from discovery to global licensing opportunities.",
+		"teamButton": "Meet the team",
+		"teamImageAlt": "Aether Team"
 	}
 }

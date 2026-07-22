@@ -1,3 +1,6 @@
+// libraries
+import { useTranslations } from 'next-intl'
+
 // components
 import Grainient from '@/components/Grainient'
 import AnimatedText from '@/components/Utils/Animations/AnimatedText'
@@ -10,6 +13,9 @@ type Props = {
 }
 
 export default function ContactBanner({ className }: Props) {
+
+	const t = useTranslations('ContactBanner')
+
 	return (
         <section className={className}>
             <div className='base-container'>
@@ -48,11 +54,11 @@ export default function ContactBanner({ className }: Props) {
                         <div className='col-lg-8 offset-lg-2'>
 
                             <h2 className='text-60 font-heading font-semibold leading-[1.05]!'>
-                                <AnimatedText text='Vamos construir a próxima geração de ativos farmacêuticos.' />
+                                <AnimatedText text={t('heading')} />
                             </h2>
 
                             <p className='text-20 mt-6 lg:mt-8 opacity-90'>
-                                Buscamos pesquisadores, universidades, empresas, investidores e parceiros estratégicos comprometidos em transformar ciência de excelência em soluções terapêuticas com impacto global.
+                                {t('text')}
                             </p>
 
                             <div className='flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8 mt-10 lg:mt-12'>
@@ -60,7 +66,7 @@ export default function ContactBanner({ className }: Props) {
                                 <Button
                                     style='light-2'
                                     href={pages.contato}
-                                    text='Entre em contato'
+                                    text={t('ctaButton')}
                                     icon='diagonal-arrow'
                                 />
 
@@ -68,7 +74,7 @@ export default function ContactBanner({ className }: Props) {
                                     href={pages.inscreva}
                                     className='hover-underline-alt hover-underline-alt--light font-heading font-semibold cursor-pointer'
                                 >
-                                    Inscreva seu projeto
+                                    {t('secondaryLink')}
                                 </Link>
 
                             </div>

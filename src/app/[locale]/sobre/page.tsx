@@ -1,5 +1,7 @@
 // libraries
 import type { Metadata } from 'next'
+import type { Locale } from 'next-intl'
+import { getTranslations } from 'next-intl/server'
 import clsx from 'clsx'
 import Image from 'next/image'
 
@@ -19,133 +21,80 @@ import JsonLd from '@/components/JsonLd'
 // utils
 import { pages } from '@/utils/routes'
 import { pageGraph } from '@/utils/schema'
+import { ogLocale } from '@/utils/functions'
 
 // img
 import scientists from '@/assets/img/team-2.jpg'
 
+interface Props {
+	params: Promise<{ locale: Locale }>
+}
+
 // metadata
-export const metadata: Metadata = {
-	title: 'Sobre a Aether - Plataforma de ativos farmacêuticos',
-	description: 'Conheça a Aether: a plataforma que une a construção e valorização de ativos farmacêuticos ao instituto de ciência e tecnologia ICT AetherBio+.',
-	alternates: {
-		canonical: '/sobre'
-	},
-	openGraph: {
-		title: 'Sobre a Aether - Plataforma de ativos farmacêuticos',
-		description: 'Conheça a Aether: a plataforma que une a construção e valorização de ativos farmacêuticos ao instituto de ciência e tecnologia ICT AetherBio+.',
-		url: 'https://aethergp.com.br/sobre',
-		siteName: 'Aether Global Pharma',
-		images: [
-			{
-				url: '/img/og/sobre.jpg',
-				width: 1200,
-				height: 630,
-				alt: 'Aether Global Pharma'
-			}
-		],
-		locale: 'pt_BR',
-		type: 'website'
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+	const { locale } = await params
+	const t = await getTranslations({ locale, namespace: 'SobrePage' })
+
+	return {
+		title: t('metaTitle'),
+		description: t('metaDescription'),
+		alternates: {
+			canonical: '/sobre'
+		},
+		openGraph: {
+			title: t('metaTitle'),
+			description: t('metaDescription'),
+			url: 'https://aethergp.com.br/sobre',
+			siteName: 'Aether Global Pharma',
+			images: [
+				{
+					url: '/img/og/sobre.jpg',
+					width: 1200,
+					height: 630,
+					alt: 'Aether Global Pharma'
+				}
+			],
+			locale: ogLocale(locale),
+			type: 'website'
+		}
 	}
 }
 
-const valores = [
-	{
-		title: 'Ciência',
-		text: 'Selecionamos pesquisas com elevado potencial terapêutico e conduzimos seu desenvolvimento com rigor técnico, visão translacional e foco em aplicação industrial.'
-	},
-	{
-		title: 'Propriedade Intelectual',
-		text: 'Transformamos conhecimento científico em ativos farmacêuticos por meio de desenvolvimento tecnológico, desrisking e estratégia integrada de propriedade intelectual.'
-	},
-	{
-		title: 'Licenciamento Global',
-		text: 'Posicionamos ativos para conexão com a indústria farmacêutica, investidores e parceiros estratégicos, ampliando seu potencial de transferência tecnológica e comercialização.'
-	}
-]
+export default async function SobrePage({ params }: Props) {
 
-const timeline = [
-	{
-		year: '2000',
-		title: 'Origem na indústria farmacêutica',
-		text: 'Início da atuação da fundadora em qualidade, produção industrial, assuntos regulatórios e desenvolvimento farmacêutico.'
-	},
-	{
-		year: '2005',
-		title: 'Expansão em projetos industriais',
-		text: 'Atuação em projetos de implantação, validação, desenvolvimento industrial e gestão estratégica no setor farmacêutico.'
-	},
-	{
-		year: '2013',
-		title: 'Consolidação da experiência internacional',
-		text: 'Participação em projetos de desenvolvimento tecnológico, transferência de tecnologia e gestão de operações farmacêuticas de alta complexidade.'
-	},
-	{
-		year: '2020',
-		title: 'Evolução para a construção de ativos tecnológicos',
-		text: 'A experiência acumulada evidencia uma oportunidade: transformar ciência em ativos farmacêuticos estruturados para licenciamento.'
-	},
-	{
-		year: '2025',
-		title: 'Fundação da Aether Global Pharma',
-		text: 'Nasce uma empresa dedicada à construção, desenvolvimento e monetização de ativos farmacêuticos.'
-	},
-	{
-		year: '2025',
-		title: 'Criação do ICT AetherBio+',
-		text: 'Constituição do braço científico da plataforma para acelerar a maturação tecnológica das pesquisas.'
-	},
-	{
-		year: '2026',
-		title: 'Consolidação da Plataforma Aether',
-		text: 'Captação de projetos estratégicos, fomento federal, parcerias científicas e expansão da atuação como plataforma integrada de desenvolvimento de ativos farmacêuticos.'
-	}
-]
+	const { locale } = await params
+	const t = await getTranslations({ locale, namespace: 'SobrePage' })
 
-const pilares = [
-	{
-		eyebrow: 'Pharmaceutical Asset Venture Builder',
-		icon: '/img/svg/logo/icon-gp.svg',
-		iconColor: 'bg-green-light',
-		name: 'Aether Global Pharma',
-		text: 'Responsável pela estratégia empresarial da plataforma, conduzindo desenvolvimento dos ativos, propriedade intelectual, estruturação financeira, parcerias estratégicas e licenciamento internacional.',
-		href: pages.sobreAgp,
-		cta: 'Conhecer a AGP',
-		cardClass: 'bg-green-dark text-green-light',
-		buttonStyle: 'light-2' as const
-	},
-	{
-		eyebrow: 'Pilar Científico',
-		icon: '/img/svg/logo/icon-bio-green-dark.svg',
-		iconColor: 'bg-white',
-		name: 'ICT AetherBio+',
-		text: 'Instituição científica responsável pelo avanço tecnológico dos projetos, governança científica, coordenação das pesquisas, desrisking e interação com universidades, centros de pesquisa e agências de fomento.',
-		href: pages.sobreIct,
-		cta: 'Conhecer o Bio+',
-		cardClass: 'bg-linear-to-br from-sapphire to-navy-mid text-white',
-		buttonStyle: 'white' as const
-	}
-]
+	const heroTitleLines = t.raw('heroTitleLines') as string[]
 
-// temporary placeholder addresses - same as /contato until the client confirms the real ones (~2 months, parques tecnológicos)
-const presenca = [
-	{
-		country: 'Brasil',
-		lead: 'Origem e núcleo científico da plataforma.',
-		offices: [
-			{ eyebrow: 'Sede', city: 'Curitiba, PR', lines: ['Rua José Casemiro Stenzowski, 21D', 'Novo Mundo', 'CEP 81010-370'] },
-			{ eyebrow: 'Filial', city: 'Campinas, SP', lines: ['Rua José Casemiro Stenzowski, 21D', 'Novo Mundo', 'CEP 81010-370'] }
-		]
-	},
-	{
-		country: 'Canadá',
-		lead: 'Braço internacional, interface com parceiros industriais e mercados globais.',
-		offices: [
-			{ eyebrow: 'Operação internacional', city: 'A confirmar', lines: ['Endereço da operação canadense', 'em definição'] }
-		]
-	}
-]
+	const valores = t.raw('valores') as { title: string, text: string }[]
+	const timeline = t.raw('timeline') as { year: string, title: string, text: string }[]
 
-export default function SobrePage() {
+	const pilares = [
+		{
+			eyebrow: t('pilares.0.eyebrow'),
+			icon: '/img/svg/logo/icon-gp.svg',
+			iconColor: 'bg-green-light',
+			name: t('pilares.0.name'),
+			text: t('pilares.0.text'),
+			href: pages.sobreAgp,
+			cta: t('pilares.0.cta'),
+			cardClass: 'bg-green-dark text-green-light',
+			buttonStyle: 'light-2' as const
+		},
+		{
+			eyebrow: t('pilares.1.eyebrow'),
+			icon: '/img/svg/logo/icon-bio-green-dark.svg',
+			iconColor: 'bg-white',
+			name: t('pilares.1.name'),
+			text: t('pilares.1.text'),
+			href: pages.sobreIct,
+			cta: t('pilares.1.cta'),
+			cardClass: 'bg-linear-to-br from-sapphire to-navy-mid text-white',
+			buttonStyle: 'white' as const
+		}
+	]
+
 	return (
 		<div className='bg-white'>
 
@@ -154,10 +103,10 @@ export default function SobrePage() {
 				data={pageGraph({
 					type: 'AboutPage',
 					path: '/sobre',
-					name: metadata.title as string,
-					description: metadata.description as string,
+					name: t('metaTitle'),
+					description: t('metaDescription'),
 					trail: [
-						{ name: 'Sobre', item: '/sobre' }
+						{ name: t('metaTitle'), item: '/sobre' }
 					]
 				})}
 			/>
@@ -202,9 +151,9 @@ export default function SobrePage() {
 							<div className='row'>
 								<div className='col-lg-10'>
 									<h1 className='text-72 font-heading font-bold text-green-light'>
-										Ciência <br />
-										Propriedade Intelectual <br />
-										Licenciamento Global
+										{heroTitleLines[0]} <br />
+										{heroTitleLines[1]} <br />
+										{heroTitleLines[2]}
 									</h1>
 								</div>
 							</div>
@@ -219,11 +168,11 @@ export default function SobrePage() {
 
 							<div className='col-lg-9'>
 								<p className='text-24 font-heading lg:pr-[6vw]'>
-									<AnimatedText text='Um novo modelo para transformar ciência em valor.' />
+									<AnimatedText text={t('heroSubtitle')} />
 								</p>
 
 								<p className='text-20 leading-relaxed mt-8 lg:mt-10 lg:pr-[12vw] opacity-90'>
-									<AnimatedText text='A maior parte das descobertas científicas nunca chega ao mercado. Não por falta de mérito científico, mas porque poucas tecnologias percorrem toda a jornada necessária para se tornarem ativos farmacêuticos atrativos para a indústria. <br /><br /> A Plataforma Aether foi criada para preencher essa lacuna, conectando pesquisa, desenvolvimento, propriedade intelectual, capital e estratégia de mercado em um modelo estruturado de geração de valor.' />
+									<AnimatedText text={t('heroText')} />
 								</p>
 							</div>
 
@@ -236,13 +185,13 @@ export default function SobrePage() {
 
 							<div className='col-lg-3 pb-4 lg:pb-0'>
 								<p className='font-semibold font-heading'>
-									<AnimatedText text='(nossos valores)' />
+									<AnimatedText text={t('valuesEyebrow')} />
 								</p>
 							</div>
 
 							<div className='col-lg-9'>
 								<h2 className='text-60 font-heading font-semibold'>
-									<AnimatedText text='Três princípios orientam todas as decisões.' />
+									<AnimatedText text={t('valuesHeading')} />
 								</h2>
 							</div>
 
@@ -285,7 +234,7 @@ export default function SobrePage() {
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
 							<p className='font-semibold font-heading lg:pt-2'>
-								<AnimatedText text='(a plataforma)' />
+								<AnimatedText text={t('platformEyebrow')} />
 							</p>
 						</div>
 
@@ -294,11 +243,11 @@ export default function SobrePage() {
 								style='dark'
 								className='text-60 font-heading font-semibold'
 							>
-								Uma plataforma. Dois pilares complementares.
+								{t('platformHeading')}
 							</AnimatedTitle>
 
 							<p className='text-20 leading-relaxed mt-6 lg:mt-8 lg:pr-[6vw]'>
-								<AnimatedText text='A Plataforma Aether integra duas instituições com funções distintas e complementares, permitindo conduzir toda a jornada de desenvolvimento dos ativos farmacêuticos, desde a pesquisa até sua preparação para o mercado.' />
+								<AnimatedText text={t('platformText')} />
 							</p>
 						</div>
 
@@ -358,7 +307,7 @@ export default function SobrePage() {
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
 							<p className='font-semibold font-heading lg:pt-2'>
-								<AnimatedText text='(nossa trajetória)' />
+								<AnimatedText text={t('trajectoryEyebrow')} />
 							</p>
 						</div>
 
@@ -367,7 +316,7 @@ export default function SobrePage() {
 								style='dark'
 								className='text-60 font-heading font-semibold'
 							>
-								Uma plataforma que nasceu dentro da pesquisa.
+								{t('trajectoryHeading')}
 							</AnimatedTitle>
 						</div>
 
@@ -393,24 +342,24 @@ export default function SobrePage() {
 						<div className='col-lg-5 flex flex-col justify-center lg:pr-[4vw]'>
 
 							<span className='block text-sm font-semibold uppercase tracking-wide opacity-60 mb-4'>
-								(quem conduz)
+								{t('teamEyebrow')}
 							</span>
 
 							<AnimatedTitle
 								style='dark'
 								className='text-60 font-heading font-semibold'
 							>
-								Pessoas que transformam ciência em ativos farmacêuticos.
+								{t('teamHeading')}
 							</AnimatedTitle>
 
 							<p className='text-20 leading-relaxed my-8 lg:my-10'>
-								<AnimatedText text='A Plataforma Aether reúne profissionais com experiência em desenvolvimento farmacêutico, propriedade intelectual, assuntos regulatórios, estratégia empresarial e transferência de tecnologia. Nosso modelo integra especialistas científicos, executivos e parceiros estratégicos para conduzir ativos desde a descoberta até oportunidades de licenciamento global.' />
+								<AnimatedText text={t('teamText')} />
 							</p>
 
 							<Button
 								style='dark'
 								href={pages.sobreEquipe}
-								text='Conheça a equipe'
+								text={t('teamButton')}
 								icon='diagonal-arrow'
 							/>
 
@@ -424,7 +373,7 @@ export default function SobrePage() {
 								<ScrollingImage>
 									<Image
 										src={scientists}
-										alt='Equipe Aether'
+										alt={t('teamImageAlt')}
 										fill
 										className='cover'
 										loading='lazy'
