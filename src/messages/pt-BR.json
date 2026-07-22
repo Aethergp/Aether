@@ -668,5 +668,42 @@
 		"platformCardText1": "A Aether Global Pharma conduz a estratégia de construção e valorização dos ativos, integrando propriedade intelectual, capital, parcerias e licenciamento. O ICT AetherBio+ promove o avanço científico e tecnológico dos projetos, a geração de evidências e a redução progressiva de riscos.",
 		"platformCardText2": "Funções complementares e governança independente fortalecem a construção de ativos farmacêuticos robustos e com potencial global.",
 		"platformButton": "Conheça o ICT AetherBio+"
+	},
+	"IctHero": {
+		"eyebrow": "(ict aetherbio+)",
+		"title": "Onde ciência de alto potencial avança para se tornar um ativo farmacêutico.",
+		"text": "O ICT AetherBio+ é o pilar científico e tecnológico da plataforma Aether, responsável por articular competências, infraestrutura e recursos para promover o avanço e o desrisking de projetos farmacêuticos de alto potencial. Conectamos pesquisadores, universidades, centros de pesquisa e parceiros especializados para gerar evidências, reduzir incertezas e ampliar a maturidade científica e tecnológica dos projetos.",
+		"words": ["+ Ciência de alto potencial", "+ Evidências", "+ Ativos farmacêuticos"]
+	},
+	"IctPage": {
+		"metaTitle": "ICT AetherBio+ - Instituto de Ciência e Tecnologia | Aether",
+		"metaDescription": "O ICT AetherBio+ impulsiona pesquisas em saúde e biotecnologia: maturidade tecnológica, governança científica independente e captação de fomento.",
+		"instituteEyebrow": "(o instituto)",
+		"instituteHeading": "Um ICT dedicado ao avanço da maturidade tecnológica de projetos farmacêuticos.",
+		"instituteText": "Como instituição de ciência, tecnologia e inovação sem fins lucrativos, o ICT AetherBio+ promove o avanço da maturidade de projetos científicos com potencial terapêutico. Sua atuação integra governança científica, articulação de competências especializadas, geração de evidências e acesso a mecanismos de fomento, criando condições para reduzir incertezas e apoiar a evolução dos projetos ao longo da jornada de desenvolvimento farmacêutico.",
+		"funcoesEyebrow": "(principais funções)",
+		"funcoes": [
+			{ "text": "Desrisking científico e tecnológico orientado à construção de ativos farmacêuticos" },
+			{ "text": "Governança científica e gestão estruturada do avanço de maturidade tecnológica" },
+			{ "text": "Articulação com universidades, centros de pesquisa, CROs e parceiros especializados" },
+			{ "text": "Estruturação e qualificação de projetos científicos com potencial translacional" },
+			{ "text": "Captação e articulação de fomento público e recursos não dilutivos, nacionais e internacionais" },
+			{ "text": "Geração de evidências e avanço de TRLs para redução de incertezas e valorização dos ativos" }
+		],
+		"saibaMais": "Saiba mais",
+		"governancaEyebrow": "(governança)",
+		"governancaHeading": "Governança científica independente.",
+		"governancaText1": "Cada projeto é acompanhado por uma governança científica especializada, responsável por apoiar a avaliação técnica e as decisões críticas ao longo de seu desenvolvimento.",
+		"governancaText2": "A atuação multidisciplinar fortalece o rigor científico, a qualidade das evidências e a consistência das decisões, contribuindo para a redução progressiva de riscos e para a construção de ativos farmacêuticos mais robustos.",
+		"researchersEyebrow": "(para pesquisadores)",
+		"researchersHeading": "Sua pesquisa pode ir além do laboratório.",
+		"researchersText": "Se você desenvolve uma tecnologia com potencial terapêutico em uma universidade, centro de pesquisa ou outro ambiente científico, o ICT AetherBio+ pode contribuir para construir o caminho entre a descoberta científica e as próximas etapas do desenvolvimento farmacêutico. Projetos submetidos à plataforma passam por um processo estruturado de avaliação, com confidencialidade e análise de seu potencial científico, tecnológico e translacional.",
+		"researchersButton": "Submeta seu projeto",
+		"bioLabAlt": "Pesquisadora ao microscópio no laboratório do AetherBio+",
+		"platformEyebrow": "(plataforma integrada)",
+		"platformHeading": "O pilar científico e tecnológico de uma plataforma integrada.",
+		"platformText1": "O ICT AetherBio+ promove o avanço científico e tecnológico dos projetos, a geração de evidências e a redução progressiva de riscos. A Aether Global Pharma conduz a estratégia de construção e valorização dos ativos, integrando propriedade intelectual, capital, parcerias e licenciamento.",
+		"platformText2": "Juntas, as duas entidades conectam ciência, desenvolvimento, capital e indústria para construir e valorizar ativos farmacêuticos com potencial global.",
+		"platformButton": "Conheça a Aether Global Pharma"
 	}
 }

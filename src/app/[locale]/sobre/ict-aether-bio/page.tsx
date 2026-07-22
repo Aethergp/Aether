@@ -1,5 +1,7 @@
 // libraries
 import type { Metadata } from 'next'
+import type { Locale } from 'next-intl'
+import { getTranslations } from 'next-intl/server'
 import Image from 'next/image'
 import { Link } from 'next-transition-router'
 
@@ -16,45 +18,56 @@ import JsonLd from '@/components/JsonLd'
 // utils
 import { pages } from '@/utils/routes'
 import { pageGraph } from '@/utils/schema'
+import { ogLocale } from '@/utils/functions'
 
 // img
 import bioLab from '@/assets/img/team.jpg'
 
+interface Props {
+	params: Promise<{ locale: Locale }>
+}
+
 // metadata
-export const metadata: Metadata = {
-	title: 'ICT AetherBio+ - Instituto de Ciência e Tecnologia | Aether',
-	description: 'O ICT AetherBio+ impulsiona pesquisas em saúde e biotecnologia: maturidade tecnológica, governança científica independente e captação de fomento.',
-	alternates: {
-		canonical: '/sobre/ict-aether-bio'
-	},
-	openGraph: {
-		title: 'ICT AetherBio+ - Instituto de Ciência e Tecnologia | Aether',
-		description: 'O ICT AetherBio+ impulsiona pesquisas em saúde e biotecnologia: maturidade tecnológica, governança científica independente e captação de fomento.',
-		url: 'https://aethergp.com.br/sobre/ict-aether-bio',
-		siteName: 'Aether Global Pharma',
-		images: [
-			{
-				url: '/img/og/sobre-ict-aether-bio.jpg',
-				width: 1200,
-				height: 630,
-				alt: 'ICT AetherBio+'
-			}
-		],
-		locale: 'pt_BR',
-		type: 'website'
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+	const { locale } = await params
+	const t = await getTranslations({ locale, namespace: 'IctPage' })
+
+	return {
+		title: t('metaTitle'),
+		description: t('metaDescription'),
+		alternates: {
+			canonical: '/sobre/ict-aether-bio'
+		},
+		openGraph: {
+			title: t('metaTitle'),
+			description: t('metaDescription'),
+			url: 'https://aethergp.com.br/sobre/ict-aether-bio',
+			siteName: 'Aether Global Pharma',
+			images: [
+				{
+					url: '/img/og/sobre-ict-aether-bio.jpg',
+					width: 1200,
+					height: 630,
+					alt: 'ICT AetherBio+'
+				}
+			],
+			locale: ogLocale(locale),
+			type: 'website'
+		}
 	}
 }
 
-const funcoes = [
-	{ text: 'Desrisking científico e tecnológico orientado à construção de ativos farmacêuticos' },
-	{ text: 'Governança científica e gestão estruturada do avanço de maturidade tecnológica' },
-	{ text: 'Articulação com universidades, centros de pesquisa, CROs e parceiros especializados' },
-	{ text: 'Estruturação e qualificação de projetos científicos com potencial translacional' },
-	{ text: 'Captação e articulação de fomento público e recursos não dilutivos, nacionais e internacionais' },
-	{ text: 'Geração de evidências e avanço de TRLs para redução de incertezas e valorização dos ativos', href: pages.trl }
-]
+export default async function IctAetherBioPage({ params }: Props) {
 
-export default function IctAetherBioPage() {
+	const { locale } = await params
+	const t = await getTranslations({ locale, namespace: 'IctPage' })
+	const tNav = await getTranslations({ locale, namespace: 'Nav' })
+
+	const funcoes = (t.raw('funcoes') as { text: string }[]).map((item, i) => ({
+		...item,
+		href: i === 5 ? pages.trl : undefined
+	}))
+
 	return (
 		<div className='bg-white'>
 
@@ -63,11 +76,11 @@ export default function IctAetherBioPage() {
 				data={pageGraph({
 					type: 'AboutPage',
 					path: '/sobre/ict-aether-bio',
-					name: metadata.title as string,
-					description: metadata.description as string,
+					name: t('metaTitle'),
+					description: t('metaDescription'),
 					trail: [
-						{ name: 'Sobre', item: '/sobre' },
-						{ name: 'ICT AetherBio+', item: '/sobre/ict-aether-bio' }
+						{ name: tNav('sobre'), item: '/sobre' },
+						{ name: tNav('sobreIct'), item: '/sobre/ict-aether-bio' }
 					]
 				})}
 			/>
@@ -81,7 +94,7 @@ export default function IctAetherBioPage() {
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
 							<p className='font-semibold font-heading text-wine lg:pt-2'>
-								<AnimatedText text='(o instituto)' />
+								<AnimatedText text={t('instituteEyebrow')} />
 							</p>
 						</div>
 
@@ -90,11 +103,11 @@ export default function IctAetherBioPage() {
 								style="wine"
 								className='text-60 font-heading font-semibold'
 							>
-								Um ICT dedicado ao avanço da maturidade tecnológica de projetos farmacêuticos.
+								{t('instituteHeading')}
 							</AnimatedTitle>
 
 							<p className='text-20 leading-relaxed mt-6 lg:mt-8 lg:pr-[6vw] text-wine'>
-								<AnimatedText text='Como instituição de ciência, tecnologia e inovação sem fins lucrativos, o ICT AetherBio+ promove o avanço da maturidade de projetos científicos com potencial terapêutico. Sua atuação integra governança científica, articulação de competências especializadas, geração de evidências e acesso a mecanismos de fomento, criando condições para reduzir incertezas e apoiar a evolução dos projetos ao longo da jornada de desenvolvimento farmacêutico.' />
+								<AnimatedText text={t('instituteText')} />
 							</p>
 						</div>
 
@@ -104,7 +117,7 @@ export default function IctAetherBioPage() {
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
 							<p className='font-semibold font-heading text-wine'>
-								<AnimatedText text='(principais funções)' />
+								<AnimatedText text={t('funcoesEyebrow')} />
 							</p>
 						</div>
 
@@ -126,7 +139,7 @@ export default function IctAetherBioPage() {
 															href={item.href}
 															className='underline underline-offset-4 decoration-1 hover:text-white'
 														>
-															Saiba mais
+															{t('saibaMais')}
 														</Link>
 													</>
 												)}
@@ -157,7 +170,7 @@ export default function IctAetherBioPage() {
 					<div className='row pb-10 lg:pb-[4vw]'>
 						<div className='col-lg-3 pb-4 lg:pb-0'>
 							<p className='font-semibold font-heading text-wine lg:pt-2'>
-								<AnimatedText text='(governança)' />
+								<AnimatedText text={t('governancaEyebrow')} />
 							</p>
 						</div>
 						<div className='col-lg-9'>
@@ -165,7 +178,7 @@ export default function IctAetherBioPage() {
 								style="wine"
 								className='text-60 font-heading font-semibold'
 							>
-								Governança científica independente.
+								{t('governancaHeading')}
 							</AnimatedTitle>
 						</div>
 					</div>
@@ -180,11 +193,11 @@ export default function IctAetherBioPage() {
 								<div className='row'>
 									<div className='col-lg-9'>
 										<p className='text-24 font-heading leading-snug'>
-											Cada projeto é acompanhado por uma governança científica especializada, responsável por apoiar a avaliação técnica e as decisões críticas ao longo de seu desenvolvimento.
+											{t('governancaText1')}
 										</p>
 
 										<p className='text-18 leading-relaxed mt-6 opacity-80'>
-											A atuação multidisciplinar fortalece o rigor científico, a qualidade das evidências e a consistência das decisões, contribuindo para a redução progressiva de riscos e para a construção de ativos farmacêuticos mais robustos.
+											{t('governancaText2')}
 										</p>
 									</div>
 								</div>
@@ -204,25 +217,25 @@ export default function IctAetherBioPage() {
 						<div className='col-lg-6 flex flex-col justify-center lg:pr-[3vw]'>
 
 							<span className='block text-sm font-semibold uppercase tracking-wide opacity-60 mb-4 text-wine'>
-								(para pesquisadores)
+								{t('researchersEyebrow')}
 							</span>
 
 							<AnimatedTitle
 								style="wine"
 								className='text-60 font-heading font-semibold'
 							>
-								Sua pesquisa pode ir além do laboratório.
+								{t('researchersHeading')}
 							</AnimatedTitle>
 
 							<p className='text-20 leading-relaxed my-8 lg:my-10 text-wine'>
-								<AnimatedText text='Se você desenvolve uma tecnologia com potencial terapêutico em uma universidade, centro de pesquisa ou outro ambiente científico, o ICT AetherBio+ pode contribuir para construir o caminho entre a descoberta científica e as próximas etapas do desenvolvimento farmacêutico. Projetos submetidos à plataforma passam por um processo estruturado de avaliação, com confidencialidade e análise de seu potencial científico, tecnológico e translacional.' />
+								<AnimatedText text={t('researchersText')} />
 							</p>
 
 							<div>
 								<Button
 									style='blue-dark'
 									href={pages.inscreva}
-									text='Submeta seu projeto'
+									text={t('researchersButton')}
 									icon='diagonal-arrow'
 								/>
 							</div>
@@ -234,7 +247,7 @@ export default function IctAetherBioPage() {
 								<ScrollingImage>
 									<Image
 										src={bioLab}
-										alt='Pesquisadora ao microscópio no laboratório do AetherBio+'
+										alt={t('bioLabAlt')}
 										fill
 										className='cover'
 										loading='lazy'
@@ -254,7 +267,7 @@ export default function IctAetherBioPage() {
 					<div className='row pb-10 lg:pb-[4vw]'>
 						<div className='col-lg-3 pb-4 lg:pb-0'>
 							<p className='font-semibold font-heading text-green-dark lg:pt-2'>
-								<AnimatedText text='(plataforma integrada)' />
+								<AnimatedText text={t('platformEyebrow')} />
 							</p>
 						</div>
 						<div className='col-lg-9'>
@@ -262,7 +275,7 @@ export default function IctAetherBioPage() {
 								style='dark'
 								className='text-60 font-heading font-semibold'
 							>
-								O pilar científico e tecnológico de uma plataforma integrada.
+								{t('platformHeading')}
 							</AnimatedTitle>
 						</div>
 					</div>
@@ -283,18 +296,18 @@ export default function IctAetherBioPage() {
 										/>
 
 										<p className='text-24 font-heading leading-snug'>
-											O ICT AetherBio+ promove o avanço científico e tecnológico dos projetos, a geração de evidências e a redução progressiva de riscos. A Aether Global Pharma conduz a estratégia de construção e valorização dos ativos, integrando propriedade intelectual, capital, parcerias e licenciamento.
+											{t('platformText1')}
 										</p>
 
 										<p className='text-18 leading-relaxed mt-6 opacity-80'>
-											Juntas, as duas entidades conectam ciência, desenvolvimento, capital e indústria para construir e valorizar ativos farmacêuticos com potencial global.
+											{t('platformText2')}
 										</p>
 
 										<div className='mt-10 lg:mt-12'>
 											<Button
 												style='light'
 												href={pages.sobreAgp}
-												text='Conheça a Aether Global Pharma'
+												text={t('platformButton')}
 												icon='diagonal-arrow'
 											/>
 										</div>

@@ -2,6 +2,7 @@
 
 // libraries
 import { useRef } from 'react'
+import { useTranslations } from 'next-intl'
 import clsx from 'clsx'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
@@ -15,9 +16,10 @@ import AnimatedText from '@/components/Utils/Animations/AnimatedText'
 import MagneticButton from '@/components/Utils/Animations/MagneticButton'
 import BioGrainient from './BioGrainient'
 
-
-const words = ['+ Ciência de alto potencial', '+ Evidências', '+ Ativos farmacêuticos']
 export default function Hero() {
+
+	const t = useTranslations('IctHero')
+	const words = t.raw('words') as string[]
 
 	const rootRef = useRef<HTMLElement>(null)
 	const pinRef = useRef<HTMLDivElement>(null)
@@ -87,7 +89,7 @@ export default function Hero() {
 					<div className='row'>
 						<div className='col-lg-9'>
 							<span className='block text-sm font-semibold uppercase tracking-wide opacity-70 mb-6 lg:mb-8'>
-								(ict aetherbio+)
+								{t('eyebrow')}
 							</span>
 
 							<MaskedIcon
@@ -101,7 +103,7 @@ export default function Hero() {
 					<div className='row pt-12 lg:pt-[6vw]'>
 						<div className='col-lg-10'>
 							<h1 className='text-72 font-heading font-semibold leading-[1.05]!'>
-								<AnimatedText text='Onde ciência de alto potencial avança para se tornar um ativo farmacêutico.' />
+								<AnimatedText text={t('title')} />
 							</h1>
 						</div>
 					</div>
@@ -112,7 +114,7 @@ export default function Hero() {
 
 						<div className='col-lg-8'>
 							<p className='text-20 leading-relaxed opacity-90'>
-								<AnimatedText text='O ICT AetherBio+ é o pilar científico e tecnológico da plataforma Aether, responsável por articular competências, infraestrutura e recursos para promover o avanço e o desrisking de projetos farmacêuticos de alto potencial. Conectamos pesquisadores, universidades, centros de pesquisa e parceiros especializados para gerar evidências, reduzir incertezas e ampliar a maturidade científica e tecnológica dos projetos.' />
+								<AnimatedText text={t('text')} />
 							</p>
 						</div>
 

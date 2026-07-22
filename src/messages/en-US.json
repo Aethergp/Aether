@@ -668,5 +668,42 @@
 		"platformCardText1": "Aether Global Pharma leads the strategy for building and adding value to assets, integrating intellectual property, capital, partnerships, and licensing. ICT AetherBio+ drives the projects' scientific and technological advancement, evidence generation, and progressive risk reduction.",
 		"platformCardText2": "Complementary functions and independent governance strengthen the construction of robust pharmaceutical assets with global potential.",
 		"platformButton": "Learn about ICT AetherBio+"
+	},
+	"IctHero": {
+		"eyebrow": "(ict aetherbio+)",
+		"title": "Where high-potential science advances to become a pharmaceutical asset.",
+		"text": "ICT AetherBio+ is the scientific and technological pillar of the Aether Platform, responsible for coordinating expertise, infrastructure, and resources to drive the advancement and de-risking of high-potential pharmaceutical projects. We connect researchers, universities, research centers, and specialized partners to generate evidence, reduce uncertainty, and expand the scientific and technological maturity of projects.",
+		"words": ["+ High-potential science", "+ Evidence", "+ Pharmaceutical assets"]
+	},
+	"IctPage": {
+		"metaTitle": "ICT AetherBio+ - Science and Technology Institute | Aether",
+		"metaDescription": "ICT AetherBio+ drives research in health and biotechnology: technology readiness, independent scientific governance, and funding acquisition.",
+		"instituteEyebrow": "(the institute)",
+		"instituteHeading": "An ICT dedicated to advancing the technology readiness of pharmaceutical projects.",
+		"instituteText": "As a nonprofit science, technology, and innovation institution, ICT AetherBio+ drives the maturity advancement of scientific projects with therapeutic potential. Its work integrates scientific governance, coordination of specialized expertise, evidence generation, and access to funding mechanisms, creating conditions to reduce uncertainty and support projects along the pharmaceutical development journey.",
+		"funcoesEyebrow": "(core functions)",
+		"funcoes": [
+			{ "text": "Scientific and technological de-risking oriented toward building pharmaceutical assets" },
+			{ "text": "Scientific governance and structured management of technology-readiness advancement" },
+			{ "text": "Coordination with universities, research centers, CROs, and specialized partners" },
+			{ "text": "Structuring and qualifying scientific projects with translational potential" },
+			{ "text": "Securing and coordinating public funding and non-dilutive resources, domestic and international" },
+			{ "text": "Generating evidence and advancing TRLs to reduce uncertainty and add value to assets" }
+		],
+		"saibaMais": "Learn more",
+		"governancaEyebrow": "(governance)",
+		"governancaHeading": "Independent scientific governance.",
+		"governancaText1": "Each project is accompanied by specialized scientific governance, responsible for supporting technical assessment and critical decisions throughout its development.",
+		"governancaText2": "This multidisciplinary work strengthens scientific rigor, evidence quality, and decision consistency, contributing to progressive risk reduction and the construction of more robust pharmaceutical assets.",
+		"researchersEyebrow": "(for researchers)",
+		"researchersHeading": "Your research can go beyond the lab.",
+		"researchersText": "If you're developing a technology with therapeutic potential at a university, research center, or other scientific setting, ICT AetherBio+ can help build the path between scientific discovery and the next stages of pharmaceutical development. Projects submitted to the platform go through a structured evaluation process, with confidentiality and an analysis of their scientific, technological, and translational potential.",
+		"researchersButton": "Submit your project",
+		"bioLabAlt": "Researcher at the microscope in the AetherBio+ lab",
+		"platformEyebrow": "(integrated platform)",
+		"platformHeading": "The scientific and technological pillar of an integrated platform.",
+		"platformText1": "ICT AetherBio+ drives the projects' scientific and technological advancement, evidence generation, and progressive risk reduction. Aether Global Pharma leads the strategy for building and adding value to assets, integrating intellectual property, capital, partnerships, and licensing.",
+		"platformText2": "Together, the two entities connect science, development, capital, and industry to build and add value to pharmaceutical assets with global potential.",
+		"platformButton": "Learn about Aether Global Pharma"
 	}
 }
