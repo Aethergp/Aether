@@ -84,7 +84,7 @@ export default function MediaCard({ post }: Props) {
 			</p>
 
 			<div className='flex items-center gap-2 text-sm opacity-60 mt-5'>
-				<span>{formatDate(post.date)}</span>
+				<span>{formatDate(post.date, locale)}</span>
 				{isExternal && post.source && (
 					<>
 						<span aria-hidden='true'>·</span>

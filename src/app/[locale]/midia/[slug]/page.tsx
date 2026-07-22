@@ -140,7 +140,7 @@ export default async function PostPage({ params }: Props) {
 											{readingTime} {readingTime === 1 ? t('readingTimeSingular') : t('readingTimePlural')}
 										</span>
 
-										<span>{formatDate(post.date)}</span>
+										<span>{formatDate(post.date, locale)}</span>
 
 									</div>
 

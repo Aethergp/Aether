@@ -126,9 +126,14 @@ export function getReadingTime(post: MediaPost): number {
 	return Math.max(1, Math.round(words / 200))
 }
 
-const MONTHS_PT = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez']
+const MONTHS: Record<string, string[]> = {
+	'pt-BR': ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'],
+	'en-US': ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+	es: ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic']
+}
 
-export function formatDate(iso: string): string {
+export function formatDate(iso: string, locale: string = 'pt-BR'): string {
 	const [year, month, day] = iso.split('-').map(Number)
-	return `${String(day).padStart(2, '0')} ${MONTHS_PT[month - 1]} ${year}`
+	const months = MONTHS[locale] ?? MONTHS['pt-BR']
+	return `${String(day).padStart(2, '0')} ${months[month - 1]} ${year}`
 }
