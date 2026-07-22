@@ -62,7 +62,8 @@ export default async function MidiaPage({ params }: Props) {
 
 			<JsonLd
 				id='jsonld-midia'
-				data={pageGraph({
+				data={await pageGraph({
+					locale,
 					type: 'CollectionPage',
 					path: '/midia',
 					name: t('metaTitle'),

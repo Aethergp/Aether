@@ -1,5 +1,7 @@
 // libraries
 import type { Metadata } from 'next'
+import type { Locale } from 'next-intl'
+import { getTranslations } from 'next-intl/server'
 import clsx from 'clsx'
 import type { Viewport } from 'next'
 import { Inter, Syne } from 'next/font/google'
@@ -17,52 +19,65 @@ import ViewportHeight from '@/components/Utils/ViewportHeight'
 import JsonLd from '@/components/JsonLd'
 
 // utils
-import { graph, organization, ictOrganization, founder, website } from '@/utils/schema'
+import { graph, getOrganization, getIctOrganization, getFounder, getWebsite } from '@/utils/schema'
 import { routing } from '@/i18n/routing'
+import { ogLocale } from '@/utils/functions'
 
 // css
 import '@/assets/css/global.css'
 
+interface LayoutMetadataProps {
+	params: Promise<{ locale: Locale }>
+}
+
 // metadata
-export const metadata: Metadata = {
-	metadataBase: new URL(`https://aethergp.com.br`),
-	alternates: {
-        canonical: './',
-    },
-	title: 'Aether Global Pharma | Ciência e Ativos Farmacêuticos',
-	description: 'Plataforma especializada em transformar ciência em ativos farmacêuticos: desrisking científico, propriedade intelectual e licenciamento global.',
-	icons: {
-		icon: [
-			{ url: '/icon.svg', type: 'image/svg+xml' },
-			{ url: '/icon.png', type: 'image/png', sizes: '32x32' },
-			{ url: '/icon.png', type: 'image/png', sizes: '96x96' },
-			{ url: '/favicon.ico', sizes: 'any' }
-		],
-		apple: [
-			{ url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }
-		]
-	},
-	manifest: '/manifest.json',
-	openGraph: {
-		title: 'Aether Global Pharma | Ciência e Ativos Farmacêuticos',
-		description: 'Plataforma especializada em transformar ciência em ativos farmacêuticos: desrisking científico, propriedade intelectual e licenciamento global.',
-		url: 'https://aethergp.com.br',
-		siteName: 'Aether Global Pharma',
-		images: [
-			{
-				url: 'https://aethergp.com.br/img/og-image.jpg',
-				width: 1280,
-				height: 628,
-				alt: 'Aether Global Pharma | Ciência e Ativos Farmacêuticos'
-			}
-		],
-		locale: 'pt_BR',
-		type: 'website'
-	},
-	// only the card type is set here: `twitter` is inherited by every route, so
-	// pinning a title/description/image would override each page's own
-	twitter: {
-		card: 'summary_large_image'
+export async function generateMetadata({ params }: LayoutMetadataProps): Promise<Metadata> {
+	const { locale } = await params
+	const t = await getTranslations({ locale, namespace: 'Schema' })
+
+	const title = `Aether Global Pharma | ${t('orgSlogan')}`
+	const description = t('orgDescription')
+
+	return {
+		metadataBase: new URL(`https://aethergp.com.br`),
+		alternates: {
+			canonical: './'
+		},
+		title,
+		description,
+		icons: {
+			icon: [
+				{ url: '/icon.svg', type: 'image/svg+xml' },
+				{ url: '/icon.png', type: 'image/png', sizes: '32x32' },
+				{ url: '/icon.png', type: 'image/png', sizes: '96x96' },
+				{ url: '/favicon.ico', sizes: 'any' }
+			],
+			apple: [
+				{ url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }
+			]
+		},
+		manifest: '/manifest.json',
+		openGraph: {
+			title,
+			description,
+			url: 'https://aethergp.com.br',
+			siteName: 'Aether Global Pharma',
+			images: [
+				{
+					url: 'https://aethergp.com.br/img/og-image.jpg',
+					width: 1280,
+					height: 628,
+					alt: title
+				}
+			],
+			locale: ogLocale(locale),
+			type: 'website'
+		},
+		// only the card type is set here: `twitter` is inherited by every route, so
+		// pinning a title/description/image would override each page's own
+		twitter: {
+			card: 'summary_large_image'
+		}
 	}
 }
 
@@ -105,6 +120,13 @@ export default async function LocaleLayout({
 	if (!hasLocale(routing.locales, locale)) {
 		notFound()
 	}
+
+	const [organization, ictOrganization, founder, website] = await Promise.all([
+		getOrganization(locale),
+		getIctOrganization(locale),
+		getFounder(locale),
+		getWebsite(locale)
+	])
 
 	return (
 		<html

@@ -60,7 +60,8 @@ export default async function TermosECondicoesPage({ params }: Props) {
 
 			<JsonLd
 				id='jsonld-termos'
-				data={pageGraph({
+				data={await pageGraph({
+					locale,
 					type: 'WebPage',
 					path: '/termos-e-condicoes',
 					name: t('metaTitle'),

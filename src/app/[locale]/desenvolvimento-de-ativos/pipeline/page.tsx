@@ -103,7 +103,8 @@ export default async function PipelinePage({ params }: Props) {
 
 			<JsonLd
 				id='jsonld-pd-pipeline'
-				data={pageGraph({
+				data={await pageGraph({
+					locale,
 					type: 'CollectionPage',
 					path: '/desenvolvimento-de-ativos/pipeline',
 					name: t('metaTitle'),

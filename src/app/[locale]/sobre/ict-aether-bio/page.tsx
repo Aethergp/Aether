@@ -19,6 +19,7 @@ import JsonLd from '@/components/JsonLd'
 import { pages } from '@/utils/routes'
 import { pageGraph } from '@/utils/schema'
 import { ogLocale } from '@/utils/functions'
+import { getPathname } from '@/i18n/navigation'
 
 // img
 import bioLab from '@/assets/img/team.jpg'
@@ -73,7 +74,8 @@ export default async function IctAetherBioPage({ params }: Props) {
 
 			<JsonLd
 				id='jsonld-sobre-ict'
-				data={pageGraph({
+				data={await pageGraph({
+					locale,
 					type: 'AboutPage',
 					path: '/sobre/ict-aether-bio',
 					name: t('metaTitle'),
@@ -136,7 +138,7 @@ export default async function IctAetherBioPage({ params }: Props) {
 													<>
 														{' '}
 														<Link
-															href={item.href}
+															href={getPathname({ href: item.href, locale })}
 															className='underline underline-offset-4 decoration-1 hover:text-white'
 														>
 															{t('saibaMais')}

@@ -842,5 +842,27 @@
 		"navAriaLabel": "Paginación",
 		"prevAriaLabel": "Página anterior",
 		"nextAriaLabel": "Página siguiente"
+	},
+	"MediaCard": {
+		"externalLinkLabel": "Enlace externo"
+	},
+	"Schema": {
+		"orgSlogan": "Ciencia y Activos Farmacéuticos",
+		"orgDescription": "Aether Global Pharma es una plataforma especializada en transformar ciencia en activos farmacéuticos: reducción de riesgo científico, propiedad intelectual, madurez tecnológica, transferencia de tecnología y licenciamiento global.",
+		"areaBrazil": "Brasil",
+		"areaCanada": "Canadá",
+		"orgKnowsAbout": [
+			"Desarrollo de activos farmacéuticos",
+			"Propiedad intelectual farmacéutica",
+			"Transferencia de tecnología",
+			"Licenciamiento farmacéutico global",
+			"Madurez tecnológica (TRL)",
+			"Biotecnología",
+			"Reducción de riesgo científico"
+		],
+		"ictAlternateName": "Instituto de Ciencia y Tecnología AetherBio+",
+		"ictDescription": "Instituto de Ciencia y Tecnología dedicado a investigaciones avanzadas en salud y biotecnología, madurez tecnológica y gobernanza científica independiente.",
+		"founderJobTitle": "CEO y Fundadora",
+		"founderDescription": "Más de 25 años de experiencia en la industria farmacéutica y en entornos altamente regulados, en la intersección entre desarrollo farmacéutico, estrategia regulatoria, transferencia de tecnología y operaciones industriales. Fundadora y CEO de Aether Global Pharma y presidenta del ICT AetherBio+."
 	}
 }

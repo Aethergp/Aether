@@ -91,7 +91,8 @@ export default async function PostPage({ params }: Props) {
 
 			<JsonLd
 				id='jsonld-article'
-				data={pageGraph({
+				data={await pageGraph({
+					locale,
 					path: mediaHref(post),
 					name: `${post.title} | Aether Global Pharma`,
 					description: post.excerpt,

@@ -70,7 +70,8 @@ export default async function AetherGlobalPharmaPage({ params }: Props) {
 
 			<JsonLd
 				id='jsonld-sobre-agp'
-				data={pageGraph({
+				data={await pageGraph({
+					locale,
 					type: 'AboutPage',
 					path: '/sobre/aether-global-pharma',
 					name: t('metaTitle'),

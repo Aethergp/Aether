@@ -73,7 +73,8 @@ export default async function TRLPage({ params }: Props) {
 
 			<JsonLd
 				id='jsonld-pd-trl'
-				data={pageGraph({
+				data={await pageGraph({
+					locale,
 					type: 'WebPage',
 					path: '/desenvolvimento-de-ativos/trl',
 					name: t('metaTitle'),

@@ -93,7 +93,8 @@ export default async function ContatoPage({ params }: Props) {
 
 			<JsonLd
 				id='jsonld-contato'
-				data={pageGraph({
+				data={await pageGraph({
+					locale,
 					type: 'ContactPage',
 					path: '/contato',
 					name: t('metaTitle'),

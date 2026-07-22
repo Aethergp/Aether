@@ -100,7 +100,8 @@ export default async function SobrePage({ params }: Props) {
 
 			<JsonLd
 				id='jsonld-sobre'
-				data={pageGraph({
+				data={await pageGraph({
+					locale,
 					type: 'AboutPage',
 					path: '/sobre',
 					name: t('metaTitle'),

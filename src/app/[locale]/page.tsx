@@ -55,7 +55,8 @@ export default async function Home({ params }: Props) {
 
 			<JsonLd
 				id='jsonld-home'
-				data={pageGraph({
+				data={await pageGraph({
+					locale,
 					path: '/',
 					name: t('metaTitle'),
 					description: t('metaDescription'),

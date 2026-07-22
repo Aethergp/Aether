@@ -3,7 +3,7 @@
 // libraries
 import clsx from 'clsx'
 import { Link } from 'next-transition-router'
-import { useTranslations } from 'next-intl'
+import { useTranslations, useLocale } from 'next-intl'
 import { useEffect, useState } from 'react'
 
 // components
@@ -15,7 +15,7 @@ import LocaleSwitcher from '@/components/LocaleSwitcher'
 import { useAnchorScroll } from '@/hooks/useAnchorScroll'
 import { useIsNotFound } from '@/components/Utils/NotFoundContext'
 import { navLinks, headerLinks, pages } from '@/utils/routes'
-import { usePathname } from '@/i18n/navigation'
+import { usePathname, getPathname } from '@/i18n/navigation'
 
 // svg
 import Logo from '@/assets/svg/logo/aether-gp.svg'
@@ -25,6 +25,8 @@ import UxArrowRight from '@/assets/svg/ux/arrow-right.svg'
 export default function Menu() {
 
 	const t = useTranslations('Nav')
+	const locale = useLocale()
+	const localize = (href: string) => href.startsWith('/') ? getPathname({ href, locale }) : href
 	const scrollTo = useAnchorScroll()
 
 	// light logo over the dark home hero, dark logo over light pages
@@ -80,7 +82,7 @@ export default function Menu() {
 
 						<MagneticButton>
 							<Link
-								href='/'
+								href={localize('/')}
 								className='w-60 sm:w-70 lg:w-80 xl:w-90 flex'
 							>
 								<Logo className={clsx(
@@ -109,7 +111,7 @@ export default function Menu() {
 													{item.children.map((child, j) => (
 														<li key={j}>
 															<Link
-																href={child.href}
+																href={localize(child.href)}
 																className='block px-4 py-2.5 rounded-sm text-green-dark whitespace-nowrap transition-colors duration-200 hover:bg-green-dark hover:text-green-light'
 															>
 																{t(child.label)}
@@ -159,7 +161,7 @@ export default function Menu() {
 				<div className='flex items-center justify-between gap-4 p-6 sm:p-10 shrink-0'>
 
 					<Link
-						href='/'
+						href={localize('/')}
 						className='w-60 md:w-70 flex'
 						onClick={() => setIsOpen(false)}
 					>
@@ -197,7 +199,7 @@ export default function Menu() {
 							>
 								<div className='flex items-center justify-between gap-4'>
 									<Link
-										href={item.href}
+										href={localize(item.href)}
 										onClick={(e) => {
 											if (item.href.startsWith('#')) {
 												scrollTo(e, item.href)
@@ -238,7 +240,7 @@ export default function Menu() {
 											{item.children.map((child, j) => (
 												<li key={j}>
 													<Link
-														href={child.href}
+														href={localize(child.href)}
 														onClick={() => setIsOpen(false)}
 														className='group/sub flex items-center justify-between gap-4 bg-green-dark/[0.07] rounded-md px-5 py-3.5 text-18 font-heading font-medium text-green-dark transition-colors duration-200 hover:bg-green-dark hover:text-green-light'
 													>

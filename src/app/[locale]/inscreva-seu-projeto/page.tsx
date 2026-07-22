@@ -59,7 +59,8 @@ export default async function InscrevaSeuProjetoPage({ params }: Props) {
 
 			<JsonLd
 				id='jsonld-inscreva'
-				data={pageGraph({
+				data={await pageGraph({
+					locale,
 					type: 'WebPage',
 					path: '/inscreva-seu-projeto',
 					name: t('metaTitle'),

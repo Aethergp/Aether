@@ -3,6 +3,7 @@
 // libraries
 import clsx from 'clsx'
 import Image from 'next/image'
+import { useTranslations, useLocale } from 'next-intl'
 import { Link } from 'next-transition-router'
 
 // svg
@@ -11,12 +12,16 @@ import UxLink from '@/assets/svg/ux/link.svg'
 
 // utils
 import { type MediaPost, mediaHref, formatDate } from '@/app/[locale]/midia/db/data'
+import { getPathname } from '@/i18n/navigation'
 
 interface Props {
 	post: MediaPost
 }
 
 export default function MediaCard({ post }: Props) {
+
+	const t = useTranslations('MediaCard')
+	const locale = useLocale()
 
 	const href = mediaHref(post)
 	const isExternal = post.type === 'imprensa'
@@ -56,7 +61,7 @@ export default function MediaCard({ post }: Props) {
 					{isExternal && (
 						<span className='flex items-center gap-1.5 bg-black text-green-light text-xs font-semibold uppercase tracking-wide px-3 py-1.5 rounded-sm'>
 							<UxLink className='w-3 h-3 text-current' />
-							Link externo
+							{t('externalLinkLabel')}
 						</span>
 					)}
 
@@ -106,7 +111,7 @@ export default function MediaCard({ post }: Props) {
 	}
 
 	return (
-		<Link href={href} className={className}>
+		<Link href={getPathname({ href, locale })} className={className}>
 			{body}
 		</Link>
 	)

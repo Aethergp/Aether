@@ -842,5 +842,27 @@
 		"navAriaLabel": "Pagination",
 		"prevAriaLabel": "Previous page",
 		"nextAriaLabel": "Next page"
+	},
+	"MediaCard": {
+		"externalLinkLabel": "External link"
+	},
+	"Schema": {
+		"orgSlogan": "Science and Pharmaceutical Assets",
+		"orgDescription": "Aether Global Pharma is a platform specialized in turning science into pharmaceutical assets: scientific de-risking, intellectual property, technology readiness, technology transfer, and global licensing.",
+		"areaBrazil": "Brazil",
+		"areaCanada": "Canada",
+		"orgKnowsAbout": [
+			"Pharmaceutical asset development",
+			"Pharmaceutical intellectual property",
+			"Technology transfer",
+			"Global pharmaceutical licensing",
+			"Technology readiness level (TRL)",
+			"Biotechnology",
+			"Scientific de-risking"
+		],
+		"ictAlternateName": "AetherBio+ Science and Technology Institute",
+		"ictDescription": "Science and Technology Institute dedicated to advanced research in health and biotechnology, technology readiness, and independent scientific governance.",
+		"founderJobTitle": "CEO and Founder",
+		"founderDescription": "More than 25 years of experience in the pharmaceutical industry and highly regulated environments, at the intersection of pharmaceutical development, regulatory strategy, technology transfer, and industrial operations. Founder and CEO of Aether Global Pharma and president of ICT AetherBio+."
 	}
 }

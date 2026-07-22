@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from 'react'
 import clsx from 'clsx'
 import { useFormContext } from 'react-hook-form'
 import { Link } from 'next-transition-router'
-import { useTranslations } from 'next-intl'
+import { useTranslations, useLocale } from 'next-intl'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -15,6 +15,7 @@ import { Form, Input, Textarea, FileUpload, Checkbox, InputHidden, Honeypot, Sub
 
 // utils
 import { pages, contact } from '@/utils/routes'
+import { getPathname } from '@/i18n/navigation'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -24,6 +25,7 @@ const STEP_1_REQUIRED = ['Nome', 'Instituição', 'Cargo', 'Email', 'Localizaç�
 function Steps() {
 
 	const t = useTranslations('InscrevaPage')
+	const locale = useLocale()
 	const [step, setStep] = useState(1)
 	const { trigger } = useFormContext()
 
@@ -108,7 +110,7 @@ function Steps() {
 
 						<p className='text-sm text-green-dark/70 -mt-1 mb-4'>
 							{t('form.trlPrompt')}{' '}
-							<Link href={pages.trl} className='hover-underline font-semibold'>
+							<Link href={getPathname({ href: pages.trl, locale })} className='hover-underline font-semibold'>
 								{t('form.trlLink')}
 							</Link>
 						</p>
@@ -139,7 +141,7 @@ function Steps() {
 						>
 							<span>
 								{t('form.lgpdText')}{' '}
-								<Link href={pages.privacy} className='hover-underline font-semibold'>
+								<Link href={getPathname({ href: pages.privacy, locale })} className='hover-underline font-semibold'>
 									{t('form.privacyLink')}
 								</Link>
 								. {/* PLACEHOLDER - texto LGPD a alinhar com o cliente */}

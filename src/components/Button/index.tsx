@@ -1,7 +1,11 @@
 // libraries
 import clsx from 'clsx'
 import type { ComponentProps } from 'react'
+import { useLocale } from 'next-intl'
 import { Link } from 'next-transition-router'
+
+// utils
+import { getPathname } from '@/i18n/navigation'
 
 // svg
 import UxArrowDiagonal from '@/assets/svg/ux/arrow-diagonal.svg'
@@ -49,6 +53,8 @@ export default function Button({
 	type,
 	...rest
 }: ButtonProps) {
+
+	const locale = useLocale()
 
 	const classes = clsx(
 		className,
@@ -204,9 +210,11 @@ export default function Button({
 			)
 		}
 
+		const localizedHref = href.startsWith('/') ? getPathname({ href, locale }) : href
+
 		return (
 			<Link
-				href={href}
+				href={localizedHref}
 				className={classes}
 				{...linkRest}
 			>

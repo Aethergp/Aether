@@ -101,7 +101,8 @@ export default async function EquipePage({ params }: Props) {
 
 			<JsonLd
 				id='jsonld-equipe'
-				data={pageGraph({
+				data={await pageGraph({
+					locale,
 					type: 'AboutPage',
 					path: '/sobre/equipe',
 					name: t('metaTitle'),

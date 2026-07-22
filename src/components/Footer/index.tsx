@@ -3,17 +3,19 @@
 // libraries
 import { Link } from 'next-transition-router'
 import { gsap } from 'gsap'
-import { useTranslations } from 'next-intl'
+import { useTranslations, useLocale } from 'next-intl'
 import { useGSAP } from '@gsap/react'
 
 // utils
 import { social, footerColumns, pages } from '@/utils/routes'
 import { getYear } from '@/utils/functions'
-import { usePathname } from '@/i18n/navigation'
+import { usePathname, getPathname } from '@/i18n/navigation'
 
 export default function Footer() {
 
 	const t = useTranslations('Nav')
+	const locale = useLocale()
+	const localize = (href: string) => href.startsWith('/') ? getPathname({ href, locale }) : href
 	const pathname = usePathname()
 
 	useGSAP(() => {
@@ -88,7 +90,7 @@ export default function Footer() {
 										{col.map((item, j) => (
 											<li key={j}>
 												<Link
-													href={item.href}
+													href={localize(item.href)}
 													className='hover-underline'
 												>
 													{t(item.label)}
@@ -99,7 +101,7 @@ export default function Footer() {
 														{item.children.map((child, k) => (
 															<li key={k}>
 																<Link
-																	href={child.href}
+																	href={localize(child.href)}
 																	className='hover-underline'
 																>
 																	{t(child.label)}
@@ -158,7 +160,7 @@ export default function Footer() {
 						<div className='flex flex-wrap items-center gap-x-6 gap-y-2'>
 							<p>{t('copyright', { year })}</p>
 							<Link
-								href={pages.privacy}
+								href={localize(pages.privacy)}
 								className='hover-underline'
 							>
 								{t('privacyLink')}

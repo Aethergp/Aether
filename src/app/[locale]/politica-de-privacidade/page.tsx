@@ -61,7 +61,8 @@ export default async function PoliticaDePrivacidadePage({ params }: Props) {
 
 			<JsonLd
 				id='jsonld-privacidade'
-				data={pageGraph({
+				data={await pageGraph({
+					locale,
 					type: 'WebPage',
 					path: '/politica-de-privacidade',
 					name: t('metaTitle'),

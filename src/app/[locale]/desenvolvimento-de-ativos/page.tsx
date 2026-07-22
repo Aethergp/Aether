@@ -63,7 +63,8 @@ export default async function DesenvolvimentodeAtivos({ params }: Props) {
 
 			<JsonLd
 				id='jsonld-pd'
-				data={pageGraph({
+				data={await pageGraph({
+					locale,
 					type: 'WebPage',
 					path: '/desenvolvimento-de-ativos',
 					name: t('metaTitle'),

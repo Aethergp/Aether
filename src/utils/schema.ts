@@ -2,6 +2,13 @@
 // reference each other (breadcrumbs → page, article → publisher) instead of
 // repeating the organisation on every route.
 
+// libraries
+import type { Locale } from 'next-intl'
+import { getTranslations } from 'next-intl/server'
+
+// utils
+import { getPathname } from '@/i18n/navigation'
+
 export const SITE_URL = 'https://aethergp.com.br'
 
 export const ORG_ID = `${SITE_URL}/#organization`
@@ -9,93 +16,102 @@ export const ICT_ID = `${SITE_URL}/#ict-aetherbio`
 export const WEBSITE_ID = `${SITE_URL}/#website`
 export const FOUNDER_ID = `${SITE_URL}/#patricia-oliveira`
 
-const SLOGAN = 'Ciência e Ativos Farmacêuticos'
+// entity nodes (Organization/ResearchOrganization/Person/WebSite) keep a single,
+// locale-invariant @id and canonical (pt-BR) url - they represent the same
+// real-world entity regardless of which locale is viewing the page. Only their
+// descriptive text fields vary by locale.
 
-const DESCRIPTION = 'A Aether Global Pharma é uma plataforma especializada em transformar ciência em ativos farmacêuticos: desrisking científico, propriedade intelectual, maturidade tecnológica, transferência de tecnologia e licenciamento global.'
+export async function getOrganization(locale: Locale) {
+	const t = await getTranslations({ locale, namespace: 'Schema' })
 
-export const organization = {
-	'@type': 'Organization',
-	'@id': ORG_ID,
-	name: 'Aether Global Pharma',
-	alternateName: 'Aether',
-	legalName: 'Aether Global Pharma LTDA',
-	slogan: SLOGAN,
-	url: SITE_URL,
-	logo: {
-		'@type': 'ImageObject',
-		url: `${SITE_URL}/web-app-manifest-512x512.png`,
-		width: 512,
-		height: 512
-	},
-	image: `${SITE_URL}/img/og-image.jpg`,
-	description: DESCRIPTION,
-	// street address and phone are intentionally omitted (not public); country +
-	// region are safe to publish and still give Google a geographic signal
-	address: {
-		'@type': 'PostalAddress',
-		addressRegion: 'PR',
-		addressCountry: 'BR'
-	},
-	areaServed: [
-		{ '@type': 'Country', name: 'Brasil' },
-		{ '@type': 'Country', name: 'Canadá' }
-	],
-	// contact runs through the site form only - no public e-mail or phone
-	contactPoint: [
-		{
-			'@type': 'ContactPoint',
-			contactType: 'business',
-			url: `${SITE_URL}/contato`,
-			availableLanguage: ['pt-BR', 'en']
-		}
-	],
-	subOrganization: { '@id': ICT_ID },
-	founder: { '@id': FOUNDER_ID },
-	sameAs: [
-		'https://www.instagram.com/aetherglobalpharma/'
-	],
-	knowsAbout: [
-		'Desenvolvimento de ativos farmacêuticos',
-		'Propriedade intelectual farmacêutica',
-		'Transferência de tecnologia',
-		'Licenciamento farmacêutico global',
-		'Maturidade tecnológica (TRL)',
-		'Biotecnologia',
-		'Desrisking científico'
-	]
+	return {
+		'@type': 'Organization',
+		'@id': ORG_ID,
+		name: 'Aether Global Pharma',
+		alternateName: 'Aether',
+		legalName: 'Aether Global Pharma LTDA',
+		slogan: t('orgSlogan'),
+		url: SITE_URL,
+		logo: {
+			'@type': 'ImageObject',
+			url: `${SITE_URL}/web-app-manifest-512x512.png`,
+			width: 512,
+			height: 512
+		},
+		image: `${SITE_URL}/img/og-image.jpg`,
+		description: t('orgDescription'),
+		// street address and phone are intentionally omitted (not public); country +
+		// region are safe to publish and still give Google a geographic signal
+		address: {
+			'@type': 'PostalAddress',
+			addressRegion: 'PR',
+			addressCountry: 'BR'
+		},
+		areaServed: [
+			{ '@type': 'Country', name: t('areaBrazil') },
+			{ '@type': 'Country', name: t('areaCanada') }
+		],
+		// contact runs through the site form only - no public e-mail or phone
+		contactPoint: [
+			{
+				'@type': 'ContactPoint',
+				contactType: 'business',
+				url: `${SITE_URL}/contato`,
+				availableLanguage: ['pt-BR', 'en']
+			}
+		],
+		subOrganization: { '@id': ICT_ID },
+		founder: { '@id': FOUNDER_ID },
+		sameAs: [
+			'https://www.instagram.com/aetherglobalpharma/'
+		],
+		knowsAbout: t.raw('orgKnowsAbout') as string[]
+	}
 }
 
-export const ictOrganization = {
-	'@type': 'ResearchOrganization',
-	'@id': ICT_ID,
-	name: 'ICT AetherBio+',
-	alternateName: 'Instituto de Ciência e Tecnologia AetherBio+',
-	url: `${SITE_URL}/sobre/ict-aether-bio`,
-	description: 'Instituto de Ciência e Tecnologia dedicado a pesquisas avançadas em saúde e biotecnologia, maturidade tecnológica e governança científica independente.',
-	parentOrganization: { '@id': ORG_ID }
+export async function getIctOrganization(locale: Locale) {
+	const t = await getTranslations({ locale, namespace: 'Schema' })
+
+	return {
+		'@type': 'ResearchOrganization',
+		'@id': ICT_ID,
+		name: 'ICT AetherBio+',
+		alternateName: t('ictAlternateName'),
+		url: `${SITE_URL}/sobre/ict-aether-bio`,
+		description: t('ictDescription'),
+		parentOrganization: { '@id': ORG_ID }
+	}
 }
 
 // founder/CEO - a named person is a strong E-E-A-T signal on a YMYL (health)
 // site, so this node ships on every page rather than only on /sobre/equipe
-export const founder = {
-	'@type': 'Person',
-	'@id': FOUNDER_ID,
-	name: 'Patricia P. Oliveira',
-	jobTitle: 'CEO e Fundadora',
-	description: 'Mais de 25 anos de experiência na indústria farmacêutica e em ambientes altamente regulados, na interseção entre desenvolvimento farmacêutico, estratégia regulatória, transferência de tecnologia e operações industriais. Fundadora e CEO da Aether Global Pharma e presidente do ICT AetherBio+.',
-	worksFor: { '@id': ORG_ID },
-	url: `${SITE_URL}/sobre/equipe`,
-	sameAs: ['https://www.linkedin.com/in/patricia-p-oliveira/']
+export async function getFounder(locale: Locale) {
+	const t = await getTranslations({ locale, namespace: 'Schema' })
+
+	return {
+		'@type': 'Person',
+		'@id': FOUNDER_ID,
+		name: 'Patricia P. Oliveira',
+		jobTitle: t('founderJobTitle'),
+		description: t('founderDescription'),
+		worksFor: { '@id': ORG_ID },
+		url: `${SITE_URL}/sobre/equipe`,
+		sameAs: ['https://www.linkedin.com/in/patricia-p-oliveira/']
+	}
 }
 
-export const website = {
-	'@type': 'WebSite',
-	'@id': WEBSITE_ID,
-	url: SITE_URL,
-	name: 'Aether Global Pharma',
-	description: DESCRIPTION,
-	inLanguage: 'pt-BR',
-	publisher: { '@id': ORG_ID }
+export async function getWebsite(locale: Locale) {
+	const t = await getTranslations({ locale, namespace: 'Schema' })
+
+	return {
+		'@type': 'WebSite',
+		'@id': WEBSITE_ID,
+		url: SITE_URL,
+		name: 'Aether Global Pharma',
+		description: t('orgDescription'),
+		inLanguage: locale,
+		publisher: { '@id': ORG_ID }
+	}
 }
 
 interface PersonOptions {
@@ -174,14 +190,20 @@ interface Crumb {
 
 /**
  * Builds a BreadcrumbList. Pass the trail without the home entry - it is
- * prepended automatically. `item` is a site-relative path.
+ * prepended automatically. `item` is a site-relative, unprefixed path; each
+ * entry (including home) is resolved to its locale-prefixed URL.
  */
-export function breadcrumbs(trail: Crumb[]) {
-	const all = [{ name: 'Início', item: '/' }, ...trail]
+export async function breadcrumbs(trail: Crumb[], locale: Locale) {
+	const t = await getTranslations({ locale, namespace: 'Nav' })
+
+	const all = [{ name: t('inicio'), item: '/' }, ...trail].map((crumb) => ({
+		name: crumb.name,
+		item: getPathname({ href: crumb.item, locale })
+	}))
 
 	return {
 		'@type': 'BreadcrumbList',
-		'@id': `${SITE_URL}${all[all.length - 1].item}#breadcrumb`,
+		'@id': `${SITE_URL}${all[all.length - 1].item === '/' ? '' : all[all.length - 1].item}#breadcrumb`,
 		itemListElement: all.map((crumb, i) => ({
 			'@type': 'ListItem',
 			position: i + 1,
@@ -213,12 +235,14 @@ type PageType =
 
 interface PageOptions {
 	type?: PageType
-	/** Site-relative path, e.g. '/sobre/equipe'. */
+	/** Site-relative, unprefixed path, e.g. '/sobre/equipe'. */
 	path: string
 	name: string
 	description: string
 	/** Breadcrumb trail without the home entry. */
 	trail: Crumb[]
+	/** The current route's locale, used to resolve the page/breadcrumb URLs and inLanguage. */
+	locale: Locale
 	/** Extra nodes to merge into the graph (Person, Blog, ItemList…). */
 	extra?: object[]
 	/** Merged into the WebPage node - e.g. mainEntity, significantLink. */
@@ -229,20 +253,22 @@ interface PageOptions {
  * Standard per-page graph: a typed WebPage bound to the WebSite and the
  * Organization, plus its BreadcrumbList. Every route should call this.
  */
-export function pageGraph({
+export async function pageGraph({
 	type = 'WebPage',
 	path,
 	name,
 	description,
 	trail,
+	locale,
 	extra = [],
 	extend = {}
 }: PageOptions) {
-	const url = `${SITE_URL}${path === '/' ? '' : path}`
+	const localizedPath = getPathname({ href: path, locale })
+	const url = `${SITE_URL}${localizedPath === '/' ? '' : localizedPath}`
 
 	// the home page has no trail; a single-item BreadcrumbList carries no
 	// information, so skip the node entirely there
-	const crumb = trail.length ? breadcrumbs(trail) : null
+	const crumb = trail.length ? await breadcrumbs(trail, locale) : null
 
 	const page = {
 		'@type': type,
@@ -250,7 +276,7 @@ export function pageGraph({
 		url,
 		name,
 		description,
-		inLanguage: 'pt-BR',
+		inLanguage: locale,
 		isPartOf: { '@id': WEBSITE_ID },
 		about: { '@id': ORG_ID },
 		...(crumb ? { breadcrumb: { '@id': crumb['@id'] } } : {}),

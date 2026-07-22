@@ -67,7 +67,8 @@ export default async function ParceirosPage({ params }: Props) {
 
 			<JsonLd
 				id='jsonld-parceiros'
-				data={pageGraph({
+				data={await pageGraph({
+					locale,
 					type: 'CollectionPage',
 					path: '/parceiros',
 					name: t('metaTitle'),
