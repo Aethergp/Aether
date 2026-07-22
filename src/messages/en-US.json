@@ -471,5 +471,25 @@
 		],
 		"quote": "Managing technology-readiness advancement while preserving and strategically enhancing the value of intellectual property.",
 		"quoteAttribution": "- one of ICT AetherBio+'s core functions"
+	},
+	"MidiaPage": {
+		"metaTitle": "Media - News and Insights | Aether Global Pharma",
+		"metaDescription": "Follow Aether: insights on science, intellectual property, and pharmaceutical development, plus press coverage of the platform.",
+		"eyebrow": "(media)",
+		"heading": "Science, pharmaceutical assets, and innovation in motion.",
+		"intro": "Insights from the Aether team and press coverage of the platform, its projects, and the pharmaceutical development ecosystem.",
+		"filterAll": "All",
+		"filterBlog": "Blog",
+		"filterPress": "Press",
+		"emptyState": "No content found in this category."
+	},
+	"MidiaPostPage": {
+		"notFoundTitle": "Content Not Found | Aether Global Pharma",
+		"readingTimeSingular": "minute read",
+		"readingTimePlural": "minutes read",
+		"backButton": "View all posts",
+		"relatedHeading": "Read more",
+		"relatedButton": "See all",
+		"shareLabel": "Share on {name}"
 	}
 }

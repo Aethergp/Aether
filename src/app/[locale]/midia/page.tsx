@@ -1,5 +1,7 @@
 // libraries
 import type { Metadata } from 'next'
+import type { Locale } from 'next-intl'
+import { getTranslations } from 'next-intl/server'
 import { Suspense } from 'react'
 
 // components
@@ -13,33 +15,45 @@ import JsonLd from '@/components/JsonLd'
 import { getMediaPosts } from './db/data'
 import { blogNode } from './db/schema'
 import { pageGraph, SITE_URL } from '@/utils/schema'
+import { ogLocale } from '@/utils/functions'
+
+interface Props {
+	params: Promise<{ locale: Locale }>
+}
 
 // metadata
-export const metadata: Metadata = {
-	title: 'Mídia - Notícias e insights | Aether Global Pharma',
-	description: 'Acompanhe a Aether: insights sobre ciência, propriedade intelectual e desenvolvimento farmacêutico, além da cobertura da imprensa sobre a plataforma.',
-	alternates: {
-		canonical: '/midia'
-	},
-	openGraph: {
-		title: 'Mídia - Notícias e insights | Aether Global Pharma',
-		description: 'Acompanhe a Aether: insights sobre ciência, propriedade intelectual e desenvolvimento farmacêutico, além da cobertura da imprensa sobre a plataforma.',
-		url: 'https://aethergp.com.br/midia',
-		siteName: 'Aether Global Pharma',
-		images: [
-			{
-				url: '/img/og/midia.jpg',
-				width: 1200,
-				height: 630,
-				alt: 'Aether Global Pharma'
-			}
-		],
-		locale: 'pt_BR',
-		type: 'website'
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+	const { locale } = await params
+	const t = await getTranslations({ locale, namespace: 'MidiaPage' })
+
+	return {
+		title: t('metaTitle'),
+		description: t('metaDescription'),
+		alternates: {
+			canonical: '/midia'
+		},
+		openGraph: {
+			title: t('metaTitle'),
+			description: t('metaDescription'),
+			url: 'https://aethergp.com.br/midia',
+			siteName: 'Aether Global Pharma',
+			images: [
+				{
+					url: '/img/og/midia.jpg',
+					width: 1200,
+					height: 630,
+					alt: 'Aether Global Pharma'
+				}
+			],
+			locale: ogLocale(locale),
+			type: 'website'
+		}
 	}
 }
 
-export default function MidiaPage() {
+export default async function MidiaPage({ params }: Props) {
+	const { locale } = await params
+	const t = await getTranslations({ locale, namespace: 'MidiaPage' })
 
 	const posts = getMediaPosts()
 
@@ -51,10 +65,10 @@ export default function MidiaPage() {
 				data={pageGraph({
 					type: 'CollectionPage',
 					path: '/midia',
-					name: metadata.title as string,
-					description: metadata.description as string,
+					name: t('metaTitle'),
+					description: t('metaDescription'),
 					trail: [
-						{ name: 'Mídia', item: '/midia' }
+						{ name: t('metaTitle'), item: '/midia' }
 					],
 					extend: {
 						mainEntity: { '@id': `${SITE_URL}/midia#blog` }
@@ -70,7 +84,7 @@ export default function MidiaPage() {
 
 						<div className="col-lg-3">
 							<p className='font-semibold font-heading mb-6 lg:pt-1'>
-								<AnimatedText text='(mídia)' />
+								<AnimatedText text={t('eyebrow')} />
 							</p>
 						</div>
 
@@ -78,7 +92,7 @@ export default function MidiaPage() {
 
 							<TextReveal>
 								<h1 className='text-60 font-heading font-semibold text-green-dark'>
-									Ciência, ativos farmacêuticos e inovação em movimento.
+									{t('heading')}
 								</h1>
 							</TextReveal>
 
@@ -89,7 +103,7 @@ export default function MidiaPage() {
 					<div className="row mt-4 lg:mt-[9vw]">
 						<div className="col-lg-9 offset-lg-3">
 							<p className='text-20 leading-relaxed text-green-dark'>
-								<AnimatedText text='Insights da equipe Aether e a cobertura da imprensa sobre a plataforma, os projetos e o ecossistema de desenvolvimento farmacêutico.' />
+								<AnimatedText text={t('intro')} />
 							</p>
 						</div>
 					</div>

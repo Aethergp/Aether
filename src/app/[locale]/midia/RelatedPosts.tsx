@@ -2,6 +2,7 @@
 
 // libraries
 import { useRef } from 'react'
+import { useTranslations } from 'next-intl'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import type { Swiper as SwiperType } from 'swiper'
 import { Scrollbar, FreeMode, Mousewheel } from 'swiper/modules'
@@ -23,6 +24,7 @@ interface Props {
 
 export default function RelatedPosts({ posts }: Props) {
 
+	const t = useTranslations('MidiaPostPage')
 	const swiperRef = useRef<SwiperType | null>(null)
 
 	if (posts.length === 0) return null
@@ -37,13 +39,13 @@ export default function RelatedPosts({ posts }: Props) {
 						style='dark'
 						className='text-60 font-heading font-semibold'
 					>
-						Leia também
+						{t('relatedHeading')}
 					</AnimatedTitle>
 
 					<Button
 						style='dark'
 						href={pages.midia}
-						text='Veja todas'
+						text={t('relatedButton')}
 						icon='diagonal-arrow'
 					/>
 

@@ -1,3 +1,6 @@
+// libraries
+import { useTranslations } from 'next-intl'
+
 // svg
 import Linkedin from '@/assets/svg/social/linkedin.svg'
 import Facebook from '@/assets/svg/social/facebook.svg'
@@ -11,6 +14,7 @@ interface Props {
 
 export default function ShareButtons({ url, title }: Props) {
 
+	const t = useTranslations('MidiaPostPage')
 	const encodedUrl = encodeURIComponent(url)
 	const encodedTitle = encodeURIComponent(title)
 
@@ -29,7 +33,7 @@ export default function ShareButtons({ url, title }: Props) {
 					href={href}
 					target='_blank'
 					rel='noopener noreferrer'
-					aria-label={`Compartilhar no ${name}`}
+					aria-label={t('shareLabel', { name })}
 					className='text-green-dark transition-opacity duration-200 hover:opacity-60'
 				>
 					<Icon className='w-5 h-5 text-current' />

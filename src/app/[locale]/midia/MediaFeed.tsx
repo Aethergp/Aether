@@ -4,6 +4,7 @@
 import clsx from 'clsx'
 import { useMemo } from 'react'
 import { gsap } from 'gsap'
+import { useTranslations } from 'next-intl'
 import { useSearchParams } from 'next/navigation'
 
 // components
@@ -19,17 +20,18 @@ interface Props {
 	posts: MediaPost[]
 }
 
-const filters: { value: 'todos' | MediaType; label: string }[] = [
-	{ value: 'todos', label: 'Todos' },
-	{ value: 'blog', label: 'Blogs' },
-	{ value: 'imprensa', label: 'Imprensa' }
-]
-
 export default function MediaFeed({ posts }: Props) {
 
+	const t = useTranslations('MidiaPage')
 	const router = useRouter()
 	const pathname = usePathname()
 	const searchParams = useSearchParams()
+
+	const filters: { value: 'todos' | MediaType; label: string }[] = [
+		{ value: 'todos', label: t('filterAll') },
+		{ value: 'blog', label: t('filterBlog') },
+		{ value: 'imprensa', label: t('filterPress') }
+	]
 
 	const category = searchParams.get('categoria') ?? 'todos'
 	const rawPage = Number(searchParams.get('pagina')) || 1
@@ -114,7 +116,7 @@ export default function MediaFeed({ posts }: Props) {
 				</StaggerUp>
 			) : (
 				<p className='text-20 opacity-70 py-10'>
-					Nenhum conteúdo encontrado nesta categoria.
+					{t('emptyState')}
 				</p>
 			)}
 

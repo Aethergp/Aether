@@ -471,5 +471,25 @@
 		],
 		"quote": "Gestión del avance de madurez tecnológica con preservación y valorización estratégica de la propiedad intelectual.",
 		"quoteAttribution": "- una de las funciones centrales de ICT AetherBio+"
+	},
+	"MidiaPage": {
+		"metaTitle": "Medios - Noticias e insights | Aether Global Pharma",
+		"metaDescription": "Siga a Aether: insights sobre ciencia, propiedad intelectual y desarrollo farmacéutico, además de la cobertura de prensa sobre la plataforma.",
+		"eyebrow": "(medios)",
+		"heading": "Ciencia, activos farmacéuticos e innovación en movimiento.",
+		"intro": "Insights del equipo Aether y la cobertura de prensa sobre la plataforma, los proyectos y el ecosistema de desarrollo farmacéutico.",
+		"filterAll": "Todos",
+		"filterBlog": "Blog",
+		"filterPress": "Prensa",
+		"emptyState": "No se encontró contenido en esta categoría."
+	},
+	"MidiaPostPage": {
+		"notFoundTitle": "Contenido no encontrado | Aether Global Pharma",
+		"readingTimeSingular": "minuto de lectura",
+		"readingTimePlural": "minutos de lectura",
+		"backButton": "Ver todas las publicaciones",
+		"relatedHeading": "Lea también",
+		"relatedButton": "Ver todas",
+		"shareLabel": "Compartir en {name}"
 	}
 }

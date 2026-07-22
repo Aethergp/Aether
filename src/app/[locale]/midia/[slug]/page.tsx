@@ -1,5 +1,7 @@
 // libraries
 import type { Metadata } from 'next'
+import type { Locale } from 'next-intl'
+import { getTranslations } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 
@@ -14,6 +16,7 @@ import JsonLd from '@/components/JsonLd'
 // utils
 import { pageGraph } from '@/utils/schema'
 import { articleNode } from '../db/schema'
+import { ogLocale } from '@/utils/functions'
 import {
 	getMediaPosts,
 	getMediaPostBySlug,
@@ -26,7 +29,7 @@ import {
 } from '../db/data'
 
 interface Props {
-	params: Promise<{ slug: string }>
+	params: Promise<{ locale: Locale, slug: string }>
 }
 
 export function generateStaticParams() {
@@ -36,10 +39,13 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-	const { slug } = await params
+	const { locale, slug } = await params
 	const post = getMediaPostBySlug(slug)
 
-	if (!post) return { title: 'Conteúdo não encontrado | Aether Global Pharma' }
+	if (!post) {
+		const t = await getTranslations({ locale, namespace: 'MidiaPostPage' })
+		return { title: t('notFoundTitle') }
+	}
 
 	const title = `${post.title} | Aether Global Pharma`
 	const url = `${SITE_URL}${mediaHref(post)}`
@@ -61,7 +67,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 					alt: post.image?.alt ?? post.title
 				}
 			],
-			locale: 'pt_BR',
+			locale: ogLocale(locale),
 			type: 'article'
 		}
 	}
@@ -69,7 +75,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function PostPage({ params }: Props) {
 
-	const { slug } = await params
+	const { locale, slug } = await params
+	const t = await getTranslations({ locale, namespace: 'MidiaPostPage' })
 	const post = getMediaPostBySlug(slug)
 
 	if (!post) notFound()
@@ -128,7 +135,7 @@ export default async function PostPage({ params }: Props) {
 												<circle cx='8' cy='8' r='6.25' stroke='currentColor' strokeWidth='1.5' />
 												<path d='M8 4.5V8l2.5 1.5' stroke='currentColor' strokeWidth='1.5' strokeLinecap='round' strokeLinejoin='round' />
 											</svg>
-											{readingTime} {readingTime === 1 ? 'minuto' : 'minutos'} de leitura
+											{readingTime} {readingTime === 1 ? t('readingTimeSingular') : t('readingTimePlural')}
 										</span>
 
 										<span>{formatDate(post.date)}</span>
@@ -193,7 +200,7 @@ export default async function PostPage({ params }: Props) {
 									<Button
 										href='/midia'
 										style='dark'
-										text='Ver todas as publicações'
+										text={t('backButton')}
 										icon='diagonal-arrow'
 									/>
 								</div>
