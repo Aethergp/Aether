@@ -146,5 +146,70 @@
 			"title": "Ecosistema científico e institucional",
 			"intro": "La plataforma Aether opera en colaboración con universidades, centros de investigación e instituciones científicas y tecnológicas que conforman un ecosistema altamente calificado."
 		}
+	},
+	"InscrevaPage": {
+		"metaTitle": "Inscriba su Proyecto | Aether Global Pharma",
+		"metaDescription": "¿Tiene una tecnología con potencial terapéutico? Inscriba su proyecto en Aether: evaluación científica rigurosa, confidencialidad y alcance global.",
+		"eyebrow": "(inscriba su proyecto)",
+		"heading": "Su investigación puede ser el próximo activo farmacéutico global.",
+		"intro": "Si desarrolla una tecnología con potencial terapéutico en una universidad, centro de investigación, startup o empresa, cuéntenos. La inscripción toma pocos minutos, en dos etapas, y cada envío es evaluado por el equipo científico de la plataforma.",
+		"howItWorksEyebrow": "(cómo funciona)",
+		"steps": [
+			{
+				"title": "Usted se inscribe",
+				"text": "Dos etapas: sus datos y una descripción abierta de la tecnología. Adjunte un documento de apoyo, si lo tiene."
+			},
+			{
+				"title": "Nosotros evaluamos",
+				"text": "El equipo científico analiza el potencial terapéutico, la etapa de madurez y el panorama de propiedad intelectual."
+			},
+			{
+				"title": "Conversamos",
+				"text": "Si hay afinidad con el modelo de la plataforma, nos pondremos en contacto para una conversación más profunda, con acuerdo de confidencialidad cuando corresponda."
+			}
+		],
+		"confidentialityEyebrow": "(confidencialidad)",
+		"confidentialityText": "Trate esta inscripción como una presentación inicial. No incluya datos experimentales confidenciales, secuencias, estructuras ni ninguna información que pueda comprometer una futura solicitud de patente. Esos detalles se tratarán en una etapa posterior, bajo acuerdo de confidencialidad.",
+		"form": {
+			"stepLabel": "Etapa {step} de 2",
+			"stepIdentification": "Identificación",
+			"stepTechnology": "Sobre la tecnología",
+			"nameLabel": "Nombre completo",
+			"namePlaceholder": "Su nombre",
+			"institutionLabel": "Institución / Empresa",
+			"institutionPlaceholder": "Universidad, centro de investigación o empresa",
+			"roleLabel": "Cargo / Función",
+			"rolePlaceholder": "Ej.: investigador, profesor, fundador",
+			"emailLabel": "Correo electrónico de contacto",
+			"emailPlaceholder": "su@correo.com",
+			"phoneLabel": "Teléfono",
+			"phonePlaceholder": "Con código de área (opcional)",
+			"locationLabel": "País / Estado / Ciudad",
+			"locationPlaceholder": "Ej.: Brasil / SP / Campinas",
+			"continueButton": "Continuar",
+			"summaryLabel": "Resuma su tecnología en un párrafo breve.",
+			"summaryMicrocopy": "En lenguaje sencillo: lo esencial de qué es y qué hace.",
+			"summaryPlaceholder": "Describa su tecnología",
+			"problemLabel": "¿Qué problema resuelve su tecnología?",
+			"problemPlaceholder": "Describa el problema",
+			"limitationsLabel": "¿Qué limitaciones o desafíos enfrenta hoy con la tecnología?",
+			"limitationsMicrocopy": "Técnicos, regulatorios, de financiamiento: lo que esté frenando el avance.",
+			"limitationsPlaceholder": "Describa las limitaciones",
+			"trlPrompt": "¿No sabe en qué etapa está su tecnología?",
+			"trlLink": "Conozca los niveles TRL",
+			"differentiatorsLabel": "¿Qué hace que su tecnología sea diferente de lo que ya existe?",
+			"differentiatorsPlaceholder": "Describa los diferenciales",
+			"documentLabel": "Documento de apoyo",
+			"documentMicrocopy": "Pitch deck, artículo publicado o resumen ejecutivo. PDF, máximo 15 MB. Recuerde: nada confidencial en esta etapa.",
+			"lgpdLabel": "Autorizo el tratamiento de mis datos",
+			"lgpdText": "Autorizo a Aether a tratar los datos proporcionados para la evaluación de esta inscripción, conforme a la",
+			"privacyLink": "Política de Privacidad",
+			"backButton": "Volver",
+			"submitButton": "Enviar inscripción",
+			"successTitle": "Inscripción enviada con éxito",
+			"successText": "Gracias por compartir su proyecto. Nuestro equipo científico realizará la evaluación inicial y le responderemos lo antes posible al correo electrónico proporcionado.",
+			"errorTitle": "Error al enviar la inscripción",
+			"errorText": "Se produjo un error al enviar su inscripción. Por favor, inténtelo de nuevo. Si el problema persiste, escriba a {email}."
+		}
 	}
 }

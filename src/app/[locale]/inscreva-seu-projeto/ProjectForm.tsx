@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from 'react'
 import clsx from 'clsx'
 import { useFormContext } from 'react-hook-form'
 import { Link } from 'next-transition-router'
+import { useTranslations } from 'next-intl'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -22,6 +23,7 @@ const STEP_1_REQUIRED = ['Nome', 'Instituição', 'Cargo', 'Email', 'Localizaç�
 
 function Steps() {
 
+	const t = useTranslations('InscrevaPage')
 	const [step, setStep] = useState(1)
 	const { trigger } = useFormContext()
 
@@ -49,8 +51,8 @@ function Steps() {
 
 			<div className='mb-8'>
 				<div className='flex items-center justify-between text-sm text-green-dark mb-2'>
-					<span className='font-semibold'>Etapa {step} de 2</span>
-					<span className='opacity-60'>{step === 1 ? 'Identificação' : 'Sobre a tecnologia'}</span>
+					<span className='font-semibold'>{t('form.stepLabel', { step })}</span>
+					<span className='opacity-60'>{step === 1 ? t('form.stepIdentification') : t('form.stepTechnology')}</span>
 				</div>
 				<div className='flex gap-2'>
 					<span className='h-1 flex-1 rounded-full bg-green-dark' />
@@ -63,15 +65,15 @@ function Steps() {
 				{step === 1 ? (
 					<div>
 
-						<Input id='nome' label='Nome completo' name='Nome' type='text' placeholder='Seu nome' required />
-						<Input id='instituicao' label='Instituição / Empresa' name='Instituição' type='text' placeholder='Universidade, centro de pesquisa ou empresa' required />
-						<Input id='cargo' label='Cargo / Função' name='Cargo' type='text' placeholder='Ex.: pesquisador, professor, fundador' required />
-						<Input id='email' label='E-mail de contato' name='Email' type='email' placeholder='seu@email.com' required />
-						<Input id='telefone' label='Telefone' name='Telefone' type='tel' placeholder='Com DDD (opcional)' />
-						<Input id='localizacao' label='País / Estado / Cidade' name='Localização' type='text' placeholder='Ex.: Brasil / SP / Campinas' required />
+						<Input id='nome' label={t('form.nameLabel')} name='Nome' type='text' placeholder={t('form.namePlaceholder')} required />
+						<Input id='instituicao' label={t('form.institutionLabel')} name='Instituição' type='text' placeholder={t('form.institutionPlaceholder')} required />
+						<Input id='cargo' label={t('form.roleLabel')} name='Cargo' type='text' placeholder={t('form.rolePlaceholder')} required />
+						<Input id='email' label={t('form.emailLabel')} name='Email' type='email' placeholder={t('form.emailPlaceholder')} required />
+						<Input id='telefone' label={t('form.phoneLabel')} name='Telefone' type='tel' placeholder={t('form.phonePlaceholder')} />
+						<Input id='localizacao' label={t('form.locationLabel')} name='Localização' type='text' placeholder={t('form.locationPlaceholder')} required />
 
 						<div className='mt-8'>
-							<Button type='button' onClick={goNext} text='Continuar' icon='diagonal-arrow' style='dark' />
+							<Button type='button' onClick={goNext} text={t('form.continueButton')} icon='diagonal-arrow' style='dark' />
 						</div>
 
 					</div>
@@ -80,73 +82,73 @@ function Steps() {
 
 						<Textarea
 							id='resumo'
-							label='Resuma sua tecnologia em um parágrafo curto.'
+							label={t('form.summaryLabel')}
 							name='Resumo da tecnologia'
-							microcopy='Em linguagem livre: o essencial do que ela é e faz.'
-							placeholder='Descreva sua tecnologia'
+							microcopy={t('form.summaryMicrocopy')}
+							placeholder={t('form.summaryPlaceholder')}
 							required
 						/>
 
 						<Textarea
 							id='problema'
-							label='Qual problema sua tecnologia resolve?'
+							label={t('form.problemLabel')}
 							name='Problema que resolve'
-							placeholder='Descreva o problema'
+							placeholder={t('form.problemPlaceholder')}
 							required
 						/>
 
 						<Textarea
 							id='limitacoes'
-							label='Quais limitações ou desafios você enfrenta hoje com a tecnologia?'
+							label={t('form.limitationsLabel')}
 							name='Limitações atuais'
-							microcopy='Técnicos, regulatórios, de financiamento: o que estiver travando o avanço.'
-							placeholder='Descreva as limitações'
+							microcopy={t('form.limitationsMicrocopy')}
+							placeholder={t('form.limitationsPlaceholder')}
 							required
 						/>
 
 						<p className='text-sm text-green-dark/70 -mt-1 mb-4'>
-							Não sabe em que estágio sua tecnologia está?{' '}
+							{t('form.trlPrompt')}{' '}
 							<Link href={pages.trl} className='hover-underline font-semibold'>
-								Conheça os níveis TRL
+								{t('form.trlLink')}
 							</Link>
 						</p>
 
 						<Textarea
 							id='diferenciais'
-							label='O que torna sua tecnologia diferente do que já existe?'
+							label={t('form.differentiatorsLabel')}
 							name='Diferenciais'
-							placeholder='Descreva os diferenciais'
+							placeholder={t('form.differentiatorsPlaceholder')}
 							required
 						/>
 
 						<FileUpload
 							id='documento'
-							label='Documento de apoio'
+							label={t('form.documentLabel')}
 							name='Documento'
-							microcopy='Pitch deck, artigo publicado ou resumo executivo. PDF, máximo 15 MB. Lembre-se: nada sigiloso nesta etapa.'
+							microcopy={t('form.documentMicrocopy')}
 							uploadToR2
 						/>
 
 						<Checkbox
 							type='checkbox'
 							id='lgpd'
-							label='Autorizo o tratamento dos meus dados'
+							label={t('form.lgpdLabel')}
 							name='Consentimento LGPD'
 							required
 							className='mt-6'
 						>
 							<span>
-								Autorizo a Aether a tratar os dados informados para avaliação desta inscrição, conforme a{' '}
+								{t('form.lgpdText')}{' '}
 								<Link href={pages.privacy} className='hover-underline font-semibold'>
-									Política de Privacidade
+									{t('form.privacyLink')}
 								</Link>
 								. {/* PLACEHOLDER - texto LGPD a alinhar com o cliente */}
 							</span>
 						</Checkbox>
 
 						<div className='flex flex-wrap items-center gap-3 mt-8'>
-							<Button type='button' onClick={() => setStep(1)} text='Voltar' style='dark-2' />
-							<Submit text='Enviar inscrição' style='dark' />
+							<Button type='button' onClick={() => setStep(1)} text={t('form.backButton')} style='dark-2' />
+							<Submit text={t('form.submitButton')} style='dark' />
 						</div>
 
 					</div>
@@ -159,16 +161,18 @@ function Steps() {
 }
 
 export default function ProjectForm() {
+	const t = useTranslations('InscrevaPage')
+
 	return (
 		<Form
 			endpoint='/api/resend'
 			onSuccess={{
-				title: 'Inscrição enviada com sucesso',
-				text: 'Obrigado por compartilhar seu projeto. Nossa equipe científica fará a avaliação inicial e retornaremos o mais breve possível pelo e-mail informado.'
+				title: t('form.successTitle'),
+				text: t('form.successText')
 			}}
 			onError={{
-				title: 'Erro ao enviar inscrição',
-				text: `Ocorreu um erro ao enviar sua inscrição. Por favor, tente novamente. Se o problema persistir, escreva para ${contact.email}.`
+				title: t('form.errorTitle'),
+				text: t('form.errorText', { email: contact.email })
 			}}
 		>
 

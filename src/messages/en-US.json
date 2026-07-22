@@ -146,5 +146,70 @@
 			"title": "Scientific and institutional ecosystem",
 			"intro": "The Aether platform operates in collaboration with universities, research centers, and scientific and technological institutions that make up a highly qualified ecosystem."
 		}
+	},
+	"InscrevaPage": {
+		"metaTitle": "Submit your Project | Aether Global Pharma",
+		"metaDescription": "Have a technology with therapeutic potential? Submit your project to Aether: rigorous scientific evaluation, confidentiality, and global reach.",
+		"eyebrow": "(submit your project)",
+		"heading": "Your research could be the next global pharmaceutical asset.",
+		"intro": "If you're developing a technology with therapeutic potential at a university, research center, startup, or company, tell us about it. Submission takes just a few minutes, in two steps, and every submission is reviewed by the platform's scientific team.",
+		"howItWorksEyebrow": "(how it works)",
+		"steps": [
+			{
+				"title": "You submit",
+				"text": "Two steps: your details and an open description of the technology. Attach a supporting document, if you have one."
+			},
+			{
+				"title": "We evaluate",
+				"text": "Our scientific team reviews the therapeutic potential, maturity stage, and intellectual property landscape."
+			},
+			{
+				"title": "We talk",
+				"text": "If there's a fit with the platform's model, we'll reach out for an in-depth conversation, with a confidentiality agreement when applicable."
+			}
+		],
+		"confidentialityEyebrow": "(confidentiality)",
+		"confidentialityText": "Treat this submission as an initial introduction. Do not include confidential experimental data, sequences, structures, or any information that could compromise a future patent application. Those details will be handled at a later stage, under a confidentiality agreement.",
+		"form": {
+			"stepLabel": "Step {step} of 2",
+			"stepIdentification": "Identification",
+			"stepTechnology": "About the technology",
+			"nameLabel": "Full name",
+			"namePlaceholder": "Your name",
+			"institutionLabel": "Institution / Company",
+			"institutionPlaceholder": "University, research center, or company",
+			"roleLabel": "Role / Position",
+			"rolePlaceholder": "E.g.: researcher, professor, founder",
+			"emailLabel": "Contact email",
+			"emailPlaceholder": "you@email.com",
+			"phoneLabel": "Phone",
+			"phonePlaceholder": "With area code (optional)",
+			"locationLabel": "Country / State / City",
+			"locationPlaceholder": "E.g.: Brazil / SP / Campinas",
+			"continueButton": "Continue",
+			"summaryLabel": "Summarize your technology in a short paragraph.",
+			"summaryMicrocopy": "In plain language: the essentials of what it is and does.",
+			"summaryPlaceholder": "Describe your technology",
+			"problemLabel": "What problem does your technology solve?",
+			"problemPlaceholder": "Describe the problem",
+			"limitationsLabel": "What limitations or challenges are you facing with the technology today?",
+			"limitationsMicrocopy": "Technical, regulatory, funding: whatever is holding back progress.",
+			"limitationsPlaceholder": "Describe the limitations",
+			"trlPrompt": "Not sure what stage your technology is at?",
+			"trlLink": "Explore the TRL levels",
+			"differentiatorsLabel": "What makes your technology different from what already exists?",
+			"differentiatorsPlaceholder": "Describe the differentiators",
+			"documentLabel": "Supporting document",
+			"documentMicrocopy": "Pitch deck, published article, or executive summary. PDF, 15 MB maximum. Remember: nothing confidential at this stage.",
+			"lgpdLabel": "I authorize the processing of my data",
+			"lgpdText": "I authorize Aether to process the data provided for the evaluation of this submission, in accordance with the",
+			"privacyLink": "Privacy Policy",
+			"backButton": "Back",
+			"submitButton": "Submit application",
+			"successTitle": "Application submitted successfully",
+			"successText": "Thank you for sharing your project. Our scientific team will carry out an initial review and get back to you as soon as possible at the email address provided.",
+			"errorTitle": "Error submitting application",
+			"errorText": "An error occurred while submitting your application. Please try again. If the problem persists, write to {email}."
+		}
 	}
 }
