@@ -2,6 +2,7 @@
 
 // libraries
 import { useEffect, useState } from 'react'
+import { useTranslations } from 'next-intl'
 import Image, { type StaticImageData } from 'next/image'
 
 // components
@@ -28,6 +29,7 @@ interface Props {
 
 export default function Committee({ members }: Props) {
 
+	const t = useTranslations('Committee')
 	const [selected, setSelected] = useState<number | null>(null)
 
 	useEffect(() => {
@@ -73,11 +75,11 @@ export default function Committee({ members }: Props) {
 										<Button
 											style='light'
 											href={m.linked}
-											text='LinkedIn'
+											text={t('linkedinLabel')}
 											icon='linkedin'
 											target='_blank'
 											rel='noopener noreferrer'
-											aria-label={`Perfil de ${m.name} no LinkedIn`}
+											aria-label={t('linkedinAriaLabel', { name: m.name })}
 										/>
 									</div>
 								)}
@@ -146,7 +148,7 @@ export default function Committee({ members }: Props) {
 							<button
 								type='button'
 								onClick={() => setSelected(null)}
-								aria-label='Fechar'
+								aria-label={t('closeAriaLabel')}
 								className='absolute z-2 top-5 right-5 md:top-5 md:right-5 flex items-center justify-center w-4 h-4 cursor-pointer hover:rotate-180 transition-transform duration-300 max-md:text-white'
 							>
 								<UxClose className='w-full h-full' />
@@ -168,11 +170,11 @@ export default function Committee({ members }: Props) {
 										<Button
 											style='light'
 											href={member.linked}
-											text='LinkedIn'
+											text={t('linkedinLabel')}
 											icon='linkedin'
 											target='_blank'
 											rel='noopener noreferrer'
-											aria-label={`Perfil de ${member.name} no LinkedIn`}
+											aria-label={t('linkedinAriaLabel', { name: member.name })}
 										/>
 									</div>
 								)}
@@ -185,9 +187,9 @@ export default function Committee({ members }: Props) {
 								</h3>
 
 								<div className='flex flex-col gap-2 mt-6 lg:mt-8 text-18'>
-									{member.titulacao && <span><span className='opacity-50'>Titulação:</span> {member.titulacao}</span>}
-									{member.area && <span><span className='opacity-50'>Área:</span> {member.area}</span>}
-									{member.instituicao && <span><span className='opacity-50'>Instituição:</span> {member.instituicao}</span>}
+									{member.titulacao && <span><span className='opacity-50'>{t('titulacaoLabel')}</span> {member.titulacao}</span>}
+									{member.area && <span><span className='opacity-50'>{t('areaLabel')}</span> {member.area}</span>}
+									{member.instituicao && <span><span className='opacity-50'>{t('instituicaoLabel')}</span> {member.instituicao}</span>}
 								</div>
 
 								<p

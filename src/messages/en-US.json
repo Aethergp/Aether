@@ -705,5 +705,55 @@
 		"platformText1": "ICT AetherBio+ drives the projects' scientific and technological advancement, evidence generation, and progressive risk reduction. Aether Global Pharma leads the strategy for building and adding value to assets, integrating intellectual property, capital, partnerships, and licensing.",
 		"platformText2": "Together, the two entities connect science, development, capital, and industry to build and add value to pharmaceutical assets with global potential.",
 		"platformButton": "Learn about Aether Global Pharma"
+	},
+	"Committee": {
+		"linkedinLabel": "LinkedIn",
+		"linkedinAriaLabel": "{name}'s LinkedIn profile",
+		"closeAriaLabel": "Close",
+		"titulacaoLabel": "Degree:",
+		"areaLabel": "Area:",
+		"instituicaoLabel": "Institution:"
+	},
+	"EquipePage": {
+		"metaTitle": "Team and Scientific Committee | Aether Global Pharma",
+		"metaDescription": "Meet the leaders of Aether Global Pharma and ICT AetherBio+: experience in pharmaceutical development, intellectual property, and scientific governance.",
+		"eyebrow": "(team)",
+		"heroTitle": "People who connect science and strategy.",
+		"heroText": "Aether brings together leaders with experience in pharmaceutical development, intellectual property, and scientific management, supported by a committee of researchers specialized in different therapeutic areas.",
+		"sectionHeading": "Who leads the platform.",
+		"founderPhotoAlt": "Patricia P. Oliveira, CEO and Founder of Aether Global Pharma",
+		"founderLinkedinText": "LinkedIn",
+		"founderLinkedinAriaLabel": "Patricia P. Oliveira's LinkedIn profile",
+		"founderRole": "(CEO & Founder)",
+		"bio": [
+			"With more than 25 years of experience in the pharmaceutical industry and highly regulated environments, <b>Patricia P. Oliveira</b> has built her career at the intersection of pharmaceutical development, regulatory strategy, technology transfer, and industrial operations.",
+			"Her experience spans work alongside ANVISA and international authorities, as well as leading projects, industrial operations, and technology development initiatives at national and multinational organizations.",
+			"As founder and CEO of <b>Aether Global Pharma</b> and president of <b>ICT AetherBio+</b>, she leads an integrated <b>Pharmaceutical Asset Venture Building</b> platform, connecting high-potential science, intellectual property, capital, and industry to build, develop, and add value to pharmaceutical assets with global potential."
+		],
+		"realizacoesEyebrow": "(featured achievements)",
+		"realizacoes": [
+			"More than 300 products approved by ANVISA",
+			"Certification of the Hib vaccine PMT fraction production line at TECPAR",
+			"International certifications for export to highly regulated markets",
+			"Implementation of a hyaluronic acid plant in Pinhais",
+			"Leadership of industrial operations and teams with more than 200 professionals in a GMP environment"
+		],
+		"committeeEyebrow": "(scientific committee)",
+		"committeeHeading": "The science behind every decision.",
+		"committeeText": "A body of specialized researchers provides technical backing for project evaluation and the platform's scientific governance. Click on each profile to learn about their career.",
+		"comite": [
+			{
+				"area": "Scientific Advisor",
+				"bio": "Believes that innovation in health only achieves real impact when science, regulation, and strategy move forward together.<br /><br />A biochemical pharmacist with more than 20 years of experience in Regulatory Affairs and Health Surveillance, she built her career at institutions such as ANVISA, the Pan American Health Organization (PAHO), the Foundation for Scientific and Technological Development in Health (FIOTEC), the Ministry of Health, and specialized consulting for the pharmaceutical industry. Her experience is centered on producing regulatory intelligence, drafting technical-scientific opinions, interpreting regulatory frameworks, evaluating administrative processes, and structuring documents that support strategic decisions in complex regulatory environments. Throughout her career, she has taken part in consolidating regulatory understanding, systematizing institutional knowledge, and developing technical analyses involving medicines, health products, cosmetics, sanitizers, and food, as well as regulatory and strategic planning for pricing new medicines with CMED (the Drug Market Regulation Chamber). She has a particular interest in initiatives aimed at the technological maturation of pharmaceutical assets, scientific governance, regulatory evaluation of innovative technologies, regulatory intelligence applied to innovation, and building strategies that bring together universities, research centers, industry, and health authorities. She holds that regulatory predictability is one of the key factors in reducing technological risk, accelerating the development of innovative assets, and expanding technology transfer opportunities."
+			},
+			{
+				"area": "Scientific Advisor",
+				"bio": "A pharmacist with a master's degree in Microbiology, he has built a career of more than 26 years dedicated to turning regulatory complexity into a competitive advantage for the life sciences industry. His career took a decisive turn during nearly a decade at ANVISA, where he worked as a Specialized Technical Consultant, analyzing registration, renewal, and post-registration dossiers for new, generic, and similar medicines, assessing safety and efficacy, and taking part in drafting and monitoring new legislation.<br /><br />His multi-sector background - industry, consulting, ANVISA, ICT, and academia - provides a 360° view of the regulatory life cycle. As a university professor for more than 10 years, he trained professionals with a critical mindset aligned with best practices in quality, safety, and compliance. At the ICT, he works in parallel to bring together scientific research, investment, and regulatory strategy, helping early-stage projects cross innovation's \"valley of death\" and evolve into products and patents with real market potential.<br /><br />Today, he serves as a strategic partner for companies seeking to navigate a demanding regulatory environment safely without losing competitiveness. He combines experience gained at ANVISA, a solid track record of successful registrations, and hands-on experience in regulatory audits to design solid regulatory pathways, shorten timelines, prevent rework, and support high-impact decisions across complex pharmaceutical portfolios. His commitment is to use regulatory intelligence as a business lever, unlocking opportunities and adding tangible value to every project."
+			},
+			{
+				"area": "Scientific Advisor",
+				"bio": "A professional with solid experience in Regulatory Affairs and Quality Assurance, she works on developing, implementing, and delivering regulatory and quality training and procedures.<br /><br />She is the founder of Vigidoc, a company specialized in regulatory and quality advisory for businesses operating in regulated markets. She has experience regularizing early-stage companies, including obtaining licenses and registrations with health authorities. She works on product registration with ANVISA, supporting companies in meeting regulatory requirements and maintaining compliance throughout the product life cycle."
+			}
+		]
 	}
 }
