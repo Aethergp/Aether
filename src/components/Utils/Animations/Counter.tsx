@@ -37,7 +37,7 @@ export default function Counter({
 	useGSAP(() => {
 		if (item.current) {
 			gsap.set(item.current, {
-				textContent: formatBrazilianNumber(0, fractionDigits)
+				textContent: 0
 			})
 
 			gsap.to(item.current, {
