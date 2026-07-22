@@ -1,5 +1,7 @@
 // libraries
 import type { Metadata } from 'next'
+import type { Locale } from 'next-intl'
+import { getTranslations } from 'next-intl/server'
 
 // components
 import AnimatedText from '@/components/Utils/Animations/AnimatedText'
@@ -9,33 +11,50 @@ import JsonLd from '@/components/JsonLd'
 
 // utils
 import { pageGraph } from '@/utils/schema'
+import { ogLocale } from '@/utils/functions'
+
+interface Props {
+	params: Promise<{ locale: Locale }>
+}
 
 // metadata
-export const metadata: Metadata = {
-	title: 'Termos & Condições | Aether Global Pharma',
-	description: 'Termos & Condições de uso da Aether Global Pharma.',
-	alternates: {
-		canonical: '/termos-e-condicoes'
-	},
-	openGraph: {
-		title: 'Termos & Condições | Aether Global Pharma',
-		description: 'Termos & Condições de uso da Aether Global Pharma.',
-		url: 'https://aethergp.com.br/termos-e-condicoes',
-		siteName: 'Aether Global Pharma',
-		images: [
-			{
-				url: '/img/og-image.jpg',
-				width: 1280,
-				height: 628,
-				alt: 'Aether Global Pharma'
-			}
-		],
-		locale: 'pt_BR',
-		type: 'website'
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+	const { locale } = await params
+	const t = await getTranslations({ locale, namespace: 'TermsPage' })
+
+	return {
+		title: t('metaTitle'),
+		description: t('metaDescription'),
+		alternates: {
+			canonical: '/termos-e-condicoes'
+		},
+		openGraph: {
+			title: t('metaTitle'),
+			description: t('metaDescription'),
+			url: 'https://aethergp.com.br/termos-e-condicoes',
+			siteName: 'Aether Global Pharma',
+			images: [
+				{
+					url: '/img/og-image.jpg',
+					width: 1280,
+					height: 628,
+					alt: 'Aether Global Pharma'
+				}
+			],
+			locale: ogLocale(locale),
+			type: 'website'
+		}
 	}
 }
 
-export default function TermosECondicoesPage() {
+export default async function TermosECondicoesPage({ params }: Props) {
+
+	const { locale } = await params
+	const t = await getTranslations({ locale, namespace: 'TermsPage' })
+
+	const licenseList = t.raw('licenseList') as string[]
+	const disclaimerList = t.raw('disclaimerList') as string[]
+
 	return (
 		<div className='bg-white'>
 
@@ -44,10 +63,10 @@ export default function TermosECondicoesPage() {
 				data={pageGraph({
 					type: 'WebPage',
 					path: '/termos-e-condicoes',
-					name: metadata.title as string,
-					description: metadata.description as string,
+					name: t('metaTitle'),
+					description: t('metaDescription'),
 					trail: [
-						{ name: 'Termos & Condições', item: '/termos-e-condicoes' }
+						{ name: t('title'), item: '/termos-e-condicoes' }
 					]
 				})}
 			/>
@@ -70,7 +89,7 @@ export default function TermosECondicoesPage() {
 						<div className='col-lg-3'>
 
 							<p className='font-semibold font-heading lg:pt-4'>
-								<AnimatedText text='(seus direitos)' />
+								<AnimatedText text={t('eyebrow')} />
 							</p>
 
 						</div>
@@ -79,12 +98,12 @@ export default function TermosECondicoesPage() {
 
 							<TextReveal>
 								<h1 className='text-60 font-heading font-semibold text-green-dark'>
-									Termos & Condições
+									{t('title')}
 								</h1>
 							</TextReveal>
 
 							<p className='text-18 leading-relaxed text-green-dark mt-10 lg:mt-20'>
-								Estes termos e condições são efetivos a partir de 15 de junho de 2026.
+								{t('effectiveDate')}
 							</p>
 
 						</div>
@@ -96,9 +115,9 @@ export default function TermosECondicoesPage() {
 							<div className='rich-text'>
 
 								<p>
-									Ao acessar ao site Aether Global Pharma, concorda em cumprir estes termos de serviço, todas as leis e regulamentos aplicáveis e concorda que é responsável pelo cumprimento de todas as leis locais aplicáveis. Se você não concordar com algum desses termos, está proibido de usar ou acessar este site. Os materiais contidos neste site são protegidos pelas leis de direitos autorais e marcas comerciais aplicáveis.
+									{t('introText')}
 								</p>
-								
+
 							</div>
 						</div>
 					</div>
@@ -107,7 +126,7 @@ export default function TermosECondicoesPage() {
 
 						<div className="col-lg-3">
 							<h2 className='font-semibold font-heading'>
-								<AnimatedText text='(uso de licença)' />
+								<AnimatedText text={t('licenseEyebrow')} />
 							</h2>
 						</div>
 
@@ -115,35 +134,19 @@ export default function TermosECondicoesPage() {
 							<div className='rich-text'>
 
 								<p>
-									É concedida permissão para baixar temporariamente uma cópia dos materiais (informações ou software) no site Aether Global Pharma , apenas para visualização transitória pessoal e não comercial. Esta é a concessão de uma licença, não uma transferência de título e, sob esta licença, você não pode:
+									{t('licenseText1')}
 								</p>
 
 								<ol>
-									<li>
-										modificar ou copiar os materiais;
-									</li>
-
-									<li>
-										usar os materiais para qualquer finalidade comercial ou para exibição pública (comercial ou não comercial);
-									</li>
-
-									<li>
-										tentar descompilar ou fazer engenharia reversa de qualquer software contido no site Aether Global Pharma;
-									</li>
-
-									<li>
-										remover quaisquer direitos autorais ou outras notações de propriedade dos materiais; ou
-									</li>
-
-									<li>
-										transferir os materiais para outra pessoa ou 'espelhe' os materiais em qualquer outro servidor.
-									</li>
+									{licenseList.map((item, i) => (
+										<li key={i}>{item}</li>
+									))}
 								</ol>
 
 								<p>
-									Esta licença será automaticamente rescindida se você violar alguma dessas restrições e poderá ser rescindida por Aether Global Pharma a qualquer momento. Ao encerrar a visualização desses materiais ou após o término desta licença, você deve apagar todos os materiais baixados em sua posse, seja em formato eletrónico ou impresso.
+									{t('licenseText2')}
 								</p>
-								
+
 							</div>
 						</div>
 
@@ -153,7 +156,7 @@ export default function TermosECondicoesPage() {
 
 						<div className="col-lg-3">
 							<h2 className='font-semibold font-heading'>
-								<AnimatedText text='(isenção de responsabilidade)' />
+								<AnimatedText text={t('disclaimerEyebrow')} />
 							</h2>
 						</div>
 
@@ -161,25 +164,21 @@ export default function TermosECondicoesPage() {
 							<div className='rich-text'>
 
 								<ol>
-									<li>
-										Os materiais no site da Aether Global Pharma são fornecidos 'como estão'. Aether Global Pharma não oferece garantias, expressas ou implícitas, e, por este meio, isenta e nega todas as outras garantias, incluindo, sem limitação, garantias implícitas ou condições de comercialização, adequação a um fim específico ou não violação de propriedade intelectual ou outra violação de direitos.
-									</li>
-
-									<li>
-										Além disso, o Aether Global Pharma não garante ou faz qualquer representação relativa à precisão, aos resultados prováveis ou à confiabilidade do uso dos materiais em seu site ou de outra forma relacionado a esses materiais ou em sites vinculados a este site.
-									</li>
+									{disclaimerList.map((item, i) => (
+										<li key={i}>{item}</li>
+									))}
 								</ol>
-								
+
 							</div>
 						</div>
-						
+
 					</div>
 
 					<div className='row mt-10 lg:mt-[5vw]'>
 
 						<div className="col-lg-3">
 							<h2 className='font-semibold font-heading'>
-								<AnimatedText text='(limitações)' />
+								<AnimatedText text={t('limitationsEyebrow')} />
 							</h2>
 						</div>
 
@@ -187,19 +186,19 @@ export default function TermosECondicoesPage() {
 							<div className='rich-text'>
 
 								<p>
-									Em nenhum caso o Aether Global Pharma ou seus fornecedores serão responsáveis por quaisquer danos (incluindo, sem limitação, danos por perda de dados ou lucro ou devido a interrupção dos negócios) decorrentes do uso ou da incapacidade de usar os materiais em Aether Global Pharma, mesmo que Aether Global Pharma ou um representante autorizado da Aether Global Pharma tenha sido notificado oralmente ou por escrito da possibilidade de tais danos. Como algumas jurisdições não permitem limitações em garantias implícitas, ou limitações de responsabilidade por danos conseqüentes ou incidentais, essas limitações podem não se aplicar a você.
+									{t('limitationsText')}
 								</p>
-								
+
 							</div>
 						</div>
-						
+
 					</div>
 
 					<div className='row mt-10 lg:mt-[5vw]'>
 
 						<div className="col-lg-3">
 							<h2 className='font-semibold font-heading'>
-								<AnimatedText text='(precisão dos materiais)' />
+								<AnimatedText text={t('accuracyEyebrow')} />
 							</h2>
 						</div>
 
@@ -207,19 +206,19 @@ export default function TermosECondicoesPage() {
 							<div className='rich-text'>
 
 								<p>
-									Os materiais exibidos no site da Aether Global Pharma podem incluir erros técnicos, tipográficos ou fotográficos. Aether Global Pharma não garante que qualquer material em seu site seja preciso, completo ou atual. Aether Global Pharma pode fazer alterações nos materiais contidos em seu site a qualquer momento, sem aviso prévio. No entanto, Aether Global Pharma não se compromete a atualizar os materiais.
+									{t('accuracyText')}
 								</p>
-								
+
 							</div>
 						</div>
-						
+
 					</div>
 
 					<div className='row mt-10 lg:mt-[5vw]'>
 
 						<div className="col-lg-3">
 							<h2 className='font-semibold font-heading'>
-								<AnimatedText text='(links)' />
+								<AnimatedText text={t('linksEyebrow')} />
 							</h2>
 						</div>
 
@@ -227,19 +226,19 @@ export default function TermosECondicoesPage() {
 							<div className='rich-text'>
 
 								<p>
-									O Aether Global Pharma não analisou todos os sites vinculados ao seu site e não é responsável pelo conteúdo de nenhum site vinculado. A inclusão de qualquer link não implica endosso por Aether Global Pharma do site. O uso de qualquer site vinculado é por conta e risco do usuário.
+									{t('linksText')}
 								</p>
-								
+
 							</div>
 						</div>
-						
+
 					</div>
 
 					<div className='row mt-10 lg:mt-[5vw]'>
 
 						<div className="col-lg-3">
 							<h2 className='font-semibold font-heading'>
-								<AnimatedText text='(modificações)' />
+								<AnimatedText text={t('modificationsEyebrow')} />
 							</h2>
 						</div>
 
@@ -247,19 +246,19 @@ export default function TermosECondicoesPage() {
 							<div className='rich-text'>
 
 								<p>
-									O Aether Global Pharma pode revisar estes termos de serviço do site a qualquer momento, sem aviso prévio. Ao usar este site, você concorda em ficar vinculado à versão atual desses termos de serviço.
+									{t('modificationsText')}
 								</p>
-								
+
 							</div>
 						</div>
-						
+
 					</div>
 
 					<div className='row mt-10 lg:mt-[5vw]'>
 
 						<div className="col-lg-3">
 							<h2 className='font-semibold font-heading'>
-								<AnimatedText text='(lei aplicável)' />
+								<AnimatedText text={t('lawEyebrow')} />
 							</h2>
 						</div>
 
@@ -267,12 +266,12 @@ export default function TermosECondicoesPage() {
 							<div className='rich-text'>
 
 								<p>
-									Estes termos e condições são regidos e interpretados de acordo com as leis do Aether Global Pharma e você se submete irrevogavelmente à jurisdição exclusiva dos tribunais naquele estado ou localidade.
+									{t('lawText')}
 								</p>
-								
+
 							</div>
 						</div>
-						
+
 					</div>
 
 				</div>
