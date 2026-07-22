@@ -6,6 +6,7 @@ import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import type { Swiper as SwiperType } from 'swiper'
 import { Navigation, Scrollbar, FreeMode, Mousewheel } from 'swiper/modules'
@@ -29,6 +30,7 @@ export default function Context({
 	showCta?: boolean
 }) {
 
+	const t = useTranslations('Context')
 	const sectionRef = useRef<HTMLDivElement>(null)
     const pathRef = useRef<SVGPathElement>(null)
 	const pinRef = useRef<HTMLElement | null>(null)
@@ -121,7 +123,7 @@ export default function Context({
 								style='dark'
 								className='text-60 font-heading font-semibold'
 							>
-								Ciência de alto valor é desenvolvida continuamente. Grande parte nunca chega ao mercado.
+								{t('title')}
 							</AnimatedTitle>
 						</div>
 
@@ -133,13 +135,13 @@ export default function Context({
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
 							<p className='font-semibold font-heading'>
-								<AnimatedText text='(o contexto)' />
+								<AnimatedText text={t('eyebrow')} />
 							</p>
 						</div>
 
 						<div className='col-lg-6'>
 							<p className='text-20 leading-relaxed'>
-								<AnimatedText text='Universidades e centros de pesquisa geram descobertas com elevado potencial terapêutico todos os anos. O desafio raramente está na ciência mas na capacidade de transformar conhecimento em ativos farmacêuticos protegidos, validados e prontos para produção global.<br /><br />Sem maturação tecnológica adequada, governança científica e estratégia de propriedade intelectual, tecnologias promissoras permanecem restritas ao ambiente acadêmico e não alcançam seu potencial de impacto.' />
+								<AnimatedText text={t('body')} />
 							</p>
 
 							{showCta && (
@@ -147,7 +149,7 @@ export default function Context({
 									<Button
 										style='dark'
 										href='/sobre'
-										text='Conheça a plataforma'
+										text={t('ctaButton')}
 										icon='diagonal-arrow'
 									/>
 								</div>
@@ -196,24 +198,7 @@ export default function Context({
 							}}
 							className='overflow-visible!'
 						>
-							{[
-								{
-									title: 'Desrisking e Desenvolvimento do Ativo',
-									text: 'Reduzimos progressivamente as incertezas científicas, tecnológicas e de escalonamento por meio de uma estratégia estruturada de desenvolvimento. O objetivo é avançar tecnologias promissoras em maturidade e construir ativos farmacêuticos mais robustos e atrativos para parceiros estratégicos e licenciadores.',
-								},
-								{
-									title: 'Governança Científica e Regulatória',
-									text: 'Integramos governança científica, desenvolvimento tecnológico e estratégia regulatória desde as fases iniciais. Cada ativo evolui com critérios de decisão, marcos de desenvolvimento e evidências orientadas às exigências do desenvolvimento farmacêutico e às futuras rotas de licenciamento.',
-								},
-								{
-									title: 'Estratégia e Consolidação de Propriedade Intelectual',
-									text: 'Estruturamos a propriedade intelectual como elemento central de valor do ativo. Avaliamos titularidade, liberdade de operação e estratégia de proteção para construir portfólios de PI consistentes, defensáveis e alinhados ao potencial de desenvolvimento e licenciamento global.',
-								},
-								{
-									title: 'Posicionamento e Licenciamento Global',
-									text: 'Preparamos e posicionamos os ativos para conexão com o ecossistema farmacêutico global. Estruturamos oportunidades de parceria, co-desenvolvimento e licenciamento, aproximando ativos científicos de indústrias e parceiros estratégicos capazes de conduzi-los às próximas etapas de desenvolvimento.',
-								}
-							].map((item, i) => (
+							{(t.raw('items') as { title: string, text: string }[]).map((item, i) => (
 								<SwiperSlide
 									key={i}
 									className='h-auto!'
@@ -258,7 +243,7 @@ export default function Context({
 									pinSection={pinRef}
 								>
 									<h2 className='flex flex-wrap justify-center items-center gap-x-4'>
-										Entre a descoberta científica e a indústria farmacêutica, construímos ativos.
+										{t('creationStatement')}
 									</h2>
 								</TextReveal>
 							</div>

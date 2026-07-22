@@ -1,5 +1,6 @@
 // libraries
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 
 // components
 import AnimatedTitle from '@/components/Utils/Animations/AnimatedTitle'
@@ -10,6 +11,9 @@ import StaggerScale from '@/components/Utils/Animations/StaggerScale'
 import { partners } from '@/utils/partners'
 
 export default function Partners() {
+
+	const t = useTranslations('HomePage.partners')
+
 	return (
 		<section
             id='parceiros'
@@ -26,7 +30,7 @@ export default function Partners() {
                             style='dark'
                             className='text-60 font-heading font-semibold'
                         >
-                            Ecossistema científico e institucional
+                            {t('title')}
                         </AnimatedTitle>
                     </div>
 
@@ -34,7 +38,7 @@ export default function Partners() {
 
                     <div className='col-lg-5 col-xl-4 pt-4 lg:pt-1 xl:pt-3'>
                         <p className='text-20'>
-                            <AnimatedText text='A plataforma Aether opera em colaboração com universidades, centros de pesquisa e instituições científicas e tecnológicas que compõem um ecossistema altamente qualificado.' />
+                            <AnimatedText text={t('intro')} />
                         </p>
                     </div>
 

@@ -17,6 +17,7 @@ import JsonLd from '@/components/JsonLd'
 import { partners } from '@/utils/partners'
 import { pages } from '@/utils/routes'
 import { pageGraph, SITE_URL } from '@/utils/schema'
+import { ogLocale } from '@/utils/functions'
 
 // img
 import partnership from '@/assets/img/banner.jpg'
@@ -51,7 +52,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 					alt: 'Aether Global Pharma'
 				}
 			],
-			locale: 'pt_BR',
+			locale: ogLocale(locale),
 			type: 'website'
 		}
 	}

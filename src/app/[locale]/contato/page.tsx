@@ -17,7 +17,7 @@ import { Form, Input, Select, Textarea, InputHidden, Honeypot, Submit } from '@/
 import JsonLd from '@/components/JsonLd'
 
 // utils
-import { email, phone } from '@/utils/functions'
+import { email, phone, ogLocale } from '@/utils/functions'
 import { social, contact } from '@/utils/routes'
 import { pageGraph } from '@/utils/schema'
 
@@ -49,7 +49,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 					alt: 'Aether Global Pharma'
 				}
 			],
-			locale: 'pt_BR',
+			locale: ogLocale(locale),
 			type: 'website'
 		}
 	}

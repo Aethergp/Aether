@@ -6,6 +6,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { SplitText } from 'gsap/SplitText'
 import { useGSAP } from '@gsap/react'
+import { useTranslations } from 'next-intl'
 
 gsap.registerPlugin(ScrollTrigger, SplitText)
 
@@ -18,6 +19,7 @@ import { useAnchorScroll } from '@/hooks/useAnchorScroll'
 
 export default function Banner() {
 
+	const t = useTranslations('HomePage.banner')
 	const scrollTo = useAnchorScroll()
 	const sectionRef = useRef<HTMLDivElement>(null)
 	const titleRef = useRef<HTMLHeadingElement>(null)
@@ -118,7 +120,7 @@ export default function Banner() {
 						ref={titleRef}
 						className='text-72 font-heading font-bold text-green-light md:w-280 max-w-full block reveal-text md:pr-20'
 					>
-						Transformamos pesquisa científica em ativos farmacêuticos licenciáveis.
+						{t('title')}
 					</h1>
 
                     <button
@@ -137,7 +139,7 @@ export default function Banner() {
                         </span>
 
                         <span>
-                            scroll
+                            {t('scroll')}
                         </span>
 
                     </button>
@@ -148,14 +150,14 @@ export default function Banner() {
 
 					<TextReveal>
 						<p className='text-green-light text-20 w-200 max-w-full block'>
-							A Aether é uma <b>Pharmaceutical Asset Venture Builder</b> que integra ciência, propriedade intelectual, desenvolvimento tecnológico e estratégia de mercado para construir ativos farmacêuticos prontos para licenciamento global.
+							{t.rich('intro', { b: (chunks) => <b>{chunks}</b> })}
 						</p>
 					</TextReveal>
 
 					<Button
 						style='light'
 						href='/contato'
-						text='Entre em contato'
+						text={t('ctaButton')}
 						icon='diagonal-arrow'
 					/>
 

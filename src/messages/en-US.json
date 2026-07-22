@@ -70,5 +70,81 @@
 		"ctaText": "We're looking for universities, STIs, research centers, industrial partners, and specialized investors who share our commitment to turning science into assets with global impact. Talk to our team and let's explore ways to collaborate.",
 		"ctaButton": "Become a partner",
 		"partnershipAlt": "Scientific research at the Aether platform"
+	},
+	"Context": {
+		"eyebrow": "(the context)",
+		"title": "High-value science is developed continuously. Much of it never reaches the market.",
+		"body": "Universities and research centers generate discoveries with high therapeutic potential every year. The challenge rarely lies in the science itself, but in the ability to turn knowledge into protected, validated pharmaceutical assets ready for global production.<br /><br />Without adequate technological maturation, scientific governance, and an intellectual property strategy, promising technologies remain confined to academia and never reach their full impact potential.",
+		"ctaButton": "Discover the platform",
+		"items": [
+			{
+				"title": "Asset De-risking and Development",
+				"text": "We progressively reduce scientific, technological, and scale-up uncertainties through a structured development strategy. The goal is to advance promising technologies in maturity and build more robust pharmaceutical assets that are attractive to strategic partners and licensors."
+			},
+			{
+				"title": "Scientific and Regulatory Governance",
+				"text": "We integrate scientific governance, technological development, and regulatory strategy from the earliest stages. Each asset evolves with decision criteria, development milestones, and evidence geared toward pharmaceutical development requirements and future licensing routes."
+			},
+			{
+				"title": "Intellectual Property Strategy and Consolidation",
+				"text": "We structure intellectual property as a central element of the asset's value. We assess ownership, freedom to operate, and protection strategy to build IP portfolios that are consistent, defensible, and aligned with the asset's development and global licensing potential."
+			},
+			{
+				"title": "Global Positioning and Licensing",
+				"text": "We prepare and position assets for connection with the global pharmaceutical ecosystem. We structure partnership, co-development, and licensing opportunities, bringing scientific assets closer to industries and strategic partners capable of taking them to their next stages of development."
+			}
+		],
+		"creationStatement": "Between scientific discovery and the pharmaceutical industry, we build assets."
+	},
+	"HomePage": {
+		"metaTitle": "Aether Global Pharma | Science and Pharmaceutical Assets",
+		"metaDescription": "A platform specialized in transforming science into pharmaceutical assets: scientific de-risking, intellectual property, and global licensing.",
+		"banner": {
+			"title": "We turn scientific research into licensable pharmaceutical assets.",
+			"intro": "Aether is a <b>Pharmaceutical Asset Venture Builder</b> that integrates science, intellectual property, technological development, and market strategy to build pharmaceutical assets ready for global licensing.",
+			"ctaButton": "Get in touch",
+			"scroll": "scroll"
+		},
+		"about": {
+			"title": "An integrated platform. Two complementary pillars.",
+			"body": "Aether Global Pharma and ICT AetherBio+ operate synergistically to transform high-potential science into structured pharmaceutical assets that advance along the development journey and generate value.<br /><br /> ICT AetherBio+ brings together scientific expertise, infrastructure, partners, and resources to advance projects and reduce their technological risk. Aether Global Pharma leads the assets' development and value-creation strategy, integrating intellectual property, regulatory strategy, capital, and positioning for partnerships and licensing.<br /><br /> Together, they connect universities and researchers, specialized capital, and the pharmaceutical industry, creating a structured journey for promising discoveries to advance with greater maturity, consistency, and global potential - expanding, for industry, access to selected, protected assets progressively developed for external innovation.",
+			"ctaButton": "How we build assets",
+			"imageAlt": "Microscope"
+		},
+		"companies": {
+			"title": "Two institutional pillars. One integrated strategy.",
+			"subtitle": "An institutional architecture to build and add value to pharmaceutical assets.",
+			"eyebrow": "(platform architecture)",
+			"intro": "The Aether platform operates through two complementary entities, with distinct functions integrated throughout the assets' development journey. This architecture makes it possible to bring together science, intellectual property, capital, and development strategy in a model oriented toward risk reduction, value creation, and licensing.",
+			"functionsEyebrow": "(main functions)",
+			"gp": {
+				"body": "Aether Global Pharma is the platform's business pillar and operates as a <b>Pharmaceutical Asset Venture Builder</b>, dedicated to building, developing, and adding value to pharmaceutical assets originating from high-potential science.<br /><br />The company leads the assets' integrated strategy, bringing together intellectual property, development, capital, and market positioning. It builds partnership, co-development, and licensing opportunities, connecting progressively developed assets to the pharmaceutical industry and specialized capital.",
+				"button": "Aether Global Pharma",
+				"functions": [
+					"Strategy, management, and value creation for the pharmaceutical asset portfolio",
+					"Ownership and strategic management of intellectual property assets",
+					"Structuring development and value-creation strategies",
+					"Engaging private capital and specialized life sciences investors",
+					"Developing partnerships with the pharmaceutical industry",
+					"Structuring co-development, licensing, royalty, milestone, and liquidity-event models"
+				]
+			},
+			"bio": {
+				"body": "<b>ICT AetherBio+ is the platform's scientific and technological pillar, responsible for bringing together expertise, infrastructure, and resources to advance and de-risk high-potential pharmaceutical projects.</b><br /><br />As a nonprofit science, technology, and innovation institution, it oversees the projects' scientific governance and builds development strategies aimed at advancing technology readiness. It connects researchers, universities, research centers, and specialized partners, mobilizing scientific and technological capabilities to generate evidence, reduce uncertainty, and prepare projects for their next development stages.<br /><br />Its work also provides access to national and international funding and scientific cooperation mechanisms, backed by specialized, multidisciplinary governance.",
+				"button": "ICT AetherBio+",
+				"functions": [
+					"Scientific and technological de-risking aimed at building pharmaceutical assets",
+					"Scientific governance and structured management of technology-readiness advancement",
+					"Engagement with universities, research centers, CROs, and specialized partners",
+					"Structuring and qualifying scientific projects with translational potential",
+					"Securing and coordinating public funding and non-dilutive resources, both national and international",
+					"Generating evidence and advancing TRLs to reduce uncertainty and add value to assets"
+				]
+			}
+		},
+		"partners": {
+			"title": "Scientific and institutional ecosystem",
+			"intro": "The Aether platform operates in collaboration with universities, research centers, and scientific and technological institutions that make up a highly qualified ecosystem."
+		}
 	}
 }

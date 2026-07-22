@@ -6,6 +6,7 @@ import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -17,6 +18,7 @@ import Button from '@/components/Button'
 
 export default function Companies() {
 
+    const t = useTranslations('HomePage.companies')
     const sectionRef = useRef<HTMLDivElement>(null)
     const pathRef = useRef<SVGPathElement>(null)
 
@@ -61,11 +63,11 @@ export default function Companies() {
                                 style='dark'
                                 className='text-60 font-heading font-semibold'
                             >
-                                Dois pilares institucionais. Uma estratégia integrada.
+                                {t('title')}
                             </AnimatedTitle>
 
                             <p className='text-24 font-heading mt-6 lg:mt-8'>
-                                <AnimatedText text='Uma arquitetura institucional para construir e valorizar ativos farmacêuticos.' />
+                                <AnimatedText text={t('subtitle')} />
                             </p>
                         </div>
 
@@ -77,13 +79,13 @@ export default function Companies() {
 
                         <div className='col-lg-3 pb-4 lg:pb-0'>
                             <p className='font-semibold font-heading'>
-                                <AnimatedText text='(arquitetura da plataforma)' />
+                                <AnimatedText text={t('eyebrow')} />
                             </p>
                         </div>
 
 						<div className='col-lg-6'>
                             <p className='text-20 leading-relaxed'>
-                                <AnimatedText text='A plataforma Aether opera por meio de duas entidades complementares, com funções distintas e integradas ao longo da jornada de desenvolvimento dos ativos. Essa arquitetura permite articular ciência, propriedade intelectual, capital e estratégia de desenvolvimento em um modelo orientado à redução de risco, construção de valor e licenciamento.' />
+                                <AnimatedText text={t('intro')} />
                             </p>
 						</div>
 						
@@ -145,13 +147,13 @@ export default function Companies() {
 
                             <div className='col-md-10 col-lg-8 col-xl-6'>
                                 <p className='text-20 leading-relaxed'>
-                                    <AnimatedText text='A Aether Global Pharma é o pilar empresarial da plataforma e atua como uma <b>Pharmaceutical Asset Venture Builder</b>, dedicada à construção, desenvolvimento e valorização de ativos farmacêuticos originados em ciência de alto potencial.<br /><br />A empresa conduz a estratégia integrada dos ativos, articulando propriedade intelectual, desenvolvimento, capital e posicionamento de mercado. Atua na construção de oportunidades de parceria, co-desenvolvimento e licenciamento, conectando ativos progressivamente desenvolvidos à indústria farmacêutica e ao capital especializado.' />
+                                    <AnimatedText text={t.markup('gp.body', { b: (chunks) => `<b>${chunks}</b>` })} />
                                 </p>
                                 <div className='mt-10'>
                                     <Button
                                         style='dark'
                                         href='/sobre/aether-global-pharma'
-                                        text='Aether Global Pharma'
+                                        text={t('gp.button')}
                                         icon='diagonal-arrow'
                                     />
                                 </div>
@@ -163,20 +165,13 @@ export default function Companies() {
 
                             <div className='col-lg-3'>
                                 <h2 className='font-semibold font-heading'>
-                                    <AnimatedText text='(principais funções)' />
+                                    <AnimatedText text={t('functionsEyebrow')} />
                                 </h2>
                             </div>
 
                             <div className='col-lg-6'>
                                 <StaggerUp className='flex flex-col gap-1'>
-                                    {[
-                                        'Estratégia, gestão e valorização do portfólio de ativos farmacêuticos',
-                                        'Titularidade e gestão estratégica dos ativos de propriedade intelectual',
-                                        'Estruturação das estratégias de desenvolvimento e geração de valor',
-                                        'Articulação de capital privado e investidores especializados em life sciences',
-                                        'Desenvolvimento de parcerias com a indústria farmacêutica',
-                                        'Estruturação de modelos de co-desenvolvimento, licenciamento, royalties, milestones e eventos de liquidez'
-                                    ].map((item, i) => (
+                                    {(t.raw('gp.functions') as string[]).map((item, i) => (
                                         <div
                                             key={i}
                                             className='flex items-center gap-3 bg-green-pale px-6 py-4 rounded-sm'
@@ -236,13 +231,13 @@ export default function Companies() {
 
                             <div className='col-md-10 col-lg-8 col-xl-6'>
                                 <p className='text-20 leading-relaxed'>
-                                    <AnimatedText text='<b>O ICT AetherBio+ é o pilar científico e tecnológico da plataforma, responsável por articular competências, infraestrutura e recursos para promover o avanço e o desrisking de projetos farmacêuticos de alto potencial.</b><br /><br />Como instituição de ciência, tecnologia e inovação sem fins lucrativos, atua na governança científica dos projetos e na construção de estratégias de desenvolvimento orientadas ao avanço da maturidade tecnológica. Conecta pesquisadores, universidades, centros de pesquisa e parceiros especializados, mobilizando capacidades científicas e tecnológicas para gerar evidências, reduzir incertezas e preparar os projetos para as próximas etapas de desenvolvimento.<br /><br />Sua atuação também viabiliza o acesso a mecanismos de fomento e cooperação científica, nacionais e internacionais, apoiada por uma governança especializada e multidisciplinar.' />
+                                    <AnimatedText text={t.markup('bio.body', { b: (chunks) => `<b>${chunks}</b>` })} />
                                 </p>
                                 <div className='mt-10'>
                                     <Button
                                         style='dark'
                                         href='/sobre/ict-aether-bio'
-                                        text='ICT AetherBio+'
+                                        text={t('bio.button')}
                                         icon='diagonal-arrow'
                                     />
                                 </div>
@@ -254,20 +249,13 @@ export default function Companies() {
 
                             <div className='col-lg-3'>
                                 <h2 className='font-semibold font-heading'>
-                                    <AnimatedText text='(principais funções)' />
+                                    <AnimatedText text={t('functionsEyebrow')} />
                                 </h2>
                             </div>
 
                             <div className='col-lg-6'>
                                 <StaggerUp className='flex flex-col gap-1'>
-                                    {[
-                                        'Desrisking científico e tecnológico orientado à construção de ativos farmacêuticos',
-                                        'Governança científica e gestão estruturada do avanço de maturidade tecnológica',
-                                        'Articulação com universidades, centros de pesquisa, CROs e parceiros especializados',
-                                        'Estruturação e qualificação de projetos científicos com potencial translacional',
-                                        'Captação e articulação de fomento público e recursos não dilutivos, nacionais e internacionais',
-                                        'Geração de evidências e avanço de TRLs para redução de incertezas e valorização dos ativos'
-                                    ].map((item, i) => (
+                                    {(t.raw('bio.functions') as string[]).map((item, i) => (
                                         <div
                                             key={i}
                                             className='flex items-center gap-3 bg-green-pale px-6 py-4 rounded-sm'

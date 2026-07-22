@@ -93,3 +93,14 @@ export const getFocusableElementsOutside = (container: HTMLElement) => {
 export function firstChar(str: string) {
     return str.charAt(0) || ''
 }
+
+// next-intl Locale -> og:locale (openGraph.locale) format
+export function ogLocale(locale: string) {
+    const map: Record<string, string> = {
+        'pt-BR': 'pt_BR',
+        'en-US': 'en_US',
+        es: 'es_ES'
+    }
+
+    return map[locale] ?? 'pt_BR'
+}

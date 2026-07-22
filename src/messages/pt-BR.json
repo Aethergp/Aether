@@ -70,5 +70,81 @@
 		"ctaText": "Buscamos universidades, ICTs, centros de pesquisa, parceiros industriais e investidores especializados que compartilhem o compromisso de transformar ciência em ativos com impacto global. Fale com a nossa equipe e vamos explorar caminhos de colaboração.",
 		"ctaButton": "Seja um parceiro",
 		"partnershipAlt": "Pesquisa científica na plataforma Aether"
+	},
+	"Context": {
+		"eyebrow": "(o contexto)",
+		"title": "Ciência de alto valor é desenvolvida continuamente. Grande parte nunca chega ao mercado.",
+		"body": "Universidades e centros de pesquisa geram descobertas com elevado potencial terapêutico todos os anos. O desafio raramente está na ciência mas na capacidade de transformar conhecimento em ativos farmacêuticos protegidos, validados e prontos para produção global.<br /><br />Sem maturação tecnológica adequada, governança científica e estratégia de propriedade intelectual, tecnologias promissoras permanecem restritas ao ambiente acadêmico e não alcançam seu potencial de impacto.",
+		"ctaButton": "Conheça a plataforma",
+		"items": [
+			{
+				"title": "Desrisking e Desenvolvimento do Ativo",
+				"text": "Reduzimos progressivamente as incertezas científicas, tecnológicas e de escalonamento por meio de uma estratégia estruturada de desenvolvimento. O objetivo é avançar tecnologias promissoras em maturidade e construir ativos farmacêuticos mais robustos e atrativos para parceiros estratégicos e licenciadores."
+			},
+			{
+				"title": "Governança Científica e Regulatória",
+				"text": "Integramos governança científica, desenvolvimento tecnológico e estratégia regulatória desde as fases iniciais. Cada ativo evolui com critérios de decisão, marcos de desenvolvimento e evidências orientadas às exigências do desenvolvimento farmacêutico e às futuras rotas de licenciamento."
+			},
+			{
+				"title": "Estratégia e Consolidação de Propriedade Intelectual",
+				"text": "Estruturamos a propriedade intelectual como elemento central de valor do ativo. Avaliamos titularidade, liberdade de operação e estratégia de proteção para construir portfólios de PI consistentes, defensáveis e alinhados ao potencial de desenvolvimento e licenciamento global."
+			},
+			{
+				"title": "Posicionamento e Licenciamento Global",
+				"text": "Preparamos e posicionamos os ativos para conexão com o ecossistema farmacêutico global. Estruturamos oportunidades de parceria, co-desenvolvimento e licenciamento, aproximando ativos científicos de indústrias e parceiros estratégicos capazes de conduzi-los às próximas etapas de desenvolvimento."
+			}
+		],
+		"creationStatement": "Entre a descoberta científica e a indústria farmacêutica, construímos ativos."
+	},
+	"HomePage": {
+		"metaTitle": "Aether Global Pharma | Ciência e Ativos Farmacêuticos",
+		"metaDescription": "Plataforma especializada em transformar ciência em ativos farmacêuticos: desrisking científico, propriedade intelectual e licenciamento global.",
+		"banner": {
+			"title": "Transformamos pesquisa científica em ativos farmacêuticos licenciáveis.",
+			"intro": "A Aether é uma <b>Pharmaceutical Asset Venture Builder</b> que integra ciência, propriedade intelectual, desenvolvimento tecnológico e estratégia de mercado para construir ativos farmacêuticos prontos para licenciamento global.",
+			"ctaButton": "Entre em contato",
+			"scroll": "scroll"
+		},
+		"about": {
+			"title": "Uma plataforma integrada. Dois pilares complementares.",
+			"body": "A Aether Global Pharma e o ICT AetherBio+ operam de forma sinérgica para transformar ciência de alto potencial em ativos farmacêuticos estruturados para avançar ao longo da jornada de desenvolvimento e gerar valor.<br /><br /> O ICT AetherBio+ articula competências científicas, infraestrutura, parceiros e recursos para promover o avanço e o desrisking tecnológico dos projetos. A Aether Global Pharma conduz a estratégia de desenvolvimento e valorização dos ativos, integrando propriedade intelectual, estratégia regulatória, capital e posicionamento para parcerias e licenciamento.<br /><br /> Juntas, conectam universidades e pesquisadores, capital especializado e indústria farmacêutica, criando uma jornada estruturada para que descobertas promissoras avancem com maior maturidade, consistência e potencial global ampliando, para a indústria, o acesso a ativos selecionados, protegidos e progressivamente desenvolvidos para inovação externa.",
+			"ctaButton": "Como construímos ativos",
+			"imageAlt": "Microscópio"
+		},
+		"companies": {
+			"title": "Dois pilares institucionais. Uma estratégia integrada.",
+			"subtitle": "Uma arquitetura institucional para construir e valorizar ativos farmacêuticos.",
+			"eyebrow": "(arquitetura da plataforma)",
+			"intro": "A plataforma Aether opera por meio de duas entidades complementares, com funções distintas e integradas ao longo da jornada de desenvolvimento dos ativos. Essa arquitetura permite articular ciência, propriedade intelectual, capital e estratégia de desenvolvimento em um modelo orientado à redução de risco, construção de valor e licenciamento.",
+			"functionsEyebrow": "(principais funções)",
+			"gp": {
+				"body": "A Aether Global Pharma é o pilar empresarial da plataforma e atua como uma <b>Pharmaceutical Asset Venture Builder</b>, dedicada à construção, desenvolvimento e valorização de ativos farmacêuticos originados em ciência de alto potencial.<br /><br />A empresa conduz a estratégia integrada dos ativos, articulando propriedade intelectual, desenvolvimento, capital e posicionamento de mercado. Atua na construção de oportunidades de parceria, co-desenvolvimento e licenciamento, conectando ativos progressivamente desenvolvidos à indústria farmacêutica e ao capital especializado.",
+				"button": "Aether Global Pharma",
+				"functions": [
+					"Estratégia, gestão e valorização do portfólio de ativos farmacêuticos",
+					"Titularidade e gestão estratégica dos ativos de propriedade intelectual",
+					"Estruturação das estratégias de desenvolvimento e geração de valor",
+					"Articulação de capital privado e investidores especializados em life sciences",
+					"Desenvolvimento de parcerias com a indústria farmacêutica",
+					"Estruturação de modelos de co-desenvolvimento, licenciamento, royalties, milestones e eventos de liquidez"
+				]
+			},
+			"bio": {
+				"body": "<b>O ICT AetherBio+ é o pilar científico e tecnológico da plataforma, responsável por articular competências, infraestrutura e recursos para promover o avanço e o desrisking de projetos farmacêuticos de alto potencial.</b><br /><br />Como instituição de ciência, tecnologia e inovação sem fins lucrativos, atua na governança científica dos projetos e na construção de estratégias de desenvolvimento orientadas ao avanço da maturidade tecnológica. Conecta pesquisadores, universidades, centros de pesquisa e parceiros especializados, mobilizando capacidades científicas e tecnológicas para gerar evidências, reduzir incertezas e preparar os projetos para as próximas etapas de desenvolvimento.<br /><br />Sua atuação também viabiliza o acesso a mecanismos de fomento e cooperação científica, nacionais e internacionais, apoiada por uma governança especializada e multidisciplinar.",
+				"button": "ICT AetherBio+",
+				"functions": [
+					"Desrisking científico e tecnológico orientado à construção de ativos farmacêuticos",
+					"Governança científica e gestão estruturada do avanço de maturidade tecnológica",
+					"Articulação com universidades, centros de pesquisa, CROs e parceiros especializados",
+					"Estruturação e qualificação de projetos científicos com potencial translacional",
+					"Captação e articulação de fomento público e recursos não dilutivos, nacionais e internacionais",
+					"Geração de evidências e avanço de TRLs para redução de incertezas e valorização dos ativos"
+				]
+			}
+		},
+		"partners": {
+			"title": "Ecossistema científico e institucional",
+			"intro": "A plataforma Aether opera em colaboração com universidades, centros de pesquisa e instituições científicas e tecnológicas que compõem um ecossistema altamente qualificado."
+		}
 	}
 }
