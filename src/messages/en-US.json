@@ -606,5 +606,67 @@
 		"teamText": "The Aether Platform brings together professionals with experience in pharmaceutical development, intellectual property, regulatory affairs, business strategy, and technology transfer. Our model integrates scientific experts, executives, and strategic partners to guide assets from discovery to global licensing opportunities.",
 		"teamButton": "Meet the team",
 		"teamImageAlt": "Aether Team"
+	},
+	"AgpPage": {
+		"metaTitle": "Aether Global Pharma - Pharmaceutical Asset Venture Builder",
+		"metaDescription": "Aether Global Pharma owns and develops the value of pharmaceutical intellectual-property assets: licensing, industry partnerships, and specialized investors.",
+		"heroTitle": "We build and add value to pharmaceutical assets from high-potential science.",
+		"heroText": "Aether Global Pharma is the business pillar of the Aether Platform and operates as a <b>Pharmaceutical Asset Venture Builder</b>, dedicated to building, developing, and adding value to pharmaceutical assets. We integrate intellectual property, development strategy, capital, and industry connections to guide high-potential assets through a structured journey of risk reduction and value creation, generating partnership, co-development, and licensing opportunities in the global pharmaceutical market.",
+		"funcoesEyebrow": "(core functions)",
+		"funcoesHeading": "The scope of a Pharmaceutical Asset Venture Builder.",
+		"funcoesText": "Aether Global Pharma works on the strategic construction and value creation of a pharmaceutical asset portfolio. Its activity integrates the dimensions needed for scientific discoveries to advance as structured, protected, and progressively developed assets, with partnership and licensing potential.",
+		"funcoes": [
+			{
+				"title": "Strategy and management of the pharmaceutical asset portfolio",
+				"text": "Building a portfolio thesis guided by scientific, therapeutic, strategic, and market potential."
+			},
+			{
+				"title": "Intellectual property and asset protection",
+				"text": "Structuring, ownership, and strategic management of intellectual property, aligned with value creation and global development potential."
+			},
+			{
+				"title": "Development strategy and value creation",
+				"text": "Defining the assets' development journey, value-creation milestones, and investment decisions, in coordination with ICT AetherBio+ and specialized partners."
+			},
+			{
+				"title": "Capital and specialized investment",
+				"text": "Coordinating private capital, investors, family offices, and specialized funds to finance the development and value creation of the portfolio."
+			},
+			{
+				"title": "Partnerships with the pharmaceutical industry",
+				"text": "Building external-innovation, co-development, and collaboration opportunities with national and international pharmaceutical companies."
+			},
+			{
+				"title": "Licensing and monetization of assets",
+				"text": "Structuring licensing models, royalties, milestones, strategic partnerships, and other value-creation and value-realization events."
+			}
+		],
+		"modeloEyebrow": "(the model)",
+		"modeloHeading": "How an asset gains value within the platform.",
+		"modeloText": "A structured path that turns high-potential science into pharmaceutical assets that are progressively developed, protected, and prepared for partnership and licensing opportunities.",
+		"labMeetingAlt": "Aether team in a strategic research discussion",
+		"modelo": [
+			{
+				"title": "Origination and Selection",
+				"text": "Identification and assessment of discoveries and technologies with therapeutic potential at universities, research centers, and other scientific settings. Each opportunity is analyzed from scientific, technological, intellectual-property, regulatory, and strategic perspectives before entering the portfolio."
+			},
+			{
+				"title": "Development and De-risking",
+				"text": "Structuring the development strategy and advancing the project's maturity, with progressive evidence generation and reduction of scientific and technological uncertainties. This stage is carried out in coordination with ICT AetherBio+, universities, research centers, and specialized partners."
+			},
+			{
+				"title": "Asset Construction and Value Creation",
+				"text": "Integration of intellectual property, development, regulatory strategy, and maturity milestones to strengthen the asset's robustness and value. Investment is directed toward stages capable of generating relevant evidence, reducing risk, and expanding its strategic potential."
+			},
+			{
+				"title": "Partnerships and Licensing",
+				"text": "Positioning assets for external-innovation, co-development, strategic partnership, and licensing opportunities with the pharmaceutical industry, through value-creation models that may include upfront payments, milestones, royalties, and other liquidity events."
+			}
+		],
+		"platformEyebrow": "(integrated platform)",
+		"platformHeading": "Strategy and science integrated to build value.",
+		"platformCardText1": "Aether Global Pharma leads the strategy for building and adding value to assets, integrating intellectual property, capital, partnerships, and licensing. ICT AetherBio+ drives the projects' scientific and technological advancement, evidence generation, and progressive risk reduction.",
+		"platformCardText2": "Complementary functions and independent governance strengthen the construction of robust pharmaceutical assets with global potential.",
+		"platformButton": "Learn about ICT AetherBio+"
 	}
 }

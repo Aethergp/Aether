@@ -606,5 +606,67 @@
 		"teamText": "La Plataforma Aether reúne a profesionales con experiencia en desarrollo farmacéutico, propiedad intelectual, asuntos regulatorios, estrategia empresarial y transferencia de tecnología. Nuestro modelo integra especialistas científicos, ejecutivos y socios estratégicos para conducir activos desde el descubrimiento hasta oportunidades de licenciamiento global.",
 		"teamButton": "Conozca al equipo",
 		"teamImageAlt": "Equipo Aether"
+	},
+	"AgpPage": {
+		"metaTitle": "Aether Global Pharma - Pharmaceutical Asset Venture Builder",
+		"metaDescription": "Aether Global Pharma posee y valoriza activos de propiedad intelectual farmacéutica: licenciamiento, alianzas industriales e inversores especializados.",
+		"heroTitle": "Construimos y valorizamos activos farmacéuticos a partir de ciencia de alto potencial.",
+		"heroText": "Aether Global Pharma es el pilar empresarial de la Plataforma Aether y actúa como una <b>Pharmaceutical Asset Venture Builder</b>, dedicada a la construcción, el desarrollo y la valorización de activos farmacéuticos. Integramos propiedad intelectual, estrategia de desarrollo, capital y conexión con la industria para conducir activos de alto potencial a lo largo de un recorrido estructurado de reducción de riesgo y generación de valor, creando oportunidades de alianza, codesarrollo y licenciamiento en el mercado farmacéutico global.",
+		"funcoesEyebrow": "(funciones principales)",
+		"funcoesHeading": "El alcance de una Pharmaceutical Asset Venture Builder.",
+		"funcoesText": "Aether Global Pharma actúa en la construcción estratégica y la valorización de un portafolio de activos farmacéuticos. Su actuación integra las dimensiones necesarias para que los descubrimientos científicos avancen como activos estructurados, protegidos y progresivamente desarrollados, con potencial de alianza y licenciamiento.",
+		"funcoes": [
+			{
+				"title": "Estrategia y gestión del portafolio de activos farmacéuticos",
+				"text": "Construcción de una tesis de portafolio orientada por el potencial científico, terapéutico, estratégico y de mercado."
+			},
+			{
+				"title": "Propiedad intelectual y protección de los activos",
+				"text": "Estructuración, titularidad y gestión estratégica de la propiedad intelectual, alineadas con la construcción de valor y el potencial de desarrollo global."
+			},
+			{
+				"title": "Estrategia de desarrollo y generación de valor",
+				"text": "Definición del recorrido de desarrollo de los activos, los hitos de valorización y las decisiones de inversión, en integración con el ICT AetherBio+ y socios especializados."
+			},
+			{
+				"title": "Capital e inversión especializada",
+				"text": "Articulación de capital privado, inversores, family offices y fondos especializados para financiar el desarrollo y la valorización del portafolio."
+			},
+			{
+				"title": "Alianzas con la industria farmacéutica",
+				"text": "Construcción de oportunidades de innovación externa, codesarrollo y colaboración con empresas farmacéuticas nacionales e internacionales."
+			},
+			{
+				"title": "Licenciamiento y monetización de los activos",
+				"text": "Estructuración de modelos de licenciamiento, regalías, hitos, alianzas estratégicas y otros eventos de generación y realización de valor."
+			}
+		],
+		"modeloEyebrow": "(el modelo)",
+		"modeloHeading": "Cómo un activo gana valor dentro de la plataforma.",
+		"modeloText": "Un recorrido estructurado que transforma ciencia de alto potencial en activos farmacéuticos progresivamente desarrollados, protegidos y preparados para oportunidades de alianza y licenciamiento.",
+		"labMeetingAlt": "Equipo de Aether en una discusión estratégica de investigación",
+		"modelo": [
+			{
+				"title": "Originación y Selección",
+				"text": "Identificación y evaluación de descubrimientos y tecnologías con potencial terapéutico en universidades, centros de investigación y otros entornos científicos. Cada oportunidad se analiza desde las perspectivas científica, tecnológica, de propiedad intelectual, regulatoria y estratégica antes de ingresar al portafolio."
+			},
+			{
+				"title": "Desarrollo y Reducción de Riesgo",
+				"text": "Estructuración de la estrategia de desarrollo y avance de la madurez del proyecto, con generación progresiva de evidencias y reducción de incertidumbres científicas y tecnológicas. Esta etapa se conduce en articulación con el ICT AetherBio+, universidades, centros de investigación y socios especializados."
+			},
+			{
+				"title": "Construcción y Valorización del Activo",
+				"text": "Integración entre propiedad intelectual, desarrollo, estrategia regulatoria e hitos de madurez para fortalecer la solidez y el valor del activo. La inversión se orienta a etapas capaces de generar evidencias relevantes, reducir riesgos y ampliar su potencial estratégico."
+			},
+			{
+				"title": "Alianzas y Licenciamiento",
+				"text": "Posicionamiento de los activos para oportunidades de innovación externa, codesarrollo, alianzas estratégicas y licenciamiento con la industria farmacéutica, mediante modelos de generación de valor que pueden incluir pagos iniciales, hitos, regalías y otros eventos de liquidez."
+			}
+		],
+		"platformEyebrow": "(plataforma integrada)",
+		"platformHeading": "Estrategia y ciencia integradas para construir valor.",
+		"platformCardText1": "Aether Global Pharma conduce la estrategia de construcción y valorización de los activos, integrando propiedad intelectual, capital, alianzas y licenciamiento. El ICT AetherBio+ impulsa el avance científico y tecnológico de los proyectos, la generación de evidencias y la reducción progresiva de riesgos.",
+		"platformCardText2": "Funciones complementarias y gobernanza independiente fortalecen la construcción de activos farmacéuticos robustos y con potencial global.",
+		"platformButton": "Conozca el ICT AetherBio+"
 	}
 }
