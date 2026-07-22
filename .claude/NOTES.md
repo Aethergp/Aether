@@ -82,10 +82,25 @@ hover-dropdown in the desktop header (`max-sm:hidden`) and a 3-pill inline row i
 
 **Locale-prefixed navigation + SEO metadata done:** every internal `Link`/`Button` href, `pageGraph()`/
 `breadcrumbs()`'s WebPage/BreadcrumbList URLs, and every page's `alternates.canonical`/`openGraph.url`
-now resolve through `getPathname()` for the current locale, and `alternates.languages` emits a full
-hreflang set (see CLAUDE.md → Architecture → "Internationalization (next-intl)" for the mechanics and
-which files own which piece). `next-sitemap.config.js` builds its own route list via `additionalPaths`
-(routes × locales, plus blog slugs) since next-sitemap's auto-discovery can't resolve `[locale]`.
+now resolve through `getLocalizedPathname()` for the current locale, and `alternates.languages` emits a
+full hreflang set (see CLAUDE.md → Architecture → "Internationalization (next-intl)" for the mechanics
+and which files own which piece). `next-sitemap.config.js` builds its own route list via
+`additionalPaths` (translated routes × locales, plus blog slugs) since next-sitemap's auto-discovery
+can't resolve `[locale]`.
+
+**Localized URL slugs done:** every static route's URL segment is now translated per locale via
+next-intl's `pathnames` config in `src/i18n/routing.ts` (e.g. `/sobre` → `/en-us/about` → `/es/nosotros`,
+`/inscreva-seu-projeto` → `/en-us/submit-your-project` → `/es/inscriba-su-proyecto`; brand names and
+existing loanwords like Pipeline/TRL stay untranslated). The pt-BR path remains the single canonical key
+used throughout the app - `getLocalizedPathname()` (`src/i18n/navigation.ts`) wraps next-intl's
+`getPathname()` to keep every call site on a lenient `string` signature and to special-case the dynamic
+`/midia/[slug]` → `/media/[slug]` / `/medios/[slug]` route (which needs the object `{pathname, params}`
+form). `LocaleSwitcher` has a matching guard: `usePathname()` returns the *literal* `'/midia/[slug]'`
+template on a blog post page (not the real slug), so it separately reads the real slug via
+`useParams()` from `next/navigation` and switches locale with the object form instead of blindly
+replacing the path - verified in-browser (switching EN→ES from a live post correctly landed on
+`/es/medios/<same-slug>`, not a broken `[slug]` URL). See CLAUDE.md → Architecture →
+"Internationalization (next-intl)" for the full mechanics.
 
 ## Cross-cutting gaps to resolve
 

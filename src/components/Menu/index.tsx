@@ -15,7 +15,7 @@ import LocaleSwitcher from '@/components/LocaleSwitcher'
 import { useAnchorScroll } from '@/hooks/useAnchorScroll'
 import { useIsNotFound } from '@/components/Utils/NotFoundContext'
 import { navLinks, headerLinks, pages } from '@/utils/routes'
-import { usePathname, getPathname } from '@/i18n/navigation'
+import { usePathname, getLocalizedPathname } from '@/i18n/navigation'
 
 // svg
 import Logo from '@/assets/svg/logo/aether-gp.svg'
@@ -26,13 +26,13 @@ export default function Menu() {
 
 	const t = useTranslations('Nav')
 	const locale = useLocale()
-	const localize = (href: string) => href.startsWith('/') ? getPathname({ href, locale }) : href
+	const localize = (href: string) => href.startsWith('/') ? getLocalizedPathname(href, locale) : href
 	const scrollTo = useAnchorScroll()
 
 	// light logo over the dark home hero, dark logo over light pages
 	const pathname = usePathname()
 	const isNotFound = useIsNotFound()
-	const darkHeader = pathname === '/' || pathname === pages.parceiros || pathname === pages.sobre || pathname === pages.sobreAgp || pathname === pages.sobreIct || pathname === '/404' || isNotFound
+	const darkHeader = pathname === '/' || pathname === pages.parceiros || pathname === pages.sobre || pathname === pages.sobreAgp || pathname === pages.sobreIct || (pathname as string) === '/404' || isNotFound
 
 	// fs menu
 	const [isOpen, setIsOpen] = useState(false)

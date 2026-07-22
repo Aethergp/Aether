@@ -7,7 +7,7 @@ import AnimatedText from '@/components/Utils/Animations/AnimatedText'
 import Button from '@/components/Button'
 import { Link } from 'next-transition-router'
 import { pages } from '@/utils/routes'
-import { getPathname } from '@/i18n/navigation'
+import { getLocalizedPathname } from '@/i18n/navigation'
 
 type Props = {
     className?: string
@@ -73,7 +73,7 @@ export default function ContactBanner({ className }: Props) {
                                 />
 
                                 <Link
-                                    href={getPathname({ href: pages.inscreva, locale })}
+                                    href={getLocalizedPathname(pages.inscreva, locale)}
                                     className='hover-underline-alt hover-underline-alt--light font-heading font-semibold cursor-pointer'
                                 >
                                     {t('secondaryLink')}

@@ -7,7 +7,7 @@ import type { Locale } from 'next-intl'
 import { getTranslations } from 'next-intl/server'
 
 // utils
-import { getPathname } from '@/i18n/navigation'
+import { getLocalizedPathname } from '@/i18n/navigation'
 
 export const SITE_URL = 'https://aethergp.com.br'
 
@@ -198,7 +198,7 @@ export async function breadcrumbs(trail: Crumb[], locale: Locale) {
 
 	const all = [{ name: t('inicio'), item: '/' }, ...trail].map((crumb) => ({
 		name: crumb.name,
-		item: getPathname({ href: crumb.item, locale })
+		item: getLocalizedPathname(crumb.item, locale)
 	}))
 
 	return {
@@ -263,7 +263,7 @@ export async function pageGraph({
 	extra = [],
 	extend = {}
 }: PageOptions) {
-	const localizedPath = getPathname({ href: path, locale })
+	const localizedPath = getLocalizedPathname(path, locale)
 	const url = `${SITE_URL}${localizedPath === '/' ? '' : localizedPath}`
 
 	// the home page has no trail; a single-item BreadcrumbList carries no

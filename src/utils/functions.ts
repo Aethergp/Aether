@@ -2,7 +2,7 @@
 import type { Locale } from 'next-intl'
 
 // utils
-import { getPathname } from '@/i18n/navigation'
+import { getLocalizedPathname } from '@/i18n/navigation'
 import { routing } from '@/i18n/routing'
 
 const SITE_URL = 'https://aethergp.com.br'
@@ -118,10 +118,10 @@ export function ogLocale(locale: string) {
 // unprefixed path, resolved for the current locale - so a page's SEO metadata
 // points at its own locale's URL instead of always the pt-BR one
 export function localizedMetadata(path: string, locale: Locale) {
-    const canonical = getPathname({ href: path, locale })
+    const canonical = getLocalizedPathname(path, locale)
 
     const languages = Object.fromEntries(
-        routing.locales.map((loc) => [loc, getPathname({ href: path, locale: loc })])
+        routing.locales.map((loc) => [loc, getLocalizedPathname(path, loc)])
     ) as Record<string, string>
     languages['x-default'] = languages[routing.defaultLocale]
 

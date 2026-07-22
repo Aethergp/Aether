@@ -9,13 +9,13 @@ import { useGSAP } from '@gsap/react'
 // utils
 import { social, footerColumns, pages } from '@/utils/routes'
 import { getYear } from '@/utils/functions'
-import { usePathname, getPathname } from '@/i18n/navigation'
+import { usePathname, getLocalizedPathname } from '@/i18n/navigation'
 
 export default function Footer() {
 
 	const t = useTranslations('Nav')
 	const locale = useLocale()
-	const localize = (href: string) => href.startsWith('/') ? getPathname({ href, locale }) : href
+	const localize = (href: string) => href.startsWith('/') ? getLocalizedPathname(href, locale) : href
 	const pathname = usePathname()
 
 	useGSAP(() => {

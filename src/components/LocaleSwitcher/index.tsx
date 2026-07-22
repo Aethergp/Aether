@@ -3,6 +3,7 @@
 // libraries
 import clsx from 'clsx'
 import { useLocale } from 'next-intl'
+import { useParams } from 'next/navigation'
 
 // components
 import Button from '@/components/Button'
@@ -26,7 +27,24 @@ interface Props {
 export default function LocaleSwitcher({ className, variant = 'dropdown' }: Props) {
 	const locale = useLocale()
 	const pathname = usePathname()
+	const params = useParams()
 	const router = useRouter()
+
+	// on the dynamic post route, usePathname() returns the literal unsubstituted
+	// template ('/midia/[slug]') - swap locale via the object form with the real
+	// slug (from next/navigation's raw params) instead of passing that template
+	// straight to the router, which would produce a broken '[slug]' URL
+	const switchLocale = (item: (typeof routing.locales)[number]) => {
+		if (pathname === '/midia/[slug]') {
+			const slug = params.slug
+			if (typeof slug === 'string') {
+				router.replace({ pathname, params: { slug } }, { locale: item })
+			}
+			return
+		}
+
+		router.replace(pathname, { locale: item })
+	}
 
 	if (variant === 'inline') {
 		return (
@@ -35,7 +53,7 @@ export default function LocaleSwitcher({ className, variant = 'dropdown' }: Prop
 					<button
 						key={item}
 						type='button'
-						onClick={() => router.replace(pathname, { locale: item })}
+						onClick={() => switchLocale(item)}
 						className={clsx(
 							'px-4 py-2 rounded-sm text-16 font-heading font-medium cursor-pointer transition-colors duration-200',
 							item === locale
@@ -66,7 +84,7 @@ export default function LocaleSwitcher({ className, variant = 'dropdown' }: Prop
 						<li key={item}>
 							<button
 								type='button'
-								onClick={() => router.replace(pathname, { locale: item })}
+								onClick={() => switchLocale(item)}
 								className='block w-full text-left px-4 py-2.5 rounded-sm text-green-dark whitespace-nowrap cursor-pointer transition-colors duration-200 hover:bg-green-dark hover:text-green-light'
 							>
 								{localeLabels[item]}

@@ -3,13 +3,13 @@
 
 import type { Locale } from 'next-intl'
 import { ORG_ID, WEBSITE_ID, SITE_URL, plainText } from '@/utils/schema'
-import { getPathname } from '@/i18n/navigation'
+import { getLocalizedPathname } from '@/i18n/navigation'
 import { type MediaPost, getContent, getReadingTime, getAuthor, mediaHref } from './data'
 
 export const BLOG_ID = `${SITE_URL}/midia#blog`
 
 function postUrl(post: MediaPost, locale: Locale) {
-	return `${SITE_URL}${getPathname({ href: mediaHref(post), locale })}`
+	return `${SITE_URL}${getLocalizedPathname(mediaHref(post), locale)}`
 }
 
 /** Full BlogPosting for a single internal post. */
@@ -43,7 +43,7 @@ export function articleNode(post: MediaPost, locale: Locale) {
 			'@type': 'Blog',
 			'@id': BLOG_ID,
 			name: 'Mídia - Aether Global Pharma',
-			url: `${SITE_URL}${getPathname({ href: '/midia', locale })}`
+			url: `${SITE_URL}${getLocalizedPathname('/midia', locale)}`
 		},
 		mainEntityOfPage: { '@id': url }
 	}
@@ -63,7 +63,7 @@ export function blogNode(posts: MediaPost[], locale: Locale, name: string, descr
 		name,
 		description,
 		inLanguage: locale,
-		url: `${SITE_URL}${getPathname({ href: '/midia', locale })}`,
+		url: `${SITE_URL}${getLocalizedPathname('/midia', locale)}`,
 		publisher: { '@id': ORG_ID },
 		isPartOf: { '@id': WEBSITE_ID },
 		blogPost: internal.map((post) => ({

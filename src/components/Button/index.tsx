@@ -5,7 +5,7 @@ import { useLocale } from 'next-intl'
 import { Link } from 'next-transition-router'
 
 // utils
-import { getPathname } from '@/i18n/navigation'
+import { getLocalizedPathname } from '@/i18n/navigation'
 
 // svg
 import UxArrowDiagonal from '@/assets/svg/ux/arrow-diagonal.svg'
@@ -210,7 +210,7 @@ export default function Button({
 			)
 		}
 
-		const localizedHref = href.startsWith('/') ? getPathname({ href, locale }) : href
+		const localizedHref = href.startsWith('/') ? getLocalizedPathname(href, locale) : href
 
 		return (
 			<Link

@@ -19,7 +19,7 @@ import JsonLd from '@/components/JsonLd'
 import { pages } from '@/utils/routes'
 import { pageGraph } from '@/utils/schema'
 import { ogLocale, localizedMetadata } from '@/utils/functions'
-import { getPathname } from '@/i18n/navigation'
+import { getLocalizedPathname } from '@/i18n/navigation'
 
 // img
 import bioLab from '@/assets/img/team.jpg'
@@ -141,7 +141,7 @@ export default async function IctAetherBioPage({ params }: Props) {
 													<>
 														{' '}
 														<Link
-															href={getPathname({ href: item.href, locale })}
+															href={getLocalizedPathname(item.href, locale)}
 															className='underline underline-offset-4 decoration-1 hover:text-white'
 														>
 															{t('saibaMais')}

@@ -15,7 +15,7 @@ import { Form, Input, Textarea, FileUpload, Checkbox, InputHidden, Honeypot, Sub
 
 // utils
 import { pages, contact } from '@/utils/routes'
-import { getPathname } from '@/i18n/navigation'
+import { getLocalizedPathname } from '@/i18n/navigation'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -110,7 +110,7 @@ function Steps() {
 
 						<p className='text-sm text-green-dark/70 -mt-1 mb-4'>
 							{t('form.trlPrompt')}{' '}
-							<Link href={getPathname({ href: pages.trl, locale })} className='hover-underline font-semibold'>
+							<Link href={getLocalizedPathname(pages.trl, locale)} className='hover-underline font-semibold'>
 								{t('form.trlLink')}
 							</Link>
 						</p>
@@ -141,7 +141,7 @@ function Steps() {
 						>
 							<span>
 								{t('form.lgpdText')}{' '}
-								<Link href={getPathname({ href: pages.privacy, locale })} className='hover-underline font-semibold'>
+								<Link href={getLocalizedPathname(pages.privacy, locale)} className='hover-underline font-semibold'>
 									{t('form.privacyLink')}
 								</Link>
 								. {/* PLACEHOLDER - texto LGPD a alinhar com o cliente */}

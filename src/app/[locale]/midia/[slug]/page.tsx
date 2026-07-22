@@ -17,6 +17,7 @@ import JsonLd from '@/components/JsonLd'
 import { pageGraph } from '@/utils/schema'
 import { articleNode } from '../db/schema'
 import { ogLocale, localizedMetadata } from '@/utils/functions'
+import { getLocalizedPathname } from '@/i18n/navigation'
 import {
 	getMediaPosts,
 	getMediaPostBySlug,
@@ -84,7 +85,7 @@ export default async function PostPage({ params }: Props) {
 
 	const related = getRelatedPosts(post, locale)
 	const readingTime = getReadingTime(post)
-	const shareUrl = `${SITE_URL}${mediaHref(post)}`
+	const shareUrl = `${SITE_URL}${getLocalizedPathname(mediaHref(post), locale)}`
 
 	return (
 		<div className='bg-white'>

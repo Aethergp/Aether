@@ -81,7 +81,7 @@ export default function MediaFeed({ posts }: Props) {
 		setRawPage(nextPage)
 
 		const query = params.toString()
-		router.push(query ? `${pathname}?${query}` : pathname, { scroll: false })
+		router.push((query ? `${pathname}?${query}` : pathname) as never, { scroll: false })
 
 		scrollToFeed()
 	}

@@ -14,9 +14,10 @@ const noIndexRoutes = ['/404', '/500', '/home']
 
 // next-sitemap's default route discovery scans .next/server/app for page files, but it
 // can't resolve the [locale] dynamic segment or generateStaticParams, so it silently
-// produces zero URLs for this app. The static route list + locale prefixes below are
-// duplicated from src/utils/routes.js and src/i18n/routing.ts (not importable here as
-// plain Node ESM without transpilation) - keep both in sync when routes/locales change.
+// produces zero URLs for this app. The static route list + pathname translations below
+// are duplicated from src/utils/routes.js and src/i18n/routing.ts (not importable here
+// as plain Node ESM without transpilation) - keep both in sync when routes/locales/
+// translated slugs change.
 const STATIC_ROUTES = [
 	'/',
 	'/sobre',
@@ -42,6 +43,30 @@ const LOCALE_PREFIXES = {
 	es: '/es'
 }
 
+// mirrors src/i18n/routing.ts's `pathnames` map - the pt-BR key is the canonical route
+// used in STATIC_ROUTES above; each locale's translated URL segment lives here
+const PATHNAMES = {
+	'/sobre': { 'en-US': '/about', es: '/nosotros' },
+	'/sobre/aether-global-pharma': { 'en-US': '/about/aether-global-pharma', es: '/nosotros/aether-global-pharma' },
+	'/sobre/ict-aether-bio': { 'en-US': '/about/ict-aether-bio', es: '/nosotros/ict-aether-bio' },
+	'/sobre/equipe': { 'en-US': '/about/team', es: '/nosotros/equipo' },
+	'/desenvolvimento-de-ativos': { 'en-US': '/asset-development', es: '/desarrollo-de-activos' },
+	'/desenvolvimento-de-ativos/trl': { 'en-US': '/asset-development/trl', es: '/desarrollo-de-activos/trl' },
+	'/desenvolvimento-de-ativos/pipeline': { 'en-US': '/asset-development/pipeline', es: '/desarrollo-de-activos/pipeline' },
+	'/midia': { 'en-US': '/media', es: '/medios' },
+	'/midia/[slug]': { 'en-US': '/media/[slug]', es: '/medios/[slug]' },
+	'/parceiros': { 'en-US': '/partners', es: '/socios' },
+	'/inscreva-seu-projeto': { 'en-US': '/submit-your-project', es: '/inscriba-su-proyecto' },
+	'/contato': { 'en-US': '/contact', es: '/contacto' },
+	'/politica-de-privacidade': { 'en-US': '/privacy-policy', es: '/politica-de-privacidad' },
+	'/termos-e-condicoes': { 'en-US': '/terms-and-conditions', es: '/terminos-y-condiciones' }
+}
+
+function translatePath(route, locale) {
+	if (route === '/' || locale === 'pt-BR') return route
+	return PATHNAMES[route]?.[locale] ?? route
+}
+
 function getBlogSlugs() {
 	const raw = JSON.parse(readFileSync(path.join(__dirname, 'src/app/[locale]/midia/db/posts.json'), 'utf8'))
 	return raw.filter((post) => post.type === 'blog' && post.slug).map((post) => post.slug)
@@ -61,22 +86,36 @@ function changefreqFor(route, priority) {
 }
 
 function buildPaths() {
-	const routes = [...STATIC_ROUTES, ...getBlogSlugs().map((slug) => `/midia/${slug}`)]
+	const blogSlugs = getBlogSlugs()
 	const lastmod = new Date().toISOString()
 
-	return Object.entries(LOCALE_PREFIXES).flatMap(([, prefix]) =>
-		routes.map((route) => {
-			const loc = `${prefix}${route === '/' ? '' : route}` || '/'
+	return Object.entries(LOCALE_PREFIXES).flatMap(([locale, prefix]) => {
+		const staticEntries = STATIC_ROUTES.map((route) => {
+			const translated = translatePath(route, locale)
 			const priority = priorityFor(route)
 
 			return {
-				loc,
+				loc: `${prefix}${translated === '/' ? '' : translated}` || '/',
 				changefreq: changefreqFor(route, priority),
 				priority,
 				lastmod
 			}
 		})
-	)
+
+		const blogEntries = blogSlugs.map((slug) => {
+			const translatedBase = translatePath('/midia/[slug]', locale).replace('[slug]', slug)
+			const priority = priorityFor('/midia')
+
+			return {
+				loc: `${prefix}${translatedBase}`,
+				changefreq: changefreqFor('/midia', priority),
+				priority,
+				lastmod
+			}
+		})
+
+		return [...staticEntries, ...blogEntries]
+	})
 }
 
 export default {

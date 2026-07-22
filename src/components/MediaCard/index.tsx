@@ -12,7 +12,7 @@ import UxLink from '@/assets/svg/ux/link.svg'
 
 // utils
 import { type MediaPost, mediaHref, formatDate } from '@/app/[locale]/midia/db/data'
-import { getPathname } from '@/i18n/navigation'
+import { getLocalizedPathname } from '@/i18n/navigation'
 
 interface Props {
 	post: MediaPost
@@ -111,7 +111,7 @@ export default function MediaCard({ post }: Props) {
 	}
 
 	return (
-		<Link href={getPathname({ href, locale })} className={className}>
+		<Link href={getLocalizedPathname(href, locale)} className={className}>
 			{body}
 		</Link>
 	)
