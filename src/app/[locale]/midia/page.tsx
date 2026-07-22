@@ -58,7 +58,7 @@ export default async function MidiaPage({ params }: Props) {
 	const { locale } = await params
 	const t = await getTranslations({ locale, namespace: 'MidiaPage' })
 
-	const posts = getMediaPosts()
+	const posts = getMediaPosts(locale)
 
 	return (
 		<div className='bg-white'>
@@ -77,7 +77,7 @@ export default async function MidiaPage({ params }: Props) {
 					extend: {
 						mainEntity: { '@id': `${SITE_URL}/midia#blog` }
 					},
-					extra: [blogNode(posts)]
+					extra: [blogNode(posts, locale, t('metaTitle'), t('metaDescription'))]
 				})}
 			/>
 

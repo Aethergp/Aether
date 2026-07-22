@@ -1,18 +1,20 @@
 // JSON-LD nodes for the /midia feed and its posts. Lives next to the data
 // source so the WP swap only has to keep the MediaPost shape intact.
 
+import type { Locale } from 'next-intl'
 import { ORG_ID, WEBSITE_ID, SITE_URL, plainText } from '@/utils/schema'
+import { getPathname } from '@/i18n/navigation'
 import { type MediaPost, getContent, getReadingTime, getAuthor, mediaHref } from './data'
 
 export const BLOG_ID = `${SITE_URL}/midia#blog`
 
-function postUrl(post: MediaPost) {
-	return `${SITE_URL}${mediaHref(post)}`
+function postUrl(post: MediaPost, locale: Locale) {
+	return `${SITE_URL}${getPathname({ href: mediaHref(post), locale })}`
 }
 
 /** Full BlogPosting for a single internal post. */
-export function articleNode(post: MediaPost) {
-	const url = postUrl(post)
+export function articleNode(post: MediaPost, locale: Locale) {
+	const url = postUrl(post, locale)
 	const body = getContent(post)
 
 	return {
@@ -21,7 +23,7 @@ export function articleNode(post: MediaPost) {
 		headline: post.title,
 		description: post.excerpt,
 		articleSection: post.category,
-		inLanguage: 'pt-BR',
+		inLanguage: locale,
 		datePublished: post.date,
 		dateModified: post.date,
 		wordCount: plainText(body, Infinity).split(/\s+/).length,
@@ -41,7 +43,7 @@ export function articleNode(post: MediaPost) {
 			'@type': 'Blog',
 			'@id': BLOG_ID,
 			name: 'Mídia - Aether Global Pharma',
-			url: `${SITE_URL}/midia`
+			url: `${SITE_URL}${getPathname({ href: '/midia', locale })}`
 		},
 		mainEntityOfPage: { '@id': url }
 	}
@@ -52,25 +54,25 @@ export function articleNode(post: MediaPost) {
  * entries are links to third-party coverage, so claiming them as our own
  * blogPost would misrepresent authorship.
  */
-export function blogNode(posts: MediaPost[]) {
+export function blogNode(posts: MediaPost[], locale: Locale, name: string, description: string) {
 	const internal = posts.filter((post) => post.type === 'blog' && post.slug)
 
 	return {
 		'@type': 'Blog',
 		'@id': BLOG_ID,
-		name: 'Mídia - Aether Global Pharma',
-		description: 'Insights sobre ciência, propriedade intelectual e desenvolvimento farmacêutico.',
-		inLanguage: 'pt-BR',
-		url: `${SITE_URL}/midia`,
+		name,
+		description,
+		inLanguage: locale,
+		url: `${SITE_URL}${getPathname({ href: '/midia', locale })}`,
 		publisher: { '@id': ORG_ID },
 		isPartOf: { '@id': WEBSITE_ID },
 		blogPost: internal.map((post) => ({
 			'@type': 'BlogPosting',
-			'@id': `${postUrl(post)}#article`,
+			'@id': `${postUrl(post, locale)}#article`,
 			headline: post.title,
 			description: post.excerpt,
 			datePublished: post.date,
-			url: postUrl(post)
+			url: postUrl(post, locale)
 		}))
 	}
 }

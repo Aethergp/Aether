@@ -40,7 +40,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	const { locale, slug } = await params
-	const post = getMediaPostBySlug(slug)
+	const post = getMediaPostBySlug(slug, locale)
 
 	if (!post) {
 		const t = await getTranslations({ locale, namespace: 'MidiaPostPage' })
@@ -78,11 +78,11 @@ export default async function PostPage({ params }: Props) {
 	const { locale, slug } = await params
 	const t = await getTranslations({ locale, namespace: 'MidiaPostPage' })
 	const tNav = await getTranslations({ locale, namespace: 'Nav' })
-	const post = getMediaPostBySlug(slug)
+	const post = getMediaPostBySlug(slug, locale)
 
 	if (!post) notFound()
 
-	const related = getRelatedPosts(post)
+	const related = getRelatedPosts(post, locale)
 	const readingTime = getReadingTime(post)
 	const shareUrl = `${SITE_URL}${mediaHref(post)}`
 
@@ -103,7 +103,7 @@ export default async function PostPage({ params }: Props) {
 					extend: {
 						mainEntity: { '@id': `${shareUrl}#article` }
 					},
-					extra: [articleNode(post)]
+					extra: [articleNode(post, locale)]
 				})}
 			/>
 

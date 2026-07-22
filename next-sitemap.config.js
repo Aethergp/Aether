@@ -43,7 +43,7 @@ const LOCALE_PREFIXES = {
 }
 
 function getBlogSlugs() {
-	const raw = JSON.parse(readFileSync(path.join(__dirname, 'src/app/[locale]/midia/db/temp.json'), 'utf8'))
+	const raw = JSON.parse(readFileSync(path.join(__dirname, 'src/app/[locale]/midia/db/posts.json'), 'utf8'))
 	return raw.filter((post) => post.type === 'blog' && post.slug).map((post) => post.slug)
 }
 
