@@ -49,56 +49,46 @@ Suggested build order: the `/sobre` **hub is built**; next are its 3 subpages (`
 `/sobre/ict-aether-bio`, `/sobre/equipe`) → `/pd` + `/pd/trl` → `/pd/pipeline` (waits on content). `/contato`,
 `/inscreva-seu-projeto`, `/midia`, `/parceiros`, legal pages are already built.
 
-## Internationalization (i18n branch, in progress)
+## Internationalization (i18n branch, content rollout complete)
 
 **Phase 0 done:** `next-intl` installed and wired into `next.config.mjs` via
 `createNextIntlPlugin('./src/i18n/request.ts')`; `src/i18n/{routing,request,navigation}.ts` + typed
 `AppConfig` in `src/types/next-intl.d.ts`. Locales: `pt-BR` (default, no prefix) / `en-US` (`/en-us`) /
 `es` (`/es`).
 
-**Phase 1 done (2026-07-21):** all routes moved from `src/app/*` to `src/app/[locale]/*` (mechanical
-move, zero content change, verified with a full rebuild + browser check that pt-BR renders byte-identical
-to before); `NextIntlClientProvider` + locale validation wired into `src/app/[locale]/layout.tsx`; minimal
-root `src/app/layout.tsx` (passthrough) + `src/app/not-found.tsx` (non-localized fallback) added since
-Next.js requires them once a root `not-found.tsx` exists; `src/app/[locale]/[...rest]/page.tsx`
-(`notFound()`) added so unknown paths render the styled locale-aware 404 instead of the bare root
-fallback; `usePathname`/`useRouter` swapped to `@/i18n/navigation` in `Menu`, `Footer`, `MediaFeed` so
-prefix-sensitive comparisons/links keep working per locale. See CLAUDE.md → Architecture →
-"Internationalization (next-intl)" for the full mechanics and gotchas (middleware file location,
-catch-all requirement, the nav-link-locale-prefix gap, the broken sitemap).
+**Phase 1 done:** all routes moved from `src/app/*` to `src/app/[locale]/*`; `NextIntlClientProvider` +
+locale validation wired into `src/app/[locale]/layout.tsx`; minimal root `src/app/layout.tsx`
+(passthrough) + `src/app/not-found.tsx` (non-localized fallback); `src/app/[locale]/[...rest]/page.tsx`
+(`notFound()`) so unknown paths render the styled locale-aware 404. See CLAUDE.md → Architecture →
+"Internationalization (next-intl)" for the full mechanics.
 
-**Content rollout (page by page, started 2026-07-21): `404`, `/contato`, `/parceiros` are fully
-migrated** — `generateMetadata`/`getTranslations`, every string in `src/messages/{pt-BR,en-US,es}.json`,
-verified in-browser in all 3 locales (title tag, OG, body copy, form labels all switch correctly; pt-BR
-default unaffected). Chose these first because they're the smallest pages. Everything else (`/`, `/sobre`
-+ 3 subpages, `/desenvolvimento-de-ativos` + 2 subpages, `/midia` + post template, `/inscreva-seu-projeto`,
-the 2 legal pages) **still renders hardcoded pt-BR copy regardless of locale** — intentional incremental
-state, not a bug. The global `Menu`/`Footer` nav labels are *not yet* translated either (same reason:
-not one of the 3 target pages) — pick a page, follow the pattern in `src/app/[locale]/contato/page.tsx`
-(the richer example — form + subject options where the emailed `value` stays pt-BR but the visible
-`label` translates) or `src/app/[locale]/parceiros/page.tsx` (simpler, no form).
+**Content rollout done — every route + every shared component is translated** across
+`src/messages/{pt-BR,en-US,es}.json`: `404`, `/contato`, `/parceiros`, home, `/inscreva-seu-projeto`,
+`/desenvolvimento-de-ativos` + `trl` + `pipeline`, `/midia` feed + post template, `/sobre` + its 3
+subpages (`aether-global-pharma`, `ict-aether-bio`, `equipe`), both legal pages, plus the shared `Menu`/
+`Footer`/`Committee`/`Form`/`Pagination`/`ContactBanner`/`MediaCard` components (validation error
+messages, aria-labels, the "Link externo" badge, etc.) and the `/midia` post-date month formatting
+(`formatDate(iso, locale)` in `db/data.ts`). Data-driven blog post content (title/excerpt/body from
+`db/temp.json`) is the one deliberate exception — still pt-BR only, since adding a locale dimension to
+post records is a separate architectural decision, not done yet.
 
-**Locale detection + manual switching done (2026-07-21):** the middleware's geolocation redirect now
-falls through to next-intl's own Accept-Language negotiation when `x-vercel-ip-country` is absent
-(local dev, or any non-Vercel host) instead of hardcoding `en-US` — a real user complaint (local dev
-always landing on English regardless of browser language) traced to that hardcoded fallback. A manual
-`LocaleSwitcher` (`src/components/LocaleSwitcher/`) is now wired into `Menu`: a hover-dropdown in the
-desktop header (`max-sm:hidden`) and a 3-pill inline row in the fs mobile menu (`sm:hidden`) - geo/
-Accept-Language only pick the *first-visit default*, a visitor can always override it. See CLAUDE.md →
-"Internationalization (next-intl)" for the mechanics and the mobile-overflow bug this caught (the
-dropdown variant alone, shown unconditionally, pushed the hamburger button off-screen below 576px).
+**Locale detection + manual switching done:** the middleware's geolocation redirect falls through to
+next-intl's own Accept-Language negotiation when `x-vercel-ip-country` is absent (local dev, or any
+non-Vercel host). A manual `LocaleSwitcher` (`src/components/LocaleSwitcher/`) is wired into `Menu`: a
+hover-dropdown in the desktop header (`max-sm:hidden`) and a 3-pill inline row in the fs mobile menu
+(`sm:hidden`).
 
-**Not started:**
-- Every other route's content extraction/translation (the bulk of the remaining work; legal pages
-  especially are large).
-- Locale-aware internal *navigation* (`Menu`/`Footer`/`Button` all use `next-transition-router`'s `Link`
-  fed unprefixed `pages.x` constants — clicking a nav link from `/en-us/...` currently drops back to
-  pt-BR; needs either a `Link` swap or routing hrefs through next-intl's `getPathname`). Note this is
-  separate from the `LocaleSwitcher`, which is unaffected (it computes its own locale-aware href via
-  `@/i18n/navigation`'s `useRouter`).
-- `alternates.languages` (hreflang) on migrated pages' metadata.
-- Fixing `next-sitemap` for the `[locale]` segment (currently emits an empty sitemap on build — see
-  CLAUDE.md gotcha).
+**Locale-prefixed navigation + SEO metadata done:** every internal `Link`/`Button` href, `pageGraph()`/
+`breadcrumbs()`'s WebPage/BreadcrumbList URLs, and every page's `alternates.canonical`/`openGraph.url`
+now resolve through `getPathname()` for the current locale, and `alternates.languages` emits a full
+hreflang set (see CLAUDE.md → Architecture → "Internationalization (next-intl)" for the mechanics and
+which files own which piece). `next-sitemap.config.js` builds its own route list via `additionalPaths`
+(routes × locales, plus blog slugs) since next-sitemap's auto-discovery can't resolve `[locale]`.
+
+**Known, deliberate remaining gap:** blog post content itself (title/excerpt/body) has no locale
+dimension yet — visiting a post under any locale renders the same pt-BR text. Fixing this means deciding
+how post records carry per-locale fields (or wait for the headless-WordPress swap, see "Blog / news"
+above) — not started, and lower priority than the UI-chrome work above.
 
 ## Cross-cutting gaps to resolve
 
