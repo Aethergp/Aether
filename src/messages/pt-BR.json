@@ -819,5 +819,28 @@
 		"modificationsText": "O Aether Global Pharma pode revisar estes termos de serviço do site a qualquer momento, sem aviso prévio. Ao usar este site, você concorda em ficar vinculado à versão atual desses termos de serviço.",
 		"lawEyebrow": "(lei aplicável)",
 		"lawText": "Estes termos e condições são regidos e interpretados de acordo com as leis do Aether Global Pharma e você se submete irrevogavelmente à jurisdição exclusiva dos tribunais naquele estado ou localidade."
+	},
+	"Form": {
+		"closeButton": "Fechar",
+		"requiredError": "Este campo é obrigatório",
+		"maxLengthError": "Máximo de caracteres excedido",
+		"passwordTooShortError": "Password é muito curto",
+		"messageTooShortError": "Mensagem é muito curta",
+		"passwordMismatchError": "Password não confere",
+		"emailInvalidError": "Email inválido",
+		"selectPlaceholder": "Selecione",
+		"fileSizeExceededError": "O arquivo excede {size} MB. Reduza o tamanho ou envie um resumo.",
+		"fileTypeUnsupportedError": "Formato não suportado. Envie um arquivo PDF.",
+		"fileUploadPrepareError": "Erro ao preparar upload.",
+		"fileUploadSendError": "Erro ao enviar arquivo.",
+		"fileUploadClickLabel": "Clique para anexar um arquivo",
+		"fileUploadingLabel": "A enviar arquivo...",
+		"fileRemoveAriaLabel": "Remover arquivo",
+		"honeypotLabel": "Não preencher"
+	},
+	"Pagination": {
+		"navAriaLabel": "Paginação",
+		"prevAriaLabel": "Página anterior",
+		"nextAriaLabel": "Próxima página"
 	}
 }

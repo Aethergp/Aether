@@ -2,6 +2,7 @@
 
 // libraries
 import clsx from 'clsx'
+import { useTranslations } from 'next-intl'
 
 interface Props {
 	currentPage: number
@@ -12,6 +13,8 @@ interface Props {
 const WINDOW = 5
 
 export default function Pagination({ currentPage, totalPages, onChange }: Props) {
+
+	const t = useTranslations('Pagination')
 
 	if (totalPages <= 1) return null
 
@@ -34,7 +37,7 @@ export default function Pagination({ currentPage, totalPages, onChange }: Props)
 
 	return (
 		<nav
-			aria-label='Paginação'
+			aria-label={t('navAriaLabel')}
 			className='flex items-center justify-center gap-1.5 sm:gap-2'
 		>
 
@@ -42,7 +45,7 @@ export default function Pagination({ currentPage, totalPages, onChange }: Props)
 				type='button'
 				onClick={() => onChange(currentPage - 1)}
 				disabled={currentPage === 1}
-				aria-label='Página anterior'
+				aria-label={t('prevAriaLabel')}
 				className='flex items-center justify-center w-10 h-10 rounded-sm border border-green-dark/20 text-green-dark transition-colors duration-200 enabled:hover:bg-green-dark enabled:hover:text-green-light disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer'
 			>
 				<Arrow direction='prev' />
@@ -72,7 +75,7 @@ export default function Pagination({ currentPage, totalPages, onChange }: Props)
 				type='button'
 				onClick={() => onChange(currentPage + 1)}
 				disabled={currentPage === totalPages}
-				aria-label='Próxima página'
+				aria-label={t('nextAriaLabel')}
 				className='flex items-center justify-center w-10 h-10 rounded-sm border border-green-dark/20 text-green-dark transition-colors duration-200 enabled:hover:bg-green-dark enabled:hover:text-green-light disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer'
 			>
 				<Arrow direction='next' />

@@ -77,6 +77,7 @@ export default async function PostPage({ params }: Props) {
 
 	const { locale, slug } = await params
 	const t = await getTranslations({ locale, namespace: 'MidiaPostPage' })
+	const tNav = await getTranslations({ locale, namespace: 'Nav' })
 	const post = getMediaPostBySlug(slug)
 
 	if (!post) notFound()
@@ -95,7 +96,7 @@ export default async function PostPage({ params }: Props) {
 					name: `${post.title} | Aether Global Pharma`,
 					description: post.excerpt,
 					trail: [
-						{ name: 'Mídia', item: '/midia' },
+						{ name: tNav('midia'), item: '/midia' },
 						{ name: post.title, item: mediaHref(post) }
 					],
 					extend: {

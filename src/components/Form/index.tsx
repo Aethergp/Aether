@@ -3,6 +3,7 @@
 // libraries
 import clsx from 'clsx'
 import { useRef, useState } from 'react'
+import { useTranslations } from 'next-intl'
 import { FormProvider, type RegisterOptions, type SubmitHandler, useForm, useFormContext } from 'react-hook-form'
 
 // components
@@ -30,6 +31,7 @@ export const Modal = ({
 	text,
 	onClose
 }: ModalProps) => {
+	const t = useTranslations('Form')
 	return (
 		<Portal>
 			<Dialog id={id}>
@@ -48,7 +50,7 @@ export const Modal = ({
 						data-dialog-close
 						onClick={onClose}
 						type='button'
-						text='Fechar'
+						text={t('closeButton')}
 						style='dark'
 						icon='close'
 					/>
@@ -352,6 +354,8 @@ export const Input = ({
 	onKeyDown,
 	match
 }: InputProps) => {
+	const t = useTranslations('Form')
+
 	const {
 		register,
 		watch,
@@ -368,22 +372,20 @@ export const Input = ({
 
 	if (match) {
 		validations.validate = (value) => (
-			value === watch(match) || 'Password não confere'
+			value === watch(match) || t('passwordMismatchError')
         )
 	}
 
-	const text = type === 'password' ? 'password' : 'message'
-
     validations = {
         ...validations,
-        required: required && 'Este campo é obrigatório',
+        required: required && t('requiredError'),
         maxLength: maxLength && {
             value: maxLength,
-            message: 'Máximo de caracteres excedido',
+            message: t('maxLengthError'),
         },
         minLength: minLength && {
             value: minLength,
-            message: `${text} é muito curto`,
+            message: type === 'password' ? t('passwordTooShortError') : t('messageTooShortError'),
         },
     }
 
@@ -393,7 +395,7 @@ export const Input = ({
             ...validations,
             pattern: {
                 value: /\S+@\S+\.\S+/,
-                message: 'Email inválido'
+                message: t('emailInvalidError')
             }
         } as {
             required: string | false | undefined
@@ -519,6 +521,8 @@ export const Textarea = ({
 	maxLength,
 	className
 }: TextareaProps) => {
+	const t = useTranslations('Form')
+
 	const {
 		register,
 		formState: { errors }
@@ -528,16 +532,16 @@ export const Textarea = ({
 	const [isFocused, setIsFocused] = useState(false)
 
 	let validations = {}
-	
+
     validations = {
-        required: required && 'Este campo é obrigatório',
+        required: required && t('requiredError'),
         maxLength: maxLength && {
             value: maxLength,
-            message: `Máximo de caracteres excedido`
+            message: t('maxLengthError')
         },
         minLength: minLength && {
             value: minLength,
-            message: `A mensagem é muito curta`
+            message: t('messageTooShortError')
         }
     }
 
@@ -614,6 +618,8 @@ export const Checkbox = ({
 	onChange = () => {},
 	children
 }: CheckboxProps) => {
+	const t = useTranslations('Form')
+
 	const {
 		register,
 		formState: { errors }
@@ -626,7 +632,7 @@ export const Checkbox = ({
 
     validations = {
         ...validations,
-        required: required && 'Este campo é obrigatório',
+        required: required && t('requiredError'),
     }
 
 	return (
@@ -765,13 +771,15 @@ export const Select = ({
 	label,
 	name,
 	options,
-	placeholder = 'Selecione',
+	placeholder,
 	hideLabel,
 	className,
 	required,
 	disabled,
 	onChange = () => {}
 }: SelectProps) => {
+	const t = useTranslations('Form')
+
 	const {
 		register,
 		watch,
@@ -780,7 +788,7 @@ export const Select = ({
 
 	const validations: RegisterOptions = {
 		onChange: (e) => onChange(e),
-		required: required && 'Este campo é obrigatório'
+		required: required && t('requiredError')
 	}
 
 	const value = watch(name)
@@ -817,7 +825,7 @@ export const Select = ({
 				>
 
 					<option value='' disabled>
-						{placeholder}
+						{placeholder ?? t('selectPlaceholder')}
 					</option>
 
 					{options.map((option) => (
@@ -881,6 +889,8 @@ export const FileUpload = ({
 	required,
 	uploadToR2 = false
 }: FileUploadProps) => {
+	const t = useTranslations('Form')
+
 	const {
 		register,
 		watch,
@@ -899,15 +909,15 @@ export const FileUpload = ({
 	const isStandardFile = !uploadToR2 && files instanceof FileList ? files[0] : null
 
 	const { ref, ...field } = register(name, {
-		required: required && 'Este campo é obrigatório',
+		required: required && t('requiredError'),
 		...(uploadToR2
 			? {}
 			: {
 				validate: {
 					size: (value: FileList) =>
-						!value?.[0] || value[0].size <= maxBytes || `O arquivo excede ${maxSizeMB} MB. Reduza o tamanho ou envie um resumo.`,
+						!value?.[0] || value[0].size <= maxBytes || t('fileSizeExceededError', { size: maxSizeMB }),
 					type: (value: FileList) =>
-						!value?.[0] || value[0].type === 'application/pdf' || 'Formato não suportado. Envie um arquivo PDF.'
+						!value?.[0] || value[0].type === 'application/pdf' || t('fileTypeUnsupportedError')
 				}
 			})
 	})
@@ -930,13 +940,13 @@ export const FileUpload = ({
 		if (!file) return
 
 		if (file.type !== 'application/pdf') {
-			setUploadError('Formato não suportado. Envie um arquivo PDF.')
+			setUploadError(t('fileTypeUnsupportedError'))
 			setUploadState('error')
 			return
 		}
 
 		if (file.size > maxBytes) {
-			setUploadError(`O arquivo excede ${maxSizeMB} MB. Reduza o tamanho ou envie um resumo.`)
+			setUploadError(t('fileSizeExceededError', { size: maxSizeMB }))
 			setUploadState('error')
 			return
 		}
@@ -953,7 +963,7 @@ export const FileUpload = ({
 
 			if (!presignRes.ok) {
 				const err = await presignRes.json()
-				throw new Error(err.error || 'Erro ao preparar upload.')
+				throw new Error(err.error || t('fileUploadPrepareError'))
 			}
 
 			const { url, key } = await presignRes.json()
@@ -964,13 +974,13 @@ export const FileUpload = ({
 				headers: { 'Content-Type': file.type }
 			})
 
-			if (!uploadRes.ok) throw new Error('Erro ao enviar arquivo.')
+			if (!uploadRes.ok) throw new Error(t('fileUploadSendError'))
 
 			setValue(name, key, { shouldValidate: true })
 			setUploadedFile({ name: file.name, size: file.size })
 			setUploadState('done')
 		} catch (err) {
-			setUploadError(err instanceof Error ? err.message : 'Erro ao enviar arquivo.')
+			setUploadError(err instanceof Error ? err.message : t('fileUploadSendError'))
 			setUploadState('error')
 			if (inputRef.current) inputRef.current.value = ''
 		}
@@ -1031,14 +1041,14 @@ export const FileUpload = ({
 						</svg>
 					</span>
 					<span className='text-sm opacity-75'>
-						{uploadState === 'error' ? uploadError : 'Clique para anexar um arquivo'}
+						{uploadState === 'error' ? uploadError : t('fileUploadClickLabel')}
 					</span>
 				</label>
 			)}
 
 			{uploadState === 'uploading' && (
 				<div className='flex items-center gap-3 border border-dashed border-gray-lighter rounded-md p-4'>
-					<span className='text-sm opacity-75'>A enviar arquivo...</span>
+					<span className='text-sm opacity-75'>{t('fileUploadingLabel')}</span>
 				</div>
 			)}
 
@@ -1062,7 +1072,7 @@ export const FileUpload = ({
 					<button
 						type='button'
 						onClick={uploadToR2 ? clearR2 : clearStandard}
-						aria-label='Remover arquivo'
+						aria-label={t('fileRemoveAriaLabel')}
 						className='flex items-center justify-center w-5 h-5 shrink-0 text-green-dark transition-opacity duration-200 hover:opacity-60 cursor-pointer'
 					>
 						<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round' className='w-3.5 h-3.5'>
@@ -1089,6 +1099,7 @@ export const FileUpload = ({
 
 // off-screen anti-spam honeypot - the route drops submissions where `company` is filled
 export const Honeypot = () => {
+	const t = useTranslations('Form')
 	const { register } = useFormContext() ?? {}
 
 	return (
@@ -1096,7 +1107,7 @@ export const Honeypot = () => {
 			className='absolute left-[-9999px] w-px h-px overflow-hidden'
 			aria-hidden='true'
 		>
-			<label htmlFor='b_website'>Não preencher</label>
+			<label htmlFor='b_website'>{t('honeypotLabel')}</label>
 			<input
 				type='text'
 				id='b_website'
