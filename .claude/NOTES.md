@@ -191,13 +191,19 @@ schema.org vocabulary, no unresolved `@id` references, and all Google-required r
   `( ... )` eyebrows became `<p>`, or `<h2>` where they were a section's only heading); content
   photography has real alt text.
 
-- **Known issue - `/midia` feed is client-only.** `MediaFeed` is a `'use client'` component using
-  `useSearchParams()`, which triggers a CSR bailout, so the prerendered HTML for `/midia` contains
-  **zero `<a href="/midia/...">` links and no post headings** - only the `h1`. The posts themselves are
-  statically rendered, are in the sitemap, and are listed in the `Blog.blogPost` JSON-LD, so they are
-  discoverable; but the hub page passes no internal link equity and has almost no indexable content.
-  Fix when convenient: server-render the unfiltered first page of results and let the client component
-  take over only for filtering/pagination.
+- **`/midia` feed's CSR-bailout is fixed.** `MediaFeed` used to read filter/page state via
+  `next/navigation`'s `useSearchParams()`, which forces the whole subtree behind a Suspense boundary
+  during static generation - the prerendered HTML shipped with **zero `<a href="/midia/...">` links and
+  no post headings** (only the `h1`), since the boundary's fallback was `null`. Giving the fallback real
+  content instead turned out to be the wrong fix: React mounted the fallback tree *and* the hydrated
+  client tree side by side (verified with a fresh page load in the browser - two `[data-stagger]` grids,
+  duplicated cards), not a clean swap. **The actual fix removes `useSearchParams()` entirely**: `MediaFeed`
+  now reads `window.location.search` in a `useEffect` (with a `popstate` listener for back/forward) and
+  keeps `category`/`page` in local `useState`, defaulting to the unfiltered first page - the same content
+  the sitemap/canonical URL already points at - so the component never needs a Suspense boundary and
+  SSRs its real content directly. The shared grid markup was extracted into `MediaGrid.tsx` for reuse.
+  Verified via the production build's raw static HTML (`next start`, not `next dev`): real per-locale
+  `<a href>`/`<h2>` for all posts, no duplication, filtering/pagination/deep-links still work.
 
 - **Still open (not done):** visible breadcrumb UI (the `BreadcrumbList` schema already drives the
   SERP breadcrumb, so this is a UX/nav improvement and a design decision - it would restyle 8 hero

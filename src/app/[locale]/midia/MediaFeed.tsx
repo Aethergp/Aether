@@ -2,14 +2,12 @@
 
 // libraries
 import clsx from 'clsx'
-import { useMemo } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { gsap } from 'gsap'
 import { useTranslations } from 'next-intl'
-import { useSearchParams } from 'next/navigation'
 
 // components
-import StaggerUp from '@/components/Utils/Animations/StaggerUp'
-import MediaCard from '@/components/MediaCard'
+import MediaGrid from './MediaGrid'
 import Pagination from '@/components/Pagination'
 
 // utils
@@ -20,21 +18,40 @@ interface Props {
 	posts: MediaPost[]
 }
 
+// deliberately avoids next/navigation's useSearchParams(): that hook forces this
+// whole subtree behind a Suspense boundary during static generation, and the
+// prerendered fallback then ships with zero post links/headings - bad for SEO.
+// Reading window.location.search after mount keeps the component fully static
+// (SSR/first paint always shows the unfiltered first page, same as the sitemap/
+// canonical URL) while still staying in sync with the real URL for deep links,
+// filtering, pagination, and back/forward navigation.
 export default function MediaFeed({ posts }: Props) {
 
 	const t = useTranslations('MidiaPage')
 	const router = useRouter()
 	const pathname = usePathname()
-	const searchParams = useSearchParams()
+
+	const [category, setCategory] = useState<'todos' | MediaType>('todos')
+	const [rawPage, setRawPage] = useState(1)
+
+	useEffect(() => {
+		const syncFromUrl = () => {
+			const params = new URLSearchParams(window.location.search)
+			setCategory((params.get('categoria') as MediaType | null) ?? 'todos')
+			setRawPage(Number(params.get('pagina')) || 1)
+		}
+
+		syncFromUrl()
+
+		window.addEventListener('popstate', syncFromUrl)
+		return () => window.removeEventListener('popstate', syncFromUrl)
+	}, [])
 
 	const filters: { value: 'todos' | MediaType; label: string }[] = [
 		{ value: 'todos', label: t('filterAll') },
 		{ value: 'blog', label: t('filterBlog') },
 		{ value: 'imprensa', label: t('filterPress') }
 	]
-
-	const category = searchParams.get('categoria') ?? 'todos'
-	const rawPage = Number(searchParams.get('pagina')) || 1
 
 	const filtered = useMemo(() => (
 		category === 'todos' ? posts : posts.filter((post) => post.type === category)
@@ -49,15 +66,19 @@ export default function MediaFeed({ posts }: Props) {
 	)
 
 	const pushParams = (next: { categoria?: string; pagina?: number }) => {
-		const params = new URLSearchParams(searchParams.toString())
-
 		const nextCategory = next.categoria ?? category
+		const nextPage = next.pagina ?? 1
+
+		const params = new URLSearchParams(window.location.search)
+
 		if (nextCategory === 'todos') params.delete('categoria')
 		else params.set('categoria', nextCategory)
 
-		const nextPage = next.pagina ?? 1
 		if (nextPage <= 1) params.delete('pagina')
 		else params.set('pagina', String(nextPage))
+
+		setCategory(nextCategory as 'todos' | MediaType)
+		setRawPage(nextPage)
 
 		const query = params.toString()
 		router.push(query ? `${pathname}?${query}` : pathname, { scroll: false })
@@ -103,22 +124,11 @@ export default function MediaFeed({ posts }: Props) {
 				})}
 			</div>
 
-			{visible.length > 0 ? (
-				<StaggerUp
-					key={`${category}-${currentPage}`}
-					className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-14 lg:gap-y-20'
-				>
-					{visible.map((post) => (
-						<div key={post.id}>
-							<MediaCard post={post} />
-						</div>
-					))}
-				</StaggerUp>
-			) : (
-				<p className='text-20 opacity-70 py-10'>
-					{t('emptyState')}
-				</p>
-			)}
+			<MediaGrid
+				key={`${category}-${currentPage}`}
+				posts={visible}
+				emptyLabel={t('emptyState')}
+			/>
 
 			<div className='mt-16 lg:mt-[6vw]'>
 				<Pagination

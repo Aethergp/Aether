@@ -2,7 +2,6 @@
 import type { Metadata } from 'next'
 import type { Locale } from 'next-intl'
 import { getTranslations } from 'next-intl/server'
-import { Suspense } from 'react'
 
 // components
 import AnimatedText from '@/components/Utils/Animations/AnimatedText'
@@ -127,9 +126,7 @@ export default async function MidiaPage({ params }: Props) {
 				/>
 
 				<div className='base-container relative z-2'>
-					<Suspense fallback={null}>
-						<MediaFeed posts={posts} />
-					</Suspense>
+					<MediaFeed posts={posts} />
 				</div>
 
 			</section>
