@@ -1,5 +1,7 @@
 // libraries
 import type { Metadata } from 'next'
+import type { Locale } from 'next-intl'
+import { getTranslations } from 'next-intl/server'
 import Image from 'next/image'
 
 // components
@@ -13,77 +15,59 @@ import JsonLd from '@/components/JsonLd'
 
 // utils
 import { pageGraph } from '@/utils/schema'
+import { ogLocale } from '@/utils/functions'
 
 // img
 import imgContext from '@/assets/img/stairs.jpg'
 
-export const metadata: Metadata = {
-	title: 'TRL - Maturidade Tecnológica | Aether Global Pharma',
-	description: 'A escala TRL 1-9 aplicada ao desenvolvimento farmacêutico, do princípio científico à comercialização. Baseada na ISO 16290 e no Guia TRL da RBIF.',
-	alternates: {
-		canonical: '/desenvolvimento-de-ativos/trl'
-	},
-	openGraph: {
-		title: 'TRL - Maturidade Tecnológica | Aether Global Pharma',
-		description: 'A escala TRL 1-9 aplicada ao desenvolvimento farmacêutico, do princípio científico à comercialização. Baseada na ISO 16290 e no Guia TRL da RBIF.',
-		url: 'https://aethergp.com.br/desenvolvimento-de-ativos/trl',
-		siteName: 'Aether Global Pharma',
-		images: [
-			{
-				url: '/img/og/desenvolvimento-de-ativos-trl.jpg',
-				width: 1200,
-				height: 630,
-				alt: 'Aether Global Pharma'
-			}
-		],
-		locale: 'pt_BR',
-		type: 'website'
+interface Props {
+	params: Promise<{ locale: Locale }>
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+	const { locale } = await params
+	const t = await getTranslations({ locale, namespace: 'TRLPage' })
+
+	return {
+		title: t('metaTitle'),
+		description: t('metaDescription'),
+		alternates: {
+			canonical: '/desenvolvimento-de-ativos/trl'
+		},
+		openGraph: {
+			title: t('metaTitle'),
+			description: t('metaDescription'),
+			url: 'https://aethergp.com.br/desenvolvimento-de-ativos/trl',
+			siteName: 'Aether Global Pharma',
+			images: [
+				{
+					url: '/img/og/desenvolvimento-de-ativos-trl.jpg',
+					width: 1200,
+					height: 630,
+					alt: 'Aether Global Pharma'
+				}
+			],
+			locale: ogLocale(locale),
+			type: 'website'
+		}
 	}
 }
 
-const jornada = [
-	{
-		fase: 'Pesquisa e Descoberta',
-		range: 'TRL 1-3',
-		subtitle: 'Fundamentos científicos',
-		desc: 'Investigação dos princípios fundamentais, formulação de hipóteses e geração das primeiras evidências experimentais. A tecnologia evolui do conhecimento científico inicial para uma prova de conceito, com avaliação progressiva de seu potencial de aplicação.',
-		onde: 'Universidades, centros de pesquisa e laboratórios acadêmicos.',
-		card: 'bg-white border border-green-dark/12 text-green-dark',
-		muted: 'text-green-dark/50',
-		divider: 'border-green-dark/12'
-	},
-	{
-		fase: 'Desenvolvimento Translacional e Pré-Clínico',
-		range: 'TRL 4-6',
-		subtitle: 'Validação e redução de incertezas',
-		desc: 'A tecnologia avança da prova de conceito para níveis crescentes de validação, integração e demonstração em condições relevantes. São geradas evidências científicas, tecnológicas e pré-clínicas, acompanhadas pelo desenvolvimento progressivo de CMC, estratégia regulatória e documentação técnica.',
-		onde: 'Laboratórios especializados, centros de pesquisa, CROs, CDMOs e parceiros tecnológicos e industriais.',
-		card: 'bg-green-pale text-green-dark',
-		muted: 'text-green-dark/55',
-		divider: 'border-green-dark/15'
-	},
-	{
-		fase: 'Desenvolvimento Clínico e Operacional',
-		range: 'TRL 7-9',
-		subtitle: 'Comprovação e aplicação',
-		desc: 'A tecnologia alcança níveis avançados de maturidade, com geração de evidências em ambiente clínico e operacional, qualificação regulatória, preparação para produção em escala e, quando aplicável, aprovação e utilização no mercado.',
-		onde: 'Centros clínicos, CROs, indústria farmacêutica, unidades produtivas e agências reguladoras.',
-		card: 'bg-green-dark text-green-light',
-		muted: 'text-green-light/60',
-		divider: 'border-green-light/20'
-	}
+// visual styling classes stay in code, keyed by index; copy comes from TRLPage.jornada/principios
+const jornadaStyles = [
+	{ card: 'bg-white border border-green-dark/12 text-green-dark', muted: 'text-green-dark/50', divider: 'border-green-dark/12' },
+	{ card: 'bg-green-pale text-green-dark', muted: 'text-green-dark/55', divider: 'border-green-dark/15' },
+	{ card: 'bg-green-dark text-green-light', muted: 'text-green-light/60', divider: 'border-green-light/20' }
 ]
 
-const principios = [
-	'<b>Governança científica independente</b> em cada estágio, com acompanhamento especializado.',
-	'<b>Documentação técnica</b> construída progressivamente e alinhada às exigências regulatórias aplicáveis.',
-	'<b>Estratégia de propriedade intelectual</b> conduzida em paralelo à evolução científica e tecnológica.',
-	'<b>Captação de recursos públicos e privados</b> adequada à maturidade e às necessidades de cada projeto.',
-	'<b>Articulação com universidades, centros de pesquisa, CROs e parceiros industriais</b> no momento adequado do desenvolvimento.',
-	'<b>Preparação progressiva para transferência tecnológica, parcerias e licenciamento</b> no mercado farmacêutico global.'
-]
+export default async function TRLPage({ params }: Props) {
+	const { locale } = await params
+	const t = await getTranslations({ locale, namespace: 'TRLPage' })
 
-export default function TRLPage() {
+	const jornada = (t.raw('jornada') as { fase: string, range: string, subtitle: string, desc: string, onde: string }[])
+		.map((item, i) => ({ ...item, ...jornadaStyles[i] }))
+	const principios = t.raw('principios') as string[]
+
 	return (
 		<div className='bg-white'>
 
@@ -92,8 +76,8 @@ export default function TRLPage() {
 				data={pageGraph({
 					type: 'WebPage',
 					path: '/desenvolvimento-de-ativos/trl',
-					name: metadata.title as string,
-					description: metadata.description as string,
+					name: t('metaTitle'),
+					description: t('metaDescription'),
 					trail: [
 						{ name: 'Desenvolvimento de Ativos', item: '/desenvolvimento-de-ativos' },
 						{ name: 'TRL', item: '/desenvolvimento-de-ativos/trl' }
@@ -108,17 +92,17 @@ export default function TRLPage() {
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
 							<p className='font-semibold font-heading lg:pt-2'>
-								<AnimatedText text='(maturidade tecnológica)' />
+								<AnimatedText text={t('eyebrow')} />
 							</p>
 						</div>
 
 						<div className='col-lg-9'>
 							<h1 className='text-72 font-heading font-bold text-green-dark'>
-								<AnimatedText text='Nove níveis entre a descoberta científica e o mercado global.' />
+								<AnimatedText text={t('heading')} />
 							</h1>
 
 							<p className='text-24 font-heading mt-8 lg:mt-12 lg:pr-[8vw]'>
-								<AnimatedText text='A escala de <b>Technology Readiness Level (TRL)</b> organiza a maturidade de uma tecnologia em nove níveis, da observação dos princípios fundamentais à demonstração em ambiente operacional.<br /><br /> Na Aether, essa referência é aplicada ao desenvolvimento farmacêutico por meio de uma abordagem integrada, considerando evidências científicas, maturidade tecnológica, desenvolvimento não clínico, CMC, estratégia regulatória e preparação para transferência e licenciamento.' />
+								<AnimatedText text={t.markup('heroText', { b: (chunks) => `<b>${chunks}</b>` })} />
 							</p>
 
 						</div>
@@ -138,7 +122,7 @@ export default function TRLPage() {
 						<ScrollingImage>
 							<Image
 								src={imgContext}
-								alt='TRL'
+								alt={t('contextImageAlt')}
 								fill
 								className='object-cover'
 								sizes='100vw'
@@ -160,7 +144,7 @@ export default function TRLPage() {
 								style='dark'
 								className='text-60 font-heading font-semibold'
 							>
-								Uma linguagem comum para falar de risco, maturidade e valor.
+								{t('contextTitle')}
 							</AnimatedTitle>
 						</div>
 
@@ -172,21 +156,21 @@ export default function TRLPage() {
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
 							<p className='font-semibold font-heading'>
-								<AnimatedText text='(a escala)' />
+								<AnimatedText text={t('scaleEyebrow')} />
 							</p>
 						</div>
 
 						<div className='col-lg-6'>
 							<p className='text-20 leading-relaxed'>
-								<AnimatedText text='A escala TRL foi desenvolvida originalmente pela NASA e hoje é amplamente utilizada como referência para avaliar a maturidade de tecnologias em desenvolvimento.<br /><br /> No setor farmacêutico, sua aplicação exige uma leitura contextualizada. A evolução de um ativo não ocorre de forma exclusivamente linear: desenvolvimento científico, CMC, estudos não clínicos, estratégia regulatória e desenvolvimento clínico avançam de maneira integrada e podem apresentar diferentes níveis de maturidade ao longo do percurso.<br /><br /> Na Aether, o TRL é utilizado como um dos eixos para organizar a evolução dos ativos, orientar decisões de desenvolvimento, identificar lacunas, planejar a geração de evidências, estruturar a captação de recursos e apoiar as estratégias de propriedade intelectual, transferência tecnológica e licenciamento.<br /><br /> Cada avanço de maturidade representa a geração de evidências mais robustas e a redução progressiva de incertezas científicas e tecnológicas.' />
+								<AnimatedText text={t('scaleText')} />
 							</p>
 
 							<div className='mt-8 lg:mt-10 p-7 lg:p-8 rounded-sm lg:rounded-md bg-green-pale'>
 								<span className='block text-sm font-semibold font-heading uppercase tracking-wide opacity-60 mb-3'>
-									Referência metodológica
+									{t('methodologyLabel')}
 								</span>
 								<p className='text-16 leading-relaxed'>
-									A Aether utiliza a escala TRL como referência para avaliação contextualizada da maturidade tecnológica, considerando a <b>ISO 16290</b> e sua aplicação ao desenvolvimento farmacêutico.
+									{t.rich('methodologyText', { b: (chunks) => <b>{chunks}</b> })}
 								</p>
 							</div>
 						</div>
@@ -204,7 +188,7 @@ export default function TRLPage() {
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
 							<p className='font-semibold font-heading lg:pt-2'>
-								<AnimatedText text='(a jornada)' />
+								<AnimatedText text={t('journeyEyebrow')} />
 							</p>
 						</div>
 
@@ -213,7 +197,7 @@ export default function TRLPage() {
 								style='dark'
 								className='text-60 font-heading font-semibold'
 							>
-								Da bancada ao mercado, em três fases de desenvolvimento.
+								{t('journeyHeading')}
 							</AnimatedTitle>
 						</div>
 
@@ -253,7 +237,7 @@ export default function TRLPage() {
 
 								<div className={`mt-auto pt-5 border-t ${bloco.divider}`}>
 									<span className='block text-sm font-semibold font-heading uppercase tracking-wide opacity-60 mb-1'>
-										Onde acontece
+										{t('whereLabel')}
 									</span>
 									<p className='text-16 leading-relaxed opacity-80'>
 										{bloco.onde}
@@ -296,7 +280,7 @@ export default function TRLPage() {
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
 							<p className='font-semibold font-heading lg:pt-2'>
-								<AnimatedText text='(os nove níveis)' />
+								<AnimatedText text={t('levelsEyebrow')} />
 							</p>
 						</div>
 
@@ -305,11 +289,11 @@ export default function TRLPage() {
 								style='dark'
 								className='text-60 font-heading font-semibold'
 							>
-								A escala completa, nível a nível.
+								{t('levelsHeading')}
 							</AnimatedTitle>
 
 							<p className='text-18 leading-relaxed mt-6 lg:mt-8 opacity-70 max-w-2xl'>
-								<AnimatedText text='Clique em cada nível para conhecer sua descrição e uma referência de aplicação no desenvolvimento farmacêutico. A correspondência entre TRL e etapas farmacêuticas é contextual e pode variar conforme a natureza e a estratégia de desenvolvimento de cada tecnologia.' />
+								<AnimatedText text={t('levelsText')} />
 							</p>
 						</div>
 
@@ -344,17 +328,17 @@ export default function TRLPage() {
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
 							<p className='font-semibold font-heading lg:pt-2'>
-								<AnimatedText text='(a abordagem aether)' />
+								<AnimatedText text={t('approachEyebrow')} />
 							</p>
 						</div>
 
 						<div className='col-lg-9'>
 							<h2 className='text-60 font-heading font-semibold'>
-								<AnimatedText text='Avançar em maturidade preservando o valor estratégico do ativo.' />
+								<AnimatedText text={t('approachHeading')} />
 							</h2>
 
 							<p className='text-20 leading-relaxed mt-8 lg:mt-10 opacity-90 max-w-3xl'>
-								<AnimatedText text='Cada avanço de maturidade representa tanto uma evolução técnica quanto uma decisão estratégica. Tão importante quanto gerar as evidências necessárias é construir, ao longo do desenvolvimento, um ativo cientificamente robusto, tecnicamente transferível e estrategicamente posicionado para parcerias e licenciamento.' />
+								<AnimatedText text={t('approachText')} />
 							</p>
 						</div>
 
@@ -385,10 +369,10 @@ export default function TRLPage() {
 
 							<blockquote className='mt-12 lg:mt-16 border-l-2 border-green-dark pl-8 lg:pl-10'>
 								<p className='text-30 lg:text-36 font-heading font-semibold leading-tight'>
-									&ldquo;Gestão do avanço de maturidade tecnológica com preservação e valorização estratégica da propriedade intelectual.&rdquo;
+									&ldquo;{t('quote')}&rdquo;
 								</p>
 								<footer className='text-16 mt-5 opacity-60'>
-									- uma das funções centrais do ICT AetherBio+
+									{t('quoteAttribution')}
 								</footer>
 							</blockquote>
 						</div>

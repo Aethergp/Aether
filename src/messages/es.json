@@ -361,5 +361,115 @@
 			"badge": "A partir de 2027",
 			"placeholder": "Nuevo activo en desarrollo"
 		}
+	},
+	"TRLPage": {
+		"metaTitle": "TRL - Madurez Tecnológica | Aether Global Pharma",
+		"metaDescription": "La escala TRL 1-9 aplicada al desarrollo farmacéutico, desde el principio científico hasta la comercialización. Basada en la ISO 16290 y en la Guía TRL de la RBIF.",
+		"eyebrow": "(madurez tecnológica)",
+		"heading": "Nueve niveles entre el descubrimiento científico y el mercado global.",
+		"heroText": "La escala de <b>Technology Readiness Level (TRL)</b> organiza la madurez de una tecnología en nueve niveles, desde la observación de los principios fundamentales hasta la demostración en ambiente operacional.<br /><br /> En Aether, esta referencia se aplica al desarrollo farmacéutico mediante un enfoque integrado, considerando evidencias científicas, madurez tecnológica, desarrollo no clínico, CMC, estrategia regulatoria y preparación para la transferencia y el licenciamiento.",
+		"contextImageAlt": "TRL",
+		"contextTitle": "Un lenguaje común para hablar de riesgo, madurez y valor.",
+		"scaleEyebrow": "(la escala)",
+		"scaleText": "La escala TRL fue desarrollada originalmente por la NASA y hoy es ampliamente utilizada como referencia para evaluar la madurez de tecnologías en desarrollo.<br /><br /> En el sector farmacéutico, su aplicación exige una lectura contextualizada. La evolución de un activo no ocurre de forma exclusivamente lineal: el desarrollo científico, CMC, los estudios no clínicos, la estrategia regulatoria y el desarrollo clínico avanzan de manera integrada y pueden presentar diferentes niveles de madurez a lo largo del recorrido.<br /><br /> En Aether, el TRL se utiliza como uno de los ejes para organizar la evolución de los activos, orientar decisiones de desarrollo, identificar brechas, planificar la generación de evidencias, estructurar la captación de recursos y apoyar las estrategias de propiedad intelectual, transferencia tecnológica y licenciamiento.<br /><br /> Cada avance de madurez representa la generación de evidencias más robustas y la reducción progresiva de incertidumbres científicas y tecnológicas.",
+		"methodologyLabel": "Referencia metodológica",
+		"methodologyText": "Aether utiliza la escala TRL como referencia para la evaluación contextualizada de la madurez tecnológica, considerando la <b>ISO 16290</b> y su aplicación al desarrollo farmacéutico.",
+		"journeyEyebrow": "(el recorrido)",
+		"journeyHeading": "Del laboratorio al mercado, en tres fases de desarrollo.",
+		"jornada": [
+			{
+				"fase": "Investigación y Descubrimiento",
+				"range": "TRL 1-3",
+				"subtitle": "Fundamentos científicos",
+				"desc": "Investigación de los principios fundamentales, formulación de hipótesis y generación de las primeras evidencias experimentales. La tecnología evoluciona del conocimiento científico inicial a una prueba de concepto, con evaluación progresiva de su potencial de aplicación.",
+				"onde": "Universidades, centros de investigación y laboratorios académicos."
+			},
+			{
+				"fase": "Desarrollo Traslacional y Preclínico",
+				"range": "TRL 4-6",
+				"subtitle": "Validación y reducción de incertidumbres",
+				"desc": "La tecnología avanza de la prueba de concepto a niveles crecientes de validación, integración y demostración en condiciones relevantes. Se generan evidencias científicas, tecnológicas y preclínicas, acompañadas por el desarrollo progresivo de CMC, estrategia regulatoria y documentación técnica.",
+				"onde": "Laboratorios especializados, centros de investigación, CROs, CDMOs y socios tecnológicos e industriales."
+			},
+			{
+				"fase": "Desarrollo Clínico y Operacional",
+				"range": "TRL 7-9",
+				"subtitle": "Comprobación y aplicación",
+				"desc": "La tecnología alcanza niveles avanzados de madurez, con generación de evidencias en ambiente clínico y operacional, calificación regulatoria, preparación para producción a escala y, cuando corresponde, aprobación y uso en el mercado.",
+				"onde": "Centros clínicos, CROs, industria farmacéutica, unidades productivas y agencias reguladoras."
+			}
+		],
+		"whereLabel": "Dónde ocurre",
+		"levelsEyebrow": "(los nueve niveles)",
+		"levelsHeading": "La escala completa, nivel a nivel.",
+		"levelsText": "Haga clic en cada nivel para conocer su descripción y una referencia de aplicación en el desarrollo farmacéutico. La correspondencia entre TRL y etapas farmacéuticas es contextual y puede variar según la naturaleza y la estrategia de desarrollo de cada tecnología.",
+		"scale": {
+			"phases": [
+				{ "label": "Investigación y Descubrimiento", "range": "TRL 1-3" },
+				{ "label": "Desarrollo Preclínico", "range": "TRL 4-6" },
+				{ "label": "Desarrollo Clínico y Operacional", "range": "TRL 7-9" }
+			],
+			"levels": [
+				{
+					"name": "Principios básicos observados",
+					"desc": "Investigación científica de naturaleza exploratoria, con identificación y observación de los principios fundamentales relacionados con la tecnología. El conocimiento aún se encuentra en etapa inicial de investigación.",
+					"pharma": "Identificación de blancos terapéuticos, mecanismos biológicos, clases moleculares o principios activos candidatos; revisión de literatura y formulación de las primeras hipótesis científicas."
+				},
+				{
+					"name": "Concepto tecnológico formulado",
+					"desc": "Los principios fundamentales comienzan a traducirse en una aplicación potencial. Se formulan hipótesis científicas y tecnológicas y se definen los primeros caminos para su validación.",
+					"pharma": "Definición del concepto terapéutico, selección inicial de candidatos, propuesta de mecanismo de acción y planificación de los primeros estudios de viabilidad."
+				},
+				{
+					"name": "Prueba de concepto experimental",
+					"desc": "Evidencias experimentales iniciales demuestran la viabilidad del concepto. La hipótesis se prueba en condiciones controladas y los primeros resultados permiten evaluar el potencial de la tecnología.",
+					"pharma": "Ensayos in vitro, estudios analíticos, caracterización inicial y generación de evidencias preliminares de actividad, mecanismo o viabilidad del activo."
+				},
+				{
+					"name": "Validación en ambiente de laboratorio",
+					"desc": "Los principales componentes de la tecnología se integran y validan en ambiente controlado. La prueba de concepto evoluciona hacia una configuración más robusta y reproducible.",
+					"pharma": "Caracterización ampliada del activo, optimización inicial, desarrollo analítico, estudios de formulación o proceso y generación de evidencias de eficacia en modelos experimentales apropiados."
+				},
+				{
+					"name": "Validación en ambiente relevante",
+					"desc": "La tecnología se evalúa en condiciones que representan de forma más consistente su aplicación prevista. La generación de evidencias se vuelve más estructurada y orientada a la reducción de riesgos para las etapas subsiguientes.",
+					"pharma": "Estudios preclínicos avanzados, evolución de CMC, caracterización del proceso y del producto, estudios de estabilidad y planificación de estudios regulatorios, según la estrategia específica del activo."
+				},
+				{
+					"name": "Demostración en ambiente relevante",
+					"desc": "La tecnología se demuestra de forma integrada en condiciones relevantes, con evidencias suficientes para sustentar decisiones de desarrollo, transferencia tecnológica y preparación para etapas subsiguientes.",
+					"pharma": "Proceso de obtención o producción técnicamente establecido en una escala compatible con la etapa de desarrollo, caracterización del activo, generación de evidencias preclínicas y documentación técnica alineada con la estrategia de desarrollo, transferencia y evolución regulatoria."
+				},
+				{
+					"name": "Demostración en ambiente operacional",
+					"desc": "La tecnología alcanza una etapa avanzada de desarrollo y comienza a evaluarse en condiciones de uso o aplicación cercanas al ambiente operacional previsto.",
+					"pharma": "Inicio o avance del desarrollo clínico, cuando corresponde, acompañado por la evolución de CMC, producción, control de calidad y estrategia regulatoria."
+				},
+				{
+					"name": "Sistema completo y calificado",
+					"desc": "La tecnología presenta un alto grado de madurez, con sus principales componentes calificados y evidencias robustas para sustentar las etapas finales de desarrollo y aprobación.",
+					"pharma": "Desarrollo clínico avanzado, consolidación del proceso productivo, calificación industrial y preparación o presentación del conjunto de evidencias requerido para la aprobación regulatoria, según la modalidad terapéutica y la jurisdicción aplicable."
+				},
+				{
+					"name": "Sistema implementado en operación",
+					"desc": "La tecnología alcanza madurez operacional y su aplicación se comprueba en ambiente real.",
+					"pharma": "Medicamento o tecnología en uso tras las aprobaciones aplicables, con producción y operación establecidas y generación continua de evidencias de seguridad, efectividad y desempeño en uso real."
+				}
+			],
+			"pharmaContextLabel": "En el contexto farmacéutico"
+		},
+		"approachEyebrow": "(el enfoque aether)",
+		"approachHeading": "Avanzar en madurez preservando el valor estratégico del activo.",
+		"approachText": "Cada avance de madurez representa tanto una evolución técnica como una decisión estratégica. Tan importante como generar las evidencias necesarias es construir, a lo largo del desarrollo, un activo científicamente robusto, técnicamente transferible y estratégicamente posicionado para alianzas y licenciamiento.",
+		"principios": [
+			"<b>Gobernanza científica independiente</b> en cada etapa, con seguimiento especializado.",
+			"<b>Documentación técnica</b> construida progresivamente y alineada con las exigencias regulatorias aplicables.",
+			"<b>Estrategia de propiedad intelectual</b> conducida en paralelo a la evolución científica y tecnológica.",
+			"<b>Captación de recursos públicos y privados</b> adecuada a la madurez y las necesidades de cada proyecto.",
+			"<b>Articulación con universidades, centros de investigación, CROs y socios industriales</b> en el momento adecuado del desarrollo.",
+			"<b>Preparación progresiva para la transferencia tecnológica, alianzas y licenciamiento</b> en el mercado farmacéutico global."
+		],
+		"quote": "Gestión del avance de madurez tecnológica con preservación y valorización estratégica de la propiedad intelectual.",
+		"quoteAttribution": "- una de las funciones centrales de ICT AetherBio+"
 	}
 }

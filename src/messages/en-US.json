@@ -361,5 +361,115 @@
 			"badge": "Starting 2027",
 			"placeholder": "New asset in development"
 		}
+	},
+	"TRLPage": {
+		"metaTitle": "TRL - Technology Readiness Level | Aether Global Pharma",
+		"metaDescription": "The TRL 1-9 scale applied to pharmaceutical development, from scientific principle to commercialization. Based on ISO 16290 and the RBIF TRL Guide.",
+		"eyebrow": "(technology readiness)",
+		"heading": "Nine levels between scientific discovery and the global market.",
+		"heroText": "The <b>Technology Readiness Level (TRL)</b> scale organizes a technology's maturity into nine levels, from observing fundamental principles to demonstration in an operational environment.<br /><br /> At Aether, this reference is applied to pharmaceutical development through an integrated approach, considering scientific evidence, technological maturity, nonclinical development, CMC, regulatory strategy, and preparation for transfer and licensing.",
+		"contextImageAlt": "TRL",
+		"contextTitle": "A common language for talking about risk, maturity, and value.",
+		"scaleEyebrow": "(the scale)",
+		"scaleText": "The TRL scale was originally developed by NASA and is now widely used as a reference for assessing the maturity of technologies in development.<br /><br /> In the pharmaceutical sector, its application requires contextual interpretation. An asset's progress doesn't happen in a purely linear way: scientific development, CMC, nonclinical studies, regulatory strategy, and clinical development advance in an integrated manner and can show different levels of maturity along the way.<br /><br /> At Aether, TRL is used as one of the axes for organizing asset progress, guiding development decisions, identifying gaps, planning evidence generation, structuring fundraising, and supporting intellectual property, technology transfer, and licensing strategies.<br /><br /> Each advance in maturity represents the generation of more robust evidence and the progressive reduction of scientific and technological uncertainty.",
+		"methodologyLabel": "Methodological reference",
+		"methodologyText": "Aether uses the TRL scale as a reference for contextualized assessment of technological maturity, taking into account <b>ISO 16290</b> and its application to pharmaceutical development.",
+		"journeyEyebrow": "(the journey)",
+		"journeyHeading": "From the bench to the market, in three development phases.",
+		"jornada": [
+			{
+				"fase": "Research and Discovery",
+				"range": "TRL 1-3",
+				"subtitle": "Scientific foundations",
+				"desc": "Investigation of fundamental principles, hypothesis formulation, and generation of the first experimental evidence. The technology evolves from initial scientific knowledge to a proof of concept, with progressive assessment of its application potential.",
+				"onde": "Universities, research centers, and academic laboratories."
+			},
+			{
+				"fase": "Translational and Preclinical Development",
+				"range": "TRL 4-6",
+				"subtitle": "Validation and uncertainty reduction",
+				"desc": "The technology advances from proof of concept to increasing levels of validation, integration, and demonstration under relevant conditions. Scientific, technological, and preclinical evidence is generated, accompanied by the progressive development of CMC, regulatory strategy, and technical documentation.",
+				"onde": "Specialized laboratories, research centers, CROs, CDMOs, and technology and industrial partners."
+			},
+			{
+				"fase": "Clinical and Operational Development",
+				"range": "TRL 7-9",
+				"subtitle": "Proof and application",
+				"desc": "The technology reaches advanced maturity levels, generating evidence in clinical and operational settings, regulatory qualification, preparation for scale production, and, when applicable, market approval and use.",
+				"onde": "Clinical centers, CROs, the pharmaceutical industry, production units, and regulatory agencies."
+			}
+		],
+		"whereLabel": "Where it happens",
+		"levelsEyebrow": "(the nine levels)",
+		"levelsHeading": "The complete scale, level by level.",
+		"levelsText": "Click each level to see its description and a reference for its application in pharmaceutical development. The correspondence between TRL and pharmaceutical stages is contextual and may vary depending on each technology's nature and development strategy.",
+		"scale": {
+			"phases": [
+				{ "label": "Research and Discovery", "range": "TRL 1-3" },
+				{ "label": "Preclinical Development", "range": "TRL 4-6" },
+				{ "label": "Clinical and Operational Development", "range": "TRL 7-9" }
+			],
+			"levels": [
+				{
+					"name": "Basic principles observed",
+					"desc": "Exploratory scientific research, identifying and observing the fundamental principles related to the technology. Knowledge is still at an early stage of investigation.",
+					"pharma": "Identification of targets, biological mechanisms, molecular classes, or candidate active ingredients; literature review and formulation of the first scientific hypotheses."
+				},
+				{
+					"name": "Technology concept formulated",
+					"desc": "Fundamental principles begin to be translated into a potential application. Scientific and technological hypotheses are formulated and the first paths for their validation are defined.",
+					"pharma": "Definition of the therapeutic concept, initial candidate selection, proposed mechanism of action, and planning of the first feasibility studies."
+				},
+				{
+					"name": "Experimental proof of concept",
+					"desc": "Initial experimental evidence demonstrates the concept's feasibility. The hypothesis is tested under controlled conditions, and the first results allow the technology's potential to be assessed.",
+					"pharma": "In vitro assays, analytical studies, initial characterization, and generation of preliminary evidence of the asset's activity, mechanism, or feasibility."
+				},
+				{
+					"name": "Validation in a laboratory environment",
+					"desc": "The technology's main components are integrated and validated in a controlled environment. The proof of concept evolves into a more robust and reproducible configuration.",
+					"pharma": "Expanded asset characterization, initial optimization, analytical development, formulation or process studies, and generation of efficacy evidence in appropriate experimental models."
+				},
+				{
+					"name": "Validation in a relevant environment",
+					"desc": "The technology is evaluated under conditions that more consistently represent its intended application. Evidence generation becomes more structured and oriented toward reducing risk for subsequent stages.",
+					"pharma": "Advanced preclinical studies, CMC progress, process and product characterization, stability studies, and planning of regulatory studies, according to the asset's specific strategy."
+				},
+				{
+					"name": "Demonstration in a relevant environment",
+					"desc": "The technology is demonstrated in an integrated way under relevant conditions, with sufficient evidence to support development decisions, technology transfer, and preparation for subsequent stages.",
+					"pharma": "Technically established production or synthesis process at a scale compatible with the development stage, asset characterization, generation of preclinical evidence, and technical documentation aligned with the development, transfer, and regulatory-progression strategy."
+				},
+				{
+					"name": "Demonstration in an operational environment",
+					"desc": "The technology reaches an advanced development stage and begins to be evaluated under use or application conditions close to its intended operational environment.",
+					"pharma": "Start or advancement of clinical development, when applicable, accompanied by progress in CMC, production, quality control, and regulatory strategy."
+				},
+				{
+					"name": "Complete and qualified system",
+					"desc": "The technology shows a high degree of maturity, with its main components qualified and robust evidence to support the final stages of development and approval.",
+					"pharma": "Advanced clinical development, consolidation of the production process, industrial qualification, and preparation or submission of the evidence package required for regulatory approval, according to the therapeutic modality and applicable jurisdiction."
+				},
+				{
+					"name": "System deployed in operation",
+					"desc": "The technology reaches operational maturity and its application is proven in a real-world setting.",
+					"pharma": "Medicine or technology in use following applicable approvals, with established production and operation, and ongoing generation of real-world safety, effectiveness, and performance evidence."
+				}
+			],
+			"pharmaContextLabel": "In the pharmaceutical context"
+		},
+		"approachEyebrow": "(the aether approach)",
+		"approachHeading": "Advancing maturity while preserving the asset's strategic value.",
+		"approachText": "Every advance in maturity represents both a technical evolution and a strategic decision. Generating the necessary evidence matters just as much as building, throughout development, an asset that is scientifically robust, technically transferable, and strategically positioned for partnerships and licensing.",
+		"principios": [
+			"<b>Independent scientific governance</b> at every stage, with specialized oversight.",
+			"<b>Technical documentation</b> built progressively and aligned with applicable regulatory requirements.",
+			"<b>Intellectual property strategy</b> conducted in parallel with scientific and technological progress.",
+			"<b>Public and private funding</b> matched to each project's maturity and needs.",
+			"<b>Engagement with universities, research centers, CROs, and industrial partners</b> at the right point in development.",
+			"<b>Progressive preparation for technology transfer, partnerships, and licensing</b> in the global pharmaceutical market."
+		],
+		"quote": "Managing technology-readiness advancement while preserving and strategically enhancing the value of intellectual property.",
+		"quoteAttribution": "- one of ICT AetherBio+'s core functions"
 	}
 }
