@@ -211,5 +211,155 @@
 			"errorTitle": "Erro ao enviar inscrição",
 			"errorText": "Ocorreu um erro ao enviar sua inscrição. Por favor, tente novamente. Se o problema persistir, escreva para {email}."
 		}
+	},
+	"PDPage": {
+		"metaTitle": "Desenvolvimento de Ativos Farmacêuticos | Aether",
+		"metaDescription": "Abordagem científica da Aether: maturação de TRL, governança independente e proteção integral da propriedade intelectual em projetos farmacêuticos.",
+		"eyebrow": "(desenvolvimento de ativos)",
+		"heading": "Da descoberta científica ao ativo farmacêutico global.",
+		"heroText": "Na Aether, pesquisa e desenvolvimento são orientados à construção de valor. <br /><br />Como uma <b>Pharmaceutical Asset Venture Builder</b>, identificamos e desenvolvemos descobertas científicas com potencial de se tornarem ativos farmacêuticos protegidos, tecnicamente validados e estrategicamente posicionados para licenciamento, parceria industrial ou outras operações de monetização. <br /><br />Cada ativo avança por uma jornada estruturada de desrisking científico e tecnológico, maturação de TRL, estratégia de propriedade intelectual e governança especializada.",
+		"contextTitle": "Uma descoberta científica ainda não é um ativo farmacêutico.",
+		"approachEyebrow": "(a abordagem)",
+		"approachText": "Transformar ciência em um ativo farmacêutico exige mais do que gerar resultados experimentais. Exige identificar o potencial de aplicação, construir proteção intelectual, reduzir incertezas críticas e gerar as evidências necessárias para aumentar progressivamente a maturidade e o valor do ativo. <br /><br /> Na plataforma Aether, o desenvolvimento é orientado por uma lógica de asset building: cada decisão científica, tecnológica e estratégica deve contribuir para tornar o ativo mais robusto, protegível e atrativo para futuros parceiros industriais, licenciados e investidores especializados em life sciences. <br /><br />A execução científica e tecnológica é conduzida em articulação com o ICT AetherBio+, universidades, centros de pesquisa, especialistas e parceiros tecnológicos, dentro de uma governança estruturada para cada ativo.",
+		"dimensoes": {
+			"headingLine1": "Quatro dimensões.",
+			"headingLine2": "Uma abordagem integrada.",
+			"items": [
+				{
+					"title": "Desrisking Científico e Tecnológico",
+					"text": "Identificamos as incertezas críticas de cada ativo e estruturamos seu desenvolvimento para reduzi-las progressivamente. A geração de evidências científicas, a validação tecnológica e o avanço de maturidade são orientados por marcos de decisão, permitindo concentrar capital e recursos nos ativos que demonstram maior consistência e potencial de valorização. O objetivo não é apenas avançar a pesquisa. É aumentar a qualidade e a confiabilidade do ativo.",
+					"alt": "Equipe científica analisando exames de imagem em tela de laboratório"
+				},
+				{
+					"title": "Propriedade Intelectual e Defensibilidade",
+					"text": "A propriedade intelectual é parte central da construção do ativo farmacêutico. Avaliamos titularidade, novidade, potencial de proteção, liberdade de operação e estratégia de expansão da proteção ao longo do desenvolvimento. Ciência protegida deixa de ser apenas conhecimento e passa a constituir um ativo intangível com potencial de geração de valor econômico.",
+					"alt": "Pesquisadora utilizando microscópio em laboratório de análises"
+				},
+				{
+					"title": "Governança Científica Especializada",
+					"text": "Cada ativo é acompanhado por especialistas selecionados de acordo com sua natureza científica, tecnológica e terapêutica. A governança científica fortalece a qualidade das decisões, o rigor metodológico e a análise independente dos marcos de desenvolvimento, apoiando decisões de continuidade, redirecionamento ou NO GO. Na Aether, avançar também significa saber quando não avançar.",
+					"alt": "Equipe de cientistas reunida em laboratório para decisão de governança científica"
+				},
+				{
+					"title": "Maturação e Valorização do Ativo",
+					"text": "O desenvolvimento é estruturado para aumentar progressivamente a maturidade científica, tecnológica e estratégica de cada ativo. À medida que riscos relevantes são reduzidos, evidências são consolidadas e a propriedade intelectual é fortalecida, o ativo amplia seu potencial de interesse para a indústria farmacêutica e para parceiros especializados. Cada avanço deve aumentar não apenas o TRL, mas também a qualidade estratégica e o potencial de monetização do ativo.",
+					"alt": "Pódios ascendentes com um broto, representando a maturação progressiva do ativo"
+				}
+			]
+		},
+		"profileEyebrow": "(perfil dos ativos)",
+		"profileHeading": "O que buscamos construir.",
+		"profileIntro": "A Aether identifica e seleciona descobertas científicas e tecnologias em saúde com potencial de transformação em ativos farmacêuticos protegidos, desenvolvíveis e licenciáveis. Priorizamos oportunidades que apresentem uma combinação consistente dos seguintes atributos:",
+		"criterios": [
+			{
+				"title": "Fundamentação científica robusta",
+				"text": "Hipóteses sustentadas por evidências experimentais, metodologia tecnicamente consistente e dados que permitam análise crítica, validação e definição dos próximos marcos de desenvolvimento."
+			},
+			{
+				"title": "Potencial translacional",
+				"text": "Possibilidade concreta de transformar a descoberta científica em uma solução terapêutica ou tecnologia aplicável ao desenvolvimento farmacêutico."
+			},
+			{
+				"title": "Potencial de propriedade intelectual",
+				"text": "Capacidade de construção ou fortalecimento de uma posição de propriedade intelectual que contribua para a exclusividade, defensibilidade e valor estratégico do ativo."
+			},
+			{
+				"title": "Potencial de desenvolvimento e monetização",
+				"text": "Existência de uma trajetória tecnicamente viável de desenvolvimento e de uma hipótese clara de geração de valor por meio de licenciamento, parceria estratégica, transferência de tecnologia ou outra operação relacionada ao ativo."
+			}
+		],
+		"profileFooter": "As oportunidades podem se originar em universidades, ICTs, centros de pesquisa, startups científicas, pesquisadores independentes e outras organizações de inovação, no Brasil ou no exterior.",
+		"platformEyebrow": "(nossa plataforma de desenvolvimento)",
+		"platformHeading": "Uma plataforma para construir e maturar ativos farmacêuticos.",
+		"pipelineCard": {
+			"label": "Ativos em desenvolvimento",
+			"title": "Pipeline",
+			"text": "Conheça os ativos que integram o pipeline da Aether, organizados por estágio de maturidade, área terapêutica e status de desenvolvimento.",
+			"button": "Explorar o pipeline"
+		},
+		"trlCard": {
+			"label": "Maturidade tecnológica",
+			"title": "Jornada de desenvolvimento",
+			"text": "Acompanhe a evolução dos ativos ao longo dos níveis de maturidade tecnológica e os principais marcos associados à redução de risco e à geração de valor.",
+			"button": "Conhecer os níveis de TRL"
+		},
+		"governance": {
+			"heading": "Ciência e tecnologia integradas à construção dos ativos.",
+			"text": "O ICT AetherBio+ integra a plataforma Aether como ambiente institucional de ciência, tecnologia e inovação, apoiando a execução e a governança do desenvolvimento científico e tecnológico dos ativos. Em articulação com universidades, centros de pesquisa, especialistas e parceiros tecnológicos, o ICT contribui para a geração de evidências, o avanço de maturidade tecnológica e a execução dos programas de desenvolvimento definidos para cada ativo. Essa arquitetura permite conectar ciência, propriedade intelectual, capital e estratégia de desenvolvimento em uma única tese de construção de valor.",
+			"pills": [
+				"Instituição sem fins lucrativos",
+				"Ciência e tecnologia",
+				"Governança científica especializada",
+				"Desenvolvimento translacional"
+			],
+			"button": "Conheça o ICT AetherBio+"
+		}
+	},
+	"PipelinePage": {
+		"metaTitle": "Pipeline de Projetos Científicos | Aether Global Pharma",
+		"metaDescription": "Projetos científicos em desenvolvimento na plataforma Aether, conduzidos pelo ICT AetherBio+, incluindo a plataforma produtiva para IFA anti-inflamatória.",
+		"eyebrow": "(pipeline)",
+		"heading": "Um portfólio de ativos farmacêuticos em construção.",
+		"heroText": "A Aether identifica, seleciona e desenvolve ativos farmacêuticos com potencial de valorização ao longo de sua jornada de maturação. Como uma <b>Pharmaceutical Asset Venture Builder</b>, construímos um portfólio orientado por ciência, propriedade intelectual e marcos progressivos de desenvolvimento, com foco na redução de risco e na criação de valor até oportunidades de parceria, investimento ou licenciamento.",
+		"flagship": {
+			"eyebrow": "(projeto em destaque)",
+			"badge": "Projetos de Alto Impacto em Saúde",
+			"heading": "Selecionada em chamada pública nacional de R$ 90 milhões.",
+			"imageAlt": "Pesquisa laboratorial da plataforma Aether",
+			"description": "A Aether Global Pharma integra os Projetos de Alto Impacto em Saúde, iniciativa do Ministério da Saúde e da EMBRAPII, com o desenvolvimento de uma plataforma produtiva para IFA anti-inflamatória, em parceria com o CQMED e a unidade de Inovação de Fármacos da UFMG.",
+			"focusLabel": "Foco técnico do projeto",
+			"focusText": "Plataforma produtiva para IFA anti-inflamatória.",
+			"partnersLabel": "Parceiros do projeto",
+			"stat1Label": "Chamada pública nacional dos Projetos de Alto Impacto em Saúde",
+			"stat2Label": "Investimento total destinado ao desenvolvimento do projeto"
+		},
+		"parceiros": [
+			"Ministério da Saúde",
+			"EMBRAPII",
+			"CQMED",
+			"UFMG - Inovação de Fármacos"
+		],
+		"team": {
+			"eyebrow": "(responsáveis científicos)",
+			"heading": "Quem lidera a ciência deste projeto.",
+			"text": "A condução científica da plataforma produtiva para IFA anti-inflamatória é responsabilidade dos pesquisadores do CQMED-Unicamp. Clique em cada perfil para conhecer a trajetória."
+		},
+		"responsaveis": [
+			{
+				"area": "Coordenadora CQMED",
+				"bio": "Coordenadora do Centro de Química Medicinal (CQMED-Unicamp), uma Unidade Embrapii de Inovação Industrial na área de Fármacos/Biofármacos, desde 2017. Pesquisadora da área de: proteínas de ligação a RNA em doenças, química medicinal, bioinformática, e proteínas recombinantes para diagnóstico. Tem mais de 15 anos de experiência em planejamento e execução de projetos de pesquisa e inovação, com 46 publicações internacionais de alto impacto. <br /><br />Atua na coordenação de projetos internacionais na área de splicing de RNA e química medicinal, com a University of Oxford, University of California San Diego, Tubingen University e o Structural Genomics Consortium (SGC) no Canadá. Em 2025 recebeu prêmio de pesquisadora destaque da Embrapii e em 2024 recebeu honraria como profissional de destaque em pesquisa na área de saúde pela Câmara Municipal de Campinas, SP. Atua como coordenadora adjunta do CBMEG e Coordenadora da CIBIO-CBMEG."
+			},
+			{
+				"area": "Coordenador Química",
+				"bio": "Professor na Unicamp na área de Síntese Orgânica, com ênfase em síntese assimétrica, síntese de fármacos e produtos naturais, com avaliação de atividade biológica. Coordena a área de Química do CQMED-Unicamp. Possui pedidos de patente relacionados a métodos de preparação de princípios farmacêuticos, incluindo fenidato de metila, tamoxifeno, levobupivacaína e fluoxetina.<br /><br />Ocupou posições de destaque na gestão acadêmica e científica, como diretor do Instituto de Química e Pró-Reitor de Pesquisa da Unicamp, além de atuação em instâncias estratégicas de formulação de políticas científicas no CNPq e na FAPESP, incluindo a vice-presidência do Conselho Superior da FAPESP. <br /><br />É coautor do livro-texto Substâncias Carboniladas e Derivados, referência na área de Química Orgânica, com edição nacional e internacional em inglês. <br /><br />Recebeu importantes prêmios e honrarias nacionais e internacionais, como o Prêmio Zeferino Vaz (Unicamp), a Medalha Simão Mathias (SBQ), a Medalha Israel Vargas e o BMOS Award. É membro da Academia de Ciências do Estado de São Paulo e da Academia Brasileira de Ciências."
+			}
+		],
+		"organize": {
+			"eyebrow": "(como organizamos)",
+			"heading": "Três dimensões para ler cada projeto.",
+			"text": "O pipeline da Aether é translacional por natureza. À medida que cresce, cada ativo é apresentado por três eixos que tornam comparável o seu momento de desenvolvimento.",
+			"button": "Entenda a escala TRL"
+		},
+		"dimensoes": [
+			{
+				"title": "Maturidade do Ativo",
+				"text": "<b>Onde o ativo está na jornada de desenvolvimento.</b> O nível de maturidade tecnológica permite compreender o estágio atual do projeto, as evidências já construídas e os próximos marcos necessários para seu avanço."
+			},
+			{
+				"title": "Tese de Valor",
+				"text": "<b>Por que esse ativo merece avançar.</b> Cada projeto é analisado a partir de seu racional científico, potencial terapêutico, estratégia de propriedade intelectual e capacidade de gerar valor ao longo do desenvolvimento."
+			},
+			{
+				"title": "Próximo marco de valorização",
+				"text": "<b>O que precisa acontecer para aumentar o valor do ativo.</b> Identificamos o próximo milestone capaz de reduzir risco, fortalecer as evidências e ampliar o potencial do ativo para investimento, parceria estratégica ou licenciamento."
+			}
+		],
+		"expansion": {
+			"eyebrow": "(em expansão)",
+			"heading": "Um pipeline em formação.",
+			"text": "A partir de 2027, novos ativos entram no pipeline, em diferentes estágios de maturidade. Alguns projetos permanecem sob confidencialidade até a liberação para divulgação, e passam a ser detalhados aqui à medida que avançam.",
+			"badge": "A partir de 2027",
+			"placeholder": "Novo ativo em desenvolvimento"
+		}
 	}
 }

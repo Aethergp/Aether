@@ -3,6 +3,7 @@
 // libraries
 import { useRef } from 'react'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -16,34 +17,13 @@ import img4 from '@/assets/img/pillars.jpg'
 
 gsap.registerPlugin(ScrollTrigger, SplitText)
 
-const dimensoes = [
-	{
-		title: 'Desrisking Científico e Tecnológico',
-		text: 'Identificamos as incertezas críticas de cada ativo e estruturamos seu desenvolvimento para reduzi-las progressivamente. A geração de evidências científicas, a validação tecnológica e o avanço de maturidade são orientados por marcos de decisão, permitindo concentrar capital e recursos nos ativos que demonstram maior consistência e potencial de valorização. O objetivo não é apenas avançar a pesquisa. É aumentar a qualidade e a confiabilidade do ativo.',
-		image: img1,
-		alt: 'Equipe científica analisando exames de imagem em tela de laboratório'
-	},
-	{
-		title: 'Propriedade Intelectual e Defensibilidade',
-		text: 'A propriedade intelectual é parte central da construção do ativo farmacêutico. Avaliamos titularidade, novidade, potencial de proteção, liberdade de operação e estratégia de expansão da proteção ao longo do desenvolvimento. Ciência protegida deixa de ser apenas conhecimento e passa a constituir um ativo intangível com potencial de geração de valor econômico.',
-		image: img2,
-		alt: 'Pesquisadora utilizando microscópio em laboratório de análises'
-	},
-	{
-		title: 'Governança Científica Especializada',
-		text: 'Cada ativo é acompanhado por especialistas selecionados de acordo com sua natureza científica, tecnológica e terapêutica. A governança científica fortalece a qualidade das decisões, o rigor metodológico e a análise independente dos marcos de desenvolvimento, apoiando decisões de continuidade, redirecionamento ou NO GO. Na Aether, avançar também significa saber quando não avançar.',
-		image: img3,
-		alt: 'Equipe de cientistas reunida em laboratório para decisão de governança científica'
-	},
-	{
-		title: 'Maturação e Valorização do Ativo',
-		text: 'O desenvolvimento é estruturado para aumentar progressivamente a maturidade científica, tecnológica e estratégica de cada ativo. À medida que riscos relevantes são reduzidos, evidências são consolidadas e a propriedade intelectual é fortalecida, o ativo amplia seu potencial de interesse para a indústria farmacêutica e para parceiros especializados. Cada avanço deve aumentar não apenas o TRL, mas também a qualidade estratégica e o potencial de monetização do ativo.',
-		image: img4,
-		alt: 'Pódios ascendentes com um broto, representando a maturação progressiva do ativo'
-	}
-]
+const images = [img1, img2, img3, img4]
 
 export default function PDDimensoes() {
+
+	const t = useTranslations('PDPage')
+	const dimensoes = (t.raw('dimensoes.items') as { title: string, text: string, alt: string }[])
+		.map((item, i) => ({ ...item, image: images[i] }))
 
 	const outerRef = useRef<HTMLDivElement>(null)
 	const stickyRef = useRef<HTMLDivElement>(null)
@@ -239,7 +219,7 @@ export default function PDDimensoes() {
 
 						<div className='base-container'>
 							<h2 className='text-24 font-heading max-w-2xl'>
-								Quatro dimensões.<br />Uma abordagem integrada.
+								{t('dimensoes.headingLine1')}<br />{t('dimensoes.headingLine2')}
 							</h2>
 						</div>
 
@@ -297,7 +277,7 @@ export default function PDDimensoes() {
 				<div className='base-container pt-16 pb-12'>
 
 					<h2 className='text-60 font-heading font-semibold text-green-dark mb-10'>
-						Quatro dimensões. Uma abordagem integrada.
+						{t('dimensoes.headingLine1')} {t('dimensoes.headingLine2')}
 					</h2>
 
 					<div className='flex flex-col gap-12'>

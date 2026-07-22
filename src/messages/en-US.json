@@ -211,5 +211,155 @@
 			"errorTitle": "Error submitting application",
 			"errorText": "An error occurred while submitting your application. Please try again. If the problem persists, write to {email}."
 		}
+	},
+	"PDPage": {
+		"metaTitle": "Pharmaceutical Asset Development | Aether",
+		"metaDescription": "Aether's scientific approach: TRL maturation, independent governance, and comprehensive intellectual property protection in pharmaceutical projects.",
+		"eyebrow": "(asset development)",
+		"heading": "From scientific discovery to global pharmaceutical asset.",
+		"heroText": "At Aether, research and development are oriented toward building value. <br /><br />As a <b>Pharmaceutical Asset Venture Builder</b>, we identify and develop scientific discoveries with the potential to become protected, technically validated pharmaceutical assets, strategically positioned for licensing, industrial partnership, or other monetization transactions. <br /><br />Each asset advances through a structured journey of scientific and technological de-risking, TRL maturation, intellectual property strategy, and specialized governance.",
+		"contextTitle": "A scientific discovery is not yet a pharmaceutical asset.",
+		"approachEyebrow": "(the approach)",
+		"approachText": "Turning science into a pharmaceutical asset takes more than generating experimental results. It requires identifying application potential, building intellectual protection, reducing critical uncertainties, and generating the evidence needed to progressively increase the asset's maturity and value. <br /><br /> At the Aether platform, development follows an asset-building logic: every scientific, technological, and strategic decision should help make the asset more robust, protectable, and attractive to future industrial partners, licensees, and specialized life sciences investors. <br /><br />Scientific and technological execution is carried out in coordination with ICT AetherBio+, universities, research centers, specialists, and technology partners, within a governance structure defined for each asset.",
+		"dimensoes": {
+			"headingLine1": "Four dimensions.",
+			"headingLine2": "One integrated approach.",
+			"items": [
+				{
+					"title": "Scientific and Technological De-risking",
+					"text": "We identify each asset's critical uncertainties and structure its development to progressively reduce them. Scientific evidence generation, technological validation, and maturity advancement are guided by decision milestones, allowing capital and resources to be concentrated on assets that show greater consistency and value potential. The goal isn't just to advance the research - it's to increase the asset's quality and reliability.",
+					"alt": "Scientific team analyzing imaging scans on a lab screen"
+				},
+				{
+					"title": "Intellectual Property and Defensibility",
+					"text": "Intellectual property is a central part of building the pharmaceutical asset. We assess ownership, novelty, protection potential, freedom to operate, and the strategy for expanding protection throughout development. Protected science stops being merely knowledge and becomes an intangible asset with the potential to generate economic value.",
+					"alt": "Researcher using a microscope in an analysis laboratory"
+				},
+				{
+					"title": "Specialized Scientific Governance",
+					"text": "Each asset is accompanied by specialists selected according to its scientific, technological, and therapeutic nature. Scientific governance strengthens the quality of decisions, methodological rigor, and independent review of development milestones, supporting decisions to continue, redirect, or say NO GO. At Aether, moving forward also means knowing when not to.",
+					"alt": "Team of scientists gathered in a laboratory for a scientific governance decision"
+				},
+				{
+					"title": "Asset Maturation and Value Creation",
+					"text": "Development is structured to progressively increase each asset's scientific, technological, and strategic maturity. As relevant risks are reduced, evidence is consolidated, and intellectual property is strengthened, the asset broadens its appeal to the pharmaceutical industry and specialized partners. Each advance should increase not just the TRL, but also the asset's strategic quality and monetization potential.",
+					"alt": "Ascending podiums with a sprout, representing the asset's progressive maturation"
+				}
+			]
+		},
+		"profileEyebrow": "(asset profile)",
+		"profileHeading": "What we aim to build.",
+		"profileIntro": "Aether identifies and selects scientific discoveries and health technologies with the potential to become protected, developable, and licensable pharmaceutical assets. We prioritize opportunities that show a consistent combination of the following attributes:",
+		"criterios": [
+			{
+				"title": "Robust scientific grounding",
+				"text": "Hypotheses backed by experimental evidence, technically consistent methodology, and data that allow critical analysis, validation, and the definition of the next development milestones."
+			},
+			{
+				"title": "Translational potential",
+				"text": "A concrete possibility of transforming the scientific discovery into a therapeutic solution or technology applicable to pharmaceutical development."
+			},
+			{
+				"title": "Intellectual property potential",
+				"text": "The ability to build or strengthen an intellectual property position that contributes to the asset's exclusivity, defensibility, and strategic value."
+			},
+			{
+				"title": "Development and monetization potential",
+				"text": "A technically viable development pathway and a clear hypothesis for generating value through licensing, strategic partnership, technology transfer, or another transaction related to the asset."
+			}
+		],
+		"profileFooter": "Opportunities can originate at universities, STIs, research centers, scientific startups, independent researchers, and other innovation organizations, in Brazil or abroad.",
+		"platformEyebrow": "(our development platform)",
+		"platformHeading": "A platform to build and mature pharmaceutical assets.",
+		"pipelineCard": {
+			"label": "Assets in development",
+			"title": "Pipeline",
+			"text": "Explore the assets that make up Aether's pipeline, organized by maturity stage, therapeutic area, and development status.",
+			"button": "Explore the pipeline"
+		},
+		"trlCard": {
+			"label": "Technology readiness",
+			"title": "Development journey",
+			"text": "Track how assets progress through technology readiness levels and the key milestones associated with risk reduction and value creation.",
+			"button": "Explore the TRL levels"
+		},
+		"governance": {
+			"heading": "Science and technology integrated into asset building.",
+			"text": "ICT AetherBio+ is part of the Aether platform as an institutional environment for science, technology, and innovation, supporting the execution and governance of the assets' scientific and technological development. Working with universities, research centers, specialists, and technology partners, the ICT contributes to generating evidence, advancing technology readiness, and executing the development programs defined for each asset. This architecture makes it possible to connect science, intellectual property, capital, and development strategy into a single value-building thesis.",
+			"pills": [
+				"Nonprofit institution",
+				"Science and technology",
+				"Specialized scientific governance",
+				"Translational development"
+			],
+			"button": "Discover ICT AetherBio+"
+		}
+	},
+	"PipelinePage": {
+		"metaTitle": "Scientific Project Pipeline | Aether Global Pharma",
+		"metaDescription": "Scientific projects in development on the Aether platform, led by ICT AetherBio+, including the anti-inflammatory API production platform.",
+		"eyebrow": "(pipeline)",
+		"heading": "A portfolio of pharmaceutical assets under construction.",
+		"heroText": "Aether identifies, selects, and develops pharmaceutical assets with value-creation potential throughout their maturation journey. As a <b>Pharmaceutical Asset Venture Builder</b>, we build a portfolio guided by science, intellectual property, and progressive development milestones, focused on reducing risk and creating value up to partnership, investment, or licensing opportunities.",
+		"flagship": {
+			"eyebrow": "(featured project)",
+			"badge": "High-Impact Health Projects",
+			"heading": "Selected in a R$90 million national public call.",
+			"imageAlt": "Laboratory research at the Aether platform",
+			"description": "Aether Global Pharma is part of the High-Impact Health Projects, an initiative by Brazil's Ministry of Health and EMBRAPII, developing a production platform for an anti-inflammatory API in partnership with CQMED and UFMG's Drug Innovation unit.",
+			"focusLabel": "Project technical focus",
+			"focusText": "Production platform for an anti-inflammatory API.",
+			"partnersLabel": "Project partners",
+			"stat1Label": "National public call for the High-Impact Health Projects",
+			"stat2Label": "Total investment allocated to the project's development"
+		},
+		"parceiros": [
+			"Ministério da Saúde",
+			"EMBRAPII",
+			"CQMED",
+			"UFMG - Inovação de Fármacos"
+		],
+		"team": {
+			"eyebrow": "(scientific leads)",
+			"heading": "Who leads the science behind this project.",
+			"text": "Scientific leadership of the anti-inflammatory API production platform rests with researchers from CQMED-Unicamp. Click each profile to learn more about their background."
+		},
+		"responsaveis": [
+			{
+				"area": "CQMED Coordinator",
+				"bio": "Coordinator of the Center for Medicinal Chemistry (CQMED-Unicamp), an Embrapii Industrial Innovation Unit in the Pharmaceuticals/Biopharmaceuticals field, since 2017. Researcher in RNA-binding proteins in disease, medicinal chemistry, bioinformatics, and recombinant proteins for diagnostics. Has more than 15 years of experience planning and executing research and innovation projects, with 46 high-impact international publications. <br /><br />Coordinates international projects in RNA splicing and medicinal chemistry with the University of Oxford, University of California San Diego, Tübingen University, and the Structural Genomics Consortium (SGC) in Canada. In 2025 she received Embrapii's outstanding researcher award, and in 2024 was honored as an outstanding health research professional by the Campinas, SP City Council. She also serves as deputy coordinator of CBMEG and Coordinator of CIBIO-CBMEG."
+			},
+			{
+				"area": "Chemistry Coordinator",
+				"bio": "Professor at Unicamp in Organic Synthesis, with an emphasis on asymmetric synthesis, drug and natural product synthesis, and biological activity evaluation. Coordinates the Chemistry area at CQMED-Unicamp. Holds patent applications related to preparation methods for pharmaceutical ingredients, including methylphenidate, tamoxifen, levobupivacaine, and fluoxetine.<br /><br />Held senior academic and scientific management positions, including Director of the Institute of Chemistry and Provost for Research at Unicamp, as well as roles in strategic scientific policy bodies at CNPq and FAPESP, including vice-presidency of FAPESP's Superior Council. <br /><br />Co-author of the textbook Substâncias Carboniladas e Derivados (Carbonyl Substances and Derivatives), a reference in Organic Chemistry with national and international English-language editions. <br /><br />Received major national and international awards and honors, including the Zeferino Vaz Award (Unicamp), the Simão Mathias Medal (SBQ), the Israel Vargas Medal, and the BMOS Award. Member of the São Paulo State Academy of Sciences and the Brazilian Academy of Sciences."
+			}
+		],
+		"organize": {
+			"eyebrow": "(how we organize)",
+			"heading": "Three dimensions for reading each project.",
+			"text": "Aether's pipeline is translational by nature. As it grows, each asset is presented through three axes that make its development stage comparable.",
+			"button": "Understand the TRL scale"
+		},
+		"dimensoes": [
+			{
+				"title": "Asset Maturity",
+				"text": "<b>Where the asset stands in its development journey.</b> The technology readiness level shows the project's current stage, the evidence already built, and the next milestones needed for its advancement."
+			},
+			{
+				"title": "Value Thesis",
+				"text": "<b>Why this asset deserves to advance.</b> Each project is analyzed based on its scientific rationale, therapeutic potential, intellectual property strategy, and capacity to generate value throughout development."
+			},
+			{
+				"title": "Next Value-Creation Milestone",
+				"text": "<b>What needs to happen to increase the asset's value.</b> We identify the next milestone capable of reducing risk, strengthening evidence, and expanding the asset's potential for investment, strategic partnership, or licensing."
+			}
+		],
+		"expansion": {
+			"eyebrow": "(expanding)",
+			"heading": "A pipeline taking shape.",
+			"text": "Starting in 2027, new assets will join the pipeline at different maturity stages. Some projects remain confidential until cleared for disclosure, and will be detailed here as they progress.",
+			"badge": "Starting 2027",
+			"placeholder": "New asset in development"
+		}
 	}
 }

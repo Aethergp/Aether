@@ -1,5 +1,7 @@
 // libraries
 import type { Metadata } from 'next'
+import type { Locale } from 'next-intl'
+import { getTranslations } from 'next-intl/server'
 import Image from 'next/image'
 
 // components
@@ -15,58 +17,47 @@ import JsonLd from '@/components/JsonLd'
 // utils
 import { pages } from '@/utils/routes'
 import { pageGraph } from '@/utils/schema'
+import { ogLocale } from '@/utils/functions'
 
-export const metadata: Metadata = {
-	title: 'Desenvolvimento de Ativos Farmacêuticos | Aether',
-	description: 'Abordagem científica da Aether: maturação de TRL, governança independente e proteção integral da propriedade intelectual em projetos farmacêuticos.',
-	alternates: {
-		canonical: '/desenvolvimento-de-ativos'
-	},
-	openGraph: {
-		title: 'Desenvolvimento de Ativos Farmacêuticos | Aether',
-		description: 'Abordagem científica da Aether: maturação de TRL, governança independente e proteção integral da propriedade intelectual em projetos farmacêuticos.',
-		url: 'https://aethergp.com.br/desenvolvimento-de-ativos',
-		siteName: 'Aether Global Pharma',
-		images: [
-			{
-				url: '/img/og/desenvolvimento-de-ativos.jpg',
-				width: 1200,
-				height: 630,
-				alt: 'Aether Global Pharma'
-			}
-		],
-		locale: 'pt_BR',
-		type: 'website'
+interface Props {
+	params: Promise<{ locale: Locale }>
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+	const { locale } = await params
+	const t = await getTranslations({ locale, namespace: 'PDPage' })
+
+	return {
+		title: t('metaTitle'),
+		description: t('metaDescription'),
+		alternates: {
+			canonical: '/desenvolvimento-de-ativos'
+		},
+		openGraph: {
+			title: t('metaTitle'),
+			description: t('metaDescription'),
+			url: 'https://aethergp.com.br/desenvolvimento-de-ativos',
+			siteName: 'Aether Global Pharma',
+			images: [
+				{
+					url: '/img/og/desenvolvimento-de-ativos.jpg',
+					width: 1200,
+					height: 630,
+					alt: 'Aether Global Pharma'
+				}
+			],
+			locale: ogLocale(locale),
+			type: 'website'
+		}
 	}
 }
 
-const criterios = [
-	{
-		title: 'Fundamentação científica robusta',
-		text: 'Hipóteses sustentadas por evidências experimentais, metodologia tecnicamente consistente e dados que permitam análise crítica, validação e definição dos próximos marcos de desenvolvimento.'
-	},
-	{
-		title: 'Potencial translacional',
-		text: 'Possibilidade concreta de transformar a descoberta científica em uma solução terapêutica ou tecnologia aplicável ao desenvolvimento farmacêutico.'
-	},
-	{
-		title: 'Potencial de propriedade intelectual',
-		text: 'Capacidade de construção ou fortalecimento de uma posição de propriedade intelectual que contribua para a exclusividade, defensibilidade e valor estratégico do ativo.'
-	},
-	{
-		title: 'Potencial de desenvolvimento e monetização',
-		text: 'Existência de uma trajetória tecnicamente viável de desenvolvimento e de uma hipótese clara de geração de valor por meio de licenciamento, parceria estratégica, transferência de tecnologia ou outra operação relacionada ao ativo.'
-	}
-]
+export default async function DesenvolvimentodeAtivos({ params }: Props) {
+	const { locale } = await params
+	const t = await getTranslations({ locale, namespace: 'PDPage' })
+	const criterios = t.raw('criterios') as { title: string, text: string }[]
+	const governancaPills = t.raw('governance.pills') as string[]
 
-const governancaPills = [
-	'Instituição sem fins lucrativos',
-	'Ciência e tecnologia',
-	'Governança científica especializada',
-	'Desenvolvimento translacional'
-]
-
-export default function DesenvolvimentodeAtivos() {
 	return (
 		<div className='bg-white'>
 
@@ -75,10 +66,10 @@ export default function DesenvolvimentodeAtivos() {
 				data={pageGraph({
 					type: 'WebPage',
 					path: '/desenvolvimento-de-ativos',
-					name: metadata.title as string,
-					description: metadata.description as string,
+					name: t('metaTitle'),
+					description: t('metaDescription'),
 					trail: [
-						{ name: 'Desenvolvimento de Ativos', item: '/desenvolvimento-de-ativos' }
+						{ name: t('metaTitle'), item: '/desenvolvimento-de-ativos' }
 					]
 				})}
 			/>
@@ -90,17 +81,17 @@ export default function DesenvolvimentodeAtivos() {
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
 							<p className='font-semibold font-heading lg:pt-2'>
-								<AnimatedText text='(desenvolvimento de ativos)' />
+								<AnimatedText text={t('eyebrow')} />
 							</p>
 						</div>
 
 						<div className='col-lg-9'>
 							<h1 className='text-72 font-heading font-bold text-green-dark'>
-								<AnimatedText text='Da descoberta científica ao ativo farmacêutico global.' />
+								<AnimatedText text={t('heading')} />
 							</h1>
 
 							<p className='text-24 font-heading mt-8 lg:mt-12 lg:pr-[8vw]'>
-								<AnimatedText text='Na Aether, pesquisa e desenvolvimento são orientados à construção de valor. <br /><br />Como uma <b>Pharmaceutical Asset Venture Builder</b>, identificamos e desenvolvemos descobertas científicas com potencial de se tornarem ativos farmacêuticos protegidos, tecnicamente validados e estrategicamente posicionados para licenciamento, parceria industrial ou outras operações de monetização. <br /><br />Cada ativo avança por uma jornada estruturada de desrisking científico e tecnológico, maturação de TRL, estratégia de propriedade intelectual e governança especializada.' />
+								<AnimatedText text={t.markup('heroText', { b: (chunks) => `<b>${chunks}</b>` })} />
 							</p>
 						</div>
 
@@ -134,7 +125,7 @@ export default function DesenvolvimentodeAtivos() {
 								style='dark'
 								className='text-60 font-heading font-semibold'
 							>
-								Uma descoberta científica ainda não é um ativo farmacêutico.
+								{t('contextTitle')}
 							</AnimatedTitle>
 						</div>
 
@@ -146,13 +137,13 @@ export default function DesenvolvimentodeAtivos() {
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
 							<p className='font-semibold font-heading'>
-								<AnimatedText text='(a abordagem)' />
+								<AnimatedText text={t('approachEyebrow')} />
 							</p>
 						</div>
 
 						<div className='col-lg-6'>
 							<p className='text-20 leading-relaxed'>
-								<AnimatedText text='Transformar ciência em um ativo farmacêutico exige mais do que gerar resultados experimentais. Exige identificar o potencial de aplicação, construir proteção intelectual, reduzir incertezas críticas e gerar as evidências necessárias para aumentar progressivamente a maturidade e o valor do ativo. <br /><br /> Na plataforma Aether, o desenvolvimento é orientado por uma lógica de asset building: cada decisão científica, tecnológica e estratégica deve contribuir para tornar o ativo mais robusto, protegível e atrativo para futuros parceiros industriais, licenciados e investidores especializados em life sciences. <br /><br />A execução científica e tecnológica é conduzida em articulação com o ICT AetherBio+, universidades, centros de pesquisa, especialistas e parceiros tecnológicos, dentro de uma governança estruturada para cada ativo.' />
+								<AnimatedText text={t('approachText')} />
 							</p>
 						</div>
 
@@ -172,7 +163,7 @@ export default function DesenvolvimentodeAtivos() {
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
 							<p className='font-semibold font-heading lg:pt-2'>
-								<AnimatedText text='(perfil dos ativos)' />
+								<AnimatedText text={t('profileEyebrow')} />
 							</p>
 						</div>
 
@@ -181,7 +172,7 @@ export default function DesenvolvimentodeAtivos() {
 								style='dark'
 								className='text-60 font-heading font-semibold'
 							>
-								O que buscamos construir.
+								{t('profileHeading')}
 							</AnimatedTitle>
 						</div>
 
@@ -191,7 +182,7 @@ export default function DesenvolvimentodeAtivos() {
 						<div className='col-lg-3' />
 						<div className='col-lg-9'>
 							<p className='text-20 leading-relaxed pb-10 lg:pb-[3vw]'>
-								<AnimatedText text='A Aether identifica e seleciona descobertas científicas e tecnologias em saúde com potencial de transformação em ativos farmacêuticos protegidos, desenvolvíveis e licenciáveis. Priorizamos oportunidades que apresentem uma combinação consistente dos seguintes atributos:' />
+								<AnimatedText text={t('profileIntro')} />
 							</p>
 						</div>
 					</div>
@@ -218,7 +209,7 @@ export default function DesenvolvimentodeAtivos() {
 							</StaggerUp>
 
 							<p className='text-20 leading-relaxed pt-6'>
-								As oportunidades podem se originar em universidades, ICTs, centros de pesquisa, startups científicas, pesquisadores independentes e outras organizações de inovação, no Brasil ou no exterior.
+								{t('profileFooter')}
 							</p>
 
 						</div>
@@ -235,7 +226,7 @@ export default function DesenvolvimentodeAtivos() {
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
 							<p className='font-semibold font-heading lg:pt-2'>
-								<AnimatedText text='(nossa plataforma de desenvolvimento)' />
+								<AnimatedText text={t('platformEyebrow')} />
 							</p>
 						</div>
 
@@ -244,7 +235,7 @@ export default function DesenvolvimentodeAtivos() {
 								style='dark'
 								className='text-60 font-heading font-semibold'
 							>
-								Uma plataforma para construir e maturar ativos farmacêuticos.
+								{t('platformHeading')}
 							</AnimatedTitle>
 						</div>
 
@@ -261,22 +252,22 @@ export default function DesenvolvimentodeAtivos() {
 									</div>
 
 									<span className='text-sm font-semibold opacity-60 uppercase tracking-wide'>
-										Ativos em desenvolvimento
+										{t('pipelineCard.label')}
 									</span>
 
 									<h2 className='text-48 font-heading font-semibold relative z-1'>
-										Pipeline
+										{t('pipelineCard.title')}
 									</h2>
 
 									<p className='text-18 leading-relaxed opacity-90 relative z-1 max-w-sm'>
-										Conheça os ativos que integram o pipeline da Aether, organizados por estágio de maturidade, área terapêutica e status de desenvolvimento.
+										{t('pipelineCard.text')}
 									</p>
 
 									<div className='mt-auto pt-4 relative z-1'>
 										<Button
 											style='light-2'
 											href={pages.pdPipeline}
-											text='Explorar o pipeline'
+											text={t('pipelineCard.button')}
 											icon='diagonal-arrow'
 										/>
 									</div>
@@ -292,22 +283,22 @@ export default function DesenvolvimentodeAtivos() {
 									</div>
 
 									<span className='text-sm font-semibold opacity-60 uppercase tracking-wide'>
-										Maturidade tecnológica
+										{t('trlCard.label')}
 									</span>
 
 									<h2 className='text-48 font-heading font-semibold relative z-1'>
-										Jornada de desenvolvimento
+										{t('trlCard.title')}
 									</h2>
 
 									<p className='text-18 leading-relaxed relative z-1 max-w-sm'>
-										Acompanhe a evolução dos ativos ao longo dos níveis de maturidade tecnológica e os principais marcos associados à redução de risco e à geração de valor.
+										{t('trlCard.text')}
 									</p>
 
 									<div className='mt-auto pt-4 relative z-1'>
 										<Button
 											style='dark'
 											href={pages.trl}
-											text='Conhecer os níveis de TRL'
+											text={t('trlCard.button')}
 											icon='diagonal-arrow'
 										/>
 									</div>
@@ -341,11 +332,11 @@ export default function DesenvolvimentodeAtivos() {
 						<div className='col-lg-8 offset-lg-3'>
 
 							<h2 className='text-48 font-heading font-semibold mb-8 lg:mb-10'>
-								<AnimatedText text='Ciência e tecnologia integradas à construção dos ativos.' />
+								<AnimatedText text={t('governance.heading')} />
 							</h2>
 
 							<p className='text-20 leading-relaxed opacity-70 mb-10 lg:mb-12 max-w-2xl'>
-								<AnimatedText text='O ICT AetherBio+ integra a plataforma Aether como ambiente institucional de ciência, tecnologia e inovação, apoiando a execução e a governança do desenvolvimento científico e tecnológico dos ativos. Em articulação com universidades, centros de pesquisa, especialistas e parceiros tecnológicos, o ICT contribui para a geração de evidências, o avanço de maturidade tecnológica e a execução dos programas de desenvolvimento definidos para cada ativo. Essa arquitetura permite conectar ciência, propriedade intelectual, capital e estratégia de desenvolvimento em uma única tese de construção de valor.' />
+								<AnimatedText text={t('governance.text')} />
 							</p>
 
 							<StaggerUp className='flex flex-wrap gap-3 mb-10 lg:mb-12'>
@@ -362,7 +353,7 @@ export default function DesenvolvimentodeAtivos() {
 							<Button
 								style='dark'
 								href={pages.sobreIct}
-								text='Conheça o ICT AetherBio+'
+								text={t('governance.button')}
 								icon='diagonal-arrow'
 							/>
 

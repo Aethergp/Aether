@@ -1,5 +1,7 @@
 // libraries
 import type { Metadata } from 'next'
+import type { Locale } from 'next-intl'
+import { getTranslations } from 'next-intl/server'
 import Image from 'next/image'
 
 // components
@@ -21,81 +23,81 @@ import phili from '@/assets/img/team/phili.jpg'
 // utils
 import { pages } from '@/utils/routes'
 import { pageGraph, person, personId, plainText } from '@/utils/schema'
+import { ogLocale } from '@/utils/functions'
 
-export const metadata: Metadata = {
-	title: 'Pipeline de Projetos Científicos | Aether Global Pharma',
-	description: 'Projetos científicos em desenvolvimento na plataforma Aether, conduzidos pelo ICT AetherBio+, incluindo a plataforma produtiva para IFA anti-inflamatória.',
-	alternates: {
-		canonical: '/desenvolvimento-de-ativos/pipeline'
-	},
-	openGraph: {
-		title: 'Pipeline de Projetos Científicos | Aether Global Pharma',
-		description: 'Projetos científicos em desenvolvimento na plataforma Aether, conduzidos pelo ICT AetherBio+, incluindo a plataforma produtiva para IFA anti-inflamatória.',
-		url: 'https://aethergp.com.br/desenvolvimento-de-ativos/pipeline',
-		siteName: 'Aether Global Pharma',
-		images: [
-			{
-				url: '/img/og/desenvolvimento-de-ativos-pipeline.jpg',
-				width: 1200,
-				height: 630,
-				alt: 'Aether Global Pharma'
-			}
-		],
-		locale: 'pt_BR',
-		type: 'website'
+interface Props {
+	params: Promise<{ locale: Locale }>
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+	const { locale } = await params
+	const t = await getTranslations({ locale, namespace: 'PipelinePage' })
+
+	return {
+		title: t('metaTitle'),
+		description: t('metaDescription'),
+		alternates: {
+			canonical: '/desenvolvimento-de-ativos/pipeline'
+		},
+		openGraph: {
+			title: t('metaTitle'),
+			description: t('metaDescription'),
+			url: 'https://aethergp.com.br/desenvolvimento-de-ativos/pipeline',
+			siteName: 'Aether Global Pharma',
+			images: [
+				{
+					url: '/img/og/desenvolvimento-de-ativos-pipeline.jpg',
+					width: 1200,
+					height: 630,
+					alt: 'Aether Global Pharma'
+				}
+			],
+			locale: ogLocale(locale),
+			type: 'website'
+		}
 	}
 }
 
-const parceiros = [
-	'Ministério da Saúde',
-	'EMBRAPII',
-	'CQMED',
-	'UFMG - Inovação de Fármacos'
-]
-
-const responsaveis = [
+// name/titulacao/instituicao/photo/linked are the same regardless of locale;
+// area/bio come from PipelinePage.responsaveis in the message files
+const responsaveisBase = [
 	{
 		name: 'Katlin B. Massirer',
 		titulacao: 'PhD',
-		area: 'Coordenadora CQMED',
 		instituicao: 'CQMED',
-		bio: 'Coordenadora do Centro de Química Medicinal (CQMED-Unicamp), uma Unidade Embrapii de Inovação Industrial na área de Fármacos/Biofármacos, desde 2017. Pesquisadora da área de: proteínas de ligação a RNA em doenças, química medicinal, bioinformática, e proteínas recombinantes para diagnóstico. Tem mais de 15 anos de experiência em planejamento e execução de projetos de pesquisa e inovação, com 46 publicações internacionais de alto impacto. <br /><br />Atua na coordenação de projetos internacionais na área de splicing de RNA e química medicinal, com a University of Oxford, University of California San Diego, Tubingen University e o Structural Genomics Consortium (SGC) no Canadá. Em 2025 recebeu prêmio de pesquisadora destaque da Embrapii e em 2024 recebeu honraria como profissional de destaque em pesquisa na área de saúde pela Câmara Municipal de Campinas, SP. Atua como coordenadora adjunta do CBMEG e Coordenadora da CIBIO-CBMEG.',
 		photo: katlin,
 		linked: 'https://www.linkedin.com/in/katlin-massirer-86a0779/'
 	},
 	{
 		name: 'Ronaldo Pilli',
 		titulacao: 'PhD',
-		area: 'Coordenador Química',
 		instituicao: 'CQMED',
-		bio: 'Professor na Unicamp na área de Síntese Orgânica, com ênfase em síntese assimétrica, síntese de fármacos e produtos naturais, com avaliação de atividade biológica. Coordena a área de Química do CQMED-Unicamp. Possui pedidos de patente relacionados a métodos de preparação de princípios farmacêuticos, incluindo fenidato de metila, tamoxifeno, levobupivacaína e fluoxetina.<br /><br />Ocupou posições de destaque na gestão acadêmica e científica, como diretor do Instituto de Química e Pró-Reitor de Pesquisa da Unicamp, além de atuação em instâncias estratégicas de formulação de políticas científicas no CNPq e na FAPESP, incluindo a vice-presidência do Conselho Superior da FAPESP. <br /><br />É coautor do livro-texto Substâncias Carboniladas e Derivados, referência na área de Química Orgânica, com edição nacional e internacional em inglês. <br /><br />Recebeu importantes prêmios e honrarias nacionais e internacionais, como o Prêmio Zeferino Vaz (Unicamp), a Medalha Simão Mathias (SBQ), a Medalha Israel Vargas e o BMOS Award. É membro da Academia de Ciências do Estado de São Paulo e da Academia Brasileira de Ciências.',
 		photo: phili
 		//linked: 'https://www.linkedin.com/in/katlin-massirer-86a0779/'
 	}
 ]
 
-const dimensoes = [
-	{
-		eyebrow: '01',
-		title: 'Maturidade do Ativo',
-		text: '<b>Onde o ativo está na jornada de desenvolvimento.</b> O nível de maturidade tecnológica permite compreender o estágio atual do projeto, as evidências já construídas e os próximos marcos necessários para seu avanço.',
-		icon: '/img/svg/logo/icon-gp.svg'
-	},
-	{
-		eyebrow: '02',
-		title: 'Tese de Valor',
-		text: '<b>Por que esse ativo merece avançar.</b> Cada projeto é analisado a partir de seu racional científico, potencial terapêutico, estratégia de propriedade intelectual e capacidade de gerar valor ao longo do desenvolvimento.',
-		icon: '/img/svg/logo/icon-gp.svg'
-	},
-	{
-		eyebrow: '03',
-		title: 'Próximo marco de valorização',
-		text: '<b>O que precisa acontecer para aumentar o valor do ativo.</b> Identificamos o próximo milestone capaz de reduzir risco, fortalecer as evidências e ampliar o potencial do ativo para investimento, parceria estratégica ou licenciamento.',
-		icon: '/img/svg/logo/icon-gp.svg'
-	}
+const dimensoesIcons = [
+	'/img/svg/logo/icon-gp.svg',
+	'/img/svg/logo/icon-gp.svg',
+	'/img/svg/logo/icon-gp.svg'
 ]
 
-export default function PipelinePage() {
+export default async function PipelinePage({ params }: Props) {
+	const { locale } = await params
+	const t = await getTranslations({ locale, namespace: 'PipelinePage' })
+
+	const parceiros = t.raw('parceiros') as string[]
+	const responsaveis = responsaveisBase.map((base, i) => ({
+		...base,
+		...(t.raw('responsaveis') as { area: string, bio: string }[])[i]
+	}))
+	const dimensoes = (t.raw('dimensoes') as { title: string, text: string }[]).map((item, i) => ({
+		...item,
+		eyebrow: String(i + 1).padStart(2, '0'),
+		icon: dimensoesIcons[i]
+	}))
+
 	return (
 		<div className='bg-white'>
 
@@ -104,8 +106,8 @@ export default function PipelinePage() {
 				data={pageGraph({
 					type: 'CollectionPage',
 					path: '/desenvolvimento-de-ativos/pipeline',
-					name: metadata.title as string,
-					description: metadata.description as string,
+					name: t('metaTitle'),
+					description: t('metaDescription'),
 					trail: [
 						{ name: 'Desenvolvimento de Ativos', item: '/desenvolvimento-de-ativos' },
 						{ name: 'Pipeline', item: '/desenvolvimento-de-ativos/pipeline' }
@@ -136,17 +138,17 @@ export default function PipelinePage() {
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
 							<p className='font-semibold font-heading'>
-								<AnimatedText text='(pipeline)' />
+								<AnimatedText text={t('eyebrow')} />
 							</p>
 						</div>
 
 						<div className='col-lg-9'>
 							<h1 className='text-72 font-heading font-bold text-green-dark'>
-								<AnimatedText text='Um portfólio de ativos farmacêuticos em construção.' />
+								<AnimatedText text={t('heading')} />
 							</h1>
 
 							<p className='text-24 font-heading mt-8 lg:mt-12 lg:pr-[8vw]'>
-								<AnimatedText text='A Aether identifica, seleciona e desenvolve ativos farmacêuticos com potencial de valorização ao longo de sua jornada de maturação. Como uma <b>Pharmaceutical Asset Venture Builder</b>, construímos um portfólio orientado por ciência, propriedade intelectual e marcos progressivos de desenvolvimento, com foco na redução de risco e na criação de valor até oportunidades de parceria, investimento ou licenciamento.' />
+								<AnimatedText text={t.markup('heroText', { b: (chunks) => `<b>${chunks}</b>` })} />
 							</p>
 						</div>
 
@@ -162,17 +164,17 @@ export default function PipelinePage() {
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
 							<p className='font-semibold font-heading'>
-								<AnimatedText text='(projeto em destaque)' />
+								<AnimatedText text={t('flagship.eyebrow')} />
 							</p>
 						</div>
 
 						<div className='col-lg-9'>
 							<span className='inline-flex items-center px-5 py-2.5 rounded-full border border-green-light/30 text-15 font-semibold mb-8 lg:mb-10'>
-								Projetos de Alto Impacto em Saúde
+								{t('flagship.badge')}
 							</span>
 
 							<h2 className='text-60 font-heading font-semibold leading-[1.05]!'>
-								<AnimatedText text='Selecionada em chamada pública nacional de R$ 90 milhões.' />
+								<AnimatedText text={t('flagship.heading')} />
 							</h2>
 						</div>
 
@@ -185,7 +187,7 @@ export default function PipelinePage() {
 								<ScrollingImage>
 									<Image
 										src={imgFlagship}
-										alt='Pesquisa laboratorial da plataforma Aether'
+										alt={t('flagship.imageAlt')}
 										fill
 										className='object-cover'
 										sizes='(max-width: 1024px) 100vw, 40vw'
@@ -199,21 +201,21 @@ export default function PipelinePage() {
 							<div className='xl:pl-[3vw] h-full flex flex-col'>
 
 								<p className='text-20 leading-relaxed opacity-90'>
-									A Aether Global Pharma integra os Projetos de Alto Impacto em Saúde, iniciativa do Ministério da Saúde e da EMBRAPII, com o desenvolvimento de uma plataforma produtiva para IFA anti-inflamatória, em parceria com o CQMED e a unidade de Inovação de Fármacos da UFMG.
+									{t('flagship.description')}
 								</p>
 
 								<div className='mt-8 lg:mt-10 p-7 lg:p-8 rounded-sm lg:rounded-md bg-green-light/[0.07] border border-green-light/15'>
 									<span className='block text-sm font-semibold font-heading uppercase tracking-wide opacity-60 mb-2'>
-										Foco técnico do projeto
+										{t('flagship.focusLabel')}
 									</span>
 									<p className='text-24 font-heading font-semibold leading-tight'>
-										Plataforma produtiva para IFA anti-inflamatória.
+										{t('flagship.focusText')}
 									</p>
 								</div>
 
 								<div className='mt-8 lg:mt-10'>
 									<span className='block text-sm font-semibold font-heading uppercase tracking-wide opacity-60 mb-4'>
-										Parceiros do projeto
+										{t('flagship.partnersLabel')}
 									</span>
 									<div className='flex flex-wrap gap-3'>
 										{parceiros.map((label, i) => (
@@ -233,7 +235,7 @@ export default function PipelinePage() {
 											R$ <Counter number={90} /> mi
 										</span>
 										<span className='block text-16 mt-3 opacity-70'>
-											Chamada pública nacional dos Projetos de Alto Impacto em Saúde
+											{t('flagship.stat1Label')}
 										</span>
 									</div>
 									<div className='bg-green-light/4 p-7 lg:p-8'>
@@ -241,7 +243,7 @@ export default function PipelinePage() {
 											R$ <Counter number={12.5} /> mi
 										</span>
 										<span className='block text-16 mt-3 opacity-70'>
-											Investimento total destinado ao desenvolvimento do projeto
+											{t('flagship.stat2Label')}
 										</span>
 									</div>
 								</div>
@@ -261,16 +263,16 @@ export default function PipelinePage() {
 					<div className='row pb-10 lg:pb-[5vw]'>
 						<div className='col-lg-3 pb-4 lg:pb-0'>
 							<p className='font-semibold font-heading pt-2'>
-								<AnimatedText text='(responsáveis científicos)' />
+								<AnimatedText text={t('team.eyebrow')} />
 							</p>
 						</div>
 						<div className='col-lg-9'>
 							<h2 className='text-60 font-heading font-semibold'>
-								Quem lidera a ciência deste projeto.
+								{t('team.heading')}
 							</h2>
 
 							<p className='text-20 leading-relaxed mt-6 lg:mt-8 lg:pr-[8vw]'>
-								<AnimatedText text='A condução científica da plataforma produtiva para IFA anti-inflamatória é responsabilidade dos pesquisadores do CQMED-Unicamp. Clique em cada perfil para conhecer a trajetória.' />
+								<AnimatedText text={t('team.text')} />
 							</p>
 						</div>
 					</div>
@@ -288,7 +290,7 @@ export default function PipelinePage() {
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
 							<p className='font-semibold font-heading'>
-								<AnimatedText text='(como organizamos)' />
+								<AnimatedText text={t('organize.eyebrow')} />
 							</p>
 						</div>
 
@@ -297,11 +299,11 @@ export default function PipelinePage() {
 								style='dark'
 								className='text-60 font-heading font-semibold'
 							>
-								Três dimensões para ler cada projeto.
+								{t('organize.heading')}
 							</AnimatedTitle>
 
 							<p className='text-18 leading-relaxed mt-6 lg:mt-8 opacity-70 max-w-2xl'>
-								<AnimatedText text='O pipeline da Aether é translacional por natureza. À medida que cresce, cada ativo é apresentado por três eixos que tornam comparável o seu momento de desenvolvimento.' />
+								<AnimatedText text={t('organize.text')} />
 							</p>
 						</div>
 
@@ -342,7 +344,7 @@ export default function PipelinePage() {
 								<Button
 									style='dark'
 									href={pages.trl}
-									text='Entenda a escala TRL'
+									text={t('organize.button')}
 									icon='diagonal-arrow'
 								/>
 							</div>
@@ -360,7 +362,7 @@ export default function PipelinePage() {
 
 						<div className='col-lg-3 pb-4 lg:pb-0'>
 							<p className='font-semibold font-heading'>
-								<AnimatedText text='(em expansão)' />
+								<AnimatedText text={t('expansion.eyebrow')} />
 							</p>
 						</div>
 
@@ -369,11 +371,11 @@ export default function PipelinePage() {
 								style='dark'
 								className='text-60 font-heading font-semibold'
 							>
-								Um pipeline em formação.
+								{t('expansion.heading')}
 							</AnimatedTitle>
 
 							<p className='text-18 leading-relaxed mt-6 lg:mt-8 opacity-70 max-w-2xl'>
-								<AnimatedText text='A partir de 2027, novos ativos entram no pipeline, em diferentes estágios de maturidade. Alguns projetos permanecem sob confidencialidade até a liberação para divulgação, e passam a ser detalhados aqui à medida que avançam.' />
+								<AnimatedText text={t('expansion.text')} />
 							</p>
 						</div>
 
@@ -389,7 +391,7 @@ export default function PipelinePage() {
 										className='relative flex flex-col gap-5 p-8 lg:p-9 rounded-md lg:rounded-lg border border-dashed border-green-dark/25 bg-white/40 h-full min-h-[15rem]'
 									>
 										<span className='inline-flex w-fit items-center px-4 py-2 rounded-full bg-green-dark/[0.06] text-sm font-semibold uppercase tracking-wide text-green-dark/60'>
-											A partir de 2027
+											{t('expansion.badge')}
 										</span>
 
 										<div className='mt-auto'>
@@ -398,7 +400,7 @@ export default function PipelinePage() {
 										</div>
 
 										<span className='text-15 font-semibold text-green-dark/50'>
-											Novo ativo em desenvolvimento
+											{t('expansion.placeholder')}
 										</span>
 									</div>
 								))}
