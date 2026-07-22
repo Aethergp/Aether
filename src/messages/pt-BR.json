@@ -11,7 +11,7 @@
 		"pipeline": "Pipeline",
 		"midia": "Mídia",
 		"parceiros": "Parceiros",
-		"inscreva": "Inscreva seu Projeto",
+		"inscreva": "Inscreva seu projeto",
 		"contato": "Contato",
 		"conecteSe": "Conecte-se",
 		"voltarAoTopo": "Voltar ao topo",
@@ -40,7 +40,7 @@
 			"nameLabel": "Nome",
 			"namePlaceholder": "Nome completo",
 			"emailLabel": "E-mail",
-			"emailPlaceholder": "Email",
+			"emailPlaceholder": "E-mail",
 			"companyLabel": "Empresa / Instituição",
 			"companyPlaceholder": "Empresa ou instituição (opcional)",
 			"subjectLabel": "Assunto",
@@ -74,7 +74,7 @@
 	"Context": {
 		"eyebrow": "(o contexto)",
 		"title": "Ciência de alto valor é desenvolvida continuamente. Grande parte nunca chega ao mercado.",
-		"body": "Universidades e centros de pesquisa geram descobertas com elevado potencial terapêutico todos os anos. O desafio raramente está na ciência mas na capacidade de transformar conhecimento em ativos farmacêuticos protegidos, validados e prontos para produção global.<br /><br />Sem maturação tecnológica adequada, governança científica e estratégia de propriedade intelectual, tecnologias promissoras permanecem restritas ao ambiente acadêmico e não alcançam seu potencial de impacto.",
+		"body": "Universidades e centros de pesquisa geram descobertas com elevado potencial terapêutico todos os anos. O desafio raramente está na ciência, mas na capacidade de transformar conhecimento em ativos farmacêuticos protegidos, validados e prontos para produção global.<br /><br />Sem maturação tecnológica adequada, governança científica e estratégia de propriedade intelectual, tecnologias promissoras permanecem restritas ao ambiente acadêmico e não alcançam seu potencial de impacto.",
 		"ctaButton": "Conheça a plataforma",
 		"items": [
 			{
@@ -107,7 +107,7 @@
 		},
 		"about": {
 			"title": "Uma plataforma integrada. Dois pilares complementares.",
-			"body": "A Aether Global Pharma e o ICT AetherBio+ operam de forma sinérgica para transformar ciência de alto potencial em ativos farmacêuticos estruturados para avançar ao longo da jornada de desenvolvimento e gerar valor.<br /><br /> O ICT AetherBio+ articula competências científicas, infraestrutura, parceiros e recursos para promover o avanço e o desrisking tecnológico dos projetos. A Aether Global Pharma conduz a estratégia de desenvolvimento e valorização dos ativos, integrando propriedade intelectual, estratégia regulatória, capital e posicionamento para parcerias e licenciamento.<br /><br /> Juntas, conectam universidades e pesquisadores, capital especializado e indústria farmacêutica, criando uma jornada estruturada para que descobertas promissoras avancem com maior maturidade, consistência e potencial global ampliando, para a indústria, o acesso a ativos selecionados, protegidos e progressivamente desenvolvidos para inovação externa.",
+			"body": "A Aether Global Pharma e o ICT AetherBio+ operam de forma sinérgica para transformar ciência de alto potencial em ativos farmacêuticos estruturados para avançar ao longo da jornada de desenvolvimento e gerar valor.<br /><br /> O ICT AetherBio+ articula competências científicas, infraestrutura, parceiros e recursos para promover o avanço e o desrisking tecnológico dos projetos. A Aether Global Pharma conduz a estratégia de desenvolvimento e valorização dos ativos, integrando propriedade intelectual, estratégia regulatória, capital e posicionamento para parcerias e licenciamento.<br /><br /> Juntas, conectam universidades e pesquisadores, capital especializado e indústria farmacêutica, criando uma jornada estruturada para que descobertas promissoras avancem com maior maturidade, consistência e potencial global, ampliando, para a indústria, o acesso a ativos selecionados, protegidos e progressivamente desenvolvidos para inovação externa.",
 			"ctaButton": "Como construímos ativos",
 			"imageAlt": "Microscópio"
 		},
@@ -281,7 +281,7 @@
 			"label": "Maturidade tecnológica",
 			"title": "Jornada de desenvolvimento",
 			"text": "Acompanhe a evolução dos ativos ao longo dos níveis de maturidade tecnológica e os principais marcos associados à redução de risco e à geração de valor.",
-			"button": "Conhecer os níveis de TRL"
+			"button": "Conheça os níveis de TRL"
 		},
 		"governance": {
 			"heading": "Ciência e tecnologia integradas à construção dos ativos.",
@@ -327,11 +327,11 @@
 		"responsaveis": [
 			{
 				"area": "Coordenadora CQMED",
-				"bio": "Coordenadora do Centro de Química Medicinal (CQMED-Unicamp), uma Unidade Embrapii de Inovação Industrial na área de Fármacos/Biofármacos, desde 2017. Pesquisadora da área de: proteínas de ligação a RNA em doenças, química medicinal, bioinformática, e proteínas recombinantes para diagnóstico. Tem mais de 15 anos de experiência em planejamento e execução de projetos de pesquisa e inovação, com 46 publicações internacionais de alto impacto. <br /><br />Atua na coordenação de projetos internacionais na área de splicing de RNA e química medicinal, com a University of Oxford, University of California San Diego, Tubingen University e o Structural Genomics Consortium (SGC) no Canadá. Em 2025 recebeu prêmio de pesquisadora destaque da Embrapii e em 2024 recebeu honraria como profissional de destaque em pesquisa na área de saúde pela Câmara Municipal de Campinas, SP. Atua como coordenadora adjunta do CBMEG e Coordenadora da CIBIO-CBMEG."
+				"bio": "Coordenadora do Centro de Química Medicinal (CQMED-Unicamp), uma Unidade EMBRAPII de Inovação Industrial na área de Fármacos/Biofármacos, desde 2017. Pesquisadora da área de: proteínas de ligação a RNA em doenças, química medicinal, bioinformática, e proteínas recombinantes para diagnóstico. Tem mais de 15 anos de experiência em planejamento e execução de projetos de pesquisa e inovação, com 46 publicações internacionais de alto impacto. <br /><br />Atua na coordenação de projetos internacionais na área de splicing de RNA e química medicinal, com a University of Oxford, University of California San Diego, Tubingen University e o Structural Genomics Consortium (SGC) no Canadá. Em 2025 recebeu prêmio de pesquisadora destaque da EMBRAPII e em 2024 recebeu honraria como profissional de destaque em pesquisa na área de saúde pela Câmara Municipal de Campinas, SP. Atua como coordenadora adjunta do CBMEG e Coordenadora da CIBIO-CBMEG."
 			},
 			{
-				"area": "Coordenador Química",
-				"bio": "Professor na Unicamp na área de Síntese Orgânica, com ênfase em síntese assimétrica, síntese de fármacos e produtos naturais, com avaliação de atividade biológica. Coordena a área de Química do CQMED-Unicamp. Possui pedidos de patente relacionados a métodos de preparação de princípios farmacêuticos, incluindo fenidato de metila, tamoxifeno, levobupivacaína e fluoxetina.<br /><br />Ocupou posições de destaque na gestão acadêmica e científica, como diretor do Instituto de Química e Pró-Reitor de Pesquisa da Unicamp, além de atuação em instâncias estratégicas de formulação de políticas científicas no CNPq e na FAPESP, incluindo a vice-presidência do Conselho Superior da FAPESP. <br /><br />É coautor do livro-texto Substâncias Carboniladas e Derivados, referência na área de Química Orgânica, com edição nacional e internacional em inglês. <br /><br />Recebeu importantes prêmios e honrarias nacionais e internacionais, como o Prêmio Zeferino Vaz (Unicamp), a Medalha Simão Mathias (SBQ), a Medalha Israel Vargas e o BMOS Award. É membro da Academia de Ciências do Estado de São Paulo e da Academia Brasileira de Ciências."
+				"area": "Coordenador de Química",
+				"bio": "Professor na Unicamp na área de Síntese Orgânica, com ênfase em síntese assimétrica, síntese de fármacos e produtos naturais, com avaliação de atividade biológica. Coordena a área de Química do CQMED-Unicamp. Possui pedidos de patente relacionados a métodos de preparação de princípios farmacêuticos, incluindo metilfenidato, tamoxifeno, levobupivacaína e fluoxetina.<br /><br />Ocupou posições de destaque na gestão acadêmica e científica, como diretor do Instituto de Química e Pró-Reitor de Pesquisa da Unicamp, além de atuação em instâncias estratégicas de formulação de políticas científicas no CNPq e na FAPESP, incluindo a vice-presidência do Conselho Superior da FAPESP. <br /><br />É coautor do livro-texto Substâncias Carboniladas e Derivados, referência na área de Química Orgânica, com edição nacional e internacional em inglês. <br /><br />Recebeu importantes prêmios e honrarias nacionais e internacionais, como o Prêmio Zeferino Vaz (Unicamp), a Medalha Simão Mathias (SBQ), a Medalha Israel Vargas e o BMOS Award. É membro da Academia de Ciências do Estado de São Paulo e da Academia Brasileira de Ciências."
 			}
 		],
 		"organize": {
@@ -479,7 +479,7 @@
 		"heading": "Ciência, ativos farmacêuticos e inovação em movimento.",
 		"intro": "Insights da equipe Aether e a cobertura da imprensa sobre a plataforma, os projetos e o ecossistema de desenvolvimento farmacêutico.",
 		"filterAll": "Todos",
-		"filterBlog": "Blogs",
+		"filterBlog": "Blog",
 		"filterPress": "Imprensa",
 		"emptyState": "Nenhum conteúdo encontrado nesta categoria."
 	},
@@ -553,13 +553,13 @@
 				"eyebrow": "Pharmaceutical Asset Venture Builder",
 				"name": "Aether Global Pharma",
 				"text": "Responsável pela estratégia empresarial da plataforma, conduzindo desenvolvimento dos ativos, propriedade intelectual, estruturação financeira, parcerias estratégicas e licenciamento internacional.",
-				"cta": "Conhecer a AGP"
+				"cta": "Conheça a AGP"
 			},
 			{
 				"eyebrow": "Pilar Científico",
 				"name": "ICT AetherBio+",
 				"text": "Instituição científica responsável pelo avanço tecnológico dos projetos, governança científica, coordenação das pesquisas, desrisking e interação com universidades, centros de pesquisa e agências de fomento.",
-				"cta": "Conhecer o Bio+"
+				"cta": "Conheça o Bio+"
 			}
 		],
 		"trajectoryEyebrow": "(nossa trajetória)",
@@ -698,7 +698,7 @@
 		"researchersEyebrow": "(para pesquisadores)",
 		"researchersHeading": "Sua pesquisa pode ir além do laboratório.",
 		"researchersText": "Se você desenvolve uma tecnologia com potencial terapêutico em uma universidade, centro de pesquisa ou outro ambiente científico, o ICT AetherBio+ pode contribuir para construir o caminho entre a descoberta científica e as próximas etapas do desenvolvimento farmacêutico. Projetos submetidos à plataforma passam por um processo estruturado de avaliação, com confidencialidade e análise de seu potencial científico, tecnológico e translacional.",
-		"researchersButton": "Submeta seu projeto",
+		"researchersButton": "Inscreva seu projeto",
 		"bioLabAlt": "Pesquisadora ao microscópio no laboratório do AetherBio+",
 		"platformEyebrow": "(plataforma integrada)",
 		"platformHeading": "O pilar científico e tecnológico de uma plataforma integrada.",
@@ -769,7 +769,7 @@
 			"Não compartilhamos informações de identificação pessoal publicamente ou com terceiros, exceto quando exigido por lei.",
 			"O nosso site pode ter links para sites externos que não são operados por nós. Esteja ciente de que não temos controle sobre o conteúdo e práticas desses sites e não podemos aceitar responsabilidade por suas respectivas políticas de privacidade.",
 			"Você é livre para recusar a nossa solicitação de informações pessoais, entendendo que talvez não possamos fornecer alguns dos serviços desejados.",
-			"O uso continuado de nosso site será considerado como aceitação de nossas práticas em torno de privacidade e informações pessoais. Se você tiver alguma dúvida sobre como lidamos com dados do usuário e informações pessoais, entre em contacto connosco."
+			"O uso continuado de nosso site será considerado como aceitação de nossas práticas em torno de privacidade e informações pessoais. Se você tiver alguma dúvida sobre como lidamos com dados do usuário e informações pessoais, entre em contato conosco."
 		],
 		"introList": [
 			"O serviço Google AdSense que usamos para veicular publicidade usa um cookie DoubleClick para veicular anúncios mais relevantes em toda a Web e limitar o número de vezes que um determinado anúncio é exibido para você.",
@@ -780,7 +780,7 @@
 		"commitmentEyebrow": "(compromisso do usuário)",
 		"commitmentText": "O usuário se compromete a fazer uso adequado dos conteúdos e da informação que o Aether Global Pharma oferece no site e com caráter enunciativo, mas não limitativo:",
 		"commitmentList": [
-			"A) Não se envolver em atividades que sejam ilegais ou contrárias à boa fé a à ordem pública;",
+			"A) Não se envolver em atividades que sejam ilegais ou contrárias à boa fé e à ordem pública;",
 			"B) Não difundir propaganda ou conteúdo de natureza racista, xenofóbica, jogos de sorte ou azar, qualquer tipo de pornografia ilegal, de apologia ao terrorismo ou contra os direitos humanos;",
 			"C) Não causar danos aos sistemas físicos (hardwares) e lógicos (softwares) do Aether Global Pharma, de seus fornecedores ou terceiros, para introduzir ou disseminar vírus informáticos ou quaisquer outros sistemas de hardware ou software que sejam capazes de causar danos anteriormente mencionados."
 		],
@@ -803,14 +803,14 @@
 			"remover quaisquer direitos autorais ou outras notações de propriedade dos materiais; ou",
 			"transferir os materiais para outra pessoa ou 'espelhe' os materiais em qualquer outro servidor."
 		],
-		"licenseText2": "Esta licença será automaticamente rescindida se você violar alguma dessas restrições e poderá ser rescindida por Aether Global Pharma a qualquer momento. Ao encerrar a visualização desses materiais ou após o término desta licença, você deve apagar todos os materiais baixados em sua posse, seja em formato eletrónico ou impresso.",
+		"licenseText2": "Esta licença será automaticamente rescindida se você violar alguma dessas restrições e poderá ser rescindida por Aether Global Pharma a qualquer momento. Ao encerrar a visualização desses materiais ou após o término desta licença, você deve apagar todos os materiais baixados em sua posse, seja em formato eletrônico ou impresso.",
 		"disclaimerEyebrow": "(isenção de responsabilidade)",
 		"disclaimerList": [
 			"Os materiais no site da Aether Global Pharma são fornecidos 'como estão'. Aether Global Pharma não oferece garantias, expressas ou implícitas, e, por este meio, isenta e nega todas as outras garantias, incluindo, sem limitação, garantias implícitas ou condições de comercialização, adequação a um fim específico ou não violação de propriedade intelectual ou outra violação de direitos.",
 			"Além disso, o Aether Global Pharma não garante ou faz qualquer representação relativa à precisão, aos resultados prováveis ou à confiabilidade do uso dos materiais em seu site ou de outra forma relacionado a esses materiais ou em sites vinculados a este site."
 		],
 		"limitationsEyebrow": "(limitações)",
-		"limitationsText": "Em nenhum caso o Aether Global Pharma ou seus fornecedores serão responsáveis por quaisquer danos (incluindo, sem limitação, danos por perda de dados ou lucro ou devido a interrupção dos negócios) decorrentes do uso ou da incapacidade de usar os materiais em Aether Global Pharma, mesmo que Aether Global Pharma ou um representante autorizado da Aether Global Pharma tenha sido notificado oralmente ou por escrito da possibilidade de tais danos. Como algumas jurisdições não permitem limitações em garantias implícitas, ou limitações de responsabilidade por danos conseqüentes ou incidentais, essas limitações podem não se aplicar a você.",
+		"limitationsText": "Em nenhum caso o Aether Global Pharma ou seus fornecedores serão responsáveis por quaisquer danos (incluindo, sem limitação, danos por perda de dados ou lucro ou devido a interrupção dos negócios) decorrentes do uso ou da incapacidade de usar os materiais em Aether Global Pharma, mesmo que Aether Global Pharma ou um representante autorizado da Aether Global Pharma tenha sido notificado oralmente ou por escrito da possibilidade de tais danos. Como algumas jurisdições não permitem limitações em garantias implícitas, ou limitações de responsabilidade por danos consequentes ou incidentais, essas limitações podem não se aplicar a você.",
 		"accuracyEyebrow": "(precisão dos materiais)",
 		"accuracyText": "Os materiais exibidos no site da Aether Global Pharma podem incluir erros técnicos, tipográficos ou fotográficos. Aether Global Pharma não garante que qualquer material em seu site seja preciso, completo ou atual. Aether Global Pharma pode fazer alterações nos materiais contidos em seu site a qualquer momento, sem aviso prévio. No entanto, Aether Global Pharma não se compromete a atualizar os materiais.",
 		"linksEyebrow": "(links)",
@@ -824,17 +824,17 @@
 		"closeButton": "Fechar",
 		"requiredError": "Este campo é obrigatório",
 		"maxLengthError": "Máximo de caracteres excedido",
-		"passwordTooShortError": "Password é muito curto",
+		"passwordTooShortError": "A senha é muito curta",
 		"messageTooShortError": "Mensagem é muito curta",
-		"passwordMismatchError": "Password não confere",
-		"emailInvalidError": "Email inválido",
+		"passwordMismatchError": "A senha não confere",
+		"emailInvalidError": "E-mail inválido",
 		"selectPlaceholder": "Selecione",
 		"fileSizeExceededError": "O arquivo excede {size} MB. Reduza o tamanho ou envie um resumo.",
 		"fileTypeUnsupportedError": "Formato não suportado. Envie um arquivo PDF.",
 		"fileUploadPrepareError": "Erro ao preparar upload.",
 		"fileUploadSendError": "Erro ao enviar arquivo.",
 		"fileUploadClickLabel": "Clique para anexar um arquivo",
-		"fileUploadingLabel": "A enviar arquivo...",
+		"fileUploadingLabel": "Enviando arquivo...",
 		"fileRemoveAriaLabel": "Remover arquivo",
 		"honeypotLabel": "Não preencher"
 	},

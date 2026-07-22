@@ -11,7 +11,7 @@
 		"pipeline": "Pipeline",
 		"midia": "Medios",
 		"parceiros": "Socios",
-		"inscreva": "Inscriba su Proyecto",
+		"inscreva": "Inscriba su proyecto",
 		"contato": "Contacto",
 		"conecteSe": "Conéctese",
 		"voltarAoTopo": "Volver arriba",
@@ -107,7 +107,7 @@
 		},
 		"about": {
 			"title": "Una plataforma integrada. Dos pilares complementarios.",
-			"body": "Aether Global Pharma e ICT AetherBio+ operan de forma sinérgica para transformar ciencia de alto potencial en activos farmacéuticos estructurados para avanzar a lo largo del recorrido de desarrollo y generar valor.<br /><br /> ICT AetherBio+ articula competencias científicas, infraestructura, socios y recursos para promover el avance y la reducción del riesgo tecnológico de los proyectos. Aether Global Pharma conduce la estrategia de desarrollo y valorización de los activos, integrando propiedad intelectual, estrategia regulatoria, capital y posicionamiento para alianzas y licenciamiento.<br /><br /> Juntas, conectan universidades e investigadores, capital especializado e industria farmacéutica, creando un recorrido estructurado para que los descubrimientos prometedores avancen con mayor madurez, consistencia y potencial global, ampliando para la industria el acceso a activos seleccionados, protegidos y progresivamente desarrollados para la innovación externa.",
+			"body": "Aether Global Pharma e ICT AetherBio+ operan de forma sinérgica para transformar ciencia de alto potencial en activos farmacéuticos estructurados para avanzar a lo largo del recorrido de desarrollo y generar valor.<br /><br /> ICT AetherBio+ articula competencias científicas, infraestructura, socios y recursos para promover el avance y la reducción del riesgo tecnológico de los proyectos. Aether Global Pharma conduce la estrategia de desarrollo y valorización de los activos, integrando propiedad intelectual, estrategia regulatoria, capital y posicionamiento para alianzas y licenciamiento.<br /><br /> Juntas, conectan universidades e investigadores, capital especializado e industria farmacéutica, creando un recorrido estructurado para que los descubrimientos prometedores avancen con mayor madurez, consistencia y potencial global, ampliando el acceso de la industria a activos seleccionados, protegidos y progresivamente desarrollados para la innovación externa.",
 			"ctaButton": "Cómo construimos activos",
 			"imageAlt": "Microscopio"
 		},
@@ -285,7 +285,7 @@
 		},
 		"governance": {
 			"heading": "Ciencia y tecnología integradas a la construcción de los activos.",
-			"text": "ICT AetherBio+ integra la plataforma Aether como entorno institucional de ciencia, tecnología e innovación, apoyando la ejecución y la gobernanza del desarrollo científico y tecnológico de los activos. En articulación con universidades, centros de investigación, especialistas y socios tecnológicos, el ICT contribuye a la generación de evidencias, el avance de la madurez tecnológica y la ejecución de los programas de desarrollo definidos para cada activo. Esta arquitectura permite conectar ciencia, propiedad intelectual, capital y estrategia de desarrollo en una única tesis de construcción de valor.",
+			"text": "El ICT AetherBio+ integra la plataforma Aether como entorno institucional de ciencia, tecnología e innovación, apoyando la ejecución y la gobernanza del desarrollo científico y tecnológico de los activos. En articulación con universidades, centros de investigación, especialistas y socios tecnológicos, el ICT contribuye a la generación de evidencias, el avance de la madurez tecnológica y la ejecución de los programas de desarrollo definidos para cada activo. Esta arquitectura permite conectar ciencia, propiedad intelectual, capital y estrategia de desarrollo en una única tesis de construcción de valor.",
 			"pills": [
 				"Institución sin fines de lucro",
 				"Ciencia y tecnología",
@@ -297,7 +297,7 @@
 	},
 	"PipelinePage": {
 		"metaTitle": "Pipeline de Proyectos Científicos | Aether Global Pharma",
-		"metaDescription": "Proyectos científicos en desarrollo en la plataforma Aether, dirigidos por ICT AetherBio+, incluyendo la plataforma productiva para IFA antiinflamatorio.",
+		"metaDescription": "Proyectos científicos en desarrollo en la plataforma Aether, dirigidos por el ICT AetherBio+, incluyendo la plataforma productiva para IFA antiinflamatorio.",
 		"eyebrow": "(pipeline)",
 		"heading": "Un portafolio de activos farmacéuticos en construcción.",
 		"heroText": "Aether identifica, selecciona y desarrolla activos farmacéuticos con potencial de valorización a lo largo de su recorrido de maduración. Como una <b>Pharmaceutical Asset Venture Builder</b>, construimos un portafolio orientado por la ciencia, la propiedad intelectual y hitos progresivos de desarrollo, con foco en la reducción de riesgo y la creación de valor hasta oportunidades de alianza, inversión o licenciamiento.",
@@ -327,7 +327,7 @@
 		"responsaveis": [
 			{
 				"area": "Coordinadora CQMED",
-				"bio": "Coordinadora del Centro de Química Medicinal (CQMED-Unicamp), una Unidad Embrapii de Innovación Industrial en el área de Fármacos/Biofármacos, desde 2017. Investigadora en proteínas de unión a ARN en enfermedades, química medicinal, bioinformática y proteínas recombinantes para diagnóstico. Cuenta con más de 15 años de experiencia en planificación y ejecución de proyectos de investigación e innovación, con 46 publicaciones internacionales de alto impacto. <br /><br />Coordina proyectos internacionales en el área de splicing de ARN y química medicinal, con la University of Oxford, University of California San Diego, Tubingen University y el Structural Genomics Consortium (SGC) en Canadá. En 2025 recibió el premio a investigadora destacada de Embrapii y en 2024 recibió una distinción como profesional destacada en investigación en salud por la Cámara Municipal de Campinas, SP. Se desempeña como coordinadora adjunta del CBMEG y Coordinadora de la CIBIO-CBMEG."
+				"bio": "Coordinadora del Centro de Química Medicinal (CQMED-Unicamp), una Unidad EMBRAPII de Innovación Industrial en el área de Fármacos/Biofármacos, desde 2017. Investigadora en proteínas de unión a ARN en enfermedades, química medicinal, bioinformática y proteínas recombinantes para diagnóstico. Cuenta con más de 15 años de experiencia en planificación y ejecución de proyectos de investigación e innovación, con 46 publicaciones internacionales de alto impacto. <br /><br />Coordina proyectos internacionales en el área de splicing de ARN y química medicinal, con la University of Oxford, University of California San Diego, Tubingen University y el Structural Genomics Consortium (SGC) en Canadá. En 2025 recibió el premio a investigadora destacada de EMBRAPII y en 2024 recibió una distinción como profesional destacada en investigación en salud por la Cámara Municipal de Campinas, SP. Se desempeña como coordinadora adjunta del CBMEG y Coordinadora de la CIBIO-CBMEG."
 			},
 			{
 				"area": "Coordinador de Química",
@@ -761,7 +761,7 @@
 		"metaDescription": "Política de Privacidad de Aether Global Pharma.",
 		"eyebrow": "(sus derechos)",
 		"title": "Política de Privacidad",
-		"effectiveDate": "Esta política es efectiva a partir del 15 de junio de 2026.",
+		"effectiveDate": "Esta política entra en vigor el 15 de junio de 2026.",
 		"intro": [
 			"Su privacidad es importante para nosotros. Es política de Aether Global Pharma respetar su privacidad en relación con cualquier información suya que podamos recopilar en el sitio Aether Global Pharma, y otros sitios que poseemos y operamos.",
 			"Solicitamos información personal solo cuando realmente la necesitamos para brindarle un servicio. Lo hacemos por medios justos y legales, con su conocimiento y consentimiento. También le informamos por qué la estamos recopilando y cómo será utilizada.",
@@ -792,7 +792,7 @@
 		"metaDescription": "Términos y Condiciones de uso de Aether Global Pharma.",
 		"eyebrow": "(sus derechos)",
 		"title": "Términos y Condiciones",
-		"effectiveDate": "Estos términos y condiciones son efectivos a partir del 15 de junio de 2026.",
+		"effectiveDate": "Estos términos y condiciones entran en vigor el 15 de junio de 2026.",
 		"introText": "Al acceder al sitio Aether Global Pharma, usted acepta cumplir con estos términos de servicio, todas las leyes y reglamentos aplicables, y acepta que es responsable del cumplimiento de todas las leyes locales aplicables. Si no está de acuerdo con alguno de estos términos, tiene prohibido usar o acceder a este sitio. Los materiales contenidos en este sitio están protegidos por las leyes de derechos de autor y marcas comerciales aplicables.",
 		"licenseEyebrow": "(uso de la licencia)",
 		"licenseText1": "Se otorga permiso para descargar temporalmente una copia de los materiales (información o software) del sitio Aether Global Pharma, únicamente para visualización transitoria personal y no comercial. Esta es la concesión de una licencia, no una transferencia de título, y bajo esta licencia usted no puede:",
@@ -827,7 +827,7 @@
 		"passwordTooShortError": "La contraseña es demasiado corta",
 		"messageTooShortError": "El mensaje es demasiado corto",
 		"passwordMismatchError": "Las contraseñas no coinciden",
-		"emailInvalidError": "Email inválido",
+		"emailInvalidError": "Correo electrónico inválido",
 		"selectPlaceholder": "Seleccione",
 		"fileSizeExceededError": "El archivo supera los {size} MB. Reduzca el tamaño o envíe un resumen.",
 		"fileTypeUnsupportedError": "Formato no compatible. Envíe un archivo PDF.",
