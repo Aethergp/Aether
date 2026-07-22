@@ -17,7 +17,7 @@ import { Form, Input, Select, Textarea, InputHidden, Honeypot, Submit } from '@/
 import JsonLd from '@/components/JsonLd'
 
 // utils
-import { email, phone, ogLocale } from '@/utils/functions'
+import { email, phone, ogLocale, localizedMetadata } from '@/utils/functions'
 import { social, contact } from '@/utils/routes'
 import { pageGraph } from '@/utils/schema'
 
@@ -30,16 +30,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	const { locale } = await params
 	const t = await getTranslations({ locale, namespace: 'ContatoPage' })
 
+	const { canonical, languages, url } = localizedMetadata('/contato', locale)
+
 	return {
 		title: t('metaTitle'),
 		description: t('metaDescription'),
 		alternates: {
-			canonical: '/contato'
+			canonical,
+			languages
 		},
 		openGraph: {
 			title: t('metaTitle'),
 			description: t('metaDescription'),
-			url: 'https://aethergp.com.br/contato',
+			url,
 			siteName: 'Aether Global Pharma',
 			images: [
 				{

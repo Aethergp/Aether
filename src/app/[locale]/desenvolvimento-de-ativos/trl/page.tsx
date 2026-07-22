@@ -15,7 +15,7 @@ import JsonLd from '@/components/JsonLd'
 
 // utils
 import { pageGraph } from '@/utils/schema'
-import { ogLocale } from '@/utils/functions'
+import { ogLocale, localizedMetadata } from '@/utils/functions'
 
 // img
 import imgContext from '@/assets/img/stairs.jpg'
@@ -28,16 +28,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	const { locale } = await params
 	const t = await getTranslations({ locale, namespace: 'TRLPage' })
 
+	const { canonical, languages, url } = localizedMetadata('/desenvolvimento-de-ativos/trl', locale)
+
 	return {
 		title: t('metaTitle'),
 		description: t('metaDescription'),
 		alternates: {
-			canonical: '/desenvolvimento-de-ativos/trl'
+			canonical,
+			languages
 		},
 		openGraph: {
 			title: t('metaTitle'),
 			description: t('metaDescription'),
-			url: 'https://aethergp.com.br/desenvolvimento-de-ativos/trl',
+			url,
 			siteName: 'Aether Global Pharma',
 			images: [
 				{

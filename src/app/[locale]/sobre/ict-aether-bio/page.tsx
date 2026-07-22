@@ -18,7 +18,7 @@ import JsonLd from '@/components/JsonLd'
 // utils
 import { pages } from '@/utils/routes'
 import { pageGraph } from '@/utils/schema'
-import { ogLocale } from '@/utils/functions'
+import { ogLocale, localizedMetadata } from '@/utils/functions'
 import { getPathname } from '@/i18n/navigation'
 
 // img
@@ -33,16 +33,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	const { locale } = await params
 	const t = await getTranslations({ locale, namespace: 'IctPage' })
 
+	const { canonical, languages, url } = localizedMetadata('/sobre/ict-aether-bio', locale)
+
 	return {
 		title: t('metaTitle'),
 		description: t('metaDescription'),
 		alternates: {
-			canonical: '/sobre/ict-aether-bio'
+			canonical,
+			languages
 		},
 		openGraph: {
 			title: t('metaTitle'),
 			description: t('metaDescription'),
-			url: 'https://aethergp.com.br/sobre/ict-aether-bio',
+			url,
 			siteName: 'Aether Global Pharma',
 			images: [
 				{

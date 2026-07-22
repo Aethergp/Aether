@@ -17,7 +17,7 @@ import JsonLd from '@/components/JsonLd'
 import { partners } from '@/utils/partners'
 import { pages } from '@/utils/routes'
 import { pageGraph, SITE_URL } from '@/utils/schema'
-import { ogLocale } from '@/utils/functions'
+import { ogLocale, localizedMetadata } from '@/utils/functions'
 
 // img
 import partnership from '@/assets/img/banner.jpg'
@@ -33,16 +33,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	const { locale } = await params
 	const t = await getTranslations({ locale, namespace: 'ParceirosPage' })
 
+	const { canonical, languages, url } = localizedMetadata('/parceiros', locale)
+
 	return {
 		title: t('metaTitle'),
 		description: t('metaDescription'),
 		alternates: {
-			canonical: '/parceiros'
+			canonical,
+			languages
 		},
 		openGraph: {
 			title: t('metaTitle'),
 			description: t('metaDescription'),
-			url: 'https://aethergp.com.br/parceiros',
+			url,
 			siteName: 'Aether Global Pharma',
 			images: [
 				{

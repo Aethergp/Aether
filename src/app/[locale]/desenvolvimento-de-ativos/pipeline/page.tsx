@@ -23,7 +23,7 @@ import phili from '@/assets/img/team/phili.jpg'
 // utils
 import { pages } from '@/utils/routes'
 import { pageGraph, person, personId, plainText } from '@/utils/schema'
-import { ogLocale } from '@/utils/functions'
+import { ogLocale, localizedMetadata } from '@/utils/functions'
 
 interface Props {
 	params: Promise<{ locale: Locale }>
@@ -33,16 +33,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	const { locale } = await params
 	const t = await getTranslations({ locale, namespace: 'PipelinePage' })
 
+	const { canonical, languages, url } = localizedMetadata('/desenvolvimento-de-ativos/pipeline', locale)
+
 	return {
 		title: t('metaTitle'),
 		description: t('metaDescription'),
 		alternates: {
-			canonical: '/desenvolvimento-de-ativos/pipeline'
+			canonical,
+			languages
 		},
 		openGraph: {
 			title: t('metaTitle'),
 			description: t('metaDescription'),
-			url: 'https://aethergp.com.br/desenvolvimento-de-ativos/pipeline',
+			url,
 			siteName: 'Aether Global Pharma',
 			images: [
 				{

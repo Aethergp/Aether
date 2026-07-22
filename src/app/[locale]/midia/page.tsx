@@ -15,7 +15,7 @@ import JsonLd from '@/components/JsonLd'
 import { getMediaPosts } from './db/data'
 import { blogNode } from './db/schema'
 import { pageGraph, SITE_URL } from '@/utils/schema'
-import { ogLocale } from '@/utils/functions'
+import { ogLocale, localizedMetadata } from '@/utils/functions'
 
 interface Props {
 	params: Promise<{ locale: Locale }>
@@ -26,16 +26,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	const { locale } = await params
 	const t = await getTranslations({ locale, namespace: 'MidiaPage' })
 
+	const { canonical, languages, url } = localizedMetadata('/midia', locale)
+
 	return {
 		title: t('metaTitle'),
 		description: t('metaDescription'),
 		alternates: {
-			canonical: '/midia'
+			canonical,
+			languages
 		},
 		openGraph: {
 			title: t('metaTitle'),
 			description: t('metaDescription'),
-			url: 'https://aethergp.com.br/midia',
+			url,
 			siteName: 'Aether Global Pharma',
 			images: [
 				{

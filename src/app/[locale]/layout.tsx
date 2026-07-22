@@ -21,7 +21,7 @@ import JsonLd from '@/components/JsonLd'
 // utils
 import { graph, getOrganization, getIctOrganization, getFounder, getWebsite } from '@/utils/schema'
 import { routing } from '@/i18n/routing'
-import { ogLocale } from '@/utils/functions'
+import { ogLocale, localizedMetadata } from '@/utils/functions'
 
 // css
 import '@/assets/css/global.css'
@@ -37,11 +37,13 @@ export async function generateMetadata({ params }: LayoutMetadataProps): Promise
 
 	const title = `Aether Global Pharma | ${t('orgSlogan')}`
 	const description = t('orgDescription')
+	const { canonical, languages, url: ogUrl } = localizedMetadata('/', locale)
 
 	return {
 		metadataBase: new URL(`https://aethergp.com.br`),
 		alternates: {
-			canonical: './'
+			canonical,
+			languages
 		},
 		title,
 		description,
@@ -60,7 +62,7 @@ export async function generateMetadata({ params }: LayoutMetadataProps): Promise
 		openGraph: {
 			title,
 			description,
-			url: 'https://aethergp.com.br',
+			url: ogUrl,
 			siteName: 'Aether Global Pharma',
 			images: [
 				{

@@ -11,7 +11,7 @@ import JsonLd from '@/components/JsonLd'
 
 // utils
 import { pageGraph } from '@/utils/schema'
-import { ogLocale } from '@/utils/functions'
+import { ogLocale, localizedMetadata } from '@/utils/functions'
 
 interface Props {
 	params: Promise<{ locale: Locale }>
@@ -22,16 +22,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	const { locale } = await params
 	const t = await getTranslations({ locale, namespace: 'TermsPage' })
 
+	const { canonical, languages, url } = localizedMetadata('/termos-e-condicoes', locale)
+
 	return {
 		title: t('metaTitle'),
 		description: t('metaDescription'),
 		alternates: {
-			canonical: '/termos-e-condicoes'
+			canonical,
+			languages
 		},
 		openGraph: {
 			title: t('metaTitle'),
 			description: t('metaDescription'),
-			url: 'https://aethergp.com.br/termos-e-condicoes',
+			url,
 			siteName: 'Aether Global Pharma',
 			images: [
 				{

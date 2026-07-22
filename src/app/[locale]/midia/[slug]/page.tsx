@@ -16,7 +16,7 @@ import JsonLd from '@/components/JsonLd'
 // utils
 import { pageGraph } from '@/utils/schema'
 import { articleNode } from '../db/schema'
-import { ogLocale } from '@/utils/functions'
+import { ogLocale, localizedMetadata } from '@/utils/functions'
 import {
 	getMediaPosts,
 	getMediaPostBySlug,
@@ -48,12 +48,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	}
 
 	const title = `${post.title} | Aether Global Pharma`
-	const url = `${SITE_URL}${mediaHref(post)}`
+	const { canonical, languages, url } = localizedMetadata(mediaHref(post), locale)
 
 	return {
 		title,
 		description: post.excerpt,
-		alternates: { canonical: mediaHref(post) },
+		alternates: { canonical, languages },
 		openGraph: {
 			title,
 			description: post.excerpt,
