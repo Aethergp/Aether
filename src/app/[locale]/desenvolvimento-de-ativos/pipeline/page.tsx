@@ -19,6 +19,7 @@ import JsonLd from '@/components/JsonLd'
 import imgFlagship from '@/assets/img/water.jpg'
 import katlin from '@/assets/img/team/katlin.jpg'
 import phili from '@/assets/img/team/phili.jpg'
+import micael from '@/assets/img/team/micael.jpg'
 
 // utils
 import { pages } from '@/utils/routes'
@@ -77,6 +78,13 @@ const responsaveisBase = [
 		instituicao: 'CQMED',
 		photo: phili
 		//linked: 'https://www.linkedin.com/in/katlin-massirer-86a0779/'
+	},
+	{
+		name: 'Micael Rodrigues Cunha',
+		titulacao: 'PhD',
+		instituicao: 'UNICAMP',
+		photo: micael,
+		linked: 'https://www.linkedin.com/in/micaelrodriguescunha'
 	}
 ]
 
