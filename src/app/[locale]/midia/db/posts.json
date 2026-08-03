@@ -1,5 +1,45 @@
 [
 	{
+		"id": "8",
+		"type": "blog",
+		"slug": "por-que-uma-boa-tecnologia-sozinha-nao-atrai-investimento",
+		"date": "2026-07-29",
+		"image": {
+			"url": "/img/midia/gap-desenvolvimento-ativos.jpg",
+			"alt": {
+				"pt-BR": "Ponte de aço em arco sobre um vale com rio ao amanhecer",
+				"en-US": "Steel arch bridge over a river valley at dawn",
+				"es": "Puente de acero en arco sobre un valle con río al amanecer"
+			}
+		},
+		"externalUrl": null,
+		"source": null,
+		"readingTime": 3,
+		"translations": {
+			"pt-BR": {
+				"title": "Por que uma boa tecnologia, sozinha, não atrai investimento",
+				"excerpt": "Entre a descoberta científica e o investimento existe um gap de desenvolvimento de ativos. É nele que boas tecnologias brasileiras ficam presas.",
+				"category": "Blog",
+				"author": "Equipe Aether",
+				"content": "<p>Existe um espaço crítico entre a descoberta científica e a atração de investimento estruturado. Chamamos esse espaço de gap de desenvolvimento de ativos.</p><p>É nele que muitas tecnologias brasileiras ficam presas. Não por falta de mérito científico, mas por ausência de arquitetura de desenvolvimento.</p><h2>Uma tecnologia promissora, sozinha, não basta</h2><p>Uma tecnologia promissora, por si só, raramente é suficiente para atrair investimento. O desafio muitas vezes não está na qualidade da ciência, mas na ausência de um racional capaz de demonstrar como aquele ativo evoluirá, reduzirá riscos e criará valor ao longo do tempo.</p><p>Quando esse racional não está claro, torna-se difícil para o investidor precificar a oportunidade e compreender seu potencial econômico.</p><h2>O que falta não é ciência</h2><p>Sem propriedade intelectual estruturada, sem freedom to operate, sem estratégia regulatória e sem avanços consistentes de TRL, não existe uma tese clara de monetização.</p><p>E sem tese de monetização, o investidor não consegue valorar, a indústria não consegue licenciar e a tecnologia permanece confinada ao ambiente acadêmico.</p><h2>A ponte entre ciência e negócio</h2><p>É exatamente neste ponto que existe uma das maiores oportunidades para o Brasil. Precisamos construir infraestrutura capaz de transformar descobertas científicas em ativos investíveis. Precisamos desenvolver o que chamamos de arquitetura de valor.</p><p>Na Aether, acreditamos que o papel de uma Pharmaceutical Asset Venture Builder é justamente construir essa ponte entre ciência, desenvolvimento, propriedade intelectual e estratégia de negócios, preparando ativos para licenciamento, parcerias e futuras rodadas de investimento.</p><p>A inovação precisa de excelência científica. Mas também precisa de uma estrutura capaz de transformá-la em um ativo de valor. E essa transformação não acontece por acaso: ela precisa ser construída deliberadamente.</p><p><strong>Ciência gera conhecimento.<br />Propriedade intelectual gera ativos.<br />Ativos geram soberania.</strong></p><p>Este é o quarto episódio da série Pharmaceutical Asset Venture Builder.</p><p><a href=\"https://www.linkedin.com/posts/patricia-p-oliveira_s%C3%A9rie-pharmaceutical-asset-venture-builder-ugcPost-7488295559687069696-Mh-u\" target=\"_blank\" rel=\"noopener noreferrer\">Confira o vídeo completo sobre este tema no LinkedIn.</a></p>"
+			},
+			"en-US": {
+				"title": "Why a good technology alone does not attract investment",
+				"excerpt": "Between scientific discovery and investment lies an asset development gap. That is where good Brazilian technologies get stuck.",
+				"category": "Blog",
+				"author": "Aether Team",
+				"content": "<p>There is a critical space between scientific discovery and structured investment. We call that space the asset development gap.</p><p>That is where many Brazilian technologies get stuck. Not for lack of scientific merit, but for lack of a development architecture.</p><h2>A promising technology, on its own, is not enough</h2><p>A promising technology, on its own, is rarely enough to attract investment. The challenge often lies not in the quality of the science, but in the absence of a rationale that shows how that asset will evolve, de-risk, and create value over time.</p><p>When that rationale is unclear, it becomes difficult for investors to price the opportunity and understand its economic potential.</p><h2>What is missing is not science</h2><p>Without structured intellectual property, without freedom to operate, without a regulatory strategy and without consistent TRL progression, there is no clear monetization thesis.</p><p>And with no monetization thesis, investors cannot value the technology, industry cannot license it, and it stays confined to the academic environment.</p><h2>The bridge between science and business</h2><p>This is exactly where one of Brazil's greatest opportunities lies. We need to build infrastructure capable of turning scientific discoveries into investable assets. We need to develop what we call value architecture.</p><p>At Aether, we believe the role of a Pharmaceutical Asset Venture Builder is precisely to build that bridge between science, development, intellectual property, and business strategy, preparing assets for licensing, partnerships, and future investment rounds.</p><p>Innovation needs scientific excellence. But it also needs a structure capable of turning that excellence into a valuable asset. And that transformation does not happen by chance: it has to be built deliberately.</p><p><strong>Science generates knowledge.<br />Intellectual property generates assets.<br />Assets generate sovereignty.</strong></p><p>This is the fourth episode of the Pharmaceutical Asset Venture Builder series.</p><p><a href=\"https://www.linkedin.com/posts/patricia-p-oliveira_s%C3%A9rie-pharmaceutical-asset-venture-builder-ugcPost-7488295559687069696-Mh-u\" target=\"_blank\" rel=\"noopener noreferrer\">Watch the full video on this topic on LinkedIn.</a></p>"
+			},
+			"es": {
+				"title": "Por qué una buena tecnología, sola, no atrae inversión",
+				"excerpt": "Entre el descubrimiento científico y la inversión existe un gap de desarrollo de activos. Ahí es donde quedan atrapadas buenas tecnologías brasileñas.",
+				"category": "Blog",
+				"author": "Equipo Aether",
+				"content": "<p>Existe un espacio crítico entre el descubrimiento científico y la atracción de inversión estructurada. Llamamos a ese espacio el gap de desarrollo de activos.</p><p>Es ahí donde muchas tecnologías brasileñas quedan atrapadas. No por falta de mérito científico, sino por ausencia de una arquitectura de desarrollo.</p><h2>Una tecnología prometedora, por sí sola, no basta</h2><p>Una tecnología prometedora, por sí sola, rara vez es suficiente para atraer inversión. El desafío muchas veces no está en la calidad de la ciencia, sino en la ausencia de un racional capaz de demostrar cómo ese activo evolucionará, reducirá riesgos y creará valor a lo largo del tiempo.</p><p>Cuando ese racional no está claro, se vuelve difícil para el inversor fijar el precio de la oportunidad y comprender su potencial económico.</p><h2>Lo que falta no es ciencia</h2><p>Sin propiedad intelectual estructurada, sin freedom to operate, sin estrategia regulatoria y sin avances consistentes de TRL, no existe una tesis clara de monetización.</p><p>Y sin tesis de monetización, el inversor no puede valorar, la industria no puede licenciar y la tecnología permanece confinada al ámbito académico.</p><h2>El puente entre ciencia y negocio</h2><p>Es exactamente en este punto donde existe una de las mayores oportunidades para Brasil. Necesitamos construir infraestructura capaz de transformar descubrimientos científicos en activos invertibles. Necesitamos desarrollar lo que llamamos arquitectura de valor.</p><p>En Aether, creemos que el papel de una Pharmaceutical Asset Venture Builder es justamente construir ese puente entre ciencia, desarrollo, propiedad intelectual y estrategia de negocios, preparando activos para licenciamiento, alianzas y futuras rondas de inversión.</p><p>La innovación necesita excelencia científica. Pero también necesita una estructura capaz de transformarla en un activo de valor. Y esa transformación no ocurre por casualidad: debe construirse deliberadamente.</p><p><strong>La ciencia genera conocimiento.<br />La propiedad intelectual genera activos.<br />Los activos generan soberanía.</strong></p><p>Este es el cuarto episodio de la serie Pharmaceutical Asset Venture Builder.</p><p><a href=\"https://www.linkedin.com/posts/patricia-p-oliveira_s%C3%A9rie-pharmaceutical-asset-venture-builder-ugcPost-7488295559687069696-Mh-u\" target=\"_blank\" rel=\"noopener noreferrer\">Mira el video completo sobre este tema en LinkedIn.</a></p>"
+			}
+		}
+	},
+	{
 		"id": "7",
 		"type": "blog",
 		"slug": "propriedade-intelectual-nao-e-apenas-protecao-e-infraestrutura-economica",
