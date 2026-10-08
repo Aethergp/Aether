@@ -13,7 +13,7 @@ function postUrl(post: MediaPost, locale: Locale) {
 }
 
 /** Full BlogPosting for a single internal post. */
-export function articleNode(post: MediaPost, locale: Locale) {
+export function articleNode(post: MediaPost, locale: Locale, blogName: string) {
 	const url = postUrl(post, locale)
 	const body = getContent(post)
 
@@ -40,7 +40,7 @@ export function articleNode(post: MediaPost, locale: Locale) {
 		isPartOf: {
 			'@type': 'Blog',
 			'@id': BLOG_ID,
-			name: 'Mídia - Aether Global Pharma',
+			name: blogName,
 			url: `${SITE_URL}${getLocalizedPathname('/midia', locale)}`
 		},
 		mainEntityOfPage: { '@id': url }

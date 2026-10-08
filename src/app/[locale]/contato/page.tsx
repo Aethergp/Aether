@@ -1,7 +1,7 @@
 // libraries
 import type { Metadata } from 'next'
 import type { Locale } from 'next-intl'
-import { getTranslations } from 'next-intl/server'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
 
 // components
 import AnimatedText from '@/components/Utils/Animations/AnimatedText'
@@ -13,7 +13,7 @@ import { Form, Input, Select, Textarea, InputHidden, Honeypot, Submit } from '@/
 import JsonLd from '@/components/JsonLd'
 
 // utils
-import { ogLocale, localizedMetadata } from '@/utils/functions'
+import { ogLocale, ogAlternateLocales, localizedMetadata } from '@/utils/functions'
 import { social } from '@/utils/routes'
 import { pageGraph } from '@/utils/schema'
 
@@ -49,6 +49,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 				}
 			],
 			locale: ogLocale(locale),
+			alternateLocale: ogAlternateLocales(locale),
 			type: 'website'
 		}
 	}
@@ -56,6 +57,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ContatoPage({ params }: Props) {
 	const { locale } = await params
+	setRequestLocale(locale)
 	const t = await getTranslations({ locale, namespace: 'ContatoPage' })
 
 	const subjectOptions = [

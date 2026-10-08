@@ -1,7 +1,7 @@
 // libraries
 import type { Metadata } from 'next'
 import type { Locale } from 'next-intl'
-import { getTranslations } from 'next-intl/server'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
 import Image from 'next/image'
 
 // components
@@ -24,7 +24,7 @@ import micael from '@/assets/img/team/micael.jpg'
 // utils
 import { pages } from '@/utils/routes'
 import { pageGraph, person, personId, plainText } from '@/utils/schema'
-import { ogLocale, localizedMetadata } from '@/utils/functions'
+import { ogLocale, ogAlternateLocales, localizedMetadata } from '@/utils/functions'
 
 interface Props {
 	params: Promise<{ locale: Locale }>
@@ -57,6 +57,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 				}
 			],
 			locale: ogLocale(locale),
+			alternateLocale: ogAlternateLocales(locale),
 			type: 'website'
 		}
 	}
@@ -96,6 +97,7 @@ const dimensoesIcons = [
 
 export default async function PipelinePage({ params }: Props) {
 	const { locale } = await params
+	setRequestLocale(locale)
 	const t = await getTranslations({ locale, namespace: 'PipelinePage' })
 
 	const parceiros = t.raw('parceiros') as string[]

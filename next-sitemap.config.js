@@ -120,7 +120,8 @@ const config = {
 		policies: [
 			{
 				userAgent: '*',
-				allow: '/'
+				allow: '/',
+				disallow: '/api/'
 			}
 		]
 	}

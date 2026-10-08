@@ -1,6 +1,7 @@
 {
 	"Nav": {
 		"inicio": "Home",
+		"logoLabel": "Aether Global Pharma, home page",
 		"sobre": "About",
 		"sobreAgp": "Aether Global Pharma",
 		"sobreIct": "ICT AetherBio+",
@@ -18,7 +19,9 @@
 		"copyright": "Copyright Aether © {year}",
 		"privacyLink": "Privacy Policy",
 		"expandir": "Expand {label}",
-		"recolher": "Collapse {label}"
+		"recolher": "Collapse {label}",
+		"abrirMenu": "Open menu",
+		"fecharMenu": "Close menu"
 	},
 	"NotFoundPage": {
 		"metaTitle": "404 Error: Page Not Found | Aether Global Pharma"
@@ -762,7 +765,7 @@
 	},
 	"PrivacyPage": {
 		"metaTitle": "Privacy Policy | Aether Global Pharma",
-		"metaDescription": "Aether Global Pharma's Privacy Policy.",
+		"metaDescription": "How Aether Global Pharma handles information from people who visit its website, how it uses cookies, and what rights you have over that data.",
 		"eyebrow": "(your rights)",
 		"title": "Privacy Policy",
 		"effectiveDate": "This policy is effective as of June 15, 2026.",
@@ -793,7 +796,7 @@
 	},
 	"TermsPage": {
 		"metaTitle": "Terms & Conditions | Aether Global Pharma",
-		"metaDescription": "Terms & Conditions of use for Aether Global Pharma.",
+		"metaDescription": "Terms of use for the Aether Global Pharma website: content license, disclaimer and limitations of liability, external links and governing law.",
 		"eyebrow": "(your rights)",
 		"title": "Terms & Conditions",
 		"effectiveDate": "These terms and conditions are effective as of June 15, 2026.",

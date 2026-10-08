@@ -1,7 +1,7 @@
 // libraries
 import type { Metadata } from 'next'
 import type { Locale } from 'next-intl'
-import { getTranslations } from 'next-intl/server'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
 import Image from 'next/image'
 import { Link } from 'next-transition-router'
 
@@ -18,7 +18,7 @@ import JsonLd from '@/components/JsonLd'
 // utils
 import { pages } from '@/utils/routes'
 import { pageGraph } from '@/utils/schema'
-import { ogLocale, localizedMetadata } from '@/utils/functions'
+import { ogLocale, ogAlternateLocales, localizedMetadata } from '@/utils/functions'
 import { getLocalizedPathname } from '@/i18n/navigation'
 
 // img
@@ -56,6 +56,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 				}
 			],
 			locale: ogLocale(locale),
+			alternateLocale: ogAlternateLocales(locale),
 			type: 'website'
 		}
 	}
@@ -64,6 +65,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function IctAetherBioPage({ params }: Props) {
 
 	const { locale } = await params
+
+	setRequestLocale(locale)
 	const t = await getTranslations({ locale, namespace: 'IctPage' })
 	const tNav = await getTranslations({ locale, namespace: 'Nav' })
 
@@ -256,7 +259,7 @@ export default async function IctAetherBioPage({ params }: Props) {
 										fill
 										className='cover'
 										loading='lazy'
-										sizes='100vw'
+										sizes='(max-width: 991px) 100vw, 50vw'
 									/>
 								</ScrollingImage>
 							</div>

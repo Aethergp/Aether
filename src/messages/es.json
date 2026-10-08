@@ -1,6 +1,7 @@
 {
 	"Nav": {
 		"inicio": "Inicio",
+		"logoLabel": "Aether Global Pharma, página de inicio",
 		"sobre": "Nosotros",
 		"sobreAgp": "Aether Global Pharma",
 		"sobreIct": "ICT AetherBio+",
@@ -18,7 +19,9 @@
 		"copyright": "Copyright Aether © {year}",
 		"privacyLink": "Política de Privacidad",
 		"expandir": "Expandir {label}",
-		"recolher": "Contraer {label}"
+		"recolher": "Contraer {label}",
+		"abrirMenu": "Abrir menú",
+		"fecharMenu": "Cerrar menú"
 	},
 	"NotFoundPage": {
 		"metaTitle": "Error 404: Página no encontrada | Aether Global Pharma"
@@ -368,7 +371,7 @@
 	},
 	"TRLPage": {
 		"metaTitle": "TRL - Madurez Tecnológica | Aether Global Pharma",
-		"metaDescription": "La escala TRL 1-9 aplicada al desarrollo farmacéutico, desde el principio científico hasta la comercialización. Basada en la ISO 16290 y en la Guía TRL de la RBIF.",
+		"metaDescription": "La escala TRL 1-9 aplicada al desarrollo farmacéutico, del principio científico a la comercialización. Basada en la ISO 16290 y en la Guía TRL de la RBIF.",
 		"eyebrow": "(madurez tecnológica)",
 		"heading": "Nueve niveles entre el descubrimiento científico y el mercado global.",
 		"heroText": "La escala de <b>Technology Readiness Level (TRL)</b> organiza la madurez de una tecnología en nueve niveles, desde la observación de los principios fundamentales hasta la demostración en ambiente operacional.<br /><br /> En Aether, esta referencia se aplica al desarrollo farmacéutico mediante un enfoque integrado, considerando evidencias científicas, madurez tecnológica, desarrollo no clínico, CMC, estrategia regulatoria y preparación para la transferencia y el licenciamiento.",
@@ -762,7 +765,7 @@
 	},
 	"PrivacyPage": {
 		"metaTitle": "Política de Privacidad | Aether Global Pharma",
-		"metaDescription": "Política de Privacidad de Aether Global Pharma.",
+		"metaDescription": "Cómo Aether Global Pharma trata la información de quienes visitan su sitio, cómo usa las cookies y qué derechos tiene usted sobre esos datos.",
 		"eyebrow": "(sus derechos)",
 		"title": "Política de Privacidad",
 		"effectiveDate": "Esta política entra en vigor el 15 de junio de 2026.",
@@ -793,7 +796,7 @@
 	},
 	"TermsPage": {
 		"metaTitle": "Términos y Condiciones | Aether Global Pharma",
-		"metaDescription": "Términos y Condiciones de uso de Aether Global Pharma.",
+		"metaDescription": "Condiciones de uso del sitio de Aether Global Pharma: licencia del contenido, exención y límites de responsabilidad, enlaces externos y ley aplicable.",
 		"eyebrow": "(sus derechos)",
 		"title": "Términos y Condiciones",
 		"effectiveDate": "Estos términos y condiciones entran en vigor el 15 de junio de 2026.",

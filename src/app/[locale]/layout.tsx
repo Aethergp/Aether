@@ -1,7 +1,7 @@
 // libraries
 import type { Metadata } from 'next'
 import type { Locale } from 'next-intl'
-import { getTranslations } from 'next-intl/server'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
 import clsx from 'clsx'
 import type { Viewport } from 'next'
 import { Inter, Syne } from 'next/font/google'
@@ -21,7 +21,7 @@ import JsonLd from '@/components/JsonLd'
 // utils
 import { graph, getOrganization, getIctOrganization, getFounder, getWebsite } from '@/utils/schema'
 import { routing } from '@/i18n/routing'
-import { ogLocale, localizedMetadata } from '@/utils/functions'
+import { ogLocale, ogAlternateLocales, localizedMetadata } from '@/utils/functions'
 
 // css
 import '@/assets/css/global.css'
@@ -73,6 +73,7 @@ export async function generateMetadata({ params }: LayoutMetadataProps): Promise
 				}
 			],
 			locale: ogLocale(locale),
+			alternateLocale: ogAlternateLocales(locale),
 			type: 'website'
 		},
 		// only the card type is set here: `twitter` is inherited by every route, so
@@ -119,9 +120,13 @@ export default async function LocaleLayout({
 }: LocaleLayoutProps) {
 
 	const { locale } = await params
+
 	if (!hasLocale(routing.locales, locale)) {
 		notFound()
 	}
+
+	// lets every page under this layout render statically instead of per request
+	setRequestLocale(locale)
 
 	const [organization, ictOrganization, founder, website] = await Promise.all([
 		getOrganization(locale),

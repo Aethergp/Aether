@@ -1,7 +1,7 @@
 // libraries
 import type { Metadata } from 'next'
 import type { Locale } from 'next-intl'
-import { getTranslations } from 'next-intl/server'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
 import Image from 'next/image'
 
 // components
@@ -16,7 +16,7 @@ import JsonLd from '@/components/JsonLd'
 
 // utils
 import { pageGraph, person, personId, plainText, FOUNDER_ID, ORG_ID } from '@/utils/schema'
-import { ogLocale, localizedMetadata } from '@/utils/functions'
+import { ogLocale, ogAlternateLocales, localizedMetadata } from '@/utils/functions'
 
 // imgs
 import portrait from '@/assets/img/patricia.jpg'
@@ -56,6 +56,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 				}
 			],
 			locale: ogLocale(locale),
+			alternateLocale: ogAlternateLocales(locale),
 			type: 'website'
 		}
 	}
@@ -89,6 +90,8 @@ const comiteBase = [
 export default async function EquipePage({ params }: Props) {
 
 	const { locale } = await params
+
+	setRequestLocale(locale)
 	const t = await getTranslations({ locale, namespace: 'EquipePage' })
 	const tNav = await getTranslations({ locale, namespace: 'Nav' })
 

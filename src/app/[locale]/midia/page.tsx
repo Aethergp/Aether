@@ -1,7 +1,7 @@
 // libraries
 import type { Metadata } from 'next'
 import type { Locale } from 'next-intl'
-import { getTranslations } from 'next-intl/server'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
 
 // components
 import AnimatedText from '@/components/Utils/Animations/AnimatedText'
@@ -14,7 +14,7 @@ import JsonLd from '@/components/JsonLd'
 import { getMediaPosts } from './db/data'
 import { blogNode } from './db/schema'
 import { pageGraph, SITE_URL } from '@/utils/schema'
-import { ogLocale, localizedMetadata } from '@/utils/functions'
+import { ogLocale, ogAlternateLocales, localizedMetadata } from '@/utils/functions'
 
 interface Props {
 	params: Promise<{ locale: Locale }>
@@ -48,6 +48,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 				}
 			],
 			locale: ogLocale(locale),
+			alternateLocale: ogAlternateLocales(locale),
 			type: 'website'
 		}
 	}
@@ -55,6 +56,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function MidiaPage({ params }: Props) {
 	const { locale } = await params
+	setRequestLocale(locale)
 	const t = await getTranslations({ locale, namespace: 'MidiaPage' })
 
 	const posts = getMediaPosts(locale)

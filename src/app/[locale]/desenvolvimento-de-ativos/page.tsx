@@ -1,7 +1,7 @@
 // libraries
 import type { Metadata } from 'next'
 import type { Locale } from 'next-intl'
-import { getTranslations } from 'next-intl/server'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
 import Image from 'next/image'
 
 // components
@@ -17,7 +17,7 @@ import JsonLd from '@/components/JsonLd'
 // utils
 import { pages } from '@/utils/routes'
 import { pageGraph } from '@/utils/schema'
-import { ogLocale, localizedMetadata } from '@/utils/functions'
+import { ogLocale, ogAlternateLocales, localizedMetadata } from '@/utils/functions'
 
 interface Props {
 	params: Promise<{ locale: Locale }>
@@ -50,6 +50,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 				}
 			],
 			locale: ogLocale(locale),
+			alternateLocale: ogAlternateLocales(locale),
 			type: 'website'
 		}
 	}
@@ -57,6 +58,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function DesenvolvimentodeAtivos({ params }: Props) {
 	const { locale } = await params
+	setRequestLocale(locale)
 	const t = await getTranslations({ locale, namespace: 'PDPage' })
 	const criterios = t.raw('criterios') as { title: string, text: string }[]
 	const governancaPills = t.raw('governance.pills') as string[]

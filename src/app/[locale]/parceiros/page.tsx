@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import type { Locale } from 'next-intl'
-import { getTranslations } from 'next-intl/server'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
 
 // components
 import AnimatedText from '@/components/Utils/Animations/AnimatedText'
@@ -17,7 +17,7 @@ import JsonLd from '@/components/JsonLd'
 import { partners } from '@/utils/partners'
 import { pages } from '@/utils/routes'
 import { pageGraph, SITE_URL } from '@/utils/schema'
-import { ogLocale, localizedMetadata } from '@/utils/functions'
+import { ogLocale, ogAlternateLocales, localizedMetadata } from '@/utils/functions'
 
 // img
 import partnership from '@/assets/img/banner.jpg'
@@ -56,6 +56,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 				}
 			],
 			locale: ogLocale(locale),
+			alternateLocale: ogAlternateLocales(locale),
 			type: 'website'
 		}
 	}
@@ -63,6 +64,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ParceirosPage({ params }: Props) {
 	const { locale } = await params
+	setRequestLocale(locale)
 	const t = await getTranslations({ locale, namespace: 'ParceirosPage' })
 
 	return (
@@ -154,7 +156,7 @@ export default async function ParceirosPage({ params }: Props) {
 										fill
 										className='cover'
 										loading='lazy'
-										sizes='100vw'
+										sizes='(max-width: 991px) 100vw, 75vw'
 									/>
 								</ScrollingImage>
 							</div>

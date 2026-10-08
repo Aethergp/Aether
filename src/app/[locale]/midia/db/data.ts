@@ -31,6 +31,8 @@ export interface MediaPost {
 	type: MediaType
 	slug: string | null
 	title: string
+	// shorter <title> for headlines that run past 60 chars; the page keeps `title`
+	seoTitle?: string
 	excerpt: string
 	date: string // ISO yyyy-mm-dd
 	category: string
@@ -44,6 +46,7 @@ export interface MediaPost {
 
 interface RawMediaTranslation {
 	title: string
+	seoTitle?: string
 	excerpt: string
 	category: string
 	author?: string
@@ -165,6 +168,7 @@ function resolvePost(post: RawMediaPost, locale: string): MediaPost {
 		type: post.type,
 		slug: post.slug,
 		title: t.title,
+		seoTitle: t.seoTitle,
 		excerpt: t.excerpt,
 		date: post.date,
 		category: t.category,

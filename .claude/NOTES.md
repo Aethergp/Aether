@@ -166,6 +166,39 @@ CLAUDE.md → "Blog / news".
 
 ## SEO / performance baseline (done 2026-07-20)
 
+### Audit 2026-10-08 (Next 16, production build, Lighthouse 12 mobile)
+
+All 72 sitemap URLs: exactly one `<h1>`, no skipped heading levels, self-canonical, full hreflang
+set + `x-default`, JSON-LD parses and every `@id` reference resolves, no internal link to a missing
+page. Fixed in that pass: blog meta titles/descriptions (see CLAUDE.md -> On-page SEO rules), legal
+page descriptions (were 38-54 chars), localized `Blog` name in post JSON-LD, `article:*` OG tags,
+`og:locale:alternate`, logo/menu button names, `robots.txt` `Disallow: /api/`, and **static rendering
+via `setRequestLocale`** (every page had been `no-store`/dynamic).
+
+| Page | Perf | LCP (sim.) | TBT | CLS | A11y |
+|---|---|---|---|---|---|
+| `/` | 88 -> 87 | 3.9 -> 3.4-4.0 s | 20 -> 40 ms | 0 -> 0 | 90 -> 100 |
+| `/sobre` | 62 -> 80 | 3.8 -> 3.4 s | 1,390 -> 280-440 ms | 0 -> 0 | 90 -> 100 |
+| `/sobre/ict-aether-bio` | 74 -> 78 | 3.8 -> 3.7 s | 580 -> 440-530 ms | 0.003 -> 0 | 90 -> 100 |
+| `/midia` | 90 -> 87 | 3.6 -> 4.0 s | 60 -> 110 ms | 0.005 | 90 -> 100 |
+| `/midia/<post>` | 89 -> 87 | 3.8 -> 3.5 s | 60 -> 200 ms | 0 | 90 -> 100 |
+| `/contato` | 91 -> 94 | 3.5 -> 3.0 s | 10 -> 20 ms | 0.03 | 90 -> 100 |
+
+Lab LCP and TBT swing by +-0.5s / +-200ms between identical runs; read trends, not single numbers.
+**SEO is 100** when served over HTTPS under the real hostname (verified with Chrome
+`--host-resolver-rules` + a local HTTPS proxy); on plain `http://localhost` the `canonical` audit
+always fails because the canonical is `https://aethergp.com.br/...`.
+
+**LCP is a simulation artefact here:** the observed LCP equals FCP (75-150ms) on every page because the
+LCP element is SSR text; Lantern adds the time to download every script that started before that
+paint over throttled 4G. Lowering it means shipping less JS up front (react-dom ~70KB gz, GSAP ~55KB gz,
+Swiper, ogl). Also fixed in a second pass: per-locale `seoTitle` for the 7 long-headline posts (every `<title>` is
+now <= 60), the page-transition curtain covering the whole page before hydration, and Grainient's WebGL
+setup moved out of hydration with a CSS-gradient fallback. Tried and reverted: `experimental.inlineCss`
+(no measurable FCP/LCP change, HTML grew to ~400KB). Not fixable here: Next's runtime polyfills
+(`legacy-javascript`, 13KB), Swiper's non-passive touch listeners, and the remaining ICT TBT, which is
+mostly Lighthouse running WebGL in software.
+
 ### JSON-LD architecture
 
 All structured data lives in **`src/utils/schema.ts`** and renders through **`src/components/JsonLd`**.

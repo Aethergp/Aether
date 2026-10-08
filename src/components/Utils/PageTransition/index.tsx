@@ -32,9 +32,11 @@ function ScrollTriggerRefresher() {
 }
 
 // the block + icon are positioned entirely by GSAP (never via a React inline
-// style) so route re-renders can't clobber the transform mid-animation
+// style) so route re-renders can't clobber the transform mid-animation. The
+// pre-hydration hidden state comes from animations.pcss; GSAP reads that CSS
+// transform as a pixel `y`, so it's zeroed here or it would stack with yPercent
 const resetOverlay = () => {
-    gsap.set('[data-pt-block]', { yPercent: 100 })
+    gsap.set('[data-pt-block]', { y: 0, yPercent: 100 })
     gsap.set('[data-pt-icon]', { opacity: 0, marginLeft: '-25rem', rotate: 0 })
 }
 

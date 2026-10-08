@@ -18,6 +18,7 @@
 		"translations": {
 			"pt-BR": {
 				"title": "TRL não representa apenas maturidade tecnológica; representa redução de risco regulatório",
+				"seoTitle": "TRL e redução de risco regulatório",
 				"excerpt": "O TRL não é selo regulatório, mas ajuda a mapear as incertezas técnicas que ainda permanecem e a orientar as evidências necessárias para avançar.",
 				"category": "Blog",
 				"author": "Claudia S. Ramos Santos",
@@ -25,6 +26,7 @@
 			},
 			"en-US": {
 				"title": "TRL is not just technological maturity; it means reduced regulatory risk",
+				"seoTitle": "TRL and regulatory risk reduction",
 				"excerpt": "TRL is not a regulatory seal, but it helps map the technical uncertainties that remain and guide the evidence needed to move forward.",
 				"category": "Blog",
 				"author": "Claudia S. Ramos Santos",
@@ -32,6 +34,7 @@
 			},
 			"es": {
 				"title": "El TRL no representa solo madurez tecnológica; representa reducción del riesgo regulatorio",
+				"seoTitle": "El TRL y la reducción del riesgo regulatorio",
 				"excerpt": "El TRL no es un sello regulatorio, pero ayuda a mapear las incertidumbres técnicas que persisten y a orientar la evidencia necesaria para avanzar.",
 				"category": "Blog",
 				"author": "Claudia S. Ramos Santos",
@@ -58,6 +61,7 @@
 		"translations": {
 			"pt-BR": {
 				"title": "Uma boa ideia não basta: os critérios por trás do investimento em novas moléculas",
+				"seoTitle": "Os critérios do investimento em novas moléculas",
 				"excerpt": "Investir em uma molécula First-in-Class na fase pré-clínica é apostar em uma hipótese. Os critérios que separam inovação disruptiva de um projeto me-too.",
 				"category": "Blog",
 				"author": "André Chaia",
@@ -65,6 +69,7 @@
 			},
 			"en-US": {
 				"title": "A good idea is not enough: the criteria behind investing in new molecules",
+				"seoTitle": "The criteria behind investing in new molecules",
 				"excerpt": "Investing in a First-in-Class molecule at the preclinical stage means betting on a hypothesis. The criteria that separate disruptive innovation from a me-too.",
 				"category": "Blog",
 				"author": "André Chaia",
@@ -72,6 +77,7 @@
 			},
 			"es": {
 				"title": "Una buena idea no basta: los criterios detrás de la inversión en nuevas moléculas",
+				"seoTitle": "Los criterios de la inversión en nuevas moléculas",
 				"excerpt": "Invertir en una molécula First-in-Class en fase preclínica es apostar por una hipótesis. Los criterios que separan la innovación disruptiva de un me-too.",
 				"category": "Blog",
 				"author": "André Chaia",
@@ -98,6 +104,7 @@
 		"translations": {
 			"pt-BR": {
 				"title": "Pharmaceutical Asset Venture Builder: da inteligência de mercado à construção do ativo",
+				"seoTitle": "Pharmaceutical Asset Venture Builder: do mercado ao ativo",
 				"excerpt": "Em inovação farmacêutica, o desenvolvimento começa antes do laboratório: começa na decisão sobre quais ativos construir para os pipelines de amanhã.",
 				"category": "Blog",
 				"author": "Patricia de Oliveira",
@@ -105,6 +112,7 @@
 			},
 			"en-US": {
 				"title": "Pharmaceutical Asset Venture Builder: from market intelligence to building the asset",
+				"seoTitle": "Pharmaceutical Asset Venture Builder: from market to asset",
 				"excerpt": "In pharmaceutical innovation, development starts before the lab: it starts with deciding which assets to build for tomorrow's pipelines.",
 				"category": "Blog",
 				"author": "Patricia de Oliveira",
@@ -112,6 +120,7 @@
 			},
 			"es": {
 				"title": "Pharmaceutical Asset Venture Builder: de la inteligencia de mercado a la construcción del activo",
+				"seoTitle": "Pharmaceutical Asset Venture Builder: del mercado al activo",
 				"excerpt": "En la innovación farmacéutica, el desarrollo empieza antes del laboratorio: empieza en la decisión sobre qué activos construir para los pipelines de mañana.",
 				"category": "Blog",
 				"author": "Patricia de Oliveira",
@@ -178,6 +187,7 @@
 		"translations": {
 			"pt-BR": {
 				"title": "Por que tantas pesquisas promissoras na área farmacêutica fracassam antes mesmo de chegar ao regulatório?",
+				"seoTitle": "Por que pesquisas farmacêuticas falham antes do regulatório",
 				"excerpt": "Muitos projetos não fracassam no regulatório: é lá que aparecem os efeitos de decisões tomadas antes, sem considerar as etapas seguintes.",
 				"category": "Blog",
 				"author": "Claudia S. Ramos Santos",
@@ -185,6 +195,7 @@
 			},
 			"en-US": {
 				"title": "Why do so many promising pharmaceutical research projects fail before they even reach regulatory?",
+				"seoTitle": "Why promising pharma research fails before regulatory review",
 				"excerpt": "Many projects do not fail at the regulatory stage: that is just where the effects of earlier decisions, made without considering the next steps, surface.",
 				"category": "Blog",
 				"author": "Claudia S. Ramos Santos",
@@ -192,6 +203,7 @@
 			},
 			"es": {
 				"title": "¿Por qué tantas investigaciones farmacéuticas prometedoras fracasan antes incluso de llegar a la etapa regulatoria?",
+				"seoTitle": "Por qué fracasa la investigación farmacéutica prometedora",
 				"excerpt": "Muchos proyectos no fracasan en la etapa regulatoria: es ahí donde aparecen los efectos de decisiones tomadas antes, sin considerar las etapas siguientes.",
 				"category": "Blog",
 				"author": "Claudia S. Ramos Santos",
@@ -298,6 +310,7 @@
 		"translations": {
 			"pt-BR": {
 				"title": "Propriedade intelectual não é apenas proteção. É infraestrutura econômica.",
+				"seoTitle": "Propriedade intelectual é infraestrutura econômica",
 				"excerpt": "Na indústria farmacêutica, a propriedade intelectual deixa de ser um instrumento jurídico isolado e passa a ser o mecanismo que transforma conhecimento em ativo estratégico, capaz de atrair investimento e gerar soberania tecnológica.",
 				"category": "Blog",
 				"author": "Equipe Aether",
@@ -305,6 +318,7 @@
 			},
 			"en-US": {
 				"title": "Intellectual property isn't just protection. It's economic infrastructure.",
+				"seoTitle": "Intellectual property is economic infrastructure",
 				"excerpt": "In the pharmaceutical industry, intellectual property is no longer just an isolated legal instrument. It has become the mechanism that turns knowledge into a strategic asset, capable of attracting investment and generating technological sovereignty.",
 				"category": "Blog",
 				"author": "Aether Team",
@@ -312,6 +326,7 @@
 			},
 			"es": {
 				"title": "La propiedad intelectual no es solo protección. Es infraestructura económica.",
+				"seoTitle": "La propiedad intelectual es infraestructura económica",
 				"excerpt": "En la industria farmacéutica, la propiedad intelectual deja de ser un instrumento jurídico aislado y pasa a ser el mecanismo que transforma el conocimiento en un activo estratégico, capaz de atraer inversión y generar soberanía tecnológica.",
 				"category": "Blog",
 				"author": "Equipo Aether",
@@ -338,6 +353,7 @@
 		"translations": {
 			"pt-BR": {
 				"title": "O vazio dos biossimilares e a janela que o Brasil não pode ignorar",
+				"seoTitle": "O vazio dos biossimilares e a janela do Brasil",
 				"excerpt": "A indústria farmacêutica global enfrenta um dos maiores ciclos de perda de exclusividade da história. Noventa por cento das oportunidades abertas ainda não têm concorrentes em desenvolvimento. O que isso significa para a ciência brasileira?",
 				"category": "Blog",
 				"author": "Equipe Aether",
@@ -345,6 +361,7 @@
 			},
 			"en-US": {
 				"title": "The biosimilar void and the window Brazil can't afford to ignore",
+				"seoTitle": "The biosimilar void and Brazil's window",
 				"excerpt": "The global pharmaceutical industry is facing one of the largest patent-exclusivity loss cycles in its history. Ninety percent of the opportunities opening up still have no competitors in development. What does that mean for Brazilian science?",
 				"category": "Blog",
 				"author": "Aether Team",
@@ -352,6 +369,7 @@
 			},
 			"es": {
 				"title": "El vacío de los biosimilares y la ventana que Brasil no puede ignorar",
+				"seoTitle": "El vacío de los biosimilares y la ventana de Brasil",
 				"excerpt": "La industria farmacéutica global enfrenta uno de los mayores ciclos de pérdida de exclusividad de su historia. El noventa por ciento de las oportunidades abiertas todavía no tiene competidores en desarrollo. ¿Qué significa esto para la ciencia brasileña?",
 				"category": "Blog",
 				"author": "Equipo Aether",
@@ -378,6 +396,7 @@
 		"translations": {
 			"pt-BR": {
 				"title": "O Brasil não tem escassez de ciência. Tem escassez de ativos científicos.",
+				"seoTitle": "O Brasil não tem escassez de ciência, e sim de ativos",
 				"excerpt": "Uma reflexão sobre propriedade intelectual, ativos científicos e o desafio brasileiro de transformar conhecimento em valor econômico e soberania tecnológica.",
 				"category": "Blog",
 				"author": "Equipe Aether",
@@ -392,6 +411,7 @@
 			},
 			"es": {
 				"title": "Brasil no tiene escasez de ciencia. Tiene escasez de activos científicos.",
+				"seoTitle": "Brasil no tiene escasez de ciencia, sino de activos",
 				"excerpt": "Una reflexión sobre propiedad intelectual, activos científicos y el desafío brasileño de transformar conocimiento en valor económico y soberanía tecnológica.",
 				"category": "Blog",
 				"author": "Equipo Aether",

@@ -103,6 +103,7 @@ export default function Banner() {
                     muted
                     playsInline
                     autoPlay
+                    poster='/videos/banner-poster.jpg'
                     className='relative z-2 w-full h-full object-cover'
                 >
                     <source

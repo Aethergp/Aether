@@ -1,6 +1,7 @@
 {
 	"Nav": {
 		"inicio": "Início",
+		"logoLabel": "Aether Global Pharma, página inicial",
 		"sobre": "Sobre",
 		"sobreAgp": "Aether Global Pharma",
 		"sobreIct": "ICT AetherBio+",
@@ -18,7 +19,9 @@
 		"copyright": "Copyright Aether © {year}",
 		"privacyLink": "Política de Privacidade",
 		"expandir": "Expandir {label}",
-		"recolher": "Recolher {label}"
+		"recolher": "Recolher {label}",
+		"abrirMenu": "Abrir menu",
+		"fecharMenu": "Fechar menu"
 	},
 	"NotFoundPage": {
 		"metaTitle": "Erro 404: Página não encontrada | Aether Global Pharma"
@@ -762,7 +765,7 @@
 	},
 	"PrivacyPage": {
 		"metaTitle": "Política de Privacidade | Aether Global Pharma",
-		"metaDescription": "Política de Privacidade da Aether Global Pharma.",
+		"metaDescription": "Saiba como a Aether Global Pharma trata as informações de quem visita o site, como usa cookies e quais são os seus direitos sobre esses dados.",
 		"eyebrow": "(seus direitos)",
 		"title": "Política de Privacidade",
 		"effectiveDate": "Esta política é efetiva a partir de 15 de junho de 2026.",
@@ -793,7 +796,7 @@
 	},
 	"TermsPage": {
 		"metaTitle": "Termos & Condições | Aether Global Pharma",
-		"metaDescription": "Termos & Condições de uso da Aether Global Pharma.",
+		"metaDescription": "Condições de uso do site da Aether Global Pharma: licença de uso do conteúdo, isenção e limites de responsabilidade, links externos e lei aplicável.",
 		"eyebrow": "(seus direitos)",
 		"title": "Termos & Condições",
 		"effectiveDate": "Estes termos e condições são efetivos a partir de 15 de junho de 2026.",

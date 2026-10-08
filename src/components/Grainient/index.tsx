@@ -163,151 +163,179 @@ export default function Grainient({
 }: Props) {
 
 	const containerRef = useRef<HTMLDivElement>(null)
+	const applyRef = useRef<(() => void) | null>(null)
 
 	// build the WebGL context once; pause when offscreen / tab hidden
 	useEffect(() => {
 		const container = containerRef.current
 		if (!container) return
 
-		const renderer = new Renderer({
-			webgl: 2,
-			alpha: true,
-			antialias: false,
-			dpr: Math.min(window.devicePixelRatio || 1, 2)
-		})
+		const setup = () => {
+			const renderer = new Renderer({
+				webgl: 2,
+				alpha: true,
+				antialias: false,
+				dpr: Math.min(window.devicePixelRatio || 1, 2)
+			})
 
-		const gl = renderer.gl
-		const canvas = gl.canvas
-		canvas.style.width = '100%'
-		canvas.style.height = '100%'
-		canvas.style.display = 'block'
-		container.appendChild(canvas)
+			const gl = renderer.gl
+			const canvas = gl.canvas
+			canvas.style.width = '100%'
+			canvas.style.height = '100%'
+			canvas.style.display = 'block'
+			canvas.style.opacity = '0'
+			canvas.style.transition = 'opacity .8s ease'
+			container.appendChild(canvas)
 
-		const geometry = new Triangle(gl)
-		const program = new Program(gl, {
-			vertex,
-			fragment,
-			uniforms: {
-				iTime: { value: 0 },
-				iResolution: { value: new Float32Array([1, 1]) },
-				uTimeSpeed: { value: 0.25 },
-				uColorBalance: { value: 0.0 },
-				uWarpStrength: { value: 1.0 },
-				uWarpFrequency: { value: 5.0 },
-				uWarpSpeed: { value: 2.0 },
-				uWarpAmplitude: { value: 50.0 },
-				uBlendAngle: { value: 0.0 },
-				uBlendSoftness: { value: 0.05 },
-				uRotationAmount: { value: 500.0 },
-				uNoiseScale: { value: 2.0 },
-				uGrainAmount: { value: 0.1 },
-				uGrainScale: { value: 2.0 },
-				uGrainAnimated: { value: 0.0 },
-				uContrast: { value: 1.5 },
-				uGamma: { value: 1.0 },
-				uSaturation: { value: 1.0 },
-				uCenterOffset: { value: new Float32Array([0, 0]) },
-				uZoom: { value: 0.9 },
-				uColor1: { value: new Float32Array([1, 1, 1]) },
-				uColor2: { value: new Float32Array([1, 1, 1]) },
-				uColor3: { value: new Float32Array([1, 1, 1]) }
+			const geometry = new Triangle(gl)
+			const program = new Program(gl, {
+				vertex,
+				fragment,
+				uniforms: {
+					iTime: { value: 0 },
+					iResolution: { value: new Float32Array([1, 1]) },
+					uTimeSpeed: { value: 0.25 },
+					uColorBalance: { value: 0.0 },
+					uWarpStrength: { value: 1.0 },
+					uWarpFrequency: { value: 5.0 },
+					uWarpSpeed: { value: 2.0 },
+					uWarpAmplitude: { value: 50.0 },
+					uBlendAngle: { value: 0.0 },
+					uBlendSoftness: { value: 0.05 },
+					uRotationAmount: { value: 500.0 },
+					uNoiseScale: { value: 2.0 },
+					uGrainAmount: { value: 0.1 },
+					uGrainScale: { value: 2.0 },
+					uGrainAnimated: { value: 0.0 },
+					uContrast: { value: 1.5 },
+					uGamma: { value: 1.0 },
+					uSaturation: { value: 1.0 },
+					uCenterOffset: { value: new Float32Array([0, 0]) },
+					uZoom: { value: 0.9 },
+					uColor1: { value: new Float32Array([1, 1, 1]) },
+					uColor2: { value: new Float32Array([1, 1, 1]) },
+					uColor3: { value: new Float32Array([1, 1, 1]) }
+				}
+			})
+
+			const mesh = new Mesh(gl, { geometry, program })
+			ctxMap.set(container, { renderer, program, mesh })
+
+			const setSize = () => {
+				const rect = container.getBoundingClientRect()
+				const w = Math.max(1, Math.floor(rect.width))
+				const h = Math.max(1, Math.floor(rect.height))
+				renderer.setSize(w, h)
+				const res = program.uniforms.iResolution.value as Float32Array
+				res[0] = gl.drawingBufferWidth
+				res[1] = gl.drawingBufferHeight
+				renderer.render({ scene: mesh })
 			}
-		})
 
-		const mesh = new Mesh(gl, { geometry, program })
-		ctxMap.set(container, { renderer, program, mesh })
+			const ro = new ResizeObserver(setSize)
+			ro.observe(container)
+			setSize()
+			requestAnimationFrame(() => { canvas.style.opacity = '1' })
 
-		const setSize = () => {
-			const rect = container.getBoundingClientRect()
-			const w = Math.max(1, Math.floor(rect.width))
-			const h = Math.max(1, Math.floor(rect.height))
-			renderer.setSize(w, h)
-			const res = program.uniforms.iResolution.value as Float32Array
-			res[0] = gl.drawingBufferWidth
-			res[1] = gl.drawingBufferHeight
-			renderer.render({ scene: mesh })
-		}
+			let raf = 0
+			let isVisible = true
+			let isPageVisible = !document.hidden
+			const t0 = performance.now()
 
-		const ro = new ResizeObserver(setSize)
-		ro.observe(container)
-		setSize()
+			const loop = (t: number) => {
+				program.uniforms.iTime.value = (t - t0) * 0.001
+				renderer.render({ scene: mesh })
+				raf = requestAnimationFrame(loop)
+			}
 
-		let raf = 0
-		let isVisible = true
-		let isPageVisible = !document.hidden
-		const t0 = performance.now()
+			const tryStart = () => {
+				if (isVisible && isPageVisible && raf === 0) raf = requestAnimationFrame(loop)
+			}
+			const tryStop = () => {
+				if (raf !== 0) { cancelAnimationFrame(raf); raf = 0 }
+			}
 
-		const loop = (t: number) => {
-			program.uniforms.iTime.value = (t - t0) * 0.001
-			renderer.render({ scene: mesh })
-			raf = requestAnimationFrame(loop)
-		}
+			const io = new IntersectionObserver(
+				([entry]) => {
+					isVisible = entry.isIntersecting
+					if (isVisible) tryStart()
+					else tryStop()
+				},
+				{ threshold: 0 }
+			)
+			io.observe(container)
 
-		const tryStart = () => {
-			if (isVisible && isPageVisible && raf === 0) raf = requestAnimationFrame(loop)
-		}
-		const tryStop = () => {
-			if (raf !== 0) { cancelAnimationFrame(raf); raf = 0 }
-		}
-
-		const io = new IntersectionObserver(
-			([entry]) => {
-				isVisible = entry.isIntersecting
-				if (isVisible) tryStart()
+			const onVisibility = () => {
+				isPageVisible = !document.hidden
+				if (isPageVisible) tryStart()
 				else tryStop()
-			},
-			{ threshold: 0 }
-		)
-		io.observe(container)
+			}
+			document.addEventListener('visibilitychange', onVisibility)
 
-		const onVisibility = () => {
-			isPageVisible = !document.hidden
-			if (isPageVisible) tryStart()
-			else tryStop()
+			tryStart()
+
+			return () => {
+				tryStop()
+				ro.disconnect()
+				io.disconnect()
+				document.removeEventListener('visibilitychange', onVisibility)
+				ctxMap.delete(container)
+				try { container.removeChild(canvas) } catch { /* ignore */ }
+			}
 		}
-		document.addEventListener('visibilitychange', onVisibility)
 
-		tryStart()
+		// context creation + shader compile + first draw block the main thread for
+		// 150-250ms on a throttled phone; run it after hydration instead of inside it.
+		// The container's CSS gradient (same three colors) covers the gap.
+		let teardown: (() => void) | undefined
+		const run = () => {
+			teardown = setup()
+			applyRef.current?.()
+		}
+		const idle = typeof window.requestIdleCallback === 'function'
+		const handle = idle ? window.requestIdleCallback(run, { timeout: 1500 }) : window.setTimeout(run, 200)
 
 		return () => {
-			tryStop()
-			ro.disconnect()
-			io.disconnect()
-			document.removeEventListener('visibilitychange', onVisibility)
-			ctxMap.delete(container)
-			try { container.removeChild(canvas) } catch { /* ignore */ }
+			if (idle) window.cancelIdleCallback(handle)
+			else window.clearTimeout(handle)
+			teardown?.()
 		}
 	}, [])
 
 	// sync props to uniforms - zero GPU cost, no teardown
 	useEffect(() => {
-		const container = containerRef.current
-		if (!container) return
-		const ctx = ctxMap.get(container)
-		if (!ctx) return
-		const u = ctx.program.uniforms
+		const apply = () => {
+			const container = containerRef.current
+			if (!container) return
+			const ctx = ctxMap.get(container)
+			if (!ctx) return
+			const u = ctx.program.uniforms
 
-		u.uTimeSpeed.value = timeSpeed
-		u.uColorBalance.value = colorBalance
-		u.uWarpStrength.value = warpStrength
-		u.uWarpFrequency.value = warpFrequency
-		u.uWarpSpeed.value = warpSpeed
-		u.uWarpAmplitude.value = warpAmplitude
-		u.uBlendAngle.value = blendAngle
-		u.uBlendSoftness.value = blendSoftness
-		u.uRotationAmount.value = rotationAmount
-		u.uNoiseScale.value = noiseScale
-		u.uGrainAmount.value = grainAmount
-		u.uGrainScale.value = grainScale
-		u.uGrainAnimated.value = grainAnimated ? 1.0 : 0.0
-		u.uContrast.value = contrast
-		u.uGamma.value = gamma
-		u.uSaturation.value = saturation
-		u.uCenterOffset.value = new Float32Array([centerX, centerY])
-		u.uZoom.value = zoom
-		u.uColor1.value = new Float32Array(hexToRgb(color1))
-		u.uColor2.value = new Float32Array(hexToRgb(color2))
-		u.uColor3.value = new Float32Array(hexToRgb(color3))
+			u.uTimeSpeed.value = timeSpeed
+			u.uColorBalance.value = colorBalance
+			u.uWarpStrength.value = warpStrength
+			u.uWarpFrequency.value = warpFrequency
+			u.uWarpSpeed.value = warpSpeed
+			u.uWarpAmplitude.value = warpAmplitude
+			u.uBlendAngle.value = blendAngle
+			u.uBlendSoftness.value = blendSoftness
+			u.uRotationAmount.value = rotationAmount
+			u.uNoiseScale.value = noiseScale
+			u.uGrainAmount.value = grainAmount
+			u.uGrainScale.value = grainScale
+			u.uGrainAnimated.value = grainAnimated ? 1.0 : 0.0
+			u.uContrast.value = contrast
+			u.uGamma.value = gamma
+			u.uSaturation.value = saturation
+			u.uCenterOffset.value = new Float32Array([centerX, centerY])
+			u.uZoom.value = zoom
+			u.uColor1.value = new Float32Array(hexToRgb(color1))
+			u.uColor2.value = new Float32Array(hexToRgb(color2))
+			u.uColor3.value = new Float32Array(hexToRgb(color3))
+		}
+
+		applyRef.current = apply
+		apply()
 	}, [
 		timeSpeed, colorBalance, warpStrength, warpFrequency, warpSpeed,
 		warpAmplitude, blendAngle, blendSoftness, rotationAmount, noiseScale,
@@ -315,5 +343,11 @@ export default function Grainient({
 		centerX, centerY, zoom, color1, color2, color3
 	])
 
-	return <div ref={containerRef} className={clsx('relative w-full h-full overflow-hidden', className)} />
+	return (
+		<div
+			ref={containerRef}
+			className={clsx('relative w-full h-full overflow-hidden', className)}
+			style={{ background: `linear-gradient(135deg, ${color1}, ${color2} 50%, ${color3})` }}
+		/>
+	)
 }

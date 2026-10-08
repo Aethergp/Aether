@@ -55,7 +55,7 @@ export default function About() {
                                     fill
                                     className='cover'
                                     loading='lazy'
-                                    sizes='100vw'
+                                    sizes='(max-width: 991px) 100vw, 50vw'
                                 />
                             </ScrollingImage>
                         </div>

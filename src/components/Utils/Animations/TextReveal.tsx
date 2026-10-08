@@ -67,7 +67,8 @@ export default function TextReveal({
 
             elements.forEach((element) => {
                 const split = SplitText.create(element, {
-                    type: 'lines'
+                    type: 'lines',
+                    aria: 'none'
                 })
 
                 splitRefs.current.push(split)

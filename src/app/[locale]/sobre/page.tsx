@@ -1,7 +1,7 @@
 // libraries
 import type { Metadata } from 'next'
 import type { Locale } from 'next-intl'
-import { getTranslations } from 'next-intl/server'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
 import clsx from 'clsx'
 import Image from 'next/image'
 
@@ -21,7 +21,7 @@ import JsonLd from '@/components/JsonLd'
 // utils
 import { pages } from '@/utils/routes'
 import { pageGraph } from '@/utils/schema'
-import { ogLocale, localizedMetadata } from '@/utils/functions'
+import { ogLocale, ogAlternateLocales, localizedMetadata } from '@/utils/functions'
 
 // img
 import scientists from '@/assets/img/team-2.jpg'
@@ -58,6 +58,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 				}
 			],
 			locale: ogLocale(locale),
+			alternateLocale: ogAlternateLocales(locale),
 			type: 'website'
 		}
 	}
@@ -66,6 +67,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function SobrePage({ params }: Props) {
 
 	const { locale } = await params
+
+	setRequestLocale(locale)
 	const t = await getTranslations({ locale, namespace: 'SobrePage' })
 
 	const heroTitleLines = t.raw('heroTitleLines') as string[]
@@ -381,7 +384,7 @@ export default async function SobrePage({ params }: Props) {
 										fill
 										className='cover'
 										loading='lazy'
-										sizes='100vw'
+										sizes='(max-width: 991px) 100vw, 50vw'
 									/>
 								</ScrollingImage>
 

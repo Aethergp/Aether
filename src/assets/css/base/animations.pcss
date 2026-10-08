@@ -116,3 +116,9 @@
         transform: translateY(102%) scaleY(1);
     }
 }
+
+/* page-transition curtain: hidden below the viewport before hydration. Without this
+   the z-999999 block covered the whole page until JS ran and GSAP moved it */
+[data-pt-block] {
+    transform: translateY(100%);
+}

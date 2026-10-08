@@ -84,6 +84,7 @@ export default function Menu() {
 							<Link
 								href={localize('/')}
 								className='w-60 sm:w-70 lg:w-80 xl:w-90 flex'
+								aria-label={t('logoLabel')}
 							>
 								<Logo className={clsx(
 									'w-full h-auto',
@@ -131,6 +132,8 @@ export default function Menu() {
 								<button
 									className='flex flex-col items-center justify-center gap-[.3rem] px-4 py-4 xl:py-3 rounded-sm md:rounded-md bg-green-dark text-green-light cursor-pointer min-h-full group transition-all duration-200 hover:bg-black'
 									onClick={() => setIsOpen(true)}
+									aria-label={t('abrirMenu')}
+									aria-expanded={isOpen}
 								>
 									<span className='h-px bg-green-light block w-6 sm:w-7 transition-all duration-200 group-hover:translate-y-[.4rem]' data-line-top />
 									<span className='h-px bg-green-light block w-6 sm:w-7 transition-all duration-200 group-hover:-translate-y-[.4rem]' data-line-bottom />
@@ -163,6 +166,7 @@ export default function Menu() {
 					<Link
 						href={localize('/')}
 						className='w-60 md:w-70 flex'
+						aria-label={t('logoLabel')}
 						onClick={() => setIsOpen(false)}
 					>
 						<Logo className='w-full h-auto' />
@@ -171,6 +175,7 @@ export default function Menu() {
 					<button
 						className='bg-green-dark text-green-light sm:rounded-sm w-12 h-9 flex items-center justify-center cursor-pointer hover:bg-black'
 						onClick={() => setIsOpen(false)}
+						aria-label={t('fecharMenu')}
 					>
 						<UxClose className='w-2 h-2' />
 					</button>

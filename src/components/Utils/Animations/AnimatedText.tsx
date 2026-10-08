@@ -20,57 +20,48 @@ export default function AnimatedText({
 }: Props) {
 
     const item = useRef<HTMLSpanElement>(null)
-    const animRef = useRef<gsap.core.Tween | null>(null)
-    const splitsRef = useRef<SplitText[]>([])
 
     useGSAP(() => {
-        if (!item.current) return
+        const el = item.current
+        if (!el) return
 
-        const initAnimation = async () => {
-            if (animRef.current) {
-                animRef.current.progress(1).kill()
-            }
-            splitsRef.current.forEach(s => s.revert())
-            splitsRef.current = []
+        const scroller = document.getElementById('viewport') as HTMLElement
+        const originalHtml = el.innerHTML
+        const splits: SplitText[] = []
+        let tween: gsap.core.Tween | null = null
+        let observer: IntersectionObserver | null = null
+        let cancelled = false
 
-            // SplitText must not run against the fallback font. When the webfonts
-            // are already loaded we skip the await so the split happens
-            // synchronously inside the layout effect - awaiting would yield a
-            // frame in which the server-rendered text paints unsplit and then
-            // snaps to the hidden state.
-            if (typeof document !== 'undefined' && document.fonts && document.fonts.status !== 'loaded') {
-                await document.fonts.ready
-            }
+        const split = () => {
+            const segments = originalHtml.split(/<br\s*\/?>/gi)
 
-            if (!item.current) return
+            // the split letters are hidden from assistive tech and a visually hidden
+            // copy carries the text instead (an aria-label on a <span> is prohibited).
+            // Added client-side only, so the server HTML still holds the text once.
+            const plain = document.createElement('span')
+            plain.innerHTML = segments.join(' ')
 
-            const html = typeof text === 'string' ? text : ''
-            const segments = html.split(/<br\s*\/?>/gi)
-
-            // Rebuild innerHTML: each segment wrapped in a block span
-            // so <br> is preserved visually but SplitText never sees it
-            item.current.innerHTML = segments
-                .map(seg => `<span class="br-line">${seg}</span>`)
+            // each segment gets a block span so <br> is preserved visually but
+            // SplitText never sees it
+            el.innerHTML = `<span class="sr-only">${plain.textContent ?? ''}</span>` + segments
+                .map(seg => `<span class="br-line" aria-hidden="true">${seg}</span>`)
                 .join('')
 
-            // Run SplitText on each segment separately, collect all chars
-            const allChars: Element[] = []
-
-            item.current.querySelectorAll<HTMLElement>('.br-line').forEach(lineEl => {
-                const split = new SplitText(lineEl, {
+            const chars: Element[] = []
+            el.querySelectorAll<HTMLElement>('.br-line').forEach(lineEl => {
+                const s = new SplitText(lineEl, {
                     type: 'lines, words, chars',
-                    linesClass: 'split-line'
+                    linesClass: 'split-line',
+                    aria: 'none'
                 })
-                splitsRef.current.push(split)
-                allChars.push(...split.chars)
+                splits.push(s)
+                chars.push(...s.chars)
             })
 
-            if (!item.current) return
-
-            animRef.current = gsap.from(allChars, {
+            tween = gsap.from(chars, {
                 scrollTrigger: {
-                    scroller: document.getElementById('viewport') as HTMLElement,
-                    trigger: item.current,
+                    scroller,
+                    trigger: el,
                     toggleActions: infinite ? 'restart pause resume reverse' : 'play none none none',
                     start: 'top 85%'
                 },
@@ -78,30 +69,48 @@ export default function AnimatedText({
                 ease: 'circ.out',
                 y: '110%',
                 stagger: 0.0025,
-                onComplete: () => {
-                    if (item.current) {
-                        item.current.classList.add('completed')
-                    }
-                },
-                onReverseComplete: () => {
-                    if (item.current) {
-                        item.current.classList.remove('completed')
-                    }
-                }
+                onComplete: () => el.classList.add('completed'),
+                onReverseComplete: () => el.classList.remove('completed')
             })
         }
 
-        initAnimation()
+        const init = async () => {
+            // SplitText must not run against the fallback font. When the webfonts
+            // are already loaded we skip the await so an above-the-fold split happens
+            // synchronously inside the layout effect, before the next paint.
+            if (document.fonts && document.fonts.status !== 'loaded') {
+                await document.fonts.ready
+            }
+            if (cancelled) return
+
+            // splitting builds a node per letter, so doing it for every instance on
+            // mount made one long hydration task (1.7s of TBT on /sobre under mobile
+            // throttling). Only text near the viewport splits now; the rest waits
+            // until it scrolls within a quarter screen of the bottom edge. This is an
+            // IntersectionObserver, not a ScrollTrigger: an extra trigger per instance
+            // made ScrollTrigger's load refresh shift the sticky footer (CLS 0.08).
+            if (el.getBoundingClientRect().top < window.innerHeight * 1.25) {
+                split()
+            } else {
+                observer = new IntersectionObserver(([entry]) => {
+                    if (!entry.isIntersecting) return
+                    observer?.disconnect()
+                    split()
+                }, { root: scroller, rootMargin: '0px 0px 25% 0px' })
+                observer.observe(el)
+            }
+        }
+
+        init()
 
         return () => {
-            if (animRef.current) {
-                animRef.current.kill()
-            }
-            splitsRef.current.forEach(s => s.revert())
-            splitsRef.current = []
-            if (item.current) {
-                item.current.classList.remove('completed')
-            }
+            cancelled = true
+            observer?.disconnect()
+            tween?.scrollTrigger?.kill()
+            tween?.kill()
+            splits.forEach(s => s.revert())
+            el.classList.remove('completed')
+            el.innerHTML = originalHtml
         }
     }, { scope: item })
 

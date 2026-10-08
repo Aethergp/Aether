@@ -1,7 +1,7 @@
 // libraries
 import type { Metadata } from 'next'
 import type { Locale } from 'next-intl'
-import { getTranslations } from 'next-intl/server'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 
@@ -14,9 +14,9 @@ import RelatedPosts from '../RelatedPosts'
 import JsonLd from '@/components/JsonLd'
 
 // utils
-import { pageGraph } from '@/utils/schema'
+import { pageGraph, plainText } from '@/utils/schema'
 import { articleNode } from '../db/schema'
-import { ogLocale, localizedMetadata } from '@/utils/functions'
+import { ogLocale, ogAlternateLocales, localizedMetadata } from '@/utils/functions'
 import { getLocalizedPathname } from '@/i18n/navigation'
 import {
 	getMediaPosts,
@@ -24,6 +24,7 @@ import {
 	getRelatedPosts,
 	getContent,
 	getReadingTime,
+	getAuthor,
 	formatDate,
 	mediaHref,
 	SITE_URL
@@ -31,6 +32,19 @@ import {
 
 interface Props {
 	params: Promise<{ locale: Locale, slug: string }>
+}
+
+const BRAND_SUFFIX = ' | Aether Global Pharma'
+
+// most headlines are already near or past the 60-char title budget, so the brand
+// suffix is only appended when it still fits; the meta description is cut to 160
+// on a word boundary (the page itself still shows the full excerpt)
+function metaTitle(title: string) {
+	return title.length + BRAND_SUFFIX.length <= 60 ? title + BRAND_SUFFIX : title
+}
+
+function metaDescription(excerpt: string) {
+	return plainText(excerpt, 157)
 }
 
 export function generateStaticParams() {
@@ -48,16 +62,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 		return { title: t('notFoundTitle') }
 	}
 
-	const title = `${post.title} | Aether Global Pharma`
+	const title = metaTitle(post.seoTitle ?? post.title)
+	const description = metaDescription(post.excerpt)
 	const { canonical, languages, url } = localizedMetadata(mediaHref(post), locale)
 
 	return {
 		title,
-		description: post.excerpt,
+		description,
 		alternates: { canonical, languages },
 		openGraph: {
 			title,
-			description: post.excerpt,
+			description,
 			url,
 			siteName: 'Aether Global Pharma',
 			images: [
@@ -69,7 +84,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 				}
 			],
 			locale: ogLocale(locale),
-			type: 'article'
+			alternateLocale: ogAlternateLocales(locale),
+			type: 'article',
+			publishedTime: post.date,
+			modifiedTime: post.date,
+			authors: [getAuthor(post)],
+			section: post.category
 		}
 	}
 }
@@ -77,8 +97,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function PostPage({ params }: Props) {
 
 	const { locale, slug } = await params
+
+	setRequestLocale(locale)
 	const t = await getTranslations({ locale, namespace: 'MidiaPostPage' })
 	const tNav = await getTranslations({ locale, namespace: 'Nav' })
+	const tMidia = await getTranslations({ locale, namespace: 'MidiaPage' })
 	const post = getMediaPostBySlug(slug, locale)
 
 	if (!post) notFound()
@@ -95,8 +118,8 @@ export default async function PostPage({ params }: Props) {
 				data={await pageGraph({
 					locale,
 					path: mediaHref(post),
-					name: `${post.title} | Aether Global Pharma`,
-					description: post.excerpt,
+					name: metaTitle(post.seoTitle ?? post.title),
+					description: metaDescription(post.excerpt),
 					trail: [
 						{ name: tNav('midia'), item: '/midia' },
 						{ name: post.title, item: mediaHref(post) }
@@ -104,7 +127,7 @@ export default async function PostPage({ params }: Props) {
 					extend: {
 						mainEntity: { '@id': `${shareUrl}#article` }
 					},
-					extra: [articleNode(post, locale)]
+					extra: [articleNode(post, locale, tMidia('metaTitle'))]
 				})}
 			/>
 

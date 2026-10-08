@@ -42,6 +42,8 @@ export default function AnimatedTitle({
 
 			splitRef.current = new SplitText(item.current, {
 				type: 'lines',
+				// line splits keep words whole, so screen readers read the text as is
+				aria: 'none',
 				tag: 'span'
 			})
 

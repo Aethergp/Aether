@@ -26,6 +26,14 @@ export function ogLocale(locale: string) {
     return map[locale] ?? 'pt_BR'
 }
 
+// the other two locales as og:locale:alternate, so link previews know the
+// page also exists in those languages
+export function ogAlternateLocales(locale: string) {
+    return routing.locales
+        .filter((other) => other !== locale)
+        .map(ogLocale)
+}
+
 // self-referencing canonical + hreflang alternates + absolute OG url for a given
 // unprefixed path, resolved for the current locale - so a page's SEO metadata
 // points at its own locale's URL instead of always the pt-BR one
