@@ -34,7 +34,7 @@ function detectLocaleFromCountry(country: string | null): (typeof routing.locale
 	return null
 }
 
-export default function middleware(request: NextRequest) {
+export default function proxy(request: NextRequest) {
 	const hasLocaleCookie = request.cookies.has(LOCALE_COOKIE)
 
 	if (!hasLocaleCookie) {

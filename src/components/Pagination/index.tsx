@@ -12,6 +12,19 @@ interface Props {
 
 const WINDOW = 5
 
+function Arrow({ direction }: { direction: 'prev' | 'next' }) {
+	return (
+		<svg
+			viewBox='0 0 16 16'
+			fill='none'
+			aria-hidden='true'
+			className={clsx('w-3.5 h-3.5', direction === 'next' && 'rotate-180')}
+		>
+			<path d='M10 2 4 8l6 6' stroke='currentColor' strokeWidth='1.5' strokeLinecap='round' strokeLinejoin='round' />
+		</svg>
+	)
+}
+
 export default function Pagination({ currentPage, totalPages, onChange }: Props) {
 
 	const t = useTranslations('Pagination')
@@ -23,17 +36,6 @@ export default function Pagination({ currentPage, totalPages, onChange }: Props)
 	start = Math.max(1, end - WINDOW + 1)
 
 	const pages = Array.from({ length: end - start + 1 }, (_, i) => start + i)
-
-	const Arrow = ({ direction }: { direction: 'prev' | 'next' }) => (
-		<svg
-			viewBox='0 0 16 16'
-			fill='none'
-			aria-hidden='true'
-			className={clsx('w-3.5 h-3.5', direction === 'next' && 'rotate-180')}
-		>
-			<path d='M10 2 4 8l6 6' stroke='currentColor' strokeWidth='1.5' strokeLinecap='round' strokeLinejoin='round' />
-		</svg>
-	)
 
 	return (
 		<nav

@@ -194,7 +194,7 @@ export default function Button({
 	)
 
 	if (href) {
-		const { type: _, ...linkRest } = rest as any
+		const linkRest = rest as Omit<LinkProps, keyof BaseProps | 'href' | 'type'>
 
 		const isExternal = /^(https?:|mailto:|tel:)/.test(href)
 

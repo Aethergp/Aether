@@ -1,24 +1,20 @@
 // libraries
 import type { Metadata } from 'next'
-import clsx from 'clsx'
-import Image from 'next/image'
 import type { Locale } from 'next-intl'
 import { getTranslations } from 'next-intl/server'
 
 // components
 import AnimatedText from '@/components/Utils/Animations/AnimatedText'
-import AnimatedTitle from '@/components/Utils/Animations/AnimatedTitle'
 import TextReveal from '@/components/Utils/Animations/TextReveal'
 import StaggerUp from '@/components/Utils/Animations/StaggerUp'
 import StrokePath from '@/components/Utils/Animations/StrokePath'
-import ScrollingImage from '@/components/Utils/Animations/ScrollingImage'
 import Button from '@/components/Button'
 import { Form, Input, Select, Textarea, InputHidden, Honeypot, Submit } from '@/components/Form'
 import JsonLd from '@/components/JsonLd'
 
 // utils
-import { email, phone, ogLocale, localizedMetadata } from '@/utils/functions'
-import { social, contact } from '@/utils/routes'
+import { ogLocale, localizedMetadata } from '@/utils/functions'
+import { social } from '@/utils/routes'
 import { pageGraph } from '@/utils/schema'
 
 interface Props {
@@ -57,27 +53,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 		}
 	}
 }
-
-const MAP_SRC = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3601.624946455032!2d-49.29010442399409!3d-25.484196177527387!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94dce359c443d8e3%3A0xdb55f50153993a47!2sR.%20Jos%C3%A9%20Casemiro%20Stenzowski%2C%2021%20-%20Novo%20Mundo%2C%20Curitiba%20-%20PR%2C%2081010-370!5e0!3m2!1spt-BR!2sbr!4v1781447134921!5m2!1spt-BR!2sbr'
-const MAP_LINK = 'https://www.google.com/maps/search/?api=1&query=Rua%20Jos%C3%A9%20Casemiro%20Stenzowski%2C%2021D%2C%20Curitiba%20-%20PR'
-
-// temporary placeholder addresses until the client confirms the real ones (~2 months)
-const offices = [
-	{
-		eyebrow: 'Sede',
-		city: 'Curitiba, PR',
-		lines: ['Rua José Casemiro Stenzowski, 21D', 'Novo Mundo', 'CEP 81010-370'],
-		mapSrc: MAP_SRC,
-		mapLink: MAP_LINK
-	},
-	{
-		eyebrow: 'Filial',
-		city: 'Campinas, SP',
-		lines: ['Rua José Casemiro Stenzowski, 21D', 'Novo Mundo', 'CEP 81010-370'],
-		mapSrc: MAP_SRC,
-		mapLink: MAP_LINK
-	}
-]
 
 export default async function ContatoPage({ params }: Props) {
 	const { locale } = await params
@@ -183,28 +158,6 @@ export default async function ContatoPage({ params }: Props) {
 
 							<StaggerUp className='flex flex-col gap-6 text-18'>
 
-								{/*
-								<div>
-									<span className='block text-sm opacity-60 mb-1'>E-mail</span>
-									<a
-										href={email(contact.email)}
-										className='hover-underline'
-									>
-										{contact.email}
-									</a>
-								</div>
-
-								<div>
-									<span className='block text-sm opacity-60 mb-1'>Telefone</span>
-									<a
-										href={phone(contact.phone)}
-										className='hover-underline'
-									>
-										{contact.phone}
-									</a>
-								</div>
-								*/}
-
 								<div>
 									<span className='block text-sm opacity-60 mb-1'>Instagram</span>
 									<a
@@ -302,81 +255,6 @@ export default async function ContatoPage({ params }: Props) {
 				</div>
 
 			</section>
-
-			{/*
-			<section className='pb-16 lg:pb-[8vw]'>
-				<div className='base-container'>
-
-					<AnimatedTitle
-						style='dark'
-						className='text-60 font-heading font-semibold text-[10vw]! leading-[.9]! mb-10 lg:mb-[5vw]'
-					>
-						Onde Estamos
-					</AnimatedTitle>
-
-					{offices.map((office, i) => {
-						const textFirst = i % 2 === 0
-
-						return (
-							<div
-								key={i}
-								className='row lg:items-center max-lg:flex max-lg:flex-col max-lg:gap-8 mb-16 lg:mb-[6vw] last:mb-0'
-							>
-
-								<div className={clsx(
-									'col-lg-6 flex flex-col justify-center lg:py-10',
-									textFirst ? 'lg:pr-[4vw]' : 'lg:order-2 lg:pl-[4vw]'
-								)}>
-
-									<span className='block text-sm font-semibold uppercase tracking-wide opacity-60 mb-3'>
-										({office.eyebrow})
-									</span>
-
-									<TextReveal blockColor='var(--color-green-dark)'>
-										<h2 className='text-60 font-heading font-semibold'>
-											{office.city}
-										</h2>
-									</TextReveal>
-
-									<address className='not-italic text-20 leading-relaxed my-8'>
-										{office.lines.map((line, j) => (
-											<AnimatedText key={j} text={line} />
-										))}
-									</address>
-
-									<Button
-										style='dark-2'
-										href={office.mapLink}
-										target='_blank'
-										rel='noopener noreferrer'
-										text='Ver no Google Maps'
-										icon='diagonal-arrow'
-									/>
-
-								</div>
-
-								<div className={clsx('col-lg-6', !textFirst && 'lg:order-1')}>
-									<div className='block relative overflow-hidden w-full max-lg:aspect-4/3 lg:h-full lg:min-h-[90vh] rounded-md pointer-events-none'>
-										<ScrollingImage>
-											<iframe
-												src={office.mapSrc}
-												title={`Localização - ${office.city}`}
-												loading='lazy'
-												allowFullScreen
-												referrerPolicy='no-referrer-when-downgrade'
-												className='cover border-0 saturate-0'
-											/>
-										</ScrollingImage>
-									</div>
-								</div>
-
-							</div>
-						)
-					})}
-
-				</div>
-			</section>
-			*/}
 
 		</div>
 	)

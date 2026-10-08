@@ -4,7 +4,7 @@
 import clsx from 'clsx'
 import { useRef, useState } from 'react'
 import { useTranslations } from 'next-intl'
-import { FormProvider, type RegisterOptions, type SubmitHandler, useForm, useFormContext } from 'react-hook-form'
+import { type FieldValues, FormProvider, type RegisterOptions, type SubmitHandler, useForm, useFormContext } from 'react-hook-form'
 
 // components
 import Portal from '@/components/Utils/Portal'
@@ -15,8 +15,6 @@ import Button from '@/components/Button'
 import UxCheck from '@/assets/svg/ux/check.svg'
 import UxEye from '@/assets/svg/ux/eye.svg'
 import UxEyeSlash from '@/assets/svg/ux/eye-slash.svg'
-import UxSpinner from '@/assets/svg/ux/spinner.svg'
-import UxArrowDiagonal from '@/assets/svg/ux/arrow-diagonal.svg'
 
 interface ModalProps {
 	id: string
@@ -77,10 +75,6 @@ interface FormProps {
 	clearOnSubmit?: boolean
 }
 
-interface FormValues {
-	[key: string]: any
-}
-
 export const Form = ({
 	className,
 	children,
@@ -114,14 +108,8 @@ export const Form = ({
 		mode: 'all'
 	})
 
-	// local state for any global errors
-	const [_globalError, setGlobalError] = useState('')
-
 	// submit function
-	const onSubmit: SubmitHandler<FormValues> = async (data) => {
-		
-        // clear any old error messages
-		setGlobalError('')
+	const onSubmit: SubmitHandler<FieldValues> = async (data) => {
 
 		// fake response timer
 		const fakeTimer = 1000
@@ -172,7 +160,7 @@ export const Form = ({
 			})
 
 			// if success
-			.then((_responseData) => {
+			.then(() => {
 				if (onSuccess) {
 					setRenderSuccessModal(true)
 
@@ -196,11 +184,7 @@ export const Form = ({
 			})
 
 			// if error
-			.catch((error) => {
-				setTimeout(() => {
-					setGlobalError(error.message)
-				}, fakeTimer)
-
+			.catch(() => {
 				if (onError) {
 					setRenderErrorModal(true)
 
@@ -222,7 +206,7 @@ export const Form = ({
 	return (
 		<FormProvider {...methods}>
 			<form
-				onSubmit={methods.handleSubmit(onSubmit)}
+				onSubmit={(e) => methods.handleSubmit(onSubmit)(e)}
 				className={clsx(
 					className,
 					'[&[data-is-sending="true"]_[data-regular-icon]]:opacity-0 [&[data-is-sending="true"]_[data-spinner]]:opacity-100 [&[data-is-sending="true"]_[data-submit-button]]:pointer-events-none'
@@ -232,38 +216,6 @@ export const Form = ({
 			>
 				{children}
 			</form>
-
-			{/*
-			<button
-				type='button'
-				onClick={() => {
-					setRenderSuccessModal(true)
-					setTimeout(() => {
-						const dialog = document.getElementById('success') as HTMLDialogElement
-						if (dialog) {
-							dialog.showModal()
-						}
-					}, 100)
-				}}
-			>
-				test Success Modal
-			</button>
-
-			<button
-				type='button'
-				onClick={() => {
-					setRenderErrorModal(true)
-					setTimeout(() => {
-						const dialog = document.getElementById('error') as HTMLDialogElement
-						if (dialog) {
-							dialog.showModal()
-						}
-					}, 100)
-				}}
-			>
-				test Error Modal
-			</button>
-			*/}
 
 			{renderSuccessModal && (
 				<Modal
@@ -361,9 +313,6 @@ export const Input = ({
 		watch,
 		formState: { errors },
 	} = useFormContext()
-
-	// track focus state
-	const [isFocused, setIsFocused] = useState(false)
 
 	let validations: RegisterOptions = {
 		onChange: (e) => onChange(e),
@@ -466,13 +415,7 @@ export const Input = ({
                     )}
 					disabled={disabled || false}
 					onKeyDown={handleKeyPress}
-					onFocus={() => setIsFocused(true)}
-					{...register(name, {
-						...validations,
-						onBlur: () => {
-							setIsFocused(false)
-						}
-					})}
+					{...register(name, validations)}
 				/>
 
 				{type === 'password' && !hidePasswordToggle && (
@@ -528,9 +471,6 @@ export const Textarea = ({
 		formState: { errors }
 	} = useFormContext() ?? {}
 
-	// track focus state
-	const [isFocused, setIsFocused] = useState(false)
-
 	let validations = {}
 
     validations = {
@@ -573,13 +513,7 @@ export const Textarea = ({
 					id={id}
 					placeholder={placeholder}
 					className='block w-full border border-gray-lighter bg-transparent rounded-md text-black p-4 text-ellipsis focus-visible:outline-1 focus-visible:outline-gray-light placeholder:opacity-75 resize-y min-h-42 h-42'
-					onFocus={() => setIsFocused(true)}
-					{...register(name, {
-						...validations,
-						onBlur: () => {
-							setIsFocused(false)
-						}
-					})}
+					{...register(name, validations)}
 				/>
 			</div>
 

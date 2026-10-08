@@ -1,8 +1,3 @@
-// svg
-import Facebook from '@/assets/svg/social/facebook.svg'
-import Linkedin from '@/assets/svg/social/linkedin.svg'
-import Instagram from '@/assets/svg/social/instagram.svg'
-
 // pages
 export const pages = {
 	home: '/',
@@ -84,7 +79,6 @@ export const headerLinks = [
 	{ href: pages.sobre, label: 'sobre', children: sobreChildren },
 	{ href: pages.pd, label: 'pd', children: pdChildren },
 	{ href: pages.midia, label: 'midia' },
-	//{ href: pages.inscreva, label: 'inscreva' },
 	{ href: pages.contato, label: 'contato' }
 ]
 
@@ -115,17 +109,5 @@ export const social = {
 
 // contact
 export const contact = {
-	phone: '+55 (41) 99661-6144',
-	email: 'aether@aethergp.com.br',
-	//address: 'Av. Rep. Argentina, 1228 - Sala 2210 - Vila Izabel, Curitiba - PR, 80610-260',
-	//gmaps: 'https://maps.app.goo.gl/Sg1E92zC1FYNJMYx7'
+	email: 'aether@aethergp.com.br'
 }
-
-// social links
-export const socialLinks = [
-	{
-		icon: Instagram,
-		name: 'Instagram',
-		href: social.instagram
-	}
-]

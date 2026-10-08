@@ -5,7 +5,10 @@ import { createNavigation } from 'next-intl/navigation'
 // utils
 import { routing } from './routing'
 
-export const { Link, redirect, usePathname, useRouter, getPathname } = createNavigation(routing)
+const navigation = createNavigation(routing)
+const { getPathname } = navigation
+
+export const { usePathname, useRouter } = navigation
 
 /**
  * Loosely-typed wrapper around getPathname() for callers holding a plain

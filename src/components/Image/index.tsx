@@ -4,7 +4,7 @@ interface CustomImageProps extends Omit<ImageProps, 'quality'> {
 	quality?: number
 }
 
-export default function CustomImage({ quality = 75, ...props }: CustomImageProps) {
-	return <Image quality={quality} {...props} />
+export default function CustomImage({ quality = 75, alt, ...props }: CustomImageProps) {
+	return <Image quality={quality} alt={alt} {...props} />
 }
 

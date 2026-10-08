@@ -30,8 +30,7 @@ export default function Marquee({
 
     useGSAP(() => {
         const logos = gsap.utils.toArray('.logo' ) as HTMLElement[]
-        const loop = horizontalLoop(logos, { repeat: -1, reversed: reverse })
-
+        horizontalLoop(logos, { repeat: -1, reversed: reverse })
     },{
         scope: logosContainer,
         dependencies: [reverse]

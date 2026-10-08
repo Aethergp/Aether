@@ -8,7 +8,6 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 // components
-import AnimatedText from '@/components/Utils/Animations/AnimatedText'
 import StaggerUp from '@/components/Utils/Animations/StaggerUp'
 
 gsap.registerPlugin(ScrollTrigger)

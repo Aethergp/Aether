@@ -218,13 +218,6 @@ export default async function TRLPage({ params }: Props) {
 									<span className='text-sm font-semibold font-heading uppercase tracking-wide'>
 										{bloco.range}
 									</span>
-
-									{/*
-									<span className={`text-5xl lg:text-6xl font-heading font-bold leading-none ${bloco.muted}`}>
-										{String(i + 1).padStart(2, '0')}
-									</span>
-									*/}
-
 								</div>
 
 								<h3 className='text-30 font-heading font-semibold leading-tight mt-2'>

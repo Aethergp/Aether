@@ -134,6 +134,7 @@ export default async function LocaleLayout({
 		<html
 			lang={locale}
 			className={clsx(inter.className, syne.className)}
+			data-scroll-behavior='smooth'
 		>
 
 			<head>

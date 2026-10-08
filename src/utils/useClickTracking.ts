@@ -8,8 +8,12 @@ const useGTagTracking = () => {
 	const pageUrl = usePathname()
 
 	const gTagTracking = (eventCategory: string, eventLabel: string) => {
-		if (typeof window !== 'undefined' && (window as any).gtag) {
-			;(window as any).gtag('event', 'click', {
+		const gtag = typeof window !== 'undefined'
+			? (window as Window & { gtag?: (...args: unknown[]) => void }).gtag
+			: undefined
+
+		if (gtag) {
+			gtag('event', 'click', {
 				event_category: `${eventCategory} | Located on: ${pageUrl}`,
 				event_label: eventLabel,
 			})

@@ -6,7 +6,7 @@ import { ORG_ID, ICT_ID, WEBSITE_ID, SITE_URL, plainText } from '@/utils/schema'
 import { getLocalizedPathname } from '@/i18n/navigation'
 import { type MediaPost, getContent, getReadingTime, getAuthor, isInstitutionalAuthor, mediaHref } from './data'
 
-export const BLOG_ID = `${SITE_URL}/midia#blog`
+const BLOG_ID = `${SITE_URL}/midia#blog`
 
 function postUrl(post: MediaPost, locale: Locale) {
 	return `${SITE_URL}${getLocalizedPathname(mediaHref(post), locale)}`

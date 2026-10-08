@@ -193,7 +193,7 @@ interface Crumb {
  * prepended automatically. `item` is a site-relative, unprefixed path; each
  * entry (including home) is resolved to its locale-prefixed URL.
  */
-export async function breadcrumbs(trail: Crumb[], locale: Locale) {
+async function breadcrumbs(trail: Crumb[], locale: Locale) {
 	const t = await getTranslations({ locale, namespace: 'Nav' })
 
 	const all = [{ name: t('inicio'), item: '/' }, ...trail].map((crumb) => ({

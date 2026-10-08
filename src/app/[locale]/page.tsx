@@ -9,7 +9,6 @@ import Context from './_home/Context'
 import About from './_home/About'
 import Companies from './_home/Companies'
 import Partners from './_home/Partners'
-import Contact from './_home/Contact'
 import JsonLd from '@/components/JsonLd'
 
 // utils
@@ -82,8 +81,6 @@ export default async function Home({ params }: Props) {
 			<Companies />
 
 			<Partners />
-
-			{/* <Contact /> */}
 
 		</div>
 	)

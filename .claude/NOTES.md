@@ -43,7 +43,7 @@ section and links to the new internal pages (`_docs/spec-home.md`).
 | `/politica-de-privacidade` | client copy (done) | ✅ **Built + real content** (`src/app/politica-de-privacidade/page.tsx`). Repeating **marker (`col-lg-3` eyebrow) + `.rich-text` content (`col-lg-9 col-xl-6`)** rows, `offset-lg-3` opening block, `StrokePath`, effective-date line. The reference long-form/legal layout (see ART-DIRECTION → Long-form). `pages.privacy`; linked from the LGPD checkbox. Not in footer/nav yet. |
 | `/termos-e-condicoes` | client copy (done) | ✅ **Built + real content** (`src/app/termos-e-condicoes/page.tsx`). Same long-form layout as privacy; title rendered "Termos **&** Condições". `pages.termos`. Not linked anywhere yet. |
 | `/parceiros` | **spec missing** | ✅ **Built** (`src/app/parceiros/page.tsx`). **No spec exists** - hero/intro/CTA copy is **invented placeholder**, to be confirmed with the client. **Dark hero with a gradient-scrim background image** (`bg-green-dark text-green-light`, **no video**) - a faint `abstract.jpg` (`opacity-50`, `h-3/4`) behind a `bg-linear-to-t from-green-dark` scrim, eyebrow `(parceiros)` + `TextReveal` h1 (light) + `AnimatedText` lead; `/parceiros` is in `Menu`'s `darkHeader` check so the logo goes light over it. A **`scientists.jpg` feature image straddles the hero→grid seam** (a `bg-white -left-30 w-[120%] h-1/2` shelf behind it, `ScrollingImage`). Then the white grid section (`AnimatedTitle` "Quem está junto da Aether" + `StaggerScale` logo grid, **same grid as the home `Partners` section**, sharing `src/utils/partners.js`) - **no `StrokePath`** here (deliberately; depth comes from the hero scrim + straddling image instead - see ART-DIRECTION → Depth). Closes with a `bg-green-dark` **two-column** CTA box (`lg:grid lg:grid-cols-2`, `overflow-hidden` rounded): left = eyebrow/headline/paragraph + `light-2` button below the text; right = a `ScrollingImage` photo filling 50% (`banner.jpg`), **`max-lg:hidden`** (dropped on mobile, not stacked). **Gotcha applied:** the CTA headline uses `AnimatedText` (not `AnimatedTitle`) - `AnimatedTitle style='light'`'s *unfilled* tone is `green-dark`, invisible on a `green-dark` box until scrubbed. The hero/grid/CTA spacing + image placement were **hand-tuned by the client** - mirror this composition. Pending: real partner list + categories, confirmed CTA copy, final photography (abstract/scientists/banner are placeholders), whether to keep the home `#parceiros` section now that the page exists. |
-| `/contato` | `spec-contato.md` | ✅ **Built** (`src/app/contato/page.tsx`). "Onde estamos" = `#sobre`-style alternating text/map blocks (Sede Curitiba / Filial Campinas), each with a parallax (`ScrollingImage`) Google Maps embed (frame-friendly `pb=` URL) + "Ver no Google Maps" button. Phone/address are **temporary placeholders** (consts at top of file; both offices share the same address for now). Pending: real phone/address (~2 months, parques tecnológicos); create `contato@aethergp.com.br` (Cloudflare); per-subject email destination. |
+| `/contato` | `spec-contato.md` | ✅ **Built** (`src/app/contato/page.tsx`). The "Onde estamos" office/map section and the e-mail/phone links were **deleted** (they had been commented out: addresses unconfirmed, contact details not to be published). Recover them from git history (before the 2026-10 dead-code cleanup) when the client confirms the addresses. Pending: real addresses (~2 months, parques tecnológicos); create `contato@aethergp.com.br` (Cloudflare); per-subject email destination. |
 
 Suggested build order: the `/sobre` **hub is built**; next are its 3 subpages (`/sobre/aether-global-pharma`,
 `/sobre/ict-aether-bio`, `/sobre/equipe`) → `/pd` + `/pd/trl` → `/pd/pipeline` (waits on content). `/contato`,
@@ -74,7 +74,7 @@ soon) carries a per-locale `translations` object on every post - see CLAUDE.md �
 shape. The `/midia` post-date month formatting (`formatDate(iso, locale)` in `db/data.ts`) is locale-aware
 too.
 
-**Locale detection + manual switching done:** the middleware's geolocation redirect falls through to
+**Locale detection + manual switching done:** the proxy's geolocation redirect falls through to
 next-intl's own Accept-Language negotiation when `x-vercel-ip-country` is absent (local dev, or any
 non-Vercel host). A manual `LocaleSwitcher` (`src/components/LocaleSwitcher/`) is wired into `Menu`: a
 hover-dropdown in the desktop header (`max-sm:hidden`) and a 3-pill inline row in the fs mobile menu
@@ -131,8 +131,7 @@ replacing the path - verified in-browser (switching EN→ES from a live post cor
 - **Nav surfaces are decoupled** (`src/utils/routes.js`): **`navLinks`** → fs/mobile menu, **`headerLinks`**
   → desktop header, **`footerColumns`** (`NavItem[][]`) → footer. Edit each independently. Sobre/P&D carry
   `children` (`sobreChildren`/`pdChildren` consts, shared by nav+header). **Header is now Sobre / P&D / Mídia /
-  Contato — `Inscreva seu Projeto` was commented out of `headerLinks`** (lives only in the fs menu + footer
-  now). `routes.js` is **JSDoc-typed** (`@typedef NavItem`, optional `children`) so components read
+  Contato — `Inscreva seu Projeto` is not in `headerLinks`** (lives only in the fs menu + footer). `routes.js` is **JSDoc-typed** (`@typedef NavItem`, optional `children`) so components read
   `item.children` without TS union errors - keep the `/** @type {NavItem[]} */` annotations. **`#contexto`
   was removed.** Subpages 404 until built (intentional). **The Menu's full mechanics (header dropdown +
   chevron, the fs layered-reveal, item cascade, accordion, +/- toggle, right-arrow pills) are documented in
@@ -144,9 +143,8 @@ replacing the path - verified in-browser (switching EN→ES from a live post cor
   the "Navegação" heading** (user edit) - it's just the 4 columns now + the right-aligned Conecte-se/Copyright/
   "Voltar ao topo" block; omits Início, uses short "TRL" label. The Banner/About "Entre em contato" CTAs route
   to `/contato`; the home still has its `#parceiros` section (id kept).
-- **Home `Contact` section is now redundant** — nothing links to the home `#contato` section anymore
-  (all contact CTAs go to `/contato`). It still renders at the bottom of the home; remove/replace it in
-  the home re-scope (spec-home turns it into the dual final CTA).
+- **Home `Contact` section was deleted** (it was unused; all contact CTAs go to `/contato`). The home re-scope
+  (spec-home) adds the dual final CTA as new work.
 - **"Aether Bio+" spelling** — confirm spacing before the `+`; update consistently (live site uses
   "AetherBio+").
 - **Reusable green line:** the draw-on-scroll stroke is now the `StrokePath` component
@@ -162,7 +160,7 @@ replacing the path - verified in-browser (switching EN→ES from a live post cor
 
 ## WordPress (later)
 
-Blog/news only, via GraphQL. `graphql-request` is already a dep; `wp.aethergp.com.br` is already an
+Blog/news only, via GraphQL (add a client like `graphql-request`; it was removed as unused). `wp.aethergp.com.br` is already an
 allowed image host. Build static now with a WP-mappable data shape so the swap stays contained. See
 CLAUDE.md → "Blog / news".
 

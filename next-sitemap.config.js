@@ -4,14 +4,6 @@ import path from 'path'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
-/** @type {import('next-sitemap').IConfig} */
-
-// asset routes Next emits from src/app (icons + manifest) - not pages, must stay out of the sitemap
-const assetRoutes = ['/icon.svg', '/icon.png', '/apple-icon.png', '/favicon.ico', '/manifest.json']
-
-// pages that should never be indexed
-const noIndexRoutes = ['/404', '/500', '/home']
-
 // next-sitemap's default route discovery scans .next/server/app for page files, but it
 // can't resolve the [locale] dynamic segment or generateStaticParams, so it silently
 // produces zero URLs for this app. The static route list + pathname translations below
@@ -118,7 +110,8 @@ function buildPaths() {
 	})
 }
 
-export default {
+/** @type {import('next-sitemap').IConfig} */
+const config = {
 	siteUrl: process.env.SITE_URL || 'https://aethergp.com.br',
 	generateRobotsTxt: true,
 	exclude: ['/*'],
@@ -132,3 +125,5 @@ export default {
 		]
 	}
 }
+
+export default config

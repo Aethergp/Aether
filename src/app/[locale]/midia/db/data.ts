@@ -21,7 +21,7 @@ import stairs from '@/assets/img/stairs.jpg'
 
 export type MediaType = 'blog' | 'imprensa'
 
-export interface MediaImage {
+interface MediaImage {
 	url: string
 	alt: string
 }
@@ -70,7 +70,7 @@ interface RawMediaPost {
 export const POSTS_PER_PAGE = 18
 
 // internal posts live under this base - change here if the route ever moves
-export const BLOG_BASE = '/midia'
+const BLOG_BASE = '/midia'
 
 export const SITE_URL = 'https://aethergp.com.br'
 
