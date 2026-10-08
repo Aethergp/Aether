@@ -203,6 +203,11 @@ export function getAuthor(post: MediaPost): string {
 	return post.author ?? DEFAULT_AUTHOR['pt-BR']
 }
 
+// false when the post carries a personal byline (e.g. the AetherBio+ articles)
+export function isInstitutionalAuthor(post: MediaPost): boolean {
+	return Object.values(DEFAULT_AUTHOR).includes(getAuthor(post))
+}
+
 export function getContent(post: MediaPost): string {
 	return post.content ?? PLACEHOLDER_CONTENT['pt-BR']
 }

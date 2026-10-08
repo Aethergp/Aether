@@ -2,9 +2,9 @@
 // source so the WP swap only has to keep the MediaPost shape intact.
 
 import type { Locale } from 'next-intl'
-import { ORG_ID, WEBSITE_ID, SITE_URL, plainText } from '@/utils/schema'
+import { ORG_ID, ICT_ID, WEBSITE_ID, SITE_URL, plainText } from '@/utils/schema'
 import { getLocalizedPathname } from '@/i18n/navigation'
-import { type MediaPost, getContent, getReadingTime, getAuthor, mediaHref } from './data'
+import { type MediaPost, getContent, getReadingTime, getAuthor, isInstitutionalAuthor, mediaHref } from './data'
 
 export const BLOG_ID = `${SITE_URL}/midia#blog`
 
@@ -31,11 +31,9 @@ export function articleNode(post: MediaPost, locale: Locale) {
 		image: post.image
 			? (post.image.url.startsWith('http') ? post.image.url : `${SITE_URL}${post.image.url}`)
 			: `${SITE_URL}/img/og-image.jpg`,
-		author: {
-			'@type': 'Organization',
-			name: getAuthor(post),
-			url: SITE_URL
-		},
+		author: isInstitutionalAuthor(post)
+			? { '@type': 'Organization', name: getAuthor(post), url: SITE_URL }
+			: { '@type': 'Person', name: getAuthor(post), affiliation: { '@id': ICT_ID } },
 		publisher: { '@id': ORG_ID },
 		// typed stub rather than a bare @id: the Blog node itself only exists on
 		// /midia, so this keeps the article page's graph self-resolving
