@@ -122,3 +122,13 @@
 [data-pt-block] {
     transform: translateY(100%);
 }
+
+/* submit spinners sit at opacity 0 until a form is sending; keep them paused until
+   then instead of spinning (and restyling) every frame on every page with a form */
+[data-spinner] svg {
+    animation-play-state: paused;
+}
+
+[data-is-sending='true'] [data-spinner] svg {
+    animation-play-state: running;
+}

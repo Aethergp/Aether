@@ -11,6 +11,7 @@ import { useTranslations } from 'next-intl'
 gsap.registerPlugin(ScrollTrigger, SplitText)
 
 // components
+import BackgroundVideo from '@/components/BackgroundVideo'
 import TextReveal from '@/components/Utils/Animations/TextReveal'
 import Button from '@/components/Button'
 
@@ -98,19 +99,11 @@ export default function Banner() {
                 className='absolute z-0 top-0 left-0 w-full h-lvh'
                 data-bg
             >
-                <video
-                    loop
-                    muted
-                    playsInline
-                    autoPlay
+                <BackgroundVideo
+                    src='/videos/banner.mp4'
                     poster='/videos/banner-poster.jpg'
                     className='relative z-2 w-full h-full object-cover'
-                >
-                    <source
-                        src='/videos/banner.mp4'
-                        type='video/mp4'
-                    />
-                </video>
+                />
             </div>
 
 			<div className='base-container relative z-2'>

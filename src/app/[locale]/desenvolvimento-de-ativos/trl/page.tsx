@@ -10,6 +10,7 @@ import AnimatedText from '@/components/Utils/Animations/AnimatedText'
 import AnimatedTitle from '@/components/Utils/Animations/AnimatedTitle'
 import StaggerUp from '@/components/Utils/Animations/StaggerUp'
 import ScrollingImage from '@/components/Utils/Animations/ScrollingImage'
+import BackgroundVideo from '@/components/BackgroundVideo'
 import TRLScale from './TRLScale'
 import JsonLd from '@/components/JsonLd'
 
@@ -255,18 +256,10 @@ export default async function TRLPage({ params }: Props) {
 				<div className='absolute z-3 inset-0 bg-green-dark mix-blend-soft-light' />
 
 				<ScrollingImage>
-					<video
-						loop
-						muted
-						playsInline
-						autoPlay
+					<BackgroundVideo
+						src='/videos/lab.mp4'
 						className='relative z-2 w-full h-full object-cover'
-					>
-						<source
-							src='/videos/lab.mp4'
-							type='video/mp4'
-						/>
-					</video>
+					/>
 				</ScrollingImage>
 
 			</section>

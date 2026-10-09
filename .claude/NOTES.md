@@ -199,6 +199,16 @@ setup moved out of hydration with a CSS-gradient fallback. Tried and reverted: `
 (`legacy-javascript`, 13KB), Swiper's non-passive touch listeners, and the remaining ICT TBT, which is
 mostly Lighthouse running WebGL in software.
 
+### Runtime (idle CPU / scroll), 2026-10-08
+
+Measured with puppeteer on the production build (desktop, and mobile emulation at 4x CPU). Scrolling
+is smooth: no long animation frames on most pages, at most one ~100ms frame on the home. Fixed: the
+Grainient shader kept rendering at 60fps after scrolling past it (fixed-wrapper observer bug), both
+background videos kept playing offscreen (now `BackgroundVideo`), and the hidden form-submit spinners
+spun forever (now paused unless `data-is-sending="true"`). Known and left: ScrollTrigger's own tiny rAF
+loop (GSAP keeps it on purpose) and the home "scroll" hint's infinite transform animation. Still a gap:
+no `prefers-reduced-motion` handling anywhere.
+
 ### JSON-LD architecture
 
 All structured data lives in **`src/utils/schema.ts`** and renders through **`src/components/JsonLd`**.

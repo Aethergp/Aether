@@ -263,7 +263,18 @@ export default function Grainient({
 				},
 				{ threshold: 0 }
 			)
-			io.observe(container)
+			// a field inside a position:fixed wrapper always intersects the viewport, so
+			// observe the wrapper's (clipped) parent instead; otherwise the shader kept
+			// drawing at 60fps down to the footer on /sobre and its subpages
+			let observed: Element = container
+			// (stops at #viewport, the page's own scroller, which is fixed too)
+			for (let el = container.parentElement; el && el.id !== 'viewport'; el = el.parentElement) {
+				if (getComputedStyle(el).position === 'fixed') {
+					observed = el.parentElement ?? container
+					break
+				}
+			}
+			io.observe(observed)
 
 			const onVisibility = () => {
 				isPageVisible = !document.hidden
