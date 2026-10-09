@@ -57,8 +57,6 @@ export default function StaggerUp({
 				}
 			})
 		})
-
-		ScrollTrigger.refresh()
 	}, {
 		scope: item,
 		dependencies: [infinite]

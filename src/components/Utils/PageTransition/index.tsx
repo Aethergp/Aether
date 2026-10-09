@@ -1,8 +1,7 @@
 'use client'
 
 // libraries
-import { TransitionRouter, useTransitionState } from 'next-transition-router'
-import { useEffect, useRef } from 'react'
+import { TransitionRouter } from 'next-transition-router'
 import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -11,24 +10,6 @@ gsap.registerPlugin(ScrollTrigger)
 
 interface Props {
     children: React.ReactNode
-}
-
-function ScrollTriggerRefresher() {
-    const { isReady, stage } = useTransitionState()
-    const hasRefreshedRef = useRef(false)
-
-    useEffect(() => {
-        if (isReady && stage === 'none' && !hasRefreshedRef.current) {
-            hasRefreshedRef.current = true
-            requestAnimationFrame(() => ScrollTrigger.refresh(true))
-        }
-
-        if (stage === 'entering') {
-            hasRefreshedRef.current = false
-        }
-    }, [isReady, stage])
-
-    return null
 }
 
 // the block + icon are positioned entirely by GSAP (never via a React inline
@@ -49,11 +30,13 @@ export default function PageTransition({
     })
 
     const leaveAnimation = () => new Promise<void>((resolve) => {
-        const allScrollTriggers = ScrollTrigger.getAll()
-
         const tl = gsap.timeline({
             onComplete: () => {
-                allScrollTriggers.forEach((st) => st.kill())
+                // read at kill time, not when leave starts, so triggers created during
+                // the curtain (lazy AnimatedText splits) go too. Also the backstop for
+                // components that build triggers after an await, outside their useGSAP
+                // context (AnimatedTitle, TextReveal, PDDimensoes): unmount never kills those
+                ScrollTrigger.getAll().forEach((st) => st.kill())
                 resolve()
             }
         })
@@ -79,6 +62,8 @@ export default function PageTransition({
     const enterAnimation = () => new Promise<void>((resolve) => {
         const tl = gsap.timeline({
             onStart: () => {
+                // the only refresh per navigation: the new page is mounted and the curtain
+                // still hides it, so pin spacers can settle unseen. Late pins refresh themselves
                 ScrollTrigger.refresh(true)
             },
             onComplete: () => {
@@ -115,8 +100,6 @@ export default function PageTransition({
         >
 
             {children}
-
-            <ScrollTriggerRefresher />
 
             <aside
                 className='fixed z-999999 inset-0 pointer-events-none overflow-hidden flex items-center justify-center'
